@@ -32,7 +32,7 @@ export default defineComponent({
     width: 114px;
     height: 40px;
     border-radius: $radius-button;
-  
+    font-family: $font-mono;
     
 }
 
@@ -48,6 +48,11 @@ export default defineComponent({
 .tertiary {
   border: none;
   color: $color-brand;
+}
+
+.size-56 {
+  height: 56px;
+  width: 224px;
 }
 
 
