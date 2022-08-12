@@ -33,6 +33,7 @@ import ButtonlikeLink from '../common/ButtonlikeLink.vue';
     width: 100%;
     display: flex;
     background-color: $color-tag-background;
+    
 }
 .welcome-message {
     width: 66%;
@@ -56,6 +57,7 @@ import ButtonlikeLink from '../common/ButtonlikeLink.vue';
 .welcome-image {
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
 </style>
