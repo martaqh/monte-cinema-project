@@ -5,8 +5,10 @@ import TopNavbar from '../features/TopNavbar.vue';
 import SignSection from '../features/SignSection.vue';
 import TheContainer from '../common/TheContainer.vue';
 import WelcomeSection from '../views/WelcomeSection.vue';
+import MovieCard from '../views/MovieCard.vue';
+import MoviesSummary from '../views/MoviesSummary.vue';
     export default defineComponent({
-    components: { TheHeader, TopNavbar, SignSection, TheContainer, WelcomeSection }
+    components: { TheHeader, TopNavbar, SignSection, TheContainer, WelcomeSection, MovieCard, MoviesSummary }
 });
 </script>
 
@@ -18,6 +20,7 @@ import WelcomeSection from '../views/WelcomeSection.vue';
                 <SignSection />
             </TheHeader>
             <WelcomeSection />
+            <MoviesSummary />
         </TheContainer>    
     </div>
 </template>
