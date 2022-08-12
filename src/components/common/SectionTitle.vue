@@ -9,9 +9,9 @@ export default defineComponent({
 
 <template>
   <div class="section-title">
-    <h2>
+    <p>
         <slot></slot>
-    </h2>
+    </p>
   </div>
   
 </template>
@@ -23,16 +23,25 @@ export default defineComponent({
 .section-title {
     font-family: $font-title;
 
-    h2 {
+    p {
           margin: 0;
     }
   
 }
 
 .size-80 {
-    font-size: 60px;
+    font-size: 80px;
     font-weight: 600;
-    line-height: 82px;
-    letter-spacing: -0.01em;
+font-size: 80px;
+line-height: 102%;
+
+letter-spacing: -0.01em;
+}
+
+.movie-title {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 42px;
+  font-family: $font-main;
 }
 </style>
