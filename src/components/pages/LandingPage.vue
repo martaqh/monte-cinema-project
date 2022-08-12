@@ -1,10 +1,10 @@
 <script>
     import { defineComponent } from 'vue';
-import TheHeader from '../TheHeader.vue';
-import TopNavbar from '../TopNavbar.vue';
-import SignSection from '../SignSection.vue';
+import TheHeader from '../views/TheHeader.vue';
+import TopNavbar from '../features/TopNavbar.vue';
+import SignSection from '../features/SignSection.vue';
 import TheContainer from '../common/TheContainer.vue';
-import WelcomeSection from '../WelcomeSection.vue';
+import WelcomeSection from '../views/WelcomeSection.vue';
     export default defineComponent({
     components: { TheHeader, TopNavbar, SignSection, TheContainer, WelcomeSection }
 });
