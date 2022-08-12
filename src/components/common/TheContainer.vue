@@ -11,8 +11,6 @@
 </template>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/settings.scss";
-
 .container {
     margin: 0 48px;
 }

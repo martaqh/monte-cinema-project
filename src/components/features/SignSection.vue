@@ -15,7 +15,6 @@ import ButtonlikeLink from '../common/ButtonlikeLink.vue';
 </template>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/settings.scss";
 
 .sign-section {
     display: flex;

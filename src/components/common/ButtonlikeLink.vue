@@ -23,8 +23,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 
-@import "@/assets/styles/settings.scss";
-
 .buttonlike-link {
     display: flex;
     align-items: center;

@@ -23,8 +23,6 @@ import WelcomeSection from '../views/WelcomeSection.vue';
 </template>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/settings.scss";
-
 .landing-page {
    display: flex;
    flex-direction: column;

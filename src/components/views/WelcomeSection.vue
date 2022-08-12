@@ -29,10 +29,7 @@ import ButtonlikeLink from '../common/ButtonlikeLink.vue';
 </template>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/settings.scss";
-
 .welcome-section {
-    
     width: 100%;
     display: flex;
     background-color: $color-tag-background;

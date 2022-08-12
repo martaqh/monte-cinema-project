@@ -17,8 +17,6 @@ import SignSection from '../features/SignSection.vue';
 </template>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/settings.scss";
-
 .header {
     height: 112px;
     width: 100%;

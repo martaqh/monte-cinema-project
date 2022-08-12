@@ -15,14 +15,13 @@ import { defineComponent } from 'vue';
 </template>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/settings.scss";
-
 .top-navbar-tab {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
     width: 33%;
+    color: $color-text-navbar;
 }
 
 </style>

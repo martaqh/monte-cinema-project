@@ -18,7 +18,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 
-@import "@/assets/styles/settings.scss";
+
 
 .section-title {
     font-family: $font-title;

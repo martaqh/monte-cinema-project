@@ -15,8 +15,6 @@ import TopNavbarTab from './TopNavbarTab.vue';
 </template>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/settings.scss";
-
 .top-nav-bar {
     display: flex;
     width: 424px;

@@ -21,7 +21,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 
-@import "@/assets/styles/settings.scss";
 
 .button {
   height: 40px;
