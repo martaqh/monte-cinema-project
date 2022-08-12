@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Eczar:wght@400;600&family=Inter:wght@400;700&family=Roboto&family=Roboto+Mono:wght@500&display=swap');
+
+// colors
+
+$color-background: #FFFFFF;
+$color-brand: #EC1115;
+$color-brand-disabled: #F7A0A1;
+$color-text-main: #343541;
+$color-text-navbar: #484954;
+$color-text-reverse: #fff;
+$color-text-main-disabled: #85868D;
+$color-tag-background: #FEF6F6;
+$color-text-label: #F47073;
+$color-field-background: #F7F7F7;
+$color-field-background-active: #EBF3FE;
+$color-field-border-active: #2F80ED;
+$color-hover-background: #A60C0E;
+$color-hover-border: #F47073;
+
+
+// typography
+
+$font-title: Eczar, serif;
+$font-mono: "Roboto Mono", sanf-serif;
+$font-main: Roboto, sans-serif;
+
+// shadows
+
+$shadow-card: 0px 24px 78px rgba(0, 0, 0, 0.08), 0px 5.36071px 17.4223px rgba(0, 0, 0, 0.0238443), 0px 1.59602px 5.18708px rgba(0, 0, 0, 0.0161557);
+
+// radii
+
+$radius-button: 64px;
+$radius-card: 8px;
+
+
+
