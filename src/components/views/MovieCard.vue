@@ -2,58 +2,21 @@
 import { defineComponent } from 'vue';
 import TheTag from '../common/TheTag.vue';
 import SectionTitle from '../common/SectionTitle.vue';
-
-const movies = [
-                {
-                    id: 1,
-                    title: "Harry Potter and the Philosopher's Stone",
-                    genre: {
-                        id: 3,
-                        name: "Fantasy"
-                    },
-                    poster_url: "https://images-na.ssl-images-amazon.com/images/I/713KEd-8jyL._AC_SL1500_.jpg",
-                    length: 159,
-                    release_date: "2001-11-16",
-                    description: "An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world."
-                },
-                {
-                    id: 2,
-                    title: "Harry Potter and the Order of Phoenix",
-                    genre: {
-                        id: 3,
-                        name: "Fantasy"
-                    },
-                    poster_url: "https://images-na.ssl-images-amazon.com/images/I/713KEd-8jyL._AC_SL1500_.jpg",
-                    length: 159,
-                    release_date: "2001-11-16",
-                    description: "An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world."
-                },
-                    {
-                    id: 1,
-                    title: "Harry Potter and the Goblet of Fire",
-                    genre: {
-                        id: 3,
-                        name: "Fantasy"
-                    },
-                    poster_url: "https://images-na.ssl-images-amazon.com/images/I/713KEd-8jyL._AC_SL1500_.jpg",
-                    length: 159,
-                    release_date: "2001-11-16",
-                    description: "An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world."
-                },
-
-            ]
     
 export default defineComponent({
+    props: {
+        movie: Object,
+    },
     data() {
         return {
-        movies: movies,
+            movieData: this.movie,
         };
     },
-    computed: {
+ /*   computed: {
         filteredMovies() {
             return this.movies.filter(movie => movie.id <= 3);
         },    
-    },
+    }, */
     methods: {
         durationInHours(durationInMinutes) {
             const hours = Math.floor(durationInMinutes / 60);
@@ -66,23 +29,32 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="movie-card" v-for="movie in filteredMovies">
-        <SectionTitle class="movie-title" >{{ movie.title }}</SectionTitle>
-        <p class="movie-duration">{{durationInHours(movie.length)}}</p>
+    <div :class="[`movie-card card-${movieData.id}`]" >
+        <SectionTitle class="movie-title" >{{ movieData.title }}</SectionTitle>
+        <p class="movie-duration">{{durationInHours(movieData.length)}}</p>
         <div class="movie-poster">
-            <img :src="movie.poster_url" alt="movie poster" />
+            <img :src="movieData.poster_url" alt="movie poster" />
         </div>
-        <TheTag>{{movie.genre.name}}</TheTag>
+        <TheTag>{{movieData.genre.name}}</TheTag>
     </div>
 </template>
 
 <style lang="scss" scoped>
 .movie-card {
+    display: flex;
+    flex-direction: column;
     box-shadow: $shadow-card;
     padding: 40px;
     min-width: 327px;
     max-width: 444px;
     border-radius: 8px;
+
+}
+
+ .card-3 {
+         @media only screen and (max-width: 1024px) {
+        display: none;
+    }
 }
 
 .movie-duration {
@@ -100,6 +72,5 @@ export default defineComponent({
         object-fit: cover;
     }
 }
-
 
 </style>
