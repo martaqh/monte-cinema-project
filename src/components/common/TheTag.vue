@@ -12,10 +12,11 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .tag {
-    width: 73px;
-    height: 32px;
+
+    max-height: 32px;
+    width: fit-content;
     background: $color-tag-background;
-    border-radius: 24px;
+    border-radius: $radius-tag;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,6 +26,8 @@ export default defineComponent({
     font-size: 14px;
     line-height: 16px;
     margin-top: 20px;
+    padding: 8px 16px;
+
 }
 
 </style>
