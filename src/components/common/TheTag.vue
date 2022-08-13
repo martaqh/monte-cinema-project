@@ -24,6 +24,7 @@ export default defineComponent({
     font-weight: 700;
     font-size: 14px;
     line-height: 16px;
+    margin-top: 20px;
 }
 
 </style>

@@ -29,6 +29,7 @@ import MoviesSummary from '../views/MoviesSummary.vue';
 .landing-page {
    display: flex;
    flex-direction: column;
+   color: $color-text-main;
 }
 
 </style>

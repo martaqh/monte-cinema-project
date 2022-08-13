@@ -22,7 +22,11 @@ const movies = [
                     genre: {
                         id: 3,
                         name: "Fantasy"
-                    }
+                    },
+                    poster_url: "https://images-na.ssl-images-amazon.com/images/I/713KEd-8jyL._AC_SL1500_.jpg",
+                    length: 159,
+                    release_date: "2001-11-16",
+                    description: "An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world."
                 },
                     {
                     id: 1,
@@ -76,7 +80,9 @@ export default defineComponent({
 .movie-card {
     box-shadow: $shadow-card;
     padding: 40px;
-    width: 421px;
+    min-width: 327px;
+    max-width: 444px;
+    border-radius: 8px;
 }
 
 .movie-duration {
