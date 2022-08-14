@@ -45,14 +45,23 @@ export default defineComponent({
     flex-direction: column;
     box-shadow: $shadow-card;
     padding: 40px;
-    min-width: 327px;
-    max-width: 444px;
+    width: 421px;
     border-radius: 8px;
+    margin-right: 40px;
 
 }
 
+.card-2 {
+
+    @media only screen and (max-width: 1024px) {
+        margin-right: 0;
+    }
+}
+
  .card-3 {
-         @media only screen and (max-width: 1024px) {
+
+    margin-right: 0;
+    @media only screen and (max-width: 1024px) {
         display: none;
     }
 }

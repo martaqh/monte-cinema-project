@@ -10,7 +10,7 @@ const movies = [
                     title: "Harry Potter and the Philosopher's Stone",
                     genre: {
                         id: 3,
-                        name: "Fantasy"
+                        name: "Action"
                     },
                     poster_url: "https://images-na.ssl-images-amazon.com/images/I/713KEd-8jyL._AC_SL1500_.jpg",
                     length: 159,
@@ -25,7 +25,7 @@ const movies = [
                         name: "Fantasy"
                     },
                     poster_url: "https://images-na.ssl-images-amazon.com/images/I/713KEd-8jyL._AC_SL1500_.jpg",
-                    length: 159,
+                    length: 210,
                     release_date: "2001-11-16",
                     description: "An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world."
                 },
@@ -37,14 +37,13 @@ const movies = [
                         name: "Fantasy"
                     },
                     poster_url: "https://images-na.ssl-images-amazon.com/images/I/713KEd-8jyL._AC_SL1500_.jpg",
-                    length: 159,
+                    length: 145,
                     release_date: "2001-11-16",
                     description: "An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world."
                 },
 
             ]
     
-
 export default defineComponent({
     data() {
         return {
@@ -97,17 +96,11 @@ export default defineComponent({
     a {
         color: $color-brand;
     }
-
-
 }
-
 .movie-cards-wrapper {
     display: flex;
     flex: 1;
     justify-content: space-between;
     margin: 64px 0;
 }
-
-
-
 </style>

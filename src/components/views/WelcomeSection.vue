@@ -31,6 +31,7 @@ import ButtonlikeLink from '../common/ButtonlikeLink.vue';
 <style lang="scss" scoped>
 .welcome-section {
     width: 100%;
+    height: fit-content;
     display: flex;
     background-color: $color-tag-background;
     
@@ -51,13 +52,19 @@ import ButtonlikeLink from '../common/ButtonlikeLink.vue';
 }
 
 .welcome-image-wrapper {
-    width: 33%;
+    min-width: 457px;
+
+    @media only screen and (max-width: 1024px) {
+        display: none;
+    }
 }
 
 .welcome-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
+
+    
 }
 
 </style>
