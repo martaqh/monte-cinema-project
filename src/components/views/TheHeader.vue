@@ -12,18 +12,41 @@ import SignSection from '../features/SignSection.vue';
 <template>
     <div class="header">
         <a href="/"><img src="@/assets/MonterailLogo.svg" class="logo" alt="Monterail logo" /></a>
-        <slot></slot>
+        <a href="#"><img src="@/assets/HamburgerMenu.svg" class="hamburger-menu" alt="Hamburger menu"/></a>
+        <div class="header-slot">
+             <slot ></slot>
+        </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
 .header {
     height: 112px;
-    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    z-index: 1;
+    padding: 0 48px;
+
+    @media only screen and (max-width: 480px) {
+        padding: 0 24px;
+    }
+}
+
+.hamburger-menu {
+    @media only screen and (min-width: 540px) {
+        display: none;
+    }
+
+}
+
+.header-slot {
+    width: 75%;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+     @media only screen and (max-width: 540px) {
+        display: none;
+    }
 }
 
 </style>

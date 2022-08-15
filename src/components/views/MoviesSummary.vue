@@ -3,6 +3,7 @@ import { defineComponent } from 'vue';
 import TheTag from '../common/TheTag.vue';
 import SectionTitle from '../common/SectionTitle.vue';
 import MovieCard from './MovieCard.vue';
+import TheContainer from '../common/TheContainer.vue';
 
 const movies = [
                 {
@@ -62,18 +63,21 @@ export default defineComponent({
             return `${hours} h ${minutes} min`;
         }
     },
-    components: { MovieCard }
+    components: { MovieCard, TheContainer }
 });
 </script>
 
 <template>
-    <div class="movies-summary-header">
-        <p>soon in the cinema</p>
+    <TheContainer>
+        <div class="movies-summary-header">
+        <p>soon <span>in the cinema</span></p>
         <a>see all</a>
     </div>
     <div class="movie-cards-wrapper">
         <MovieCard v-for="movie of movies" :key="movie.id" :movie="movie" />
     </div>
+    </TheContainer>
+    
 </template>
 
 <style lang="scss" scoped>
@@ -96,11 +100,26 @@ export default defineComponent({
     a {
         color: $color-brand;
     }
+
+    span {
+        @media only screen and (max-width: 480px) {
+        display: none;
+    }
+    }
+
+    
 }
 .movie-cards-wrapper {
+    width: 100%;
     display: flex;
+    flex-direction: row;
     flex: 1;
     justify-content: space-between;
     margin: 64px 0;
+
+    @media only screen and (max-width: 480px) {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 </style>

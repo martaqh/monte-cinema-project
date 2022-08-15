@@ -14,24 +14,24 @@ import MoviesSummary from '../views/MoviesSummary.vue';
 
 <template>
     <div class="landing-page">
-        <TheContainer>
-            <TheHeader>
+        <TheHeader>
                 <TopNavbar />
                 <SignSection />
             </TheHeader>
-            <WelcomeSection />
-            <MoviesSummary />
-        </TheContainer>    
+        <WelcomeSection />
+        <MoviesSummary />
     </div>
 </template>
 
 <style lang="scss" scoped>
 .landing-page {
     max-width: 1440px;
-    margin: 0 auto;
+    width: 100%;
     display: flex;
     flex-direction: column;
     color: $color-text-main;
+    margin: 0 auto;
+    padding: 0;
 }
 
 </style>

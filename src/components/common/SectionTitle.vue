@@ -22,10 +22,12 @@ export default defineComponent({
 
 .section-title {
     font-family: $font-title;
-
     p {
           margin: 0;
+          width: 100%;
     }
+
+       
   
 }
 
@@ -36,6 +38,10 @@ font-size: 80px;
 line-height: 102%;
 
 letter-spacing: -0.01em;
+
+@media only screen and (max-width: 1024px) {
+        font-size: 48px;
+    }
 }
 
 .movie-title {

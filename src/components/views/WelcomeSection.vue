@@ -2,15 +2,17 @@
 import { defineComponent } from 'vue';
 import SectionTitle from '../common/SectionTitle.vue';
 import ButtonlikeLink from '../common/ButtonlikeLink.vue';
+import TheContainer from '../common/TheContainer.vue';
 
 
     export default defineComponent({
-    components: { SectionTitle, ButtonlikeLink }
+    components: { SectionTitle, ButtonlikeLink, TheContainer }
 });
 </script>
 
 <template>
-    <div class="welcome-section">
+    <TheContainer class="of-welcome-section">
+        <div class="welcome-section">
         <div class="welcome-message">
             <SectionTitle class="size-80">
                 Welcome to the best cinema in Monterail
@@ -26,6 +28,9 @@ import ButtonlikeLink from '../common/ButtonlikeLink.vue';
             <img src="@/assets/PeopleInCinema.png" class="welcome-image" alt="People in cinema" />    
         </div>
     </div>
+
+    </TheContainer>
+    
 </template>
 
 <style lang="scss" scoped>
@@ -34,9 +39,11 @@ import ButtonlikeLink from '../common/ButtonlikeLink.vue';
     height: fit-content;
     display: flex;
     background-color: $color-tag-background;
-    
+   
 }
 .welcome-message {
+    display: flex;
+    flex-direction: column;
     width: 66%;
     padding: 80px;
 
@@ -49,10 +56,15 @@ import ButtonlikeLink from '../common/ButtonlikeLink.vue';
         letter-spacing: 0.015em;
         margin: 40px 0;
     }
+
+    @media only screen and (max-width: 480px) {
+        text-align: center;
+        justify-content: center;
+    }
 }
 
 .welcome-image-wrapper {
-    min-width: 457px;
+    min-width: 34%;
 
     @media only screen and (max-width: 1024px) {
         display: none;

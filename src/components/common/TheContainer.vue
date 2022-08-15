@@ -12,7 +12,16 @@
 
 <style lang="scss" scoped>
 .container {
-    margin: 0 48px;
+    padding: 0 48px;
+
+    @media only screen and (max-width: 480px) {
+        padding: 0 24px;
+
+        &.of-welcome-section {
+            padding: 0;
+        }
+    }
+
 }
 
 </style>

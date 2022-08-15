@@ -20,7 +20,7 @@ import ButtonlikeLink from '../common/ButtonlikeLink.vue';
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 345px;
+    width: 33%;
     height: 100%;
     font-family: $font-mono;
     font-size: 16px;
