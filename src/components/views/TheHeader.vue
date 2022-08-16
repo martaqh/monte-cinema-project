@@ -2,9 +2,7 @@
 import { defineComponent } from 'vue';
 import TopNavbar from '../features/TopNavbar.vue';
 import SignSection from '../features/SignSection.vue';
-    
-
-    export default defineComponent({
+export default defineComponent({
     components: { TopNavbar, SignSection }
 });
 </script>
@@ -31,14 +29,11 @@ import SignSection from '../features/SignSection.vue';
         padding: 0 24px;
     }
 }
-
 .hamburger-menu {
     @media only screen and (min-width: 768px) {
         display: none;
     }
-
 }
-
 .header-slot {
     width: 75%;
     display: flex;
@@ -48,5 +43,4 @@ import SignSection from '../features/SignSection.vue';
         display: none;
     }
 }
-
 </style>

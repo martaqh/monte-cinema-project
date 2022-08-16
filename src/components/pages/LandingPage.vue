@@ -7,17 +7,25 @@ import TheContainer from '../common/TheContainer.vue';
 import WelcomeSection from '../views/WelcomeSection.vue';
 import MovieCard from '../views/MovieCard.vue';
 import MoviesSummary from '../views/MoviesSummary.vue';
-    export default defineComponent({
-    components: { TheHeader, TopNavbar, SignSection, TheContainer, WelcomeSection, MovieCard, MoviesSummary }
+export default defineComponent({
+    components: { 
+        TheHeader,
+        TopNavbar,
+        SignSection,
+        TheContainer,
+        WelcomeSection,
+        MovieCard,
+        MoviesSummary
+        }
 });
 </script>
 
 <template>
     <div class="landing-page">
         <TheHeader>
-                <TopNavbar />
-                <SignSection />
-            </TheHeader>
+            <TopNavbar />
+            <SignSection />
+        </TheHeader>
         <WelcomeSection />
         <MoviesSummary />
     </div>
@@ -33,5 +41,4 @@ import MoviesSummary from '../views/MoviesSummary.vue';
     margin: 0 auto;
     padding: 0;
 }
-
 </style>

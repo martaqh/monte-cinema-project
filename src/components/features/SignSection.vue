@@ -1,8 +1,7 @@
 <script>
-    import { defineComponent } from 'vue';
+import { defineComponent } from 'vue';
 import ButtonlikeLink from '../common/ButtonlikeLink.vue';
-
-    export default defineComponent({
+export default defineComponent({
     components: { ButtonlikeLink }
 });
 </script>
@@ -15,7 +14,6 @@ import ButtonlikeLink from '../common/ButtonlikeLink.vue';
 </template>
 
 <style lang="scss" scoped>
-
 .sign-section {
     display: flex;
     align-items: center;
@@ -25,5 +23,4 @@ import ButtonlikeLink from '../common/ButtonlikeLink.vue';
     font-family: $font-mono;
     font-size: 16px;
 }
-
 </style>

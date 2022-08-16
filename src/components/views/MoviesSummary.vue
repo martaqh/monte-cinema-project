@@ -42,42 +42,28 @@ const movies = [
                     release_date: "2001-11-16",
                     description: "An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world."
                 },
-
             ]
     
 export default defineComponent({
+    components: { MovieCard, TheContainer },
     data() {
         return {
             movies: movies,
         };
     },
- /*   computed: {
-        filteredMovies() {
-            return this.movies.filter(movie => movie.id <= 3);
-        },    
-    }, */
-    methods: {
-        durationInHours(durationInMinutes) {
-            const hours = Math.floor(durationInMinutes / 60);
-            const minutes = `0${durationInMinutes % 60}`.slice(-2);
-            return `${hours} h ${minutes} min`;
-        }
-    },
-    components: { MovieCard, TheContainer }
 });
 </script>
 
 <template>
     <TheContainer>
         <div class="movies-summary-header">
-        <p>soon <span>in the cinema</span></p>
-        <a>see all</a>
-    </div>
-    <div class="movie-cards-wrapper">
-        <MovieCard v-for="movie of movies" :key="movie.id" :movie="movie" />
-    </div>
-    </TheContainer>
-    
+            <p>soon <span>in the cinema</span></p>
+            <a>see all</a>
+        </div>
+        <div class="movie-cards-wrapper">
+            <MovieCard v-for="movie of movies" :key="movie.id" :movie="movie" />
+        </div>
+    </TheContainer>  
 </template>
 
 <style lang="scss" scoped>
@@ -104,10 +90,8 @@ export default defineComponent({
     span {
         @media only screen and (max-width: 768px) {
         display: none;
+        }
     }
-    }
-
-    
 }
 .movie-cards-wrapper {
     width: 100%;

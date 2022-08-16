@@ -1,10 +1,6 @@
 <script>
 import { defineComponent } from 'vue';
-
-    
-
-    export default defineComponent({
-    
+export default defineComponent({
 });
 </script>
 
@@ -23,5 +19,4 @@ import { defineComponent } from 'vue';
     width: 33%;
     color: $color-text-navbar;
 }
-
 </style>

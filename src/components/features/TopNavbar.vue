@@ -1,5 +1,5 @@
 <script>
-    import { defineComponent } from 'vue';
+import { defineComponent } from 'vue';
 import TopNavbarTab from './TopNavbarTab.vue';
     export default defineComponent({
     components: { TopNavbarTab }
@@ -24,5 +24,4 @@ import TopNavbarTab from './TopNavbarTab.vue';
     font-size: 18px;
     color: $color-text-navbar;
 }
-
 </style>

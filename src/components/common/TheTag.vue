@@ -12,7 +12,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .tag {
-
     max-height: 32px;
     width: fit-content;
     background: $color-tag-background;
@@ -27,7 +26,5 @@ export default defineComponent({
     line-height: 16px;
     margin-top: 20px;
     padding: 8px 16px;
-
 }
-
 </style>

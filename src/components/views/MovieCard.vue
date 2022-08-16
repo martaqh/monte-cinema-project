@@ -4,6 +4,7 @@ import TheTag from '../common/TheTag.vue';
 import SectionTitle from '../common/SectionTitle.vue';
     
 export default defineComponent({
+    components: { TheTag, SectionTitle },
     props: {
         movie: Object,
     },
@@ -12,19 +13,13 @@ export default defineComponent({
             movieData: this.movie,
         };
     },
- /*   computed: {
-        filteredMovies() {
-            return this.movies.filter(movie => movie.id <= 3);
-        },    
-    }, */
     methods: {
         durationInHours(durationInMinutes) {
             const hours = Math.floor(durationInMinutes / 60);
             const minutes = `0${durationInMinutes % 60}`.slice(-2);
             return `${hours} h ${minutes} min`;
         }
-    },
-    components: { TheTag, SectionTitle }
+    },  
 });
 </script>
 
@@ -46,29 +41,26 @@ export default defineComponent({
     box-shadow: $shadow-card;
     padding: 40px;
     width: 421px;
-    border-radius: 8px;
+    border-radius: $radius-card;
     margin-right: 40px;
 
     @media only screen and (max-width: 768px) {
         margin: 12px;
         width: 250px;      
     }
-
 }
-
 .card-2 {
     @media only screen and (min-width: 768px) and (max-width: 1024px) {
         margin-right: 0;
     }
 }
-
- .card-3 {
+.card-3 {
     margin-right: 0;
+
     @media only screen and (min-width: 768px) and (max-width: 1024px) {
         display: none;
     }
 }
-
 .movie-duration {
     font-family: $font-main;
     font-weight: 700;
@@ -76,7 +68,6 @@ export default defineComponent({
     line-height: 16px;
     color: $color-text-navbar;
 }
-
 .movie-poster {
     img {
         height: 192px;
@@ -84,5 +75,4 @@ export default defineComponent({
         object-fit: cover;
     }
 }
-
 </style>
