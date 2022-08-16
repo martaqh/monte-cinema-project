@@ -102,7 +102,7 @@ export default defineComponent({
     }
 
     span {
-        @media only screen and (max-width: 480px) {
+        @media only screen and (max-width: 768px) {
         display: none;
     }
     }
@@ -117,7 +117,7 @@ export default defineComponent({
     justify-content: space-between;
     margin: 64px 0;
 
-    @media only screen and (max-width: 480px) {
+    @media only screen and (max-width: 768px) {
         flex-direction: column;
         align-items: center;
     }

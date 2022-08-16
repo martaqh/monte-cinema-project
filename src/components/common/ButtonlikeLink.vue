@@ -50,7 +50,8 @@ export default defineComponent({
 
 .size-56 {
   height: 56px;
-  width: 224px;
+  max-width: 224px;
+  width: 100%;
 }
 
 

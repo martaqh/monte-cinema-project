@@ -39,6 +39,12 @@ import TheContainer from '../common/TheContainer.vue';
     height: fit-content;
     display: flex;
     background-color: $color-tag-background;
+
+    @media only screen and (max-width: 540px) {
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
    
 }
 .welcome-message {
@@ -57,10 +63,7 @@ import TheContainer from '../common/TheContainer.vue';
         margin: 40px 0;
     }
 
-    @media only screen and (max-width: 480px) {
-        text-align: center;
-        justify-content: center;
-    }
+    
 }
 
 .welcome-image-wrapper {

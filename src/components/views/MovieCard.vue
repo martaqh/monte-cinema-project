@@ -49,26 +49,22 @@ export default defineComponent({
     border-radius: 8px;
     margin-right: 40px;
 
-    @media only screen and (max-width: 480px) {
+    @media only screen and (max-width: 768px) {
         margin: 12px;
-        width: 250px;
-
-        
+        width: 250px;      
     }
 
 }
 
 .card-2 {
-
-    @media only screen and (min-width: 480px) and (max-width: 1024px) {
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
         margin-right: 0;
     }
 }
 
  .card-3 {
-
     margin-right: 0;
-    @media only screen and (min-width: 480px) and (max-width: 1024px) {
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
         display: none;
     }
 }

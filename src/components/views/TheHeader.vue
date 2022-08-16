@@ -33,7 +33,7 @@ import SignSection from '../features/SignSection.vue';
 }
 
 .hamburger-menu {
-    @media only screen and (min-width: 540px) {
+    @media only screen and (min-width: 768px) {
         display: none;
     }
 
@@ -44,7 +44,7 @@ import SignSection from '../features/SignSection.vue';
     display: flex;
     align-items: baseline;
     justify-content: space-between;
-     @media only screen and (max-width: 540px) {
+     @media only screen and (max-width: 768px) {
         display: none;
     }
 }
