@@ -1,7 +1,7 @@
 <script>
 import { defineComponent } from 'vue';
-import TheTag from '../common/TheTag.vue';
-import SectionTitle from '../common/SectionTitle.vue';
+import TheTag from '@/components/common/TheTag.vue';
+import SectionTitle from '@/components/common/SectionTitle.vue';
 
 export default defineComponent({
     components: { TheTag, SectionTitle },

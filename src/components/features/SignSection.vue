@@ -1,6 +1,6 @@
 <script>
 import { defineComponent } from 'vue';
-import ButtonlikeLink from '../common/ButtonlikeLink.vue';
+import ButtonlikeLink from '@/components/common/ButtonlikeLink.vue';
 export default defineComponent({
   components: { ButtonlikeLink }
 });

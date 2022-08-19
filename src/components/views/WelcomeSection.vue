@@ -1,8 +1,8 @@
 <script>
 import { defineComponent } from 'vue';
-import SectionTitle from '../common/SectionTitle.vue';
-import ButtonlikeLink from '../common/ButtonlikeLink.vue';
-import TheContainer from '../common/TheContainer.vue';
+import SectionTitle from '@/components/common/SectionTitle.vue';
+import ButtonlikeLink from '@/components/common/ButtonlikeLink.vue';
+import TheContainer from '@/components/common/TheContainer.vue';
 export default defineComponent({
   components: { SectionTitle, ButtonlikeLink, TheContainer }
 });

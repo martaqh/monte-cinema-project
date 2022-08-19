@@ -1,12 +1,12 @@
 <script>
     import { defineComponent } from 'vue';
-import TheHeader from '../views/TheHeader.vue';
-import TopNavbar from '../features/TopNavbar.vue';
-import SignSection from '../features/SignSection.vue';
-import TheContainer from '../common/TheContainer.vue';
-import WelcomeSection from '../views/WelcomeSection.vue';
-import MovieCard from '../views/MovieCard.vue';
-import MoviesSummary from '../views/MoviesSummary.vue';
+import TheHeader from '@/components/views/TheHeader.vue';
+import TopNavbar from '@/components/features/TopNavbar.vue';
+import SignSection from '@/components/features/SignSection.vue';
+import TheContainer from '@/components/common/TheContainer.vue';
+import WelcomeSection from '@/components/views/WelcomeSection.vue';
+import MovieCard from '@/components/views/MovieCard.vue';
+import MoviesSummary from '@/components/views/MoviesSummary.vue';
 export default defineComponent({
   components: {
     TheHeader,
