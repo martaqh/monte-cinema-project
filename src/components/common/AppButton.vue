@@ -34,7 +34,7 @@ export default defineComponent({
   },
   computed: {
     componentVariant() {
-      return (this.to) ? 'a' : 'button'
+      return (this.to) ? 'router-link' : 'button'
     },
   }
 });

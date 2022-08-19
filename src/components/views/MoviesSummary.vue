@@ -4,6 +4,7 @@ import TheTag from '@/components/common/TheTag.vue';
 import SectionTitle from '@/components/common/SectionTitle.vue';
 import MovieCard from './MovieCard.vue';
 import TheContainer from '@/components/common/TheContainer.vue';
+import NoMatch from './NoMatch.vue';
 
 const movies = [
                   {
@@ -45,7 +46,7 @@ const movies = [
             ]
 
 export default defineComponent({
-  components: { MovieCard, TheContainer },
+  components: { MovieCard, TheContainer, NoMatch },
   data() {
     return {
         movies: movies,

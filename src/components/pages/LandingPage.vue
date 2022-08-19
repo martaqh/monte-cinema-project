@@ -7,6 +7,7 @@ import TheContainer from '@/components/common/TheContainer.vue';
 import WelcomeSection from '@/components/views/WelcomeSection.vue';
 import MovieCard from '@/components/views/MovieCard.vue';
 import MoviesSummary from '@/components/views/MoviesSummary.vue';
+import NoMatch from '@/components/views/NoMatch.vue';
 export default defineComponent({
   components: {
     TheHeader,
@@ -15,7 +16,8 @@ export default defineComponent({
     TheContainer,
     WelcomeSection,
     MovieCard,
-    MoviesSummary
+    MoviesSummary,
+    NoMatch
   }
 });
 </script>

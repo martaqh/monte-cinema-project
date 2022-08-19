@@ -4,7 +4,7 @@ import LandingPage from '@/components/pages/LandingPage.vue';
 
 <template>
   <main class="app">
-    <LandingPage/>
+    <router-view />
   </main>
 </template>
 
