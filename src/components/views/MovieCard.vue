@@ -2,11 +2,14 @@
 import { defineComponent } from 'vue';
 import TheTag from '../common/TheTag.vue';
 import SectionTitle from '../common/SectionTitle.vue';
-    
+
 export default defineComponent({
     components: { TheTag, SectionTitle },
     props: {
-        movie: Object,
+        movie: {
+          type:Object,
+          required: true,
+        }
     },
     data() {
         return {
@@ -19,7 +22,7 @@ export default defineComponent({
             const minutes = `0${durationInMinutes % 60}`.slice(-2);
             return `${hours} h ${minutes} min`;
         }
-    },  
+    },
 });
 </script>
 
@@ -46,7 +49,7 @@ export default defineComponent({
 
     @media only screen and (max-width: 768px) {
         margin: 12px;
-        width: 250px;      
+        width: 250px;
     }
 }
 .card-2 {
