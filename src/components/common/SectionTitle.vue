@@ -1,9 +1,3 @@
-<script>
-import { defineComponent } from 'vue';
-export default defineComponent({
-});
-</script>
-
 <template>
   <div class="section-title">
     <p>
@@ -18,7 +12,7 @@ export default defineComponent({
     p {
           margin: 0;
           width: 100%;
-    }  
+    }
 }
 
 .size-80 {

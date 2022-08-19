@@ -4,28 +4,28 @@ import SectionTitle from '../common/SectionTitle.vue';
 import ButtonlikeLink from '../common/ButtonlikeLink.vue';
 import TheContainer from '../common/TheContainer.vue';
 export default defineComponent({
-    components: { SectionTitle, ButtonlikeLink, TheContainer }
+  components: { SectionTitle, ButtonlikeLink, TheContainer }
 });
 </script>
 
 <template>
-    <TheContainer class="of-welcome-section">
-        <div class="welcome-section">
-            <div class="welcome-message">
-                <SectionTitle class="size-80">
-                    Welcome to the best cinema in Monterail
-                </SectionTitle>
-                <p>
-                    Best movies, best experiences, best people. 
-                    And all that doesn’t exist. Yikes.
-                </p>
-                <ButtonlikeLink class="primary size-56">Book a ticket</ButtonlikeLink>
-            </div>
-            <div class="welcome-image-wrapper">
-                <img src="@/assets/PeopleInCinema.png" class="welcome-image" alt="People in cinema" />    
-            </div>
-        </div>
-    </TheContainer> 
+  <TheContainer class="of-welcome-section">
+    <div class="welcome-section">
+      <div class="welcome-message">
+        <SectionTitle class="size-80">
+            Welcome to the best cinema in Monterail
+        </SectionTitle>
+        <p>
+            Best movies, best experiences, best people.
+            And all that doesn’t exist. Yikes.
+        </p>
+        <ButtonlikeLink class="primary size-56">Book a ticket</ButtonlikeLink>
+      </div>
+      <div class="welcome-image-wrapper">
+        <img src="@/assets/PeopleInCinema.png" class="welcome-image" alt="People in cinema" />
+      </div>
+    </div>
+  </TheContainer>
 </template>
 
 <style lang="scss" scoped>
@@ -39,7 +39,7 @@ export default defineComponent({
         text-align: center;
         justify-content: center;
         align-items: center;
-    } 
+    }
 }
 .welcome-message {
     display: flex;
@@ -57,7 +57,7 @@ export default defineComponent({
         margin: 40px 0;
     }
 
-    
+
 }
 
 .welcome-image-wrapper {
@@ -73,7 +73,7 @@ export default defineComponent({
     height: 100%;
     object-fit: cover;
 
-    
+
 }
 
 </style>

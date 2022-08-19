@@ -1,15 +1,9 @@
-<script>
-import { defineComponent } from 'vue';
-export default defineComponent({
-});
-</script>
-
 <template>
   <div class="buttonlike-link">
     <a>
       <slot></slot>
     </a>
-  </div>  
+  </div>
 </template>
 
 <style lang="scss" scoped>
