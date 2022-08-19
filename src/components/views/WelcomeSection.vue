@@ -1,10 +1,10 @@
 <script>
 import { defineComponent } from 'vue';
 import SectionTitle from '@/components/common/SectionTitle.vue';
-import ButtonlikeLink from '@/components/common/ButtonlikeLink.vue';
+import AppButton from '@/components/common/AppButton.vue';
 import TheContainer from '@/components/common/TheContainer.vue';
 export default defineComponent({
-  components: { SectionTitle, ButtonlikeLink, TheContainer }
+  components: { SectionTitle, TheContainer, AppButton }
 });
 </script>
 
@@ -19,7 +19,7 @@ export default defineComponent({
             Best movies, best experiences, best people.
             And all that doesn’t exist. Yikes.
         </p>
-        <ButtonlikeLink class="primary size-56">Book a ticket</ButtonlikeLink>
+        <AppButton size="large" colorScheme="main">Book a ticket</AppButton>
       </div>
       <div class="welcome-image-wrapper">
         <img src="@/assets/PeopleInCinema.png" class="welcome-image" alt="People in cinema" />

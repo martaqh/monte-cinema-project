@@ -1,15 +1,15 @@
 <script>
 import { defineComponent } from 'vue';
-import ButtonlikeLink from '@/components/common/ButtonlikeLink.vue';
+import AppButton from '@/components/common/AppButton.vue';
 export default defineComponent({
-  components: { ButtonlikeLink }
+  components: { AppButton }
 });
 </script>
 
 <template>
   <div class="sign-section">
-    <ButtonlikeLink class="tertiary">Register</ButtonlikeLink>
-    <ButtonlikeLink class="primary">Log in</ButtonlikeLink>
+    <AppButton to="/" size="medium" colorScheme="no-border">Register</AppButton>
+    <AppButton size="medium" colorScheme="main">Log in</AppButton>
   </div>
 </template>
 
