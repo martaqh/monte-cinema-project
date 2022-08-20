@@ -71,7 +71,7 @@ export default defineComponent({
   width: fit-content;
   border-radius: $radius-button;
   font-family: $font-mono;
-  padding: 12px 24px;
+  padding: 0 40px;
 
 }
 .button-base[colorScheme="main"] {

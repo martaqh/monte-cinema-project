@@ -12,10 +12,10 @@ export default defineComponent({
   <TheContainer class="of-welcome-section">
     <div class="welcome-section">
       <div class="welcome-message">
-        <SectionTitle class="size-80">
+        <SectionTitle size="large">
             Welcome to the best cinema in Monterail
         </SectionTitle>
-        <p>
+        <p class="welcome-text">
             Best movies, best experiences, best people.
             And all that doesn’t exist. Yikes.
         </p>
@@ -47,7 +47,7 @@ export default defineComponent({
     width: 66%;
     padding: 80px;
 
-    p {
+    .welcome-text {
         font-family: 'Roboto Mono';
         font-style: normal;
         font-weight: 400;
