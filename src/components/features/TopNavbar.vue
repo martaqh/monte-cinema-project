@@ -22,6 +22,6 @@ export default defineComponent({
   align-items: center;
   font-family: $font-main;
   font-size: 18px;
-  color: $color-text-navbar;
+  color: $color-text-light;
 }
 </style>

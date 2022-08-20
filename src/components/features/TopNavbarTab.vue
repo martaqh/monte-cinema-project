@@ -11,6 +11,6 @@
   justify-content: center;
   height: 100%;
   width: 33%;
-  color: $color-text-navbar;
+  color: $color-text-light;
 }
 </style>
