@@ -1,6 +1,6 @@
 <script>
 import { defineComponent } from 'vue';
-import TheTag from '@/components/common/TheTag.vue';
+import AppTag from '@/components/common/AppTag.vue';
 import SectionTitle from '@/components/common/SectionTitle.vue';
 import MovieCard from './MovieCard.vue';
 import TheContainer from '@/components/common/TheContainer.vue';

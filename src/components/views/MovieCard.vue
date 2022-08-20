@@ -1,10 +1,10 @@
 <script>
 import { defineComponent } from 'vue';
-import TheTag from '@/components/common/TheTag.vue';
+import AppTag from '@/components/common/AppTag.vue';
 import SectionTitle from '@/components/common/SectionTitle.vue';
 
 export default defineComponent({
-    components: { TheTag, SectionTitle },
+    components: { AppTag, SectionTitle },
     props: {
         movie: {
           type:Object,
@@ -28,12 +28,12 @@ export default defineComponent({
 
 <template>
     <div :class="[`movie-card card-${movieData.id}`]" >
-        <SectionTitle class="movie-title" >{{ movieData.title }}</SectionTitle>
+        <p class="movie-title" >{{ movieData.title }}</p>
         <p class="movie-duration">{{durationInHours(movieData.length)}}</p>
         <div class="movie-poster">
             <img :src="movieData.poster_url" alt="movie poster" />
         </div>
-        <TheTag>{{movieData.genre.name}}</TheTag>
+        <AppTag>{{movieData.genre.name}}</AppTag>
     </div>
 </template>
 
@@ -69,7 +69,7 @@ export default defineComponent({
     font-weight: 700;
     font-size: 14px;
     line-height: 16px;
-    color: $color-text-navbar;
+    color: $color-text-light;
 }
 .movie-poster {
     img {
@@ -77,5 +77,12 @@ export default defineComponent({
         width: 100%;
         object-fit: cover;
     }
+}
+
+.movie-title {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 42px;
+  font-family: $font-main;
 }
 </style>
