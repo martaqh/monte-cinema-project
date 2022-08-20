@@ -30,11 +30,22 @@ export default defineComponent({
     to: {
       type: String,
       required: false,
+    },
+    variant: {
+      type: String,
+      default: 'link-button',
+      validator(value) {
+        return [
+          'filter-button',
+          'form-button',
+          'link-button',
+        ].includes(value);
+      },
     }
   },
   computed: {
     componentVariant() {
-      return (this.to) ? 'router-link' : 'button'
+      return (this.to || this.variant === 'link-button') ? 'a' : 'button'
     },
   }
 });
