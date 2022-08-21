@@ -11,7 +11,7 @@ const routes = [
     {
         path: '/screenings',
         name: 'Screenings',
-        component: () => import('@/components/views/ScreeningsSection.vue'),
+        component: () => import('@/components/views/ScreeningsFilters.vue'),
     },
 
     {

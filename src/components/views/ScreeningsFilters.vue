@@ -9,7 +9,13 @@ import AppSelect from '../common/AppSelect.vue';
 import DatePicker from '../features/DatePicker.vue';
 
 export default defineComponent({
-  components: { SectionTitle, SectionSubtitle, TheContainer, AppLabel, AppButton, AppButton, AppSelect, AppSelect, DatePicker },
+  components: { SectionTitle, SectionSubtitle, TheContainer, AppLabel, AppButton, AppSelect, DatePicker },
+  data() {
+    return {
+      isActive: false,
+      activeDay: 'Today',
+    }
+  },
   computed: {
     todaysDate() {
       return new Date().toLocaleDateString('en-GB');
@@ -20,7 +26,7 @@ export default defineComponent({
     nextDayNames() {
       const dayDigit = new Date().getDay() + 1;
       const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-      let nextDays = [];
+      let nextDays = ['Today'];
       for (let i=0; i<5; i++) {
         let day = dayDigit + i;
         console.log(day)
@@ -30,45 +36,39 @@ export default defineComponent({
         nextDays.push(days[day]);
       }
       return nextDays
-    }
-  }
+    },
+  },
 });
 </script>
 
 <template>
   <TheContainer>
-    <SectionTitle size="medium">Screenings</SectionTitle>
-    <SectionSubtitle size="medium">{{ `${todaysDayName} ${todaysDate}` }}</SectionSubtitle>
+    <SectionTitle>Screenings:</SectionTitle>
+    <SectionSubtitle>{{ todaysDayName, todaysDate }}</SectionSubtitle>
     <div class="filters__wrapper">
       <div class="filters-date">
         <AppLabel>Day</AppLabel>
         <div class="days">
           <AppButton
+            :isActive="this.activeDay === nextDay ? true : false"
             size="large"
-            colorScheme="dark"
-            variant="filter-button"
-          >
-          Today
-          </AppButton>
-          <AppButton
-            size="large"
-            colorScheme="dark-reverse"
+            :colorScheme="this.activeDay === nextDay ? 'dark' : 'dark-reverse'"
             variant="filter-button"
             v-for="nextDay in nextDayNames"
             class="day-button"
+            :key="nextDay"
+            @clicked="this.activeDay=nextDay"
           >
           {{ nextDay }}
           </AppButton>
-          <div class="date-picker__wrapper">
-            <DatePicker class="date-picker">
-             <img src="@/assets/CalendarIcon.svg" class="calendar" alt="calendar icon" />
-             </DatePicker>
+          <div class="date-picker">
+             <img src="@/assets/CalendarIcon.svg" alt="calendar icon" />
           </div>
         </div>
       </div>
       <div class="filters-movie">
         <AppLabel>Movie</AppLabel>
-        <AppSelect></AppSelect>
+        <AppSelect />
       </div>
     </div>
   </TheContainer>
@@ -79,39 +79,30 @@ export default defineComponent({
     display: flex;
     justify-content: space-between;
 }
-
 .days {
   display: flex;
 }
-
 .day-button {
   margin-left: 8px;
-}
 
-.calendar {
-  color: $color-text-main;
-  border: 2px solid  $color-text-main;
-  border-radius: 50%;
-  height: 32px;
-  width: 32px;
-  padding: 10px;
-  margin-left: 12px;
-}
-.date-picker__wrapper {
-  position: relative;
-  color: $color-text-main;
-  border: 2px solid  $color-text-main;
-  border-radius: 50%;
-  height: 32px;
-  width: 32px;
-  padding: 10px;
-  margin-left: 12px;
-  z-index: 2;
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:nth-last-child(-n+3) {
+    @media only screen and (max-width: 1024px) {
+      display: none;
+    }
+  }
 }
 .date-picker {
-  position: absolute;
-  border: none;
+  color: $color-text-main;
+  border: 2px solid $color-text-main;
   border-radius: 50%;
-  z-index: 1;
+  height: 32px;
+  width: 32px;
+  padding: 10px;
+  margin-left: 12px;
 }
+
 </style>
