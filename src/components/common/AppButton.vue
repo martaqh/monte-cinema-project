@@ -58,6 +58,7 @@ export default defineComponent({
     class="button-base"
     :size=this.size
     :colorScheme=this.colorScheme
+    @click="this.$emit('clicked')"
   >
     <slot></slot>
   </component>
