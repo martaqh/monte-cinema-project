@@ -30,50 +30,43 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .welcome-section {
-    width: 100%;
-    height: fit-content;
-    display: flex;
-    background-color: $color-tag-background;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  background-color: $color-tag-background;
 
-    @media only screen and (max-width: 540px) {
-        text-align: center;
-        justify-content: center;
-        align-items: center;
-    }
+  @media only screen and (max-width: 540px) {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
 }
 .welcome-message {
-    display: flex;
-    flex-direction: column;
-    width: 66%;
-    padding: 80px;
+  display: flex;
+  flex-direction: column;
+  width: 66%;
+  padding: 80px;
 
-    .welcome-text {
-        font-family: 'Roboto Mono';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 22px;
-        line-height: 170%;
-        letter-spacing: 0.015em;
-        margin: 40px 0;
-    }
-
-
+  .welcome-text {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 170%;
+    letter-spacing: 0.015em;
+    margin: 40px 0;
+  }
 }
-
 .welcome-image-wrapper {
-    min-width: 34%;
+  min-width: 34%;
 
-    @media only screen and (max-width: 1024px) {
-        display: none;
-    }
+  @media only screen and (max-width: 1024px) {
+    display: none;
+  }
 }
-
 .welcome-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-
-
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-
 </style>

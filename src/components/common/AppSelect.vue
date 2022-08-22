@@ -4,7 +4,7 @@ export default defineComponent({
   data() {
     return {
       optionSelected: 'All movies',
-      options: ['Predator', 'Star Wars', 'Harry Potter']
+      options: ['Predator', 'Star Wars', 'Harry Potter and the Goblet of Fire']
     }
   }
 });
@@ -19,12 +19,12 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .select {
-  padding: 1rem 2rem;
+  padding: 17px 24px;
   gap: 10px;
   background: $color-field-background;
   border-radius: 8px;
   border: none;
-  width: 100%;
+  width: fit-content;
   height: fit-content;
   font-size: 18px;
 }

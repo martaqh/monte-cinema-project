@@ -12,7 +12,7 @@
     padding: 0 24px;
 
     &.of-welcome-section {
-        padding: 0;
+      padding: 0;
     }
   }
 }

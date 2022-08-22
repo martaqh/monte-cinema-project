@@ -1,12 +1,12 @@
 <script>
 import { defineComponent } from 'vue';
-import SectionTitle from '../common/SectionTitle.vue';
-import SectionSubtitle from '../common/SectionSubtitle.vue';
-import TheContainer from '../common/TheContainer.vue';
-import AppLabel from '../common/AppLabel.vue';
-import AppButton from '../common/AppButton.vue';
-import AppSelect from '../common/AppSelect.vue';
-import DatePicker from '../features/DatePicker.vue';
+import SectionTitle from '@/components/common/SectionTitle.vue';
+import SectionSubtitle from '@/components/common/SectionSubtitle.vue';
+import TheContainer from '@/components/common/TheContainer.vue';
+import AppLabel from '@/components/common/AppLabel.vue';
+import AppButton from '@/components/common/AppButton.vue';
+import AppSelect from '@/components/common/AppSelect.vue';
+import DatePicker from '@/components/features/DatePicker.vue';
 
 export default defineComponent({
   components: { SectionTitle, SectionSubtitle, TheContainer, AppLabel, AppButton, AppSelect, DatePicker },
@@ -76,8 +76,9 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .filters__wrapper {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 34px;
 }
 .days {
   display: flex;

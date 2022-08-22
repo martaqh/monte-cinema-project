@@ -24,16 +24,16 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .section-title {
-    color: $color-text-main;
-    font-family: $font-title;
-    font-weight: 600;
-    line-height: 102%;
-    letter-spacing: -0.01em;
-    margin-top: 64px;
-    p {
-          margin: 0;
-          width: 100%;
-    }
+  color: $color-text-main;
+  font-family: $font-title;
+  font-weight: 600;
+  line-height: 102%;
+  letter-spacing: -0.01em;
+  margin-top: 64px;
+  p {
+    margin: 0;
+    width: 100%;
+  }
 }
 
 .section-title[size="large"] {

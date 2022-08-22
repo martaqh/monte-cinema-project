@@ -2,9 +2,9 @@
 import { defineComponent } from 'vue';
 import AppTag from '@/components/common/AppTag.vue';
 import SectionTitle from '@/components/common/SectionTitle.vue';
-import MovieCard from './MovieCard.vue';
+import MovieCard from '@/components/views/MovieCard.vue';
 import TheContainer from '@/components/common/TheContainer.vue';
-import NoMatch from './NoMatch.vue';
+import NoMatch from '@/components/views/NoMatch.vue';
 
 const movies = [
                   {

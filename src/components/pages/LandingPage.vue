@@ -8,6 +8,7 @@ import WelcomeSection from '@/components/views/WelcomeSection.vue';
 import MovieCard from '@/components/views/MovieCard.vue';
 import MoviesSummary from '@/components/views/MoviesSummary.vue';
 import NoMatch from '@/components/views/NoMatch.vue';
+import ScreeningsFilters from '../views/ScreeningsFilters.vue';
 export default defineComponent({
   components: {
     TheHeader,
@@ -17,8 +18,9 @@ export default defineComponent({
     WelcomeSection,
     MovieCard,
     MoviesSummary,
-    NoMatch
-  }
+    NoMatch,
+    ScreeningsFilters
+}
 });
 </script>
 
@@ -30,6 +32,7 @@ export default defineComponent({
     </TheHeader>
     <WelcomeSection />
     <MoviesSummary />
+    <ScreeningsFilters />
   </div>
 </template>
 
