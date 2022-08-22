@@ -8,14 +8,18 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "prettier": "^2.7.1",
     "sass": "^1.54.4",
     "scss": "^0.2.4",
-    "vue": "^3.2.37"
+    "vue": "^3.2.37",
+    "vue-router": "^4.1.3"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.0.1",
-    "eslint": "^8.5.0",
-    "eslint-plugin-vue": "^9.0.0",
+    "eslint": "^8.22.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-vue": "^9.3.0",
+    "prettier": "2.7.1",
     "node-sass": "^7.0.1",
     "sass-loader": "^13.0.2",
     "vite": "^3.0.1"
