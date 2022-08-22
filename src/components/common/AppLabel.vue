@@ -1,15 +1,9 @@
-<script>
-import { defineComponent } from 'vue';
-export default defineComponent({
-    });
-</script>
-
 <template>
-    <div class="label">
-        <p>
-            <slot></slot>
-        </p>
-    </div>
+  <div class="label">
+    <label >
+      <slot></slot>
+    </label>
+  </div>
 </template>
 
 <style lang="scss" scoped>
