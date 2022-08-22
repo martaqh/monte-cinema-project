@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "@vuepic/vue-datepicker": "^3.4.6",
-    "prettier": "^2.7.1",
+    "axios": "^0.27.2",
+    "docker": "^1.0.0",
     "sass": "^1.54.4",
     "scss": "^0.2.4",
     "vue": "^3.2.37",
