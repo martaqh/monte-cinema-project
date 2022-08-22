@@ -42,7 +42,7 @@ export default defineComponent({
           'external-link'
         ].includes(value);
       },
-    }
+    },
   },
   computed: {
     componentVariant() {
@@ -53,8 +53,14 @@ export default defineComponent({
       } else {
         return 'a'
       }
-    //  return (this.to || this.variant === 'link-button') ? 'router-link' : 'button'
     },
+    buttonType() {
+      if (this.variant === 'form-button') {
+        return 'submit'
+      } else {
+        return 'button'
+      }
+    }
   }
 });
 </script>
@@ -66,6 +72,7 @@ export default defineComponent({
     class="button-base"
     :size=this.size
     :colorScheme=this.colorScheme
+    :type="buttonType"
     @click="this.$emit('clicked')"
   >
     <slot></slot>
