@@ -24,6 +24,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .section-subtitle {
+  display: flex;
   color: $color-text-light;
   font-family: $font-title;
   font-weight: 600;
@@ -40,6 +41,7 @@ export default defineComponent({
 
     @media only screen and (max-width: 1024px) {
       font-size: 48px;
+      flex-direction: column;
     }
 }
 

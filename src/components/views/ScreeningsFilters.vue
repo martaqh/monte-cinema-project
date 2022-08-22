@@ -44,7 +44,9 @@ export default defineComponent({
 <template>
   <TheContainer>
     <SectionTitle>Screenings:</SectionTitle>
-    <SectionSubtitle>{{ todaysDayName, todaysDate }}</SectionSubtitle>
+    <div class="section-subtitle">
+      <SectionSubtitle>{{ todaysDayName }} {{ todaysDate }}</SectionSubtitle>
+    </div>
     <div class="filters__wrapper">
       <div class="filters-date">
         <AppLabel>Day</AppLabel>
@@ -75,10 +77,30 @@ export default defineComponent({
 </template>
 
 <style lang="scss" scoped>
+.section-subtitle {
+  display: flex;
+  justify-content: flex-start;
+
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+}
 .filters__wrapper {
   display: flex;
   justify-content: space-between;
   margin-bottom: 34px;
+
+  @media only screen and (max-width: 1024px) {
+    flex-direction: column;
+  }
+}
+.filters-movie {
+  margin-left: 40px;
+
+  @media only screen and (max-width: 1024px) {
+    margin-top: 40px;
+    margin-left: 0px;
+  }
 }
 .days {
   display: flex;
@@ -91,7 +113,7 @@ export default defineComponent({
   }
 
   &:nth-last-child(-n+3) {
-    @media only screen and (max-width: 1024px) {
+    @media only screen and (max-width: 1356px) {
       display: none;
     }
   }
@@ -105,5 +127,4 @@ export default defineComponent({
   padding: 10px;
   margin-left: 12px;
 }
-
 </style>

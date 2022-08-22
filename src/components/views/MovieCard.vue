@@ -54,14 +54,21 @@ export default defineComponent({
 }
 .card-2 {
     @media only screen and (min-width: 768px) and (max-width: 1024px) {
-        margin-right: 0;
+      margin-right: 0;
+    }
+    @media only screen and (max-width: 768px) {
+      margin: 0px;
     }
 }
 .card-3 {
     margin-right: 0;
 
     @media only screen and (min-width: 768px) and (max-width: 1024px) {
-        display: none;
+      display: none;
+    }
+
+    @media only screen and (max-width: 768px) {
+      margin: 12px 0 0 0;
     }
 }
 .movie-duration {
