@@ -38,14 +38,22 @@ export default defineComponent({
         return [
           'filter-button',
           'form-button',
-          'link-button',
+          'internal-link',
+          'external-link'
         ].includes(value);
       },
     }
   },
   computed: {
     componentVariant() {
-      return (this.to || this.variant === 'link-button') ? 'a' : 'button'
+      if (this.variant === 'filter-button' || this.variant === 'form-button') {
+        return 'button'
+      } else if (this.variant === 'internal-link') {
+        return 'router-link'
+      } else {
+        return 'a'
+      }
+    //  return (this.to || this.variant === 'link-button') ? 'router-link' : 'button'
     },
   }
 });
