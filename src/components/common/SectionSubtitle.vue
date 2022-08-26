@@ -39,7 +39,7 @@ export default defineComponent({
 .section-subtitle[size="large"] {
   font-size: 80px;
 
-    @media only screen and (max-width: 1024px) {
+    @include desktop {
       font-size: 48px;
       flex-direction: column;
     }
@@ -48,7 +48,7 @@ export default defineComponent({
 .section-subtitle[size="medium"] {
   font-size: 64px;
 
-    @media only screen and (max-width: 1024px) {
+    @include tablet {
       font-size: 48px;
     }
 }

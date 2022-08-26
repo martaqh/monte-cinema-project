@@ -78,7 +78,7 @@ export default defineComponent({
   display: flex;
   justify-content: flex-start;
 
-  @media only screen and (max-width: 768px) {
+  @include mobile {
     flex-direction: column;
   }
 }
@@ -88,7 +88,7 @@ export default defineComponent({
   align-items: center;
   margin-bottom: 34px;
 
-  @media only screen and (max-width: 1024px) {
+  @include tablet {
     flex-direction: column;
   }
 }
@@ -101,7 +101,7 @@ export default defineComponent({
   flex-direction: column;
   margin-left: 40px;
 
-  @media only screen and (max-width: 1024px) {
+  @include tablet {
     margin-top: 40px;
     margin-left: 0px;
   }
@@ -117,7 +117,7 @@ export default defineComponent({
   }
 
   &:nth-last-child(-n+3) {
-    @media only screen and (max-width: 1356px) {
+    @include tablet {
       display: none;
     }
   }

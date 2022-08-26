@@ -16,12 +16,15 @@
   justify-content: space-between;
   padding: 0 48px;
 
-  @media only screen and (max-width: 480px) {
+  @include mobile {
     padding: 0 24px;
   }
 }
 .hamburger-menu {
-  @media only screen and (min-width: 768px) {
+  @include tablet {
+    display: none;
+  }
+  @include desktop {
     display: none;
   }
 }
@@ -31,7 +34,7 @@
   align-items: baseline;
   justify-content: space-between;
 
-  @media only screen and (max-width: 768px) {
+  @include mobile {
     display: none;
   }
 }

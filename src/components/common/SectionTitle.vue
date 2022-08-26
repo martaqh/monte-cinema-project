@@ -39,7 +39,7 @@ export default defineComponent({
 .section-title[size="large"] {
   font-size: 80px;
 
-    @media only screen and (max-width: 1024px) {
+    @include tablet {
       font-size: 48px;
     }
 }
@@ -47,7 +47,7 @@ export default defineComponent({
 .section-title[size="medium"] {
   font-size: 64px;
 
-    @media only screen and (max-width: 1024px) {
+    @include tablet {
       font-size: 48px;
     }
 }

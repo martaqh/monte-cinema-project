@@ -35,7 +35,7 @@ export default defineComponent({
   display: flex;
   background-color: $color-tag-background;
 
-  @media only screen and (max-width: 540px) {
+  @include mobile {
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -60,7 +60,7 @@ export default defineComponent({
 .welcome-image-wrapper {
   min-width: 34%;
 
-  @media only screen and (max-width: 1024px) {
+  @include tablet {
     display: none;
   }
 }

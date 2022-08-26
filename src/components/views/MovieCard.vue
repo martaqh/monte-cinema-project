@@ -47,27 +47,27 @@ export default defineComponent({
     border-radius: $radius-card;
     margin-right: 40px;
 
-    @media only screen and (max-width: 768px) {
+    @include mobile {
         margin: 12px;
         width: 250px;
     }
 }
 .card-2 {
-    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    @include tablet {
       margin-right: 0;
     }
-    @media only screen and (max-width: 768px) {
+    @include mobile {
       margin: 0px;
     }
 }
 .card-3 {
     margin-right: 0;
 
-    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    @include tablet {
       display: none;
     }
 
-    @media only screen and (max-width: 768px) {
+    @include mobile {
       margin: 12px 0 0 0;
     }
 }
