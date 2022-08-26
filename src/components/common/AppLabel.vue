@@ -1,9 +1,7 @@
 <template>
-  <div class="label">
-    <label >
-      <slot></slot>
-    </label>
-  </div>
+  <label class="label">
+    <slot></slot>
+  </label>
 </template>
 
 <style lang="scss" scoped>
