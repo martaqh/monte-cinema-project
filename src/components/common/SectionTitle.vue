@@ -38,8 +38,10 @@ export default defineComponent({
 
 .section-title[size="large"] {
   font-size: 80px;
-
     @include tablet {
+      font-size: 48px;
+    }
+    @include mobile {
       font-size: 48px;
     }
 }
@@ -48,6 +50,9 @@ export default defineComponent({
   font-size: 64px;
 
     @include tablet {
+      font-size: 48px;
+    }
+    @include mobile {
       font-size: 48px;
     }
 }

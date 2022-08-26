@@ -91,6 +91,9 @@ export default defineComponent({
   @include tablet {
     flex-direction: column;
   }
+  @include mobile {
+    flex-direction: column;
+  }
 }
 .filters-date {
   width: 100%;
@@ -102,6 +105,10 @@ export default defineComponent({
   margin-left: 40px;
 
   @include tablet {
+    margin-top: 40px;
+    margin-left: 0px;
+  }
+  @include mobile {
     margin-top: 40px;
     margin-left: 0px;
   }
@@ -117,8 +124,10 @@ export default defineComponent({
   }
 
   &:nth-last-child(-n+3) {
-    @include tablet {
-      display: none;
+    display: none;
+
+    @include desktop-large {
+      display:block;
     }
   }
 }

@@ -9,6 +9,11 @@
 }
 
 @mixin desktop {
-  @media only screen and (min-width: 1024px)
+  @media only screen and (min-width: 1024px) and (max-width: 1439px)
+    { @content; }
+}
+
+@mixin desktop-large {
+  @media only screen and (min-width: 1440px)
     { @content; }
 }

@@ -66,6 +66,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .movies-summary-header {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: baseline;

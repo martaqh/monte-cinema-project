@@ -43,16 +43,18 @@ export default defineComponent({
     flex-direction: column;
     box-shadow: $shadow-card;
     padding: 40px;
-    width: 421px;
     border-radius: $radius-card;
     margin-right: 40px;
 
     @include mobile {
-        margin: 12px;
-        width: 250px;
+      width: 80%;
+      margin: 12px;
     }
 }
 .card-2 {
+    @include desktop {
+      margin-right: 0;
+    }
     @include tablet {
       margin-right: 0;
     }
@@ -62,6 +64,10 @@ export default defineComponent({
 }
 .card-3 {
     margin-right: 0;
+
+    @include desktop {
+      display: none;
+    }
 
     @include tablet {
       display: none;
@@ -85,7 +91,6 @@ export default defineComponent({
         object-fit: cover;
     }
 }
-
 .movie-title {
   font-weight: 700;
   font-size: 36px;

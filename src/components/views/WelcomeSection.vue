@@ -37,7 +37,6 @@ export default defineComponent({
 
   @include mobile {
     text-align: center;
-    justify-content: center;
     align-items: center;
   }
 }
@@ -59,9 +58,10 @@ export default defineComponent({
 }
 .welcome-image-wrapper {
   min-width: 34%;
+  visibility: hidden;
 
-  @include tablet {
-    display: none;
+  @include desktop-large {
+    visibility: visible;
   }
 }
 .welcome-image {
