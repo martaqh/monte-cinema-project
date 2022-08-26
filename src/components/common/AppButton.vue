@@ -28,7 +28,7 @@ export default defineComponent({
       },
     },
     to: {
-      type: String,
+      type: String, Object,
       required: false,
     },
     variant: {
@@ -68,10 +68,10 @@ export default defineComponent({
 <template>
   <component
     :is="componentVariant"
-    :to="this.to"
+    :to="to"
     class="button-base"
-    :size=this.size
-    :colorScheme=this.colorScheme
+    :size="size"
+    :colorScheme="colorScheme"
     :type="buttonType"
     @click="this.$emit('clicked')"
   >
