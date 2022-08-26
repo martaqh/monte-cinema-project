@@ -37,7 +37,6 @@ export default defineComponent({
 
   @include mobile {
     text-align: center;
-    align-items: center;
   }
 }
 .welcome-message {
@@ -55,13 +54,17 @@ export default defineComponent({
     letter-spacing: 0.015em;
     margin: 40px 0;
   }
+
+  @include mobile {
+    align-items: center;
+  }
 }
 .welcome-image-wrapper {
   min-width: 34%;
-  visibility: hidden;
+  display: none;
 
   @include desktop-large {
-    visibility: visible;
+    display: block;
   }
 }
 .welcome-image {

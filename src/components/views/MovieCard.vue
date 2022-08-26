@@ -47,8 +47,7 @@ export default defineComponent({
     margin-right: 40px;
 
     @include mobile {
-      width: 80%;
-      margin: 12px;
+      margin: 12px 0;
     }
 }
 .card-2 {
