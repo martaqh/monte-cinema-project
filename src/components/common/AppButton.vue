@@ -28,7 +28,7 @@ export default defineComponent({
       },
     },
     to: {
-      type: Object || String,
+      type: [Object, String],
       required: false,
     },
     href: {
