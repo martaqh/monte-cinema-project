@@ -1,10 +1,7 @@
 <script>
 import { defineComponent } from 'vue';
-import AppTag from '@/components/common/AppTag.vue';
-import SectionTitle from '@/components/common/SectionTitle.vue';
 import MovieCard from '@/components/views/MovieCard.vue';
 import TheContainer from '@/components/common/TheContainer.vue';
-import NoMatch from '@/components/views/NoMatch.vue';
 
 const movies = [
                   {
@@ -46,7 +43,7 @@ const movies = [
             ]
 
 export default defineComponent({
-  components: { MovieCard, TheContainer, NoMatch },
+  components: { MovieCard, TheContainer },
   data() {
     return {
         movies: movies,

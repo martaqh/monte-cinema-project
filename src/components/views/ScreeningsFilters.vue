@@ -6,10 +6,9 @@ import TheContainer from '@/components/common/TheContainer.vue';
 import AppLabel from '@/components/common/AppLabel.vue';
 import AppButton from '@/components/common/AppButton.vue';
 import AppSelect from '@/components/common/AppSelect.vue';
-import DatePicker from '@/components/features/DatePicker.vue';
 
 export default defineComponent({
-  components: { SectionTitle, SectionSubtitle, TheContainer, AppLabel, AppButton, AppSelect, DatePicker },
+  components: { SectionTitle, SectionSubtitle, TheContainer, AppLabel, AppButton, AppSelect },
   data() {
     return {
       isActive: false,
@@ -29,7 +28,6 @@ export default defineComponent({
       let nextDays = ['Today'];
       for (let i=0; i<5; i++) {
         let day = dayDigit + i;
-        console.log(day)
         if (day > 6) {
           day = day-7;
         }

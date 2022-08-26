@@ -7,8 +7,7 @@ import TheContainer from '@/components/common/TheContainer.vue';
 import WelcomeSection from '@/components/views/WelcomeSection.vue';
 import MovieCard from '@/components/views/MovieCard.vue';
 import MoviesSummary from '@/components/views/MoviesSummary.vue';
-import NoMatch from '@/components/views/NoMatch.vue';
-import ScreeningsFilters from '../views/ScreeningsFilters.vue';
+import ScreeningsFilters from '@/components/views/ScreeningsFilters.vue';
 export default defineComponent({
   components: {
     TheHeader,
@@ -18,7 +17,6 @@ export default defineComponent({
     WelcomeSection,
     MovieCard,
     MoviesSummary,
-    NoMatch,
     ScreeningsFilters
 }
 });

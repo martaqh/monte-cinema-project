@@ -1,6 +1,5 @@
 <script>
 import { defineComponent } from 'vue';
-import SectionTitle from '../common/SectionTitle.vue';
 import AppButton from '../common/AppButton.vue';
 export default defineComponent({
   components: { AppButton }
