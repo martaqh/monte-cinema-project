@@ -12,7 +12,7 @@ export default defineComponent({
 
 <template>
   <select class="select">
-    <option selected>{{this.optionSelected}}</option>
+    <option selected>{{optionSelected}}</option>
     <option v-for="option of options">{{ option }}</option>
   </select>
 </template>
