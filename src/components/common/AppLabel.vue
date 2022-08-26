@@ -13,5 +13,6 @@
     text-transform: uppercase;
     color: $color-text-label;
     margin-bottom: 12px;
+    width: fit-content;
 }
 </style>

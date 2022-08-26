@@ -85,13 +85,20 @@ export default defineComponent({
 .filters__wrapper {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 34px;
 
   @media only screen and (max-width: 1024px) {
     flex-direction: column;
   }
 }
+.filters-date {
+  width: 100%;
+}
 .filters-movie {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   margin-left: 40px;
 
   @media only screen and (max-width: 1024px) {
@@ -103,7 +110,7 @@ export default defineComponent({
   display: flex;
 }
 .day-button {
-  margin-left: 8px;
+  margin-right: 8px;
 
   &:hover {
     cursor: pointer;

@@ -24,8 +24,8 @@ export default defineComponent({
   background: $color-field-background;
   border-radius: 8px;
   border: none;
-  width: fit-content;
   height: fit-content;
   font-size: 18px;
+  width: 100%;
 }
 </style>
