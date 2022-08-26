@@ -25,14 +25,14 @@ const routes = [
     component: () => import ('@/components/views/MovieCard.vue'),
   }, */
   {
-    path: '/:path*',
-    redirect: '/no-match'
-  },
-  {
     path: '/no-match',
     name: 'NoMatch',
     component: () => import ('@/components/views/NoMatch.vue'),
-  }
+  },
+  {
+    path: '/:path*',
+    redirect: '/no-match'
+  },
 ];
 
 const router = createRouter({
