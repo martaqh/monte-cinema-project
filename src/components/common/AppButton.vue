@@ -28,39 +28,34 @@ export default defineComponent({
       },
     },
     to: {
-      type: String, Object,
+      type: Object || String,
       required: false,
     },
-    variant: {
+    href: {
       type: String,
-      default: 'link-button',
+      required: false
+    },
+    buttonType: {
+      type: String,
+      default: 'button',
       validator(value) {
         return [
-          'filter-button',
-          'form-button',
-          'internal-link',
-          'external-link'
+          'button',
+          'submit'
         ].includes(value);
       },
-    },
+    }
   },
   computed: {
     componentVariant() {
-      if (this.variant === 'filter-button' || this.variant === 'form-button') {
-        return 'button'
-      } else if (this.variant === 'internal-link') {
+      if (this.to) {
         return 'router-link'
-      } else {
+      } else if (this.href) {
         return 'a'
+      } else {
+        return 'button'
       }
     },
-    buttonType() {
-      if (this.variant === 'form-button') {
-        return 'submit'
-      } else {
-        return 'button'
-      }
-    }
   }
 });
 </script>
@@ -69,6 +64,7 @@ export default defineComponent({
   <component
     :is="componentVariant"
     :to="to"
+    :href="href"
     class="button-base"
     :size="size"
     :colorScheme="colorScheme"
@@ -88,7 +84,7 @@ export default defineComponent({
   border-radius: $radius-button;
   font-family: $font-mono;
   padding: 0 40px;
-
+  cursor: pointer;
 }
 .button-base[colorScheme="main"] {
   border: 2px solid $color-brand;

@@ -53,7 +53,6 @@ export default defineComponent({
             :isActive="activeDay === nextDay"
             size="large"
             :colorScheme="activeDay === nextDay ? 'dark' : 'dark-reverse'"
-            variant="filter-button"
             v-for="nextDay in nextDayNames"
             class="day-button"
             :key="nextDay"
