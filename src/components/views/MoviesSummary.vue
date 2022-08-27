@@ -2,7 +2,7 @@
 import { defineComponent } from 'vue';
 import MovieCard from './MovieCard.vue';
 import TheContainer from '@/components/common/TheContainer.vue';
-import { getAllMovies } from '../../api/service/movies';
+import { getAllMovies } from '@/api/service/movies';
 
 export default defineComponent({
   components: { MovieCard, TheContainer },

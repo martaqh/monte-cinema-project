@@ -1,9 +1,9 @@
 <script>
 import { defineComponent } from 'vue';
-import AppTag from '@/components/common/AppTag.vue';
-import MovieLength from '../common/MovieLength.vue';
-import MovieTitle from '../common/MovieTitle.vue';
-import MoviePoster from '../common/MoviePoster.vue';
+import AppTag from '@/components/common/App/AppTag.vue';
+import MovieLength from '@/components/common/Movie/MovieLength.vue';
+import MovieTitle from '@/components/common/Movie/MovieTitle.vue';
+import MoviePoster from '@/components/common/Movie/MoviePoster.vue';
 
 export default defineComponent({
   components: { AppTag, MovieLength, MovieTitle, MoviePoster },

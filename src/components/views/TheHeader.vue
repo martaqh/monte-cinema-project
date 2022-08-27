@@ -1,7 +1,7 @@
 <script>
 import { defineComponent } from 'vue';
-import TopNavbar from '@/components/features/TopNavbar.vue';
-import SignSection from '@/components/features/SignSection.vue';
+import TopNavbar from '@/components/features/Header/TopNavbar.vue';
+import SignSection from '@/components/features/Header/SignSection.vue';
 export default defineComponent({
   components: { TopNavbar, SignSection }
 });

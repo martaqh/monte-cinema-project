@@ -1,12 +1,12 @@
 <script>
 import { defineComponent } from 'vue';
-import SectionTitle from '../common/SectionTitle.vue';
-import SectionSubtitle from '../common/SectionSubtitle.vue';
-import TheContainer from '../common/TheContainer.vue';
-import AppLabel from '../common/AppLabel.vue';
-import AppButton from '../common/AppButton.vue';
-import AppSelect from '../common/AppSelect.vue';
-import DatePicker from '../features/DatePicker.vue';
+import SectionTitle from '@/components/common/Section/SectionTitle.vue';
+import SectionSubtitle from '@/components/common/Section/SectionSubtitle.vue';
+import TheContainer from '@/components/common/TheContainer.vue';
+import AppLabel from '@/components/common/App/AppLabel.vue';
+import AppButton from '@/components/common/App/AppButton.vue';
+import AppSelect from '@/components/common/App/AppSelect.vue';
+import DatePicker from '@/components/features/DatePicker.vue';
 
 export default defineComponent({
   components: { SectionTitle, SectionSubtitle, TheContainer, AppLabel, AppButton, AppSelect, DatePicker },

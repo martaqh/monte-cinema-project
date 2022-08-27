@@ -1,12 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-
 const routes = [
     {
         path: '/',
         name: 'Home',
         component: () => import('@/components/pages/LandingPage.vue'),
-
     },
     {
         path: '/screenings',
@@ -18,7 +16,6 @@ const routes = [
         path: '/movies',
         name: 'Movies',
         component: () => import ('@/components/views/MoviesSummary.vue'),
-
     },
   /*  {
         path: '/movies/:movieId',
@@ -34,10 +31,8 @@ const routes = [
     {
         path: '/no-match',
         name: 'NoMatch',
-        component: () => import ('@/components/views/NoMatch.vue'),
+        component: () => import ('@/components/pages/NoMatch.vue'),
     }
-
-
 ];
 
 const router = createRouter({

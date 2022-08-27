@@ -1,7 +1,7 @@
 <script>
 import { defineComponent } from 'vue';
-import SectionTitle from '@/components/common/SectionTitle.vue';
-import AppButton from '@/components/common/AppButton.vue';
+import SectionTitle from '@/components/common/Section/SectionTitle.vue';
+import AppButton from '@/components/common/App/AppButton.vue';
 import TheContainer from '@/components/common/TheContainer.vue';
 export default defineComponent({
   components: { SectionTitle, TheContainer, AppButton }
@@ -56,10 +56,7 @@ export default defineComponent({
         letter-spacing: 0.015em;
         margin: 40px 0;
     }
-
-
 }
-
 .welcome-image-wrapper {
     min-width: 34%;
 
@@ -67,7 +64,6 @@ export default defineComponent({
         display: none;
     }
 }
-
 .welcome-image {
     width: 100%;
     height: 100%;
