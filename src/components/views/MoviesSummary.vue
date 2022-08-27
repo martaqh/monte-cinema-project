@@ -1,37 +1,26 @@
 <script>
 import { defineComponent } from 'vue';
 import MovieCard from './MovieCard.vue';
-import TheContainer from '@/components/common/TheContainer.vue';
-import { getAllMovies } from '@/api/service/movies';
 
 export default defineComponent({
-  components: { MovieCard, TheContainer },
-  data() {
-    return {
-        movies: null,
-        filteredMovies: [],
-    };
-  },
-  async mounted() {
-    const response = await getAllMovies();
-    this.movies = response.data;
-    for (let i=0; i<3; i++) {
-       this.filteredMovies.push(this.movies[i])
+  components: { MovieCard },
+  props: {
+    movies: {
+      type: Array,
+      required: true,
     }
   }
 });
 </script>
 
 <template>
-  <TheContainer>
     <div class="movies-summary-header">
       <p>soon <span>in the cinema</span></p>
       <a>see all</a>
     </div>
     <div class="movie-cards-wrapper">
-      <MovieCard v-for="movie of filteredMovies" :key="movie.id" :movie="movie" />
+      <MovieCard v-for="movie of movies" :key="movie.id" :movie="movie" />
     </div>
-  </TheContainer>
 </template>
 
 <style lang="scss" scoped>
