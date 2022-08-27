@@ -71,7 +71,7 @@ export default defineComponent({
   margin: 64px 0;
 
   :nth-child(2) {
-    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    @include tablet {
         margin-right: 0;
     }
   }
@@ -79,12 +79,12 @@ export default defineComponent({
   :nth-child(3) {
     margin-right: 0;
 
-    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    @include tablet {
         display: none;
     }
   }
 
-  @media only screen and (max-width: 768px) {
+  @include mobile {
     flex-direction: column;
     align-items: center;
   }

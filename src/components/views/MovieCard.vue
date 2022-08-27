@@ -38,9 +38,9 @@ export default defineComponent({
   border-radius: $radius-card;
   margin-right: 40px;
 
-  @media only screen and (max-width: 768px) {
+  @include mobile {
       margin: 12px;
-      width: 250px;
+      width: 80%;
   }
 }
 </style>
