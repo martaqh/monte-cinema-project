@@ -30,5 +30,6 @@ export default defineComponent({
     font-size: 14px;
     line-height: 16px;
     color: $color-text-light;
+    margin: 20px 0;
 }
 </style>
