@@ -1,6 +1,6 @@
 <script>
 import { defineComponent } from 'vue';
-import TopNavbarTab from '@/components/features/TopNavbarTab.vue';
+import TopNavbarTab from '@/components/features/Header/TopNavbarTab.vue';
 export default defineComponent({
   components: { TopNavbarTab }
 });
