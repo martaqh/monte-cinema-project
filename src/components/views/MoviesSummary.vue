@@ -1,57 +1,24 @@
 <script>
 import { defineComponent } from 'vue';
-import AppTag from '@/components/common/AppTag.vue';
-import SectionTitle from '@/components/common/SectionTitle.vue';
 import MovieCard from './MovieCard.vue';
 import TheContainer from '@/components/common/TheContainer.vue';
-import NoMatch from './NoMatch.vue';
-
-const movies = [
-                  {
-                      id: 1,
-                      title: "Harry Potter and the Philosopher's Stone",
-                      genre: {
-                          id: 3,
-                          name: "Action"
-                      },
-                      poster_url: "https://images-na.ssl-images-amazon.com/images/I/713KEd-8jyL._AC_SL1500_.jpg",
-                      length: 159,
-                      release_date: "2001-11-16",
-                      description: "An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world."
-                  },
-                  {
-                      id: 2,
-                      title: "Harry Potter and the Order of Phoenix",
-                      genre: {
-                          id: 3,
-                          name: "Fantasy"
-                      },
-                      poster_url: "https://images-na.ssl-images-amazon.com/images/I/713KEd-8jyL._AC_SL1500_.jpg",
-                      length: 210,
-                      release_date: "2001-11-16",
-                      description: "An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world."
-                  },
-                      {
-                      id: 3,
-                      title: "Harry Potter and the Goblet of Fire",
-                      genre: {
-                          id: 3,
-                          name: "Fantasy"
-                      },
-                      poster_url: "https://images-na.ssl-images-amazon.com/images/I/713KEd-8jyL._AC_SL1500_.jpg",
-                      length: 145,
-                      release_date: "2001-11-16",
-                      description: "An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world."
-                  },
-            ]
+import { getAllMovies } from '../../api/service/movies';
 
 export default defineComponent({
-  components: { MovieCard, TheContainer, NoMatch },
+  components: { MovieCard, TheContainer },
   data() {
     return {
-        movies: movies,
+        movies: null,
+        filteredMovies: [],
     };
   },
+  async mounted() {
+    const response = await getAllMovies();
+    this.movies = response.data;
+    for (let i=0; i<3; i++) {
+       this.filteredMovies.push(this.movies[i])
+    }
+  }
 });
 </script>
 
@@ -62,7 +29,7 @@ export default defineComponent({
       <a>see all</a>
     </div>
     <div class="movie-cards-wrapper">
-      <MovieCard v-for="movie of movies" :key="movie.id" :movie="movie" />
+      <MovieCard v-for="movie of filteredMovies" :key="movie.id" :movie="movie" />
     </div>
   </TheContainer>
 </template>
@@ -101,6 +68,20 @@ export default defineComponent({
   flex: 1;
   justify-content: space-between;
   margin: 64px 0;
+
+  :nth-child(2) {
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        margin-right: 0;
+    }
+  }
+
+  :nth-child(3) {
+    margin-right: 0;
+
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        display: none;
+    }
+  }
 
   @media only screen and (max-width: 768px) {
     flex-direction: column;
