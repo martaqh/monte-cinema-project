@@ -2,14 +2,13 @@
 import { defineComponent } from 'vue';
 import SectionTitle from '@/components/common/Section/SectionTitle.vue';
 import SectionSubtitle from '@/components/common/Section/SectionSubtitle.vue';
-import TheContainer from '@/components/common/TheContainer.vue';
 import AppLabel from '@/components/common/App/AppLabel.vue';
 import AppButton from '@/components/common/App/AppButton.vue';
 import AppSelect from '@/components/common/App/AppSelect.vue';
 import DatePicker from '@/components/features/DatePicker.vue';
 
 export default defineComponent({
-  components: { SectionTitle, SectionSubtitle, TheContainer, AppLabel, AppButton, AppSelect },
+  components: { SectionTitle, SectionSubtitle, AppLabel, AppButton, AppSelect },
   data() {
     return {
       isActive: false,
@@ -41,7 +40,6 @@ export default defineComponent({
 </script>
 
 <template>
-  <TheContainer>
     <SectionTitle>Screenings:</SectionTitle>
     <div class="section-subtitle">
       <SectionSubtitle>{{ todaysDayName }} {{ todaysDate }}</SectionSubtitle>
@@ -71,7 +69,6 @@ export default defineComponent({
         <AppSelect />
       </div>
     </div>
-  </TheContainer>
 </template>
 
 <style lang="scss" scoped>

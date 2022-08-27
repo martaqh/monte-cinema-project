@@ -19,6 +19,7 @@
   font-size: 14px;
   line-height: 16px;
   margin-top: 20px;
+  margin-right: 20px;
   padding: 8px 16px;
 }
 </style>
