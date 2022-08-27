@@ -9,7 +9,7 @@ import AppSelect from '@/components/common/App/AppSelect.vue';
 import DatePicker from '@/components/features/DatePicker.vue';
 
 export default defineComponent({
-  components: { SectionTitle, SectionSubtitle, TheContainer, AppLabel, AppButton, AppSelect, DatePicker },
+  components: { SectionTitle, SectionSubtitle, TheContainer, AppLabel, AppButton, AppSelect },
   data() {
     return {
       isActive: false,
@@ -29,7 +29,6 @@ export default defineComponent({
       let nextDays = ['Today'];
       for (let i=0; i<5; i++) {
         let day = dayDigit + i;
-        console.log(day)
         if (day > 6) {
           day = day-7;
         }
@@ -44,20 +43,21 @@ export default defineComponent({
 <template>
   <TheContainer>
     <SectionTitle>Screenings:</SectionTitle>
-    <SectionSubtitle>{{ todaysDayName, todaysDate }}</SectionSubtitle>
+    <div class="section-subtitle">
+      <SectionSubtitle>{{ todaysDayName }} {{ todaysDate }}</SectionSubtitle>
+    </div>
     <div class="filters__wrapper">
       <div class="filters-date">
         <AppLabel>Day</AppLabel>
         <div class="days">
           <AppButton
-            :isActive="this.activeDay === nextDay ? true : false"
+            :isActive="activeDay === nextDay"
             size="large"
-            :colorScheme="this.activeDay === nextDay ? 'dark' : 'dark-reverse'"
-            variant="filter-button"
+            :colorScheme="activeDay === nextDay ? 'dark' : 'dark-reverse'"
             v-for="nextDay in nextDayNames"
             class="day-button"
             :key="nextDay"
-            @clicked="this.activeDay=nextDay"
+            @clicked="activeDay = nextDay"
           >
           {{ nextDay }}
           </AppButton>
@@ -75,23 +75,60 @@ export default defineComponent({
 </template>
 
 <style lang="scss" scoped>
+.section-subtitle {
+  display: flex;
+  justify-content: flex-start;
+
+  @include mobile {
+    flex-direction: column;
+  }
+}
 .filters__wrapper {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 34px;
+
+  @include tablet {
+    flex-direction: column;
+  }
+  @include mobile {
+    flex-direction: column;
+  }
+}
+.filters-date {
+  width: 100%;
+}
+.filters-movie {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 40px;
+
+  @include tablet {
+    margin-top: 40px;
+    margin-left: 0px;
+  }
+  @include mobile {
+    margin-top: 40px;
+    margin-left: 0px;
+  }
 }
 .days {
   display: flex;
 }
 .day-button {
-  margin-left: 8px;
+  margin-right: 8px;
 
   &:hover {
     cursor: pointer;
   }
 
   &:nth-last-child(-n+3) {
-    @media only screen and (max-width: 1024px) {
-      display: none;
+    display: none;
+
+    @include desktop-large {
+      display:block;
     }
   }
 }
@@ -104,5 +141,4 @@ export default defineComponent({
   padding: 10px;
   margin-left: 12px;
 }
-
 </style>

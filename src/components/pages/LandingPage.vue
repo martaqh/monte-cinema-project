@@ -17,8 +17,8 @@ export default defineComponent({
     WelcomeSection,
     MovieCard,
     MoviesSummary,
-    NoMatch
-  }
+    ScreeningsFilters
+}
 });
 </script>
 
@@ -30,6 +30,7 @@ export default defineComponent({
     </TheHeader>
     <WelcomeSection />
     <MoviesSummary />
+    <ScreeningsFilters />
   </div>
 </template>
 

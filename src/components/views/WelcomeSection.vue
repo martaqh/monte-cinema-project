@@ -19,7 +19,7 @@ export default defineComponent({
             Best movies, best experiences, best people.
             And all that doesn’t exist. Yikes.
         </p>
-        <AppButton size="large" colorScheme="main">Book a ticket</AppButton>
+        <AppButton href="http://monterail.com" size="large" colorScheme="main">Book a ticket</AppButton>
       </div>
       <div class="welcome-image-wrapper">
         <img src="@/assets/PeopleInCinema.png" class="welcome-image" alt="People in cinema" />
@@ -30,46 +30,46 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .welcome-section {
-    width: 100%;
-    height: fit-content;
-    display: flex;
-    background-color: $color-tag-background;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  background-color: $color-tag-background;
 
-    @media only screen and (max-width: 540px) {
-        text-align: center;
-        justify-content: center;
-        align-items: center;
-    }
+  @include mobile {
+    text-align: center;
+  }
 }
 .welcome-message {
-    display: flex;
-    flex-direction: column;
-    width: 66%;
-    padding: 80px;
+  display: flex;
+  flex-direction: column;
+  width: 66%;
+  padding: 80px;
 
-    .welcome-text {
-        font-family: 'Roboto Mono';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 22px;
-        line-height: 170%;
-        letter-spacing: 0.015em;
-        margin: 40px 0;
-    }
+  .welcome-text {
+    font-family: 'Roboto Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 170%;
+    letter-spacing: 0.015em;
+    margin: 40px 0;
+  }
+
+  @include mobile {
+    align-items: center;
+  }
 }
 .welcome-image-wrapper {
-    min-width: 34%;
+  min-width: 34%;
+  display: none;
 
-    @media only screen and (max-width: 1024px) {
-        display: none;
-    }
+  @include desktop-large {
+    display: block;
+  }
 }
 .welcome-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-
-
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-
 </style>

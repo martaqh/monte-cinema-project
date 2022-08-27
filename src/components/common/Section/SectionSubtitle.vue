@@ -17,38 +17,48 @@ export default defineComponent({
 </script>
 
 <template>
-  <p class="section-subtitle" :size=this.size>
+  <p class="section-subtitle" :size="size">
     <slot></slot>
   </p>
 </template>
 
 <style lang="scss" scoped>
 .section-subtitle {
-    color: $color-text-light;
-    font-family: $font-title;
-    font-weight: 600;
-    line-height: 102%;
-    letter-spacing: -0.01em;
-    margin-bottom: 32px;
-    p {
-          margin: 0;
-          width: 100%;
-    }
+  display: flex;
+  color: $color-text-light;
+  font-family: $font-title;
+  font-weight: 600;
+  line-height: 102%;
+  letter-spacing: -0.01em;
+  margin-bottom: 32px;
+  p {
+    width: 100%;
+  }
 }
 
 .section-subtitle[size="large"] {
   font-size: 80px;
 
-    @media only screen and (max-width: 1024px) {
+    @include tablet {
       font-size: 48px;
+      flex-direction: column;
+    }
+    @include mobile {
+      font-size: 48px;
+      flex-direction: column;
     }
 }
 
 .section-subtitle[size="medium"] {
   font-size: 64px;
 
-    @media only screen and (max-width: 1024px) {
+    @include tablet {
       font-size: 48px;
     }
+
+     @include mobile {
+      font-size: 48px;
+    }
+
 }
 </style>

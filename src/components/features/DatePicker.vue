@@ -2,20 +2,18 @@
 import { defineComponent } from 'vue';
 import Datepicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
-
-
 export default defineComponent({
   components: { Datepicker },
   data() {
-      return {
-          date: null,
-      };
+    return {
+      date: null,
+    };
   }
 })
 </script>
 
 <template>
-    <Datepicker v-model="date" class="date-picker"></Datepicker>
+  <Datepicker v-model="date" class="date-picker"></Datepicker>
 </template>
 
 <style lang="scss" scoped>

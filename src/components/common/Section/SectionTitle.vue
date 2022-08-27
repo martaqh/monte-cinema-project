@@ -17,29 +17,31 @@ export default defineComponent({
 </script>
 
 <template>
-  <p class="section-title" :size=this.size>
+  <p class="section-title" :size="size">
     <slot></slot>
   </p>
 </template>
 
 <style lang="scss" scoped>
 .section-title {
-    color: $color-text-main;
-    font-family: $font-title;
-    font-weight: 600;
-    line-height: 102%;
-    letter-spacing: -0.01em;
-    margin-top: 64px;
-    p {
-          margin: 0;
-          width: 100%;
-    }
+  color: $color-text-main;
+  font-family: $font-title;
+  font-weight: 600;
+  line-height: 102%;
+  letter-spacing: -0.01em;
+  margin-top: 64px;
+  p {
+    margin: 0;
+    width: 100%;
+  }
 }
 
 .section-title[size="large"] {
   font-size: 80px;
-
-    @media only screen and (max-width: 1024px) {
+    @include tablet {
+      font-size: 48px;
+    }
+    @include mobile {
       font-size: 48px;
     }
 }
@@ -47,7 +49,10 @@ export default defineComponent({
 .section-title[size="medium"] {
   font-size: 64px;
 
-    @media only screen and (max-width: 1024px) {
+    @include tablet {
+      font-size: 48px;
+    }
+    @include mobile {
       font-size: 48px;
     }
 }
