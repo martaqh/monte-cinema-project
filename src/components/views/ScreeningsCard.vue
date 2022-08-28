@@ -6,34 +6,43 @@ import AppButton from '../common/App/AppButton.vue';
 import MovieTitle from '../common/Movie/MovieTitle.vue';
 import AppTag from '../common/App/AppTag.vue';
 import { getScreeningsByMovieAndDate } from '../../api/service/Screenings';
-export default defineComponent({
-    components: { MoviePoster, MovieLength, AppButton, MovieTitle, AppTag },
-    props : {
-      movieData: {
-        type: Object,
-        required: true,
-      },
-    },
-    data() {
-      return {
-        screenings: [],
-        hasScreenings: true,
-      }
-    },
-    computed: {
 
+export default defineComponent({
+  components: { MoviePoster, MovieLength, AppButton, MovieTitle, AppTag },
+  props : {
+    movieData: {
+      type: Object,
+      required: true,
     },
-    methods: {
-      getScreeningTime(screening) {
-        return screening.datetime.substring(11, 16)
-      }
-    },
-    async mounted() {
-      const response = await getScreeningsByMovieAndDate(this.movieData.id, '2022-08-29');
-      this.screenings = response.data;
-      console.log(this.screenings)
-      console.log(this.movieData)
+    daySelected: {
+      type: Date,
+      default: new Date().toISOString().slice(0, 10)
     }
+  },
+  data() {
+    return {
+      screenings: [],
+    }
+  },
+  watch: {
+    daySelected(newDay, previousDay) {
+      if (newDay !== previousDay) {
+        this.getScreenings()
+      }
+    }
+  },
+  methods: {
+    getScreeningTime(screening) {
+      return screening.datetime.substring(11, 16)
+    },
+    async getScreenings() {
+      const response = await getScreeningsByMovieAndDate(this.movieData.id, this.daySelected);
+      this.screenings = response.data;
+    }
+  },
+  mounted() {
+    this.getScreenings()
+  }
 })
 </script>
 <template>
@@ -68,18 +77,20 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   padding-left: 40px;
+  width: 100%;
 }
 .movie-category-and-length {
   display: flex;
   margin-bottom: 32px;
   align-items: baseline;
 }
-
 .screening-times {
   display: flex;
+  flex-wrap: wrap;
 
   button {
     margin-right: 10px;
+    margin-top: 10px;
   }
 }
 </style>

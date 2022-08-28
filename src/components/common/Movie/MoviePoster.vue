@@ -21,7 +21,12 @@ export default defineComponent({
   img {
     height: 190px;
     width: 100%;
+    min-width: 98px;
     object-fit: cover;
+
+    @include mobile {
+      min-width: 68px;
+    }
   }
 }
 </style>

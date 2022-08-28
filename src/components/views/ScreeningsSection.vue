@@ -5,10 +5,16 @@ import SectionSubtitle from '@/components/common/Section/SectionSubtitle.vue';
 import AppLabel from '@/components/common/App/AppLabel.vue';
 import AppButton from '@/components/common/App/AppButton.vue';
 import AppSelect from '@/components/common/App/AppSelect.vue';
-import DatePicker from '@/components/features/DatePicker.vue';
+import ScreeningsList from './ScreeningsList.vue';
 
 export default defineComponent({
-  components: { SectionTitle, SectionSubtitle, AppLabel, AppButton, AppSelect },
+  components: { SectionTitle, SectionSubtitle, AppLabel, AppButton, AppSelect, ScreeningsList },
+  props: {
+    movies: {
+      type: Array,
+      required: true,
+    }
+  },
   data() {
     return {
       isActive: false,
@@ -20,7 +26,7 @@ export default defineComponent({
       return new Date().toLocaleDateString('en-GB');
     },
     todaysDayName() {
-      return new Date().toLocaleString('en-US', {weekday: 'long'});
+      return new Date().toLocaleString('en-GB', {weekday: 'long'});
     },
     nextDayNames() {
       const dayDigit = new Date().getDay() + 1;
@@ -35,6 +41,13 @@ export default defineComponent({
       }
       return nextDays
     },
+    activeDayDate() {
+      const activeDayIndex = this.nextDayNames.indexOf(this.activeDay)
+      const today = new Date()
+      let activeDay = new Date()
+      activeDay.setDate(today.getDate() + activeDayIndex)
+      return activeDay.toISOString().slice(0, 10)
+    }
   },
 });
 </script>
@@ -69,6 +82,7 @@ export default defineComponent({
         <AppSelect />
       </div>
     </div>
+    <ScreeningsList :movies="movies" :daySelected="activeDayDate" />
 </template>
 
 <style lang="scss" scoped>
