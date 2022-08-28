@@ -22,13 +22,7 @@ export default defineComponent({
     }
   },
   computed: {
-    todaysDate() {
-      return new Date().toLocaleDateString('en-GB');
-    },
-    todaysDayName() {
-      return new Date().toLocaleString('en-GB', {weekday: 'long'});
-    },
-    nextDayNames() {
+    nextDaysNames() {
       const dayDigit = new Date().getDay() + 1;
       const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
       let nextDays = ['Today'];
@@ -42,12 +36,19 @@ export default defineComponent({
       return nextDays
     },
     activeDayDate() {
-      const activeDayIndex = this.nextDayNames.indexOf(this.activeDay)
+      const activeDayIndex = this.nextDaysNames.indexOf(this.activeDay)
       const today = new Date()
       let activeDay = new Date()
       activeDay.setDate(today.getDate() + activeDayIndex)
-      return activeDay.toISOString().slice(0, 10)
-    }
+      return activeDay
+    },
+    formattedActiveDayDate() {
+      const date = this.activeDayDate.toISOString().slice(0, 10)
+      return date.split('-').reverse().join("/")
+    },
+    activeDayName() {
+      return this.activeDayDate.toLocaleString('en-GB', {weekday: 'long'});
+    },
   },
 });
 </script>
@@ -55,7 +56,7 @@ export default defineComponent({
 <template>
     <SectionTitle>Screenings:</SectionTitle>
     <div class="section-subtitle">
-      <SectionSubtitle>{{ todaysDayName }} {{ todaysDate }}</SectionSubtitle>
+      <SectionSubtitle>{{ activeDayName }} {{ formattedActiveDayDate }}</SectionSubtitle>
     </div>
     <div class="filters__wrapper">
       <div class="filters-date">
@@ -65,7 +66,7 @@ export default defineComponent({
             :isActive="activeDay === nextDay"
             size="large"
             :colorScheme="activeDay === nextDay ? 'dark' : 'dark-reverse'"
-            v-for="nextDay in nextDayNames"
+            v-for="nextDay in nextDaysNames"
             class="day-button"
             :key="nextDay"
             @clicked="activeDay = nextDay"
