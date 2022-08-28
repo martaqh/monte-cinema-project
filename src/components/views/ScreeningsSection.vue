@@ -19,6 +19,7 @@ export default defineComponent({
     return {
       isActive: false,
       activeDay: 'Today',
+      optionSelected: 'All movies'
     }
   },
   computed: {
@@ -49,6 +50,13 @@ export default defineComponent({
     activeDayName() {
       return this.activeDayDate.toLocaleString('en-GB', {weekday: 'long'});
     },
+    moviesTitles() {
+      const movieTitles = []
+      for (let movie of this.movies) {
+        movieTitles.push(movie.title)
+      }
+      return movieTitles
+    }
   },
 });
 </script>
@@ -80,10 +88,10 @@ export default defineComponent({
       </div>
       <div class="filters-movie">
         <AppLabel>Movie</AppLabel>
-        <AppSelect />
+        <AppSelect :options="moviesTitles" v-model="optionSelected"/>
       </div>
     </div>
-    <ScreeningsList :movies="movies" :daySelected="activeDayDate" />
+    <ScreeningsList :movies="movies" :daySelected="activeDayDate" :titleSelected="optionSelected" />
 </template>
 
 <style lang="scss" scoped>

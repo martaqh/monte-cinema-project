@@ -17,16 +17,32 @@ export default defineComponent({
     daySelected: {
       type: Date,
       default: new Date().toISOString().slice(0, 10)
+    },
+    titleSelected: {
+      type: String,
+      default: 'All movies',
     }
   },
   data() {
     return {
       screenings: [],
+      selectedMovieId: this.movieData.id,
+      titleSelected: this.titleSelected,
     }
   },
   watch: {
     daySelected(newDay, previousDay) {
       if (newDay !== previousDay) {
+        this.getScreenings()
+      }
+    },
+    titleSelected(newOption, previousOption) {
+      if (newOption !== previousOption) {
+        this.selectedMovieId = this.getMovieIdByTitle(this.movieData, this.titleSelected)
+        this.getScreenings()
+      }
+      if (newOption === 'All movies') {
+        this.selectedMovieId = this.movieData.id
         this.getScreenings()
       }
     }
@@ -36,8 +52,13 @@ export default defineComponent({
       return screening.datetime.substring(11, 16)
     },
     async getScreenings() {
-      const response = await getScreeningsByMovieAndDate(this.movieData.id, this.daySelected);
+      const response = await getScreeningsByMovieAndDate(this.selectedMovieId, this.daySelected);
       this.screenings = response.data;
+    },
+    getMovieIdByTitle(movieObject, title) {
+      if (Object.values(movieObject).includes(title)) {
+        return movieObject.id
+      }
     }
   },
   mounted() {

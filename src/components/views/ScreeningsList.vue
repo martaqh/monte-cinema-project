@@ -11,7 +11,11 @@ export default defineComponent({
     daySelected: {
         type: Date,
         default: new Date().toISOString().slice(0, 10)
-      }
+    },
+    titleSelected: {
+      type: String,
+      default: '',
+    }
   },
   mounted() {
     console.log(this.movies)
@@ -21,7 +25,12 @@ export default defineComponent({
 
 <template>
   <div class="screenings-list">
-    <ScreeningsCard v-for="movie in movies" :movieData="movie" :daySelected="daySelected" />
+    <ScreeningsCard
+      v-for="movie in movies"
+      :movieData="movie"
+      :daySelected="daySelected"
+      :titleSelected="titleSelected"
+    />
   </div>
 </template>
 
