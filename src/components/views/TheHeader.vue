@@ -30,11 +30,10 @@ export default defineComponent({
   }
 }
 .hamburger-menu {
-  @include tablet {
-    display: none;
-  }
-  @include desktop {
-    display: none;
+  display: none;
+
+  @include mobile {
+    display: flex;
   }
 }
 .header-slot {

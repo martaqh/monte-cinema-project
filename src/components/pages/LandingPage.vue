@@ -7,7 +7,7 @@ import TheContainer from '@/components/common/TheContainer.vue';
 import WelcomeSection from '@/components/views/WelcomeSection.vue';
 import MovieCard from '@/components/views/MovieCard.vue';
 import MoviesSummary from '@/components/views/MoviesSummary.vue';
-import ScreeningsSection from '../views/ScreeningsSection.vue';
+import ScreeningsSection from '@/components/views/ScreeningsSection.vue';
 import { getAllMovies } from '@/api/service/movies';
 
 export default defineComponent({
@@ -33,7 +33,6 @@ export default defineComponent({
     for (let i=0; i<3; i++) {
        this.filteredMovies.push(this.movies[i])
     }
-    console.log(this.movies)
   }
 });
 </script>

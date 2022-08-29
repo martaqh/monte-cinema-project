@@ -16,9 +16,6 @@ export default defineComponent({
       type: String,
       default: '',
     }
-  },
-  mounted() {
-    console.log(this.movies)
   }
 })
 </script>

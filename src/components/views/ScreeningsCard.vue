@@ -1,11 +1,11 @@
 <script>
 import { defineComponent } from 'vue';
-import MoviePoster from '../common/Movie/MoviePoster.vue';
-import MovieLength from '../common/Movie/MovieLength.vue';
-import AppButton from '../common/App/AppButton.vue';
-import MovieTitle from '../common/Movie/MovieTitle.vue';
-import AppTag from '../common/App/AppTag.vue';
-import { getScreeningsByMovieAndDate } from '../../api/service/Screenings';
+import MoviePoster from '@/components/common/Movie/MoviePoster.vue';
+import MovieLength from '@/components/common/Movie/MovieLength.vue';
+import AppButton from '@/components/common/App/AppButton.vue';
+import MovieTitle from '@/components/common/Movie/MovieTitle.vue';
+import AppTag from '@/components/common/App/AppTag.vue';
+import { getScreeningsByMovieAndDate } from '@/api/service/Screenings';
 
 export default defineComponent({
   components: { MoviePoster, MovieLength, AppButton, MovieTitle, AppTag },
@@ -27,7 +27,6 @@ export default defineComponent({
     return {
       screenings: [],
       selectedMovieId: this.movieData.id,
-      titleSelected: this.titleSelected,
     }
   },
   watch: {
@@ -38,7 +37,7 @@ export default defineComponent({
     },
     titleSelected(newOption, previousOption) {
       if (newOption !== previousOption) {
-        this.selectedMovieId = this.getMovieIdByTitle(this.movieData, this.titleSelected)
+        this.selectedMovieId = this.getMovieIdByTitle(this.movieData, newOption)
         this.getScreenings()
       }
       if (newOption === 'All movies') {
