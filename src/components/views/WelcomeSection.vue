@@ -19,10 +19,20 @@ export default defineComponent({
             Best movies, best experiences, best people.
             And all that doesn’t exist. Yikes.
         </p>
-        <AppButton href="http://monterail.com" size="large" colorScheme="main">Book a ticket</AppButton>
+        <AppButton
+          href="http://monterail.com"
+          size="large"
+          color-scheme="main"
+        >
+        Book a ticket
+        </AppButton>
       </div>
       <div class="welcome-image-wrapper">
-        <img src="@/assets/PeopleInCinema.png" class="welcome-image" alt="People in cinema" />
+        <img
+          src="@/assets/PeopleInCinema.png"
+          class="welcome-image"
+          alt="People in cinema"
+        />
       </div>
     </div>
   </TheContainer>

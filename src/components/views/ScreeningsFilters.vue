@@ -50,9 +50,9 @@ export default defineComponent({
         <AppLabel>Day</AppLabel>
         <div class="days">
           <AppButton
-            :isActive="activeDay === nextDay"
+            :is-active="activeDay === nextDay"
             size="large"
-            :colorScheme="activeDay === nextDay ? 'dark' : 'dark-reverse'"
+            :color-scheme="activeDay === nextDay ? 'dark' : 'dark-reverse'"
             v-for="nextDay in nextDayNames"
             class="day-button"
             :key="nextDay"

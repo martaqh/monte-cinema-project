@@ -17,7 +17,10 @@ export default defineComponent({
 </script>
 
 <template>
-  <p class="section-title" :size="size">
+  <p
+    class="section-title"
+    :size="size"
+  >
     <slot></slot>
   </p>
 </template>

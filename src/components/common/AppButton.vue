@@ -67,7 +67,7 @@ export default defineComponent({
     :href="href"
     class="button-base"
     :size="size"
-    :colorScheme="colorScheme"
+    :color-scheme="colorScheme"
     :type="buttonType"
     @click="this.$emit('clicked')"
   >
