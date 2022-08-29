@@ -1,6 +1,6 @@
 <script>
 import { defineComponent } from 'vue';
-import TopNavbarTab from './TopNavbarTab.vue';
+import TopNavbarTab from '@/components/features/TopNavbarTab.vue';
 export default defineComponent({
   components: { TopNavbarTab }
 });
@@ -22,6 +22,6 @@ export default defineComponent({
   align-items: center;
   font-family: $font-main;
   font-size: 18px;
-  color: $color-text-navbar;
+  color: $color-text-light;
 }
 </style>

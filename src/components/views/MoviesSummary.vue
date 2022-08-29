@@ -1,8 +1,6 @@
 <script>
 import { defineComponent } from 'vue';
-import TheTag from '@/components/common/TheTag.vue';
-import SectionTitle from '@/components/common/SectionTitle.vue';
-import MovieCard from './MovieCard.vue';
+import MovieCard from '@/components/views/MovieCard.vue';
 import TheContainer from '@/components/common/TheContainer.vue';
 
 const movies = [
@@ -61,13 +59,18 @@ export default defineComponent({
       <a>see all</a>
     </div>
     <div class="movie-cards-wrapper">
-      <MovieCard v-for="movie of movies" :key="movie.id" :movie="movie" />
+      <MovieCard
+        v-for="movie of movies"
+        :key="movie.id"
+        :movie="movie"
+      />
     </div>
   </TheContainer>
 </template>
 
 <style lang="scss" scoped>
 .movies-summary-header {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -88,7 +91,7 @@ export default defineComponent({
   }
 
   span {
-    @media only screen and (max-width: 768px) {
+    @include mobile {
       display: none;
     }
   }
@@ -101,7 +104,7 @@ export default defineComponent({
   justify-content: space-between;
   margin: 64px 0;
 
-  @media only screen and (max-width: 768px) {
+  @include mobile {
     flex-direction: column;
     align-items: center;
   }

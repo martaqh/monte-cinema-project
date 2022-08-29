@@ -28,13 +28,33 @@ export default defineComponent({
       },
     },
     to: {
-      type: String,
+      type: [Object, String],
       required: false,
+    },
+    href: {
+      type: String,
+      required: false
+    },
+    buttonType: {
+      type: String,
+      default: 'button',
+      validator(value) {
+        return [
+          'button',
+          'submit'
+        ].includes(value);
+      },
     }
   },
   computed: {
     componentVariant() {
-      return (this.to) ? 'a' : 'button'
+      if (this.to) {
+        return 'router-link'
+      } else if (this.href) {
+        return 'a'
+      } else {
+        return 'button'
+      }
     },
   }
 });
@@ -43,10 +63,13 @@ export default defineComponent({
 <template>
   <component
     :is="componentVariant"
-    :to="this.to"
+    :to="to"
+    :href="href"
     class="button-base"
-    :size=this.size
-    :colorScheme=this.colorScheme
+    :size="size"
+    :color-scheme="colorScheme"
+    :type="buttonType"
+    @click="this.$emit('clicked')"
   >
     <slot></slot>
   </component>
@@ -60,8 +83,8 @@ export default defineComponent({
   width: fit-content;
   border-radius: $radius-button;
   font-family: $font-mono;
-  padding: 12px 24px;
-
+  padding: 0 40px;
+  cursor: pointer;
 }
 .button-base[colorScheme="main"] {
   border: 2px solid $color-brand;

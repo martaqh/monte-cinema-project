@@ -4,4 +4,10 @@ import App from './App.vue'
 import './styles/common/index.scss'
 import './styles/global/index.scss'
 
-createApp(App).mount('#app')
+import router from'@/router';
+
+const app = createApp(App);
+
+app.use(router)
+
+app.mount('#app')

@@ -18,7 +18,7 @@ export default defineComponent({
 
 <template>
   <p
-    class="section-title"
+    class="section-subtitle"
     :size="size"
   >
     <slot></slot>
@@ -26,39 +26,42 @@ export default defineComponent({
 </template>
 
 <style lang="scss" scoped>
-.section-title {
-  color: $color-text-main;
+.section-subtitle {
+  display: flex;
+  color: $color-text-light;
   font-family: $font-title;
   font-weight: 600;
   line-height: 102%;
   letter-spacing: -0.01em;
-  margin-top: 64px;
+  margin-bottom: 32px;
   p {
-    margin: 0;
     width: 100%;
   }
 }
 
-.section-title[size="large"] {
+.section-subtitle[size="large"] {
   font-size: 80px;
+
     @include tablet {
       font-size: 48px;
+      flex-direction: column;
     }
     @include mobile {
       font-size: 48px;
+      flex-direction: column;
     }
 }
 
-.section-title[size="medium"] {
+.section-subtitle[size="medium"] {
   font-size: 64px;
 
     @include tablet {
       font-size: 48px;
     }
-    @include mobile {
+
+     @include mobile {
       font-size: 48px;
     }
+
 }
-
-
 </style>

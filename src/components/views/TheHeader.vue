@@ -1,16 +1,19 @@
-<script>
-import { defineComponent } from 'vue';
-import TopNavbar from '@/components/features/TopNavbar.vue';
-import SignSection from '@/components/features/SignSection.vue';
-export default defineComponent({
-  components: { TopNavbar, SignSection }
-});
-</script>
-
 <template>
   <div class="header">
-    <a href="/"><img src="@/assets/MonterailLogo.svg" class="logo" alt="Monterail logo" /></a>
-    <a href="#"><img src="@/assets/HamburgerMenu.svg" class="hamburger-menu" alt="Hamburger menu"/></a>
+    <a href="/">
+      <img
+      src="@/assets/MonterailLogo.svg"
+      class="logo"
+      alt="Monterail logo"
+      />
+    </a>
+    <a href="#">
+      <img
+        src="@/assets/HamburgerMenu.svg"
+        class="hamburger-menu"
+        alt="Hamburger menu"
+      />
+    </a>
     <div class="header-slot">
       <slot ></slot>
     </div>
@@ -25,12 +28,15 @@ export default defineComponent({
   justify-content: space-between;
   padding: 0 48px;
 
-  @media only screen and (max-width: 480px) {
+  @include mobile {
     padding: 0 24px;
   }
 }
 .hamburger-menu {
-  @media only screen and (min-width: 768px) {
+  @include tablet {
+    display: none;
+  }
+  @include desktop {
     display: none;
   }
 }
@@ -40,7 +46,7 @@ export default defineComponent({
   align-items: baseline;
   justify-content: space-between;
 
-  @media only screen and (max-width: 768px) {
+  @include mobile {
     display: none;
   }
 }

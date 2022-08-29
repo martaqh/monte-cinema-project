@@ -7,6 +7,7 @@ import TheContainer from '@/components/common/TheContainer.vue';
 import WelcomeSection from '@/components/views/WelcomeSection.vue';
 import MovieCard from '@/components/views/MovieCard.vue';
 import MoviesSummary from '@/components/views/MoviesSummary.vue';
+import ScreeningsFilters from '@/components/views/ScreeningsFilters.vue';
 export default defineComponent({
   components: {
     TheHeader,
@@ -15,8 +16,9 @@ export default defineComponent({
     TheContainer,
     WelcomeSection,
     MovieCard,
-    MoviesSummary
-  }
+    MoviesSummary,
+    ScreeningsFilters
+}
 });
 </script>
 
@@ -28,6 +30,7 @@ export default defineComponent({
     </TheHeader>
     <WelcomeSection />
     <MoviesSummary />
+    <ScreeningsFilters />
   </div>
 </template>
 
