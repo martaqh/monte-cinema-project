@@ -9,8 +9,20 @@ export default defineComponent({
 
 <template>
   <div class="header">
-    <a href="/"><img src="@/assets/MonterailLogo.svg" class="logo" alt="Monterail logo" /></a>
-    <a href="#"><img src="@/assets/HamburgerMenu.svg" class="hamburger-menu" alt="Hamburger menu"/></a>
+    <a href="/">
+      <img
+      src="@/assets/MonterailLogo.svg"
+      class="logo"
+      alt="Monterail logo"
+      />
+    </a>
+    <a href="#">
+      <img
+        src="@/assets/HamburgerMenu.svg"
+        class="hamburger-menu"
+        alt="Hamburger menu"
+      />
+    </a>
     <div class="header-slot">
       <slot ></slot>
     </div>

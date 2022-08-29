@@ -29,7 +29,11 @@ export default defineComponent({
       <a>see all</a>
     </div>
     <div class="movie-cards-wrapper">
-      <MovieCard v-for="movie of filteredMovies" :key="movie.id" :movie="movie" />
+      <MovieCard
+        v-for="movie of movies"
+        :key="movie.id"
+        :movie="movie"
+      />
     </div>
   </TheContainer>
 </template>
