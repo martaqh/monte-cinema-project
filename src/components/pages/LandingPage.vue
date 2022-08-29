@@ -7,6 +7,8 @@ import TheContainer from '@/components/common/TheContainer.vue';
 import WelcomeSection from '@/components/views/WelcomeSection.vue';
 import MovieCard from '@/components/views/MovieCard.vue';
 import MoviesSummary from '@/components/views/MoviesSummary.vue';
+import { getAllMovies } from '@/api/service/movies';
+import ScreeningsFilters from '@/components/views/ScreeningsFilters.vue';
 
 export default defineComponent({
   components: {
@@ -17,7 +19,21 @@ export default defineComponent({
     WelcomeSection,
     MovieCard,
     MoviesSummary,
-}
+    ScreeningsFilters
+  },
+  data() {
+  return {
+      movies: [],
+      filteredMovies: [],
+  };
+  },
+  async mounted() {
+    const response = await getAllMovies();
+    this.movies = response.data;
+    for (let i=0; i<3; i++) {
+        this.filteredMovies.push(this.movies[i])
+    }
+  }
 });
 </script>
 
@@ -28,8 +44,10 @@ export default defineComponent({
       <SignSection />
     </TheHeader>
     <WelcomeSection />
-    <MoviesSummary />
-    <ScreeningsFilters />
+    <TheContainer>
+      <MoviesSummary :movies="filteredMovies" />
+      <ScreeningsFilters />
+    </TheContainer>
   </div>
 </template>
 
