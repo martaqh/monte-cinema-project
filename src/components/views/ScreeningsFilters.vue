@@ -2,14 +2,12 @@
 import { defineComponent } from 'vue';
 import SectionTitle from '@/components/common/Section/SectionTitle.vue';
 import SectionSubtitle from '@/components/common/Section/SectionSubtitle.vue';
-import TheContainer from '@/components/common/TheContainer.vue';
 import AppLabel from '@/components/common/App/AppLabel.vue';
 import AppButton from '@/components/common/App/AppButton.vue';
 import AppSelect from '@/components/common/App/AppSelect.vue';
-import DatePicker from '@/components/features/DatePicker.vue';
 
 export default defineComponent({
-  components: { SectionTitle, SectionSubtitle, TheContainer, AppLabel, AppButton, AppSelect },
+  components: { SectionTitle, SectionSubtitle, AppLabel, AppButton, AppSelect },
   data() {
     return {
       isActive: false,
@@ -41,37 +39,35 @@ export default defineComponent({
 </script>
 
 <template>
-  <TheContainer>
-    <SectionTitle>Screenings:</SectionTitle>
-    <div class="section-subtitle">
-      <SectionSubtitle>{{ todaysDayName }} {{ todaysDate }}</SectionSubtitle>
-    </div>
-    <div class="filters__wrapper">
-      <div class="filters-date">
-        <AppLabel>Day</AppLabel>
-        <div class="days">
-          <AppButton
-            :is-active="activeDay === nextDay"
-            size="large"
-            :color-scheme="activeDay === nextDay ? 'dark' : 'dark-reverse'"
-            v-for="nextDay in nextDayNames"
-            class="day-button"
-            :key="nextDay"
-            @clicked="activeDay = nextDay"
-          >
-          {{ nextDay }}
-          </AppButton>
-          <div class="date-picker">
-             <img src="@/assets/CalendarIcon.svg" alt="calendar icon" />
-          </div>
+  <SectionTitle>Screenings:</SectionTitle>
+  <div class="section-subtitle">
+    <SectionSubtitle>{{ todaysDayName }} {{ todaysDate }}</SectionSubtitle>
+  </div>
+  <div class="filters__wrapper">
+    <div class="filters-date">
+      <AppLabel>Day</AppLabel>
+      <div class="days">
+        <AppButton
+          :is-active="activeDay === nextDay"
+          size="large"
+          :color-scheme="activeDay === nextDay ? 'dark' : 'dark-reverse'"
+          v-for="nextDay in nextDayNames"
+          class="day-button"
+          :key="nextDay"
+          @clicked="activeDay = nextDay"
+        >
+        {{ nextDay }}
+        </AppButton>
+        <div class="date-picker">
+            <img src="@/assets/CalendarIcon.svg" alt="calendar icon" />
         </div>
       </div>
-      <div class="filters-movie">
-        <AppLabel>Movie</AppLabel>
-        <AppSelect />
-      </div>
     </div>
-  </TheContainer>
+    <div class="filters-movie">
+      <AppLabel>Movie</AppLabel>
+      <AppSelect />
+    </div>
+  </div>
 </template>
 
 <style lang="scss" scoped>
