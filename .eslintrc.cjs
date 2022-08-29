@@ -1,6 +1,6 @@
 /* eslint-env node */
 
-require("@rushstack/eslint-patch/modern-module-resolution");
+//require("@rushstack/eslint-patch/modern-module-resolution");
 
 module.exports = {
   "root": true,
@@ -24,8 +24,8 @@ module.exports = {
   ],
   "rules": {
     "indent": [
-        "error",
-        2
+      "error",
+      2
     ],
   }
 }

@@ -14,17 +14,19 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="movies-summary-header">
-    <p>soon <span>in the cinema</span></p>
-    <a>see all</a>
-  </div>
-  <div class="movie-cards-wrapper">
-    <MovieCard v-for="movie of movies" :key="movie.id" :movie="movie" />
+  <div class="movies-summary">
+    <div class="movies-summary__header">
+      <p>soon <span>in the cinema</span></p>
+      <a>see all</a>
+    </div>
+    <div class="movie-cards-wrapper">
+      <MovieCard v-for="movie of movies" :key="movie.id" :movie="movie" />
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.movies-summary-header {
+.movies-summary__header {
   width: 100%;
   display: flex;
   justify-content: space-between;

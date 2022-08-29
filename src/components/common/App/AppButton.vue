@@ -16,8 +16,8 @@ export default defineComponent({
     },
     colorScheme: {
       type: String,
-       default: 'main',
-       validator(value) {
+      default: 'main',
+      validator(value) {
         return [
           'main',
           'main-reverse',

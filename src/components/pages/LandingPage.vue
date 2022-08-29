@@ -5,7 +5,6 @@ import TopNavbar from '@/components/features/Header/TopNavbar.vue';
 import SignSection from '@/components/features/Header/SignSection.vue';
 import TheContainer from '@/components/common/TheContainer.vue';
 import WelcomeSection from '@/components/views/WelcomeSection.vue';
-import MovieCard from '@/components/views/MovieCard.vue';
 import MoviesSummary from '@/components/views/MoviesSummary.vue';
 import { getAllMovies } from '@/api/service/movies';
 import ScreeningsFilters from '@/components/views/ScreeningsFilters.vue';
@@ -17,21 +16,20 @@ export default defineComponent({
     SignSection,
     TheContainer,
     WelcomeSection,
-    MovieCard,
     MoviesSummary,
     ScreeningsFilters
   },
   data() {
-  return {
+    return {
       movies: [],
       filteredMovies: [],
-  };
+    };
   },
   async mounted() {
     const response = await getAllMovies();
     this.movies = response.data;
     for (let i=0; i<3; i++) {
-        this.filteredMovies.push(this.movies[i])
+      this.filteredMovies.push(this.movies[i])
     }
   }
 });

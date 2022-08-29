@@ -39,34 +39,36 @@ export default defineComponent({
 </script>
 
 <template>
-  <SectionTitle>Screenings:</SectionTitle>
-  <div class="section-subtitle">
-    <SectionSubtitle>{{ todaysDayName }} {{ todaysDate }}</SectionSubtitle>
-  </div>
-  <div class="filters__wrapper">
-    <div class="filters-date">
-      <AppLabel>Day</AppLabel>
-      <div class="days">
-        <AppButton
-          :is-active="activeDay === nextDay"
-          size="large"
-          :color-scheme="activeDay === nextDay ? 'dark' : 'dark-reverse'"
-          v-for="nextDay in nextDayNames"
-          class="day-button"
-          :key="nextDay"
-          @clicked="activeDay = nextDay"
-        >
-        {{ nextDay }}
-        </AppButton>
-        <div class="date-picker">
-            <img src="@/assets/CalendarIcon.svg" alt="calendar icon" />
+  <div class="screenings-filters">
+      <SectionTitle>Screenings:</SectionTitle>
+      <div class="section-subtitle">
+        <SectionSubtitle>{{ todaysDayName }} {{ todaysDate }}</SectionSubtitle>
+      </div>
+      <div class="filters__wrapper">
+        <div class="filters-date">
+          <AppLabel>Day</AppLabel>
+          <div class="days">
+            <AppButton
+              :is-active="activeDay === nextDay"
+              size="large"
+              :color-scheme="activeDay === nextDay ? 'dark' : 'dark-reverse'"
+              v-for="nextDay in nextDayNames"
+              class="day-button"
+              :key="nextDay"
+              @clicked="activeDay = nextDay"
+            >
+            {{ nextDay }}
+            </AppButton>
+            <div class="date-picker">
+                <img src="@/assets/CalendarIcon.svg" alt="calendar icon" />
+            </div>
+          </div>
+        </div>
+        <div class="filters-movie">
+          <AppLabel>Movie</AppLabel>
+          <AppSelect />
         </div>
       </div>
-    </div>
-    <div class="filters-movie">
-      <AppLabel>Movie</AppLabel>
-      <AppSelect />
-    </div>
   </div>
 </template>
 
