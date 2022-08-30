@@ -26,8 +26,12 @@ export default defineComponent({
     };
   },
   async mounted() {
-    const response = await getAllMovies();
-    this.movies = response.data;
+    try {
+      const response = await getAllMovies();
+      this.movies = response.data;
+    } catch {
+      this.$router.push({ name: 'NoMatch' });
+    }
     for (let i=0; i<3; i++) {
       this.filteredMovies.push(this.movies[i])
     }
