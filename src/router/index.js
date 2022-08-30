@@ -17,13 +17,6 @@ const routes = [
     name: 'Movies',
     component: () => import ('@/components/views/MoviesSummary.vue'),
   },
-  /*  {
-        path: '/movies/:movieId',
-        name: 'MoviePage',
-        props: true,
-        component: () => import ('@/components/views/MovieCard.vue'),
-
-    }, */
   {
     path: '/:path*',
     redirect: '/no-match'
