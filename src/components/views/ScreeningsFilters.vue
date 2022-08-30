@@ -21,6 +21,9 @@ export default defineComponent({
     todaysDayName() {
       return new Date().toLocaleString('en-US', {weekday: 'long'});
     },
+    sectionSubtitle() {
+      return `${this.todaysDayName} ${this.todaysDate}`;
+    },
     nextDayNames() {
       const dayDigit = new Date().getDay() + 1;
       const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -42,7 +45,7 @@ export default defineComponent({
   <div class="screenings-filters">
       <SectionTitle>Screenings:</SectionTitle>
       <div class="screenings-filters__section-subtitle">
-        <SectionSubtitle>{{ todaysDayName }} {{ todaysDate }}</SectionSubtitle>
+        <SectionSubtitle>{{ sectionSubtitle }}</SectionSubtitle>
       </div>
       <div class="screenings-filters__wrapper">
         <div class="screenings-filters__by-date">
