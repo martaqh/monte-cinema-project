@@ -19,7 +19,7 @@ export default defineComponent({
       <p>soon <span>in the cinema</span></p>
       <a>see all</a>
     </div>
-    <div class="movie-cards-wrapper">
+    <div class="movie-cards__wrapper">
       <MovieCard v-for="movie of movies" :key="movie.id" :movie="movie" />
     </div>
   </div>
@@ -53,7 +53,7 @@ export default defineComponent({
     }
   }
 }
-.movie-cards-wrapper {
+.movie-cards__wrapper {
   width: 100%;
   display: flex;
   flex-direction: row;

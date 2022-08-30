@@ -10,11 +10,11 @@
     <a href="#">
       <img
         src="@/assets/HamburgerMenu.svg"
-        class="hamburger-menu"
+        class="header__hamburger-menu"
         alt="Hamburger menu"
       />
     </a>
-    <div class="header-slot">
+    <div class="header__slot">
       <slot ></slot>
     </div>
   </div>
@@ -32,14 +32,14 @@
     padding: 0 24px;
   }
 }
-.hamburger-menu {
+.header__hamburger-menu {
   display: none;
 
   @include mobile {
     display: block;
   }
 }
-.header-slot {
+.header__slot {
   width: 75%;
   display: flex;
   align-items: baseline;

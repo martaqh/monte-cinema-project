@@ -41,30 +41,30 @@ export default defineComponent({
 <template>
   <div class="screenings-filters">
       <SectionTitle>Screenings:</SectionTitle>
-      <div class="section-subtitle">
+      <div class="screenings-filters__section-subtitle">
         <SectionSubtitle>{{ todaysDayName }} {{ todaysDate }}</SectionSubtitle>
       </div>
-      <div class="filters__wrapper">
-        <div class="filters-date">
+      <div class="screenings-filters__wrapper">
+        <div class="screenings-filters__by-date">
           <AppLabel>Day</AppLabel>
-          <div class="days">
+          <div class="screenings-filters__days-buttons">
             <AppButton
               :is-active="activeDay === nextDay"
               size="large"
               :color-scheme="activeDay === nextDay ? 'dark' : 'dark-reverse'"
               v-for="nextDay in nextDayNames"
-              class="day-button"
+              class="screenings-filters__day-button"
               :key="nextDay"
               @clicked="activeDay = nextDay"
             >
             {{ nextDay }}
             </AppButton>
-            <div class="date-picker">
+            <div class="screenings-filters__date-picker">
                 <img src="@/assets/CalendarIcon.svg" alt="calendar icon" />
             </div>
           </div>
         </div>
-        <div class="filters-movie">
+        <div class="screenings-filters__by-movie">
           <AppLabel>Movie</AppLabel>
           <AppSelect />
         </div>
@@ -73,7 +73,7 @@ export default defineComponent({
 </template>
 
 <style lang="scss" scoped>
-.section-subtitle {
+.screenings-filters__section-subtitle {
   display: flex;
   justify-content: flex-start;
 
@@ -81,7 +81,7 @@ export default defineComponent({
     flex-direction: column;
   }
 }
-.filters__wrapper {
+.screenings-filters__wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -94,10 +94,10 @@ export default defineComponent({
     flex-direction: column;
   }
 }
-.filters-date {
+.screenings-filters__by-date {
   width: 100%;
 }
-.filters-movie {
+.screenings-filters__by-movie {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -112,10 +112,10 @@ export default defineComponent({
     margin-left: 0px;
   }
 }
-.days {
+.screenings-filters__days-buttons {
   display: flex;
 }
-.day-button {
+.screenings-filters__day-button {
   margin-right: 8px;
 
   &:hover {
@@ -130,7 +130,7 @@ export default defineComponent({
     }
   }
 }
-.date-picker {
+.screenings-filters__date-picker {
   color: $color-text-main;
   border: 2px solid $color-text-main;
   border-radius: 50%;

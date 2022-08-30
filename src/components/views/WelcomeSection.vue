@@ -10,12 +10,12 @@ export default defineComponent({
 
 <template>
   <TheContainer class="of-welcome-section">
-    <div class="welcome-section">
-      <div class="welcome-message">
+    <div class="welcome">
+      <div class="welcome__message">
         <SectionTitle size="large">
             Welcome to the best cinema in Monterail
         </SectionTitle>
-        <p class="welcome-text">
+        <p class="welcome__message--text">
             Best movies, best experiences, best people.
             And all that doesn’t exist. Yikes.
         </p>
@@ -27,10 +27,10 @@ export default defineComponent({
         Book a ticket
         </AppButton>
       </div>
-      <div class="welcome-image-wrapper">
+      <div class="welcome__image-wrapper">
         <img
           src="@/assets/PeopleInCinema.png"
-          class="welcome-image"
+          class="welcome__image"
           alt="People in cinema"
         />
       </div>
@@ -39,7 +39,7 @@ export default defineComponent({
 </template>
 
 <style lang="scss" scoped>
-.welcome-section {
+.welcome {
   width: 100%;
   height: fit-content;
   display: flex;
@@ -49,13 +49,13 @@ export default defineComponent({
     text-align: center;
   }
 }
-.welcome-message {
+.welcome__message {
   display: flex;
   flex-direction: column;
   width: 66%;
   padding: 80px;
 
-  .welcome-text {
+  .welcome__message--text {
     font-family: 'Roboto Mono';
     font-style: normal;
     font-weight: 400;
@@ -69,7 +69,7 @@ export default defineComponent({
     align-items: center;
   }
 }
-.welcome-image-wrapper {
+.welcome__image-wrapper {
   min-width: 34%;
   display: none;
 
@@ -77,7 +77,7 @@ export default defineComponent({
     display: block;
   }
 }
-.welcome-image {
+.welcome__image {
   width: 100%;
   height: 100%;
   object-fit: cover;
