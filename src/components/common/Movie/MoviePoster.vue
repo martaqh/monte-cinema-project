@@ -19,7 +19,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .movie-poster {
   img {
-    height: 190px;
+    max-height: 190px;
     width: 100%;
     object-fit: cover;
   }
