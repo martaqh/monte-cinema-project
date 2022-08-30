@@ -6,15 +6,11 @@ import AppLabel from '@/components/common/App/AppLabel.vue';
 import AppButton from '@/components/common/App/AppButton.vue';
 import AppSelect from '@/components/common/App/AppSelect.vue';
 import ScreeningsList from './ScreeningsList.vue';
+import { mapActions, mapState } from "pinia";
+import movies from '@/stores/moviesStore'
 
 export default defineComponent({
   components: { SectionTitle, SectionSubtitle, AppLabel, AppButton, AppSelect, ScreeningsList },
-  props: {
-    movies: {
-      type: Array,
-      required: true,
-    }
-  },
   data() {
     return {
       isActive: false,
@@ -23,6 +19,7 @@ export default defineComponent({
     }
   },
   computed: {
+    ...mapState(movies, ["movies"]),
     nextDaysNames() {
       const dayDigit = new Date().getDay() + 1;
       const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];

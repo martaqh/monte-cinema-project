@@ -3,36 +3,33 @@ import { defineComponent } from 'vue';
 import TheHeader from '@/components/views/TheHeader.vue';
 import TopNavbar from '@/components/features/Header/TopNavbar.vue';
 import SignSection from '@/components/features/Header/SignSection.vue';
-import TheContainer from '@/components/common/TheContainer.vue';
 import WelcomeSection from '@/components/views/WelcomeSection.vue';
 import MovieCard from '@/components/views/MovieCard.vue';
 import MoviesSummary from '@/components/views/MoviesSummary.vue';
 import ScreeningsSection from '@/components/views/ScreeningsSection.vue';
-import { getAllMovies } from '@/api/service/movies';
+import TheContainer from '@/components/common/TheContainer.vue';
+import { mapActions, mapState } from "pinia";
+import movies from '@/stores/moviesStore'
 
 export default defineComponent({
   components: {
     TheHeader,
     TopNavbar,
     SignSection,
-    TheContainer,
     WelcomeSection,
     MovieCard,
     MoviesSummary,
     ScreeningsSection,
+    TheContainer,
+    MoviesSummary,
+    ScreeningsSection,
+    ScreeningsSection
 },
-   data() {
-    return {
-        movies: [],
-        filteredMovies: [],
-    };
+  methods: {
+    ...mapActions(movies, ["getMoviesToState"]),
   },
-  async mounted() {
-    const response = await getAllMovies();
-    this.movies = response.data;
-    for (let i=0; i<3; i++) {
-       this.filteredMovies.push(this.movies[i])
-    }
+  beforeMount() {
+   this.getMoviesToState()
   }
 });
 </script>
@@ -45,8 +42,8 @@ export default defineComponent({
     </TheHeader>
     <WelcomeSection />
     <TheContainer>
-      <MoviesSummary :movies="filteredMovies" />
-      <ScreeningsSection :movies="movies" />
+      <MoviesSummary />
+      <ScreeningsSection />
     </TheContainer>
   </div>
 </template>
