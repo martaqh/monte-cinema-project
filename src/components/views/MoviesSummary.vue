@@ -1,6 +1,6 @@
 <script>
 import { defineComponent } from 'vue';
-import MovieCard from './MovieCard.vue';
+import MovieCard from '@/components/views/MovieCard.vue'
 
 export default defineComponent({
   components: { MovieCard },
