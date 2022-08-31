@@ -1,6 +1,6 @@
 <script>
 import { defineComponent } from 'vue';
-import ScreeningsCard from './ScreeningsCard.vue';
+import ScreeningsCard from '@/components/views/ScreeningsCard.vue';
 export default defineComponent({
   components: { ScreeningsCard },
   props: {

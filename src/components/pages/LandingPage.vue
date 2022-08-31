@@ -22,7 +22,6 @@ export default defineComponent({
     ScreeningsSection,
     TheContainer,
     MoviesSummary,
-    ScreeningsSection,
     ScreeningsSection
 },
   methods: {

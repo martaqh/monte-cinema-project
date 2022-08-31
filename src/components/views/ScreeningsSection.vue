@@ -5,7 +5,7 @@ import SectionSubtitle from '@/components/common/Section/SectionSubtitle.vue';
 import AppLabel from '@/components/common/App/AppLabel.vue';
 import AppButton from '@/components/common/App/AppButton.vue';
 import AppSelect from '@/components/common/App/AppSelect.vue';
-import ScreeningsList from './ScreeningsList.vue';
+import ScreeningsList from '@/components/views/ScreeningsList.vue';
 import { mapActions, mapState } from "pinia";
 import movies from '@/stores/moviesStore'
 
