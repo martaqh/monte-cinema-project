@@ -1,6 +1,7 @@
 <script>
 import { defineComponent } from 'vue';
-import AppButton from '../common/AppButton.vue';
+import AppButton from '@/components/common/App/AppButton.vue';
+
 export default defineComponent({
   components: { AppButton }
 });

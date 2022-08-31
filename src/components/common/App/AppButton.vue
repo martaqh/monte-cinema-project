@@ -16,8 +16,8 @@ export default defineComponent({
     },
     colorScheme: {
       type: String,
-       default: 'main',
-       validator(value) {
+      default: 'main',
+      validator(value) {
         return [
           'main',
           'main-reverse',
@@ -86,31 +86,31 @@ export default defineComponent({
   padding: 0 40px;
   cursor: pointer;
 }
-.button-base[colorScheme="main"] {
+.button-base[color-scheme="main"] {
   border: 2px solid $color-brand;
   background-color: $color-brand;
   color: $color-text-reverse;
 }
 
-.button-base[colorScheme="main-reverse"] {
+.button-base[color-scheme="main-reverse"] {
   border: 2px solid $color-brand;
   color: $color-brand;
   background: inherit;
 }
 
-.button-base[colorScheme="dark"] {
+.button-base[color-scheme="dark"] {
   border: 2px solid $color-text-main;
   background-color: $color-text-main;
   color: $color-text-reverse;
 }
 
-.button-base[colorScheme="dark-reverse"] {
+.button-base[color-scheme="dark-reverse"] {
   border: 2px solid $color-text-main;
   color: $color-text-main;
   background: inherit;
 }
 
-.button-base[colorScheme="no-border"] {
+.button-base[color-scheme="no-border"] {
   border: none;
   color: $color-brand;
   background-color: inherit;

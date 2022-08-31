@@ -1,11 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import('@/components/pages/LandingPage.vue'),
+    component: () => import('@/components/pages/HomePage.vue'),
   },
   {
     path: '/screenings',
@@ -18,21 +17,15 @@ const routes = [
     name: 'Movies',
     component: () => import ('@/components/views/MoviesSummary.vue'),
   },
-/*{
-    path: '/movies/:movieId',
-    name: 'MoviePage',
-    props: true,
-    component: () => import ('@/components/views/MovieCard.vue'),
-  }, */
-  {
-    path: '/no-match',
-    name: 'NoMatch',
-    component: () => import ('@/components/views/NoMatch.vue'),
-  },
   {
     path: '/:path*',
     redirect: '/no-match'
   },
+  {
+    path: '/no-match',
+    name: 'NoMatch',
+    component: () => import ('@/components/pages/NoMatch.vue'),
+  }
 ];
 
 const router = createRouter({

@@ -1,13 +1,13 @@
 <script>
 import { defineComponent } from 'vue';
-import TopNavbarTab from '@/components/features/TopNavbarTab.vue';
+import TopNavbarTab from '@/components/features/Header/TopNavbarTab.vue';
 export default defineComponent({
   components: { TopNavbarTab }
 });
 </script>
 
 <template>
-  <div class="top-nav-bar">
+  <div class="top-navbar">
     <TopNavbarTab>Movies</TopNavbarTab>
     <TopNavbarTab>Screenings</TopNavbarTab>
     <TopNavbarTab>Contact us</TopNavbarTab>
@@ -15,7 +15,7 @@ export default defineComponent({
 </template>
 
 <style lang="scss" scoped>
-.top-nav-bar {
+.top-navbar {
   display: flex;
   width: 424px;
   height: 100%;

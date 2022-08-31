@@ -1,13 +1,14 @@
 <script>
-    import { defineComponent } from 'vue';
+import { defineComponent } from 'vue';
 import TheHeader from '@/components/views/TheHeader.vue';
-import TopNavbar from '@/components/features/TopNavbar.vue';
-import SignSection from '@/components/features/SignSection.vue';
+import TopNavbar from '@/components/features/Header/TopNavbar.vue';
+import SignSection from '@/components/features/Header/SignSection.vue';
 import TheContainer from '@/components/common/TheContainer.vue';
 import WelcomeSection from '@/components/views/WelcomeSection.vue';
-import MovieCard from '@/components/views/MovieCard.vue';
 import MoviesSummary from '@/components/views/MoviesSummary.vue';
+import { getAllMovies } from '@/api/service/movies';
 import ScreeningsFilters from '@/components/views/ScreeningsFilters.vue';
+
 export default defineComponent({
   components: {
     TheHeader,
@@ -15,27 +16,45 @@ export default defineComponent({
     SignSection,
     TheContainer,
     WelcomeSection,
-    MovieCard,
     MoviesSummary,
     ScreeningsFilters
-}
+  },
+  data() {
+    return {
+      movies: [],
+      filteredMovies: [],
+    };
+  },
+  async mounted() {
+    try {
+      const response = await getAllMovies();
+      this.movies = response.data;
+    } catch(error) {
+      console.error(error)
+    }
+    for (let i=0; i<3; i++) {
+      this.filteredMovies.push(this.movies[i])
+    }
+  }
 });
 </script>
 
 <template>
-  <div class="landing-page">
+  <div class="home-page">
     <TheHeader>
       <TopNavbar />
       <SignSection />
     </TheHeader>
     <WelcomeSection />
-    <MoviesSummary />
-    <ScreeningsFilters />
+    <TheContainer>
+      <MoviesSummary :movies="filteredMovies" />
+      <ScreeningsFilters />
+    </TheContainer>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.landing-page {
+.home-page {
   max-width: 1440px;
   width: 100%;
   display: flex;

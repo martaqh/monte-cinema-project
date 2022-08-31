@@ -1,14 +1,13 @@
 <script>
 import { defineComponent } from 'vue';
-import SectionTitle from '@/components/common/SectionTitle.vue';
-import SectionSubtitle from '@/components/common/SectionSubtitle.vue';
-import TheContainer from '@/components/common/TheContainer.vue';
-import AppLabel from '@/components/common/AppLabel.vue';
-import AppButton from '@/components/common/AppButton.vue';
-import AppSelect from '@/components/common/AppSelect.vue';
+import SectionTitle from '@/components/common/Section/SectionTitle.vue';
+import SectionSubtitle from '@/components/common/Section/SectionSubtitle.vue';
+import AppLabel from '@/components/common/App/AppLabel.vue';
+import AppButton from '@/components/common/App/AppButton.vue';
+import AppSelect from '@/components/common/App/AppSelect.vue';
 
 export default defineComponent({
-  components: { SectionTitle, SectionSubtitle, TheContainer, AppLabel, AppButton, AppSelect },
+  components: { SectionTitle, SectionSubtitle, AppLabel, AppButton, AppSelect },
   data() {
     return {
       isActive: false,
@@ -21,6 +20,9 @@ export default defineComponent({
     },
     todaysDayName() {
       return new Date().toLocaleString('en-US', {weekday: 'long'});
+    },
+    sectionSubtitle() {
+      return `${this.todaysDayName} ${this.todaysDate}`;
     },
     nextDayNames() {
       const dayDigit = new Date().getDay() + 1;
@@ -40,41 +42,41 @@ export default defineComponent({
 </script>
 
 <template>
-  <TheContainer>
-    <SectionTitle>Screenings:</SectionTitle>
-    <div class="section-subtitle">
-      <SectionSubtitle>{{ todaysDayName }} {{ todaysDate }}</SectionSubtitle>
-    </div>
-    <div class="filters__wrapper">
-      <div class="filters-date">
-        <AppLabel>Day</AppLabel>
-        <div class="days">
-          <AppButton
-            :is-active="activeDay === nextDay"
-            size="large"
-            :color-scheme="activeDay === nextDay ? 'dark' : 'dark-reverse'"
-            v-for="nextDay in nextDayNames"
-            class="day-button"
-            :key="nextDay"
-            @clicked="activeDay = nextDay"
-          >
-          {{ nextDay }}
-          </AppButton>
-          <div class="date-picker">
-             <img src="@/assets/CalendarIcon.svg" alt="calendar icon" />
+  <div class="screenings-filters">
+      <SectionTitle>Screenings:</SectionTitle>
+      <div class="screenings-filters__section-subtitle">
+        <SectionSubtitle>{{ sectionSubtitle }}</SectionSubtitle>
+      </div>
+      <div class="screenings-filters__wrapper">
+        <div class="screenings-filters__by-date">
+          <AppLabel>Day</AppLabel>
+          <div class="screenings-filters__days-buttons">
+            <AppButton
+              v-for="nextDay in nextDayNames"
+              :is-active="activeDay === nextDay"
+              size="large"
+              :color-scheme="activeDay === nextDay ? 'dark' : 'dark-reverse'"
+              class="screenings-filters__day-button"
+              :key="nextDay"
+              @clicked="activeDay = nextDay"
+            >
+            {{ nextDay }}
+            </AppButton>
+            <div class="screenings-filters__date-picker">
+                <img src="@/assets/CalendarIcon.svg" alt="calendar icon" />
+            </div>
           </div>
         </div>
+        <div class="screenings-filters__by-movie">
+          <AppLabel>Movie</AppLabel>
+          <AppSelect />
+        </div>
       </div>
-      <div class="filters-movie">
-        <AppLabel>Movie</AppLabel>
-        <AppSelect />
-      </div>
-    </div>
-  </TheContainer>
+  </div>
 </template>
 
 <style lang="scss" scoped>
-.section-subtitle {
+.screenings-filters__section-subtitle {
   display: flex;
   justify-content: flex-start;
 
@@ -82,7 +84,7 @@ export default defineComponent({
     flex-direction: column;
   }
 }
-.filters__wrapper {
+.screenings-filters__wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -95,10 +97,10 @@ export default defineComponent({
     flex-direction: column;
   }
 }
-.filters-date {
+.screenings-filters__by-date {
   width: 100%;
 }
-.filters-movie {
+.screenings-filters__by-movie {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -113,10 +115,10 @@ export default defineComponent({
     margin-left: 0px;
   }
 }
-.days {
+.screenings-filters__days-buttons {
   display: flex;
 }
-.day-button {
+.screenings-filters__day-button {
   margin-right: 8px;
 
   &:hover {
@@ -131,7 +133,7 @@ export default defineComponent({
     }
   }
 }
-.date-picker {
+.screenings-filters__date-picker {
   color: $color-text-main;
   border: 2px solid $color-text-main;
   border-radius: 50%;

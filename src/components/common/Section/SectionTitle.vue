@@ -59,6 +59,4 @@ export default defineComponent({
       font-size: 48px;
     }
 }
-
-
 </style>
