@@ -18,11 +18,11 @@ export default defineComponent({
     WelcomeSection,
     MoviesSummary,
     ScreeningsSection,
-},
-   data() {
+  },
+  data() {
     return {
-        movies: [],
-        filteredMovies: [],
+      movies: [],
+      filteredMovies: [],
     };
   },
   async mounted() {
@@ -33,7 +33,7 @@ export default defineComponent({
       console.error(error)
     }
     for (let i=0; i<3; i++) {
-       this.filteredMovies.push(this.movies[i])
+      this.filteredMovies.push(this.movies[i])
     }
   }
 });
