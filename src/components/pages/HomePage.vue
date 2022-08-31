@@ -40,7 +40,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="landing-page">
+  <div class="home-page">
     <TheHeader>
       <TopNavbar />
       <SignSection />
@@ -54,7 +54,7 @@ export default defineComponent({
 </template>
 
 <style lang="scss" scoped>
-.landing-page {
+.home-page {
   max-width: 1440px;
   width: 100%;
   display: flex;
