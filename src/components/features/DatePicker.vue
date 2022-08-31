@@ -13,7 +13,10 @@ export default defineComponent({
 </script>
 
 <template>
-  <Datepicker v-model="date" class="date-picker"></Datepicker>
+  <Datepicker
+    v-model="date"
+    class="date-picker"
+  />
 </template>
 
 <style lang="scss" scoped>

@@ -8,8 +8,20 @@ export default defineComponent({
 
 <template>
   <div class="sign-section">
-    <AppButton :to="{ name: 'Home' }" size="medium" colorScheme="no-border">Register</AppButton>
-    <AppButton :to="{ name: 'Home' }" size="medium" colorScheme="main">Log in</AppButton>
+    <AppButton
+      :to="{ name: 'Home' }"
+      size="medium"
+      color-scheme="no-border"
+    >
+    Register
+    </AppButton>
+    <AppButton
+      :to="{ name: 'Home' }"
+      size="medium"
+      color-scheme="main"
+    >
+    Log in
+    </AppButton>
   </div>
 </template>
 

@@ -5,7 +5,6 @@ import TopNavbar from '@/components/features/Header/TopNavbar.vue';
 import SignSection from '@/components/features/Header/SignSection.vue';
 import TheContainer from '@/components/common/TheContainer.vue';
 import WelcomeSection from '@/components/views/WelcomeSection.vue';
-import MovieCard from '@/components/views/MovieCard.vue';
 import MoviesSummary from '@/components/views/MoviesSummary.vue';
 import ScreeningsSection from '@/components/views/ScreeningsSection.vue';
 import { getAllMovies } from '@/api/service/movies';
@@ -17,7 +16,6 @@ export default defineComponent({
     SignSection,
     TheContainer,
     WelcomeSection,
-    MovieCard,
     MoviesSummary,
     ScreeningsSection,
 },
@@ -28,8 +26,12 @@ export default defineComponent({
     };
   },
   async mounted() {
-    const response = await getAllMovies();
-    this.movies = response.data;
+    try {
+      const response = await getAllMovies();
+      this.movies = response.data;
+    } catch(error) {
+      console.error(error)
+    }
     for (let i=0; i<3; i++) {
        this.filteredMovies.push(this.movies[i])
     }
@@ -38,7 +40,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="landing-page">
+  <div class="home-page">
     <TheHeader>
       <TopNavbar />
       <SignSection />
@@ -52,7 +54,7 @@ export default defineComponent({
 </template>
 
 <style lang="scss" scoped>
-.landing-page {
+.home-page {
   max-width: 1440px;
   width: 100%;
   display: flex;

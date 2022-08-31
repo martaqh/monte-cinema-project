@@ -1,6 +1,6 @@
 <script>
 import { defineComponent } from 'vue';
-import MovieCard from './MovieCard.vue';
+import MovieCard from '@/components/views/MovieCard.vue'
 
 export default defineComponent({
   components: { MovieCard },
@@ -14,17 +14,19 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="movies-summary-header">
+  <div class="movies-summary">
+    <div class="movies-summary__header">
       <p>soon <span>in the cinema</span></p>
       <a>see all</a>
     </div>
-    <div class="movie-cards-wrapper">
+    <div class="movie-cards__wrapper">
       <MovieCard v-for="movie of movies" :key="movie.id" :movie="movie" />
     </div>
+  </div>
 </template>
 
 <style lang="scss" scoped>
-.movies-summary-header {
+.movies-summary__header {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -51,7 +53,7 @@ export default defineComponent({
     }
   }
 }
-.movie-cards-wrapper {
+.movie-cards__wrapper {
   width: 100%;
   display: flex;
   flex-direction: row;

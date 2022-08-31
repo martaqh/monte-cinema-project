@@ -23,7 +23,16 @@ export default defineComponent({
     }
   },
   computed: {
-    nextDaysNames() {
+    todaysDate() {
+      return new Date().toLocaleDateString('en-GB');
+    },
+    todaysDayName() {
+      return new Date().toLocaleString('en-US', {weekday: 'long'});
+    },
+    sectionSubtitle() {
+      return `${this.todaysDayName} ${this.todaysDate}`;
+    },
+    nextDayNames() {
       const dayDigit = new Date().getDay() + 1;
       const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
       let nextDays = ['Today'];
@@ -62,40 +71,41 @@ export default defineComponent({
 </script>
 
 <template>
-    <SectionTitle>Screenings:</SectionTitle>
-    <div class="section-subtitle">
-      <SectionSubtitle>{{ activeDayName }} {{ formattedActiveDayDate }}</SectionSubtitle>
-    </div>
-    <div class="filters__wrapper">
-      <div class="filters-date">
-        <AppLabel>Day</AppLabel>
-        <div class="days">
-          <AppButton
-            :isActive="activeDay === nextDay"
-            size="large"
-            :colorScheme="activeDay === nextDay ? 'dark' : 'dark-reverse'"
-            v-for="nextDay in nextDaysNames"
-            class="day-button"
-            :key="nextDay"
-            @clicked="activeDay = nextDay"
-          >
-          {{ nextDay }}
-          </AppButton>
-          <div class="date-picker">
-             <img src="@/assets/CalendarIcon.svg" alt="calendar icon" />
+  <div class="screenings-filters">
+      <SectionTitle>Screenings:</SectionTitle>
+      <div class="screenings-filters__section-subtitle">
+        <SectionSubtitle>{{ sectionSubtitle }}</SectionSubtitle>
+      </div>
+      <div class="screenings-filters__wrapper">
+        <div class="screenings-filters__by-date">
+          <AppLabel>Day</AppLabel>
+          <div class="screenings-filters__days-buttons">
+            <AppButton
+              v-for="nextDay in nextDayNames"
+              :is-active="activeDay === nextDay"
+              size="large"
+              :color-scheme="activeDay === nextDay ? 'dark' : 'dark-reverse'"
+              class="screenings-filters__day-button"
+              :key="nextDay"
+              @clicked="activeDay = nextDay"
+            >
+            {{ nextDay }}
+            </AppButton>
+            <div class="screenings-filters__date-picker">
+                <img src="@/assets/CalendarIcon.svg" alt="calendar icon" />
+            </div>
           </div>
         </div>
+        <div class="screenings-filters__by-movie">
+          <AppLabel>Movie</AppLabel>
+          <AppSelect />
+        </div>
       </div>
-      <div class="filters-movie">
-        <AppLabel>Movie</AppLabel>
-        <AppSelect :options="moviesTitles" v-model="optionSelected"/>
-      </div>
-    </div>
-    <ScreeningsList :movies="movies" :daySelected="activeDayDate" :titleSelected="optionSelected" />
+  </div>
 </template>
 
 <style lang="scss" scoped>
-.section-subtitle {
+.screenings-filters__section-subtitle {
   display: flex;
   justify-content: flex-start;
 
@@ -103,7 +113,7 @@ export default defineComponent({
     flex-direction: column;
   }
 }
-.filters__wrapper {
+.screenings-filters__wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -116,10 +126,10 @@ export default defineComponent({
     flex-direction: column;
   }
 }
-.filters-date {
+.screenings-filters__by-date {
   width: 100%;
 }
-.filters-movie {
+.screenings-filters__by-movie {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -134,10 +144,10 @@ export default defineComponent({
     margin-left: 0px;
   }
 }
-.days {
+.screenings-filters__days-buttons {
   display: flex;
 }
-.day-button {
+.screenings-filters__day-button {
   margin-right: 8px;
 
   &:hover {
@@ -152,7 +162,7 @@ export default defineComponent({
     }
   }
 }
-.date-picker {
+.screenings-filters__date-picker {
   color: $color-text-main;
   border: 2px solid $color-text-main;
   border-radius: 50%;

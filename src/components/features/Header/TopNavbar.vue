@@ -7,7 +7,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="top-nav-bar">
+  <div class="top-navbar">
     <TopNavbarTab>Movies</TopNavbarTab>
     <TopNavbarTab :to="{name: 'Screenings'}">Screenings</TopNavbarTab>
     <TopNavbarTab>Contact us</TopNavbarTab>
@@ -15,7 +15,7 @@ export default defineComponent({
 </template>
 
 <style lang="scss" scoped>
-.top-nav-bar {
+.top-navbar {
   display: flex;
   width: 424px;
   height: 100%;
