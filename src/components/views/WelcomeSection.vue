@@ -15,7 +15,7 @@ export default defineComponent({
         <SectionTitle size="large">
             Welcome to the best cinema in Monterail
         </SectionTitle>
-        <p class="welcome__message--text">
+        <p class="welcome__main-text">
             Best movies, best experiences, best people.
             And all that doesn’t exist. Yikes.
         </p>
@@ -55,7 +55,7 @@ export default defineComponent({
   width: 66%;
   padding: 80px;
 
-  .welcome__message--text {
+  .welcome__main-text {
     font-family: 'Roboto Mono';
     font-style: normal;
     font-weight: 400;
