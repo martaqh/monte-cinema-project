@@ -72,16 +72,17 @@ export default defineComponent({
 <template>
   <div class="screenings-card" v-if="screenings.length > 0">
     <MoviePoster :src="movieData.poster_url" />
-      <div class="movie-info">
+      <div class="screenings-card__movie-info">
         <MovieTitle>{{ movieData.title }}</MovieTitle>
-        <div class="movie-category-and-length">
+        <div class="screenings-card__category-and-length">
           <AppTag>{{ movieData.genre.name }}</AppTag>
           <MovieLength :lengthInMinutes="movieData.length" />
         </div>
-        <div class="screening-times">
+        <div class="screenings-card__screenings-times">
           <AppButton
-            colorScheme="main-reverse"
             v-for="screening of screenings"
+            color-scheme="main-reverse"
+            :key="screening.id"
           >
           {{ getScreeningTime(screening) }}
           </AppButton>
@@ -97,18 +98,18 @@ export default defineComponent({
   padding: 40px;
   margin-bottom: 40px;
 }
-.movie-info {
+.screenings-card__movie-info {
   display: flex;
   flex-direction: column;
   padding-left: 40px;
   width: 100%;
 }
-.movie-category-and-length {
+.screenings-card__category-and-length {
   display: flex;
   margin-bottom: 32px;
   align-items: baseline;
 }
-.screening-times {
+.screenings-card__screenings-times {
   display: flex;
   flex-wrap: wrap;
 
