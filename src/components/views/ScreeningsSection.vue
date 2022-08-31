@@ -5,7 +5,7 @@ import SectionSubtitle from '@/components/common/Section/SectionSubtitle.vue';
 import AppLabel from '@/components/common/App/AppLabel.vue';
 import AppButton from '@/components/common/App/AppButton.vue';
 import AppSelect from '@/components/common/App/AppSelect.vue';
-import ScreeningsList from './ScreeningsList.vue';
+import ScreeningsList from '@/components/views/ScreeningsList.vue';
 
 export default defineComponent({
   components: { SectionTitle, SectionSubtitle, AppLabel, AppButton, AppSelect, ScreeningsList },
@@ -71,7 +71,8 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="screenings-filters">
+  <div class="screenings">
+    <div class="screenings-filters">
       <SectionTitle>Screenings:</SectionTitle>
       <div class="screenings-filters__section-subtitle">
         <SectionSubtitle>{{ sectionSubtitle }}</SectionSubtitle>
@@ -98,9 +99,11 @@ export default defineComponent({
         </div>
         <div class="screenings-filters__by-movie">
           <AppLabel>Movie</AppLabel>
-          <AppSelect />
+          <AppSelect :options="moviesTitles" v-model="optionSelected" />
         </div>
       </div>
+  </div>
+  <ScreeningsList :movies="movies" :daySelected="activeDayDate" :titleSelected="optionSelected" />
   </div>
 </template>
 

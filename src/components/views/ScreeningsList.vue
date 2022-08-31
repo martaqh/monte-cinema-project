@@ -1,6 +1,6 @@
 <script>
 import { defineComponent } from 'vue';
-import ScreeningsCard from './ScreeningsCard.vue';
+import ScreeningsCard from '@/components/views/ScreeningsCard.vue';
 export default defineComponent({
   components: { ScreeningsCard },
   props: {
@@ -9,8 +9,8 @@ export default defineComponent({
       required: true,
     },
     daySelected: {
-        type: Date,
-        default: new Date().toISOString().slice(0, 10)
+      type: String,
+      default: new Date().toISOString().slice(0, 10)
     },
     titleSelected: {
       type: String,
@@ -27,6 +27,7 @@ export default defineComponent({
       :movieData="movie"
       :daySelected="daySelected"
       :titleSelected="titleSelected"
+      :key="movie.id"
     />
   </div>
 </template>
