@@ -29,8 +29,8 @@ export default defineComponent({
     try {
       const response = await getAllMovies();
       this.movies = response.data;
-    } catch {
-      this.$router.push({ name: 'NoMatch' });
+    } catch(error) {
+      console.error(error)
     }
     for (let i=0; i<3; i++) {
       this.filteredMovies.push(this.movies[i])
