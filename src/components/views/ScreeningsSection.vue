@@ -32,7 +32,7 @@ export default defineComponent({
     sectionSubtitle() {
       return `${this.todaysDayName} ${this.todaysDate}`;
     },
-    nextDayNames() {
+    nextDaysNames() {
       const dayDigit = new Date().getDay() + 1;
       const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
       let nextDays = ['Today'];
@@ -82,7 +82,7 @@ export default defineComponent({
           <AppLabel>Day</AppLabel>
           <div class="screenings-filters__days-buttons">
             <AppButton
-              v-for="nextDay in nextDayNames"
+              v-for="nextDay in nextDaysNames"
               :is-active="activeDay === nextDay"
               size="large"
               :color-scheme="activeDay === nextDay ? 'dark' : 'dark-reverse'"

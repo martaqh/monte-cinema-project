@@ -15,7 +15,7 @@ export default defineComponent({
       required: true,
     },
     daySelected: {
-      type: String,
+      type: Date,
       default: new Date().toISOString().slice(0, 10)
     },
     titleSelected: {
