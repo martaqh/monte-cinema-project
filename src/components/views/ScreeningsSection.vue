@@ -23,15 +23,6 @@ export default defineComponent({
     }
   },
   computed: {
-    todaysDate() {
-      return new Date().toLocaleDateString('en-GB');
-    },
-    todaysDayName() {
-      return new Date().toLocaleString('en-US', {weekday: 'long'});
-    },
-    sectionSubtitle() {
-      return `${this.todaysDayName} ${this.todaysDate}`;
-    },
     nextDaysNames() {
       const dayDigit = new Date().getDay() + 1;
       const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -58,6 +49,9 @@ export default defineComponent({
     },
     activeDayName() {
       return this.activeDayDate.toLocaleString('en-GB', {weekday: 'long'});
+    },
+    sectionSubtitle() {
+      return `${this.activeDayName} ${this.formattedActiveDayDate}`;
     },
     moviesTitles() {
       const movieTitles = []
