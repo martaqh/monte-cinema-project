@@ -7,6 +7,11 @@ const routes = [
         component: () => import('@/components/pages/LandingPage.vue'),
     },
     {
+      path: '/screenings',
+      name: 'Screenings',
+      component: () => import('@/components/pages/ScreeningsPage.vue'),
+  },
+    {
         path: '/:path*',
         redirect: '/no-match'
     },
