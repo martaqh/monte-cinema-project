@@ -51,8 +51,12 @@ export default defineComponent({
       return screening.datetime.substring(11, 16)
     },
     async getScreenings() {
-      const response = await getScreeningsByMovieAndDate(this.selectedMovieId, this.daySelected);
-      this.screenings = response.data;
+      try {
+        const response = await getScreeningsByMovieAndDate(this.selectedMovieId, this.daySelected);
+        this.screenings = response.data;
+      } catch (error) {
+        console.error(error);
+      }
     },
     getMovieIdByTitle(movieObject, title) {
       if (Object.values(movieObject).includes(title)) {
