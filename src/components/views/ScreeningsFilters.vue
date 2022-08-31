@@ -52,10 +52,10 @@ export default defineComponent({
           <AppLabel>Day</AppLabel>
           <div class="screenings-filters__days-buttons">
             <AppButton
+              v-for="nextDay in nextDayNames"
               :is-active="activeDay === nextDay"
               size="large"
               :color-scheme="activeDay === nextDay ? 'dark' : 'dark-reverse'"
-              v-for="nextDay in nextDayNames"
               class="screenings-filters__day-button"
               :key="nextDay"
               @clicked="activeDay = nextDay"
