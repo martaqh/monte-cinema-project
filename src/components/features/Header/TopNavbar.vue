@@ -9,7 +9,7 @@ export default defineComponent({
 <template>
   <div class="top-nav-bar">
     <TopNavbarTab>Movies</TopNavbarTab>
-    <TopNavbarTab>Screenings</TopNavbarTab>
+    <TopNavbarTab :to="{name: 'Screenings'}">Screenings</TopNavbarTab>
     <TopNavbarTab>Contact us</TopNavbarTab>
   </div>
 </template>
