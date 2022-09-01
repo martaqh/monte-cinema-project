@@ -1,29 +1,25 @@
 <script>
 import { defineComponent } from 'vue';
 import ScreeningsSection from '@/components/views/ScreeningsSection.vue';
-import TheHeader from '@/components/views/TheHeader.vue';
-import TopNavbar from '@/components/features/Header/TopNavbar.vue';
-import SignSection from '@/components/features/Header/SignSection.vue';
 import TheContainer from '@/components/common/TheContainer.vue';
-import ScreeningsCard from '../views/ScreeningsCard.vue';
-import { mapActions, mapState } from "pinia";
+import { mapActions } from "pinia";
 import movies from '@/stores/moviesStore';
+import BreadCrumbs from '@/components/common/BreadCrumbs.vue';
 
 export default defineComponent({
-  components: { ScreeningsSection, TheHeader, TopNavbar, SignSection, TheContainer, ScreeningsCard },
+  components: { ScreeningsSection, TheContainer, BreadCrumbs },
   methods: {
-  ...mapActions(movies, ["getMoviesToState"]),
+    ...mapActions(movies, ["getMoviesToState"]),
   },
   beforeMount() {
-   this.getMoviesToState()
+    this.getMoviesToState()
   }
 });
-
 </script>
 
 <template>
-
   <TheContainer>
+    <BreadCrumbs>Screenings</BreadCrumbs>
     <ScreeningsSection />
   </TheContainer>
 </template>
