@@ -97,7 +97,7 @@ export default defineComponent({
         </div>
       </div>
   </div>
-  <ScreeningsList :movies="movies" :daySelected="activeDayDate" :titleSelected="optionSelected" />
+  <ScreeningsList :movies="movies" :daySelected="activeDayDate" :movieSelected="optionSelected" />
   </div>
 </template>
 

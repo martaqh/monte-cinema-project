@@ -26,25 +26,12 @@ export default defineComponent({
   data() {
     return {
       screenings: [],
-      selectedMovieId: this.movieData.id,
     }
   },
   watch: {
-    daySelected(newDay, previousDay) {
-      if (newDay !== previousDay) {
-        this.getScreenings()
-      }
+    daySelected() {
+      this.getScreenings()
     },
-    titleSelected(newOption, previousOption) {
-      if (newOption !== previousOption) {
-        this.selectedMovieId = this.getMovieIdByTitle(this.movieData, newOption)
-        this.getScreenings()
-      }
-      if (newOption === 'All movies') {
-        this.selectedMovieId = this.movieData.id
-        this.getScreenings()
-      }
-    }
   },
   methods: {
     getScreeningTime(screening) {
@@ -52,23 +39,19 @@ export default defineComponent({
     },
     async getScreenings() {
       try {
-        const response = await getScreeningsByMovieAndDate(this.selectedMovieId, this.daySelected);
+        const response = await getScreeningsByMovieAndDate(this.movieData.id, this.daySelected);
         this.screenings = response.data;
       } catch(error) {
         console.error(error)
       }
     },
-    getMovieIdByTitle(movieObject, title) {
-      if (Object.values(movieObject).includes(title)) {
-        return movieObject.id
-      }
-    }
   },
   mounted() {
     this.getScreenings()
   }
 })
 </script>
+
 <template>
   <div class="screenings-card" v-if="screenings.length > 0">
     <MoviePoster :src="movieData.poster_url" />

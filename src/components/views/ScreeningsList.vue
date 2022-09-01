@@ -1,6 +1,7 @@
 <script>
 import { defineComponent } from 'vue';
 import ScreeningsCard from '@/components/views/ScreeningsCard.vue';
+
 export default defineComponent({
   components: { ScreeningsCard },
   props: {
@@ -12,9 +13,23 @@ export default defineComponent({
       type: Date,
       default: new Date().toISOString().slice(0, 10)
     },
-    titleSelected: {
+    movieSelected: {
       type: String,
-      default: '',
+      default: 'All movies',
+    }
+  },
+  data() {
+    return {
+      screenings: []
+    }
+  },
+  computed: {
+    filteredMovies() {
+      if (this.movieSelected === 'All movies') {
+        return this.movies
+      } else {
+        return this.movies.filter(movie => this.movieSelected === movie.title)
+      }
     }
   }
 })
@@ -23,11 +38,10 @@ export default defineComponent({
 <template>
   <div class="screenings-list">
     <ScreeningsCard
-      v-for="movie in movies"
+      v-for="movie in filteredMovies"
       :movieData="movie"
-      :daySelected="daySelected"
-      :titleSelected="titleSelected"
       :key="movie.id"
+      :daySelected="daySelected"
     />
   </div>
 </template>
