@@ -10,7 +10,12 @@ export default defineComponent({
 <template>
   <div class="not-found">
     <h1>Ups, we haven't found a page that you were looking for.</h1>
-    <AppButton to="/">Go back to home page</AppButton>
+    <AppButton
+      :to="{ name: 'Home' }"
+      color-scheme="main"
+    >
+    Go back to home page
+    </AppButton>
   </div>
 </template>
 

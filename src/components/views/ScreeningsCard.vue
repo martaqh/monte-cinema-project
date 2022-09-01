@@ -80,8 +80,9 @@ export default defineComponent({
         </div>
         <div class="screening-times">
           <AppButton
-            colorScheme="main-reverse"
             v-for="screening of screenings"
+            colorScheme="main-reverse"
+            :key="screening.id"
           >
           {{ getScreeningTime(screening) }}
           </AppButton>

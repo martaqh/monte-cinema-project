@@ -1,7 +1,5 @@
 /* eslint-env node */
 
-require("@rushstack/eslint-patch/modern-module-resolution");
-
 module.exports = {
   "root": true,
   "extends": [
@@ -24,8 +22,8 @@ module.exports = {
   ],
   "rules": {
     "indent": [
-        "error",
-        2
+      "error",
+      2
     ],
   }
 }
