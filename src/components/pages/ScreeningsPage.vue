@@ -22,10 +22,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <TheHeader>
-    <TopNavbar />
-    <SignSection />
-  </TheHeader>
+
   <TheContainer>
     <ScreeningsSection />
   </TheContainer>

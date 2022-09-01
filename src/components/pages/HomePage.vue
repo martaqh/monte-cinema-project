@@ -35,10 +35,6 @@ export default defineComponent({
 
 <template>
   <div class="home-page">
-    <TheHeader>
-      <TopNavbar />
-      <SignSection />
-    </TheHeader>
     <WelcomeSection />
     <TheContainer>
       <MoviesSummary />
