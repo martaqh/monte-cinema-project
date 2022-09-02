@@ -1,13 +1,12 @@
 <script>
 import { defineComponent } from 'vue';
 import ScreeningsSection from '@/components/views/ScreeningsSection.vue';
-import TheContainer from '@/components/common/TheContainer.vue';
 import { mapActions } from "pinia";
 import movies from '@/stores/moviesStore';
 import BreadCrumbs from '@/components/common/BreadCrumbs.vue';
 
 export default defineComponent({
-  components: { ScreeningsSection, TheContainer, BreadCrumbs },
+  components: { ScreeningsSection, BreadCrumbs },
   methods: {
     ...mapActions(movies, ["getMoviesToState"]),
   },
@@ -18,8 +17,8 @@ export default defineComponent({
 </script>
 
 <template>
-  <TheContainer>
+  <div class="screenings-page">
     <BreadCrumbs>Screenings</BreadCrumbs>
     <ScreeningsSection />
-  </TheContainer>
+  </div>
 </template>

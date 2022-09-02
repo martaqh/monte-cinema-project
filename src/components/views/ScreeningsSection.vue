@@ -84,7 +84,7 @@ export default defineComponent({
             {{ nextDay }}
             </AppButton>
             <div class="screenings-filters__date-picker">
-                <img src="@/assets/CalendarIcon.svg" alt="calendar icon" />
+              <img src="@/assets/CalendarIcon.svg" alt="calendar icon" />
             </div>
           </div>
         </div>

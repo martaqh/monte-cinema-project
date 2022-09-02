@@ -23,14 +23,10 @@
 <style lang="scss" scoped>
 .header {
   height: 112px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 48px;
-
-  @include mobile {
-    padding: 0 24px;
-  }
 }
 .header__hamburger-menu {
   display: none;
