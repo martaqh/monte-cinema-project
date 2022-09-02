@@ -4,26 +4,41 @@ export default defineComponent({
   props: {
     options: {
       type: Array,
+    },
+    optionDefault: {
+      type: String,
+      required: true,
+    },
+    labelText: {
+      type: String,
+      required: true,
     }
   },
   data() {
     return {
-      optionSelected: 'All movies',
-      optionDefault: 'All movies'
+      optionSelected: '',
+      label: this.labelText
     }
   }
 });
 </script>
 
 <template>
-  <select class="select" v-model="optionSelected">
-    <option selected>{{optionDefault}}</option>
-    <option v-for="option of options">{{ option }}</option>
-  </select>
+  <div class="select__wrapper">
+    <label class="select__label">{{label}}</label>
+    <select class="select" v-model="optionSelected">
+      <option selected>{{ optionDefault }}</option>
+      <option v-for="option of options" :key="option" :placeholder="optionDefault">{{ option }}</option>
+    </select>
+  </div>
 </template>
 
 <style lang="scss" scoped>
+.select__wrapper {
+  margin-top: 40px;
+}
 .select {
+
   padding: 17px 24px;
   gap: 10px;
   background: $color-field-background;
@@ -32,5 +47,17 @@ export default defineComponent({
   height: fit-content;
   font-size: 18px;
   width: 100%;
+}
+
+.select__label {
+    display: block;
+    font-family: $font-mono;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    text-transform: uppercase;
+    color: $color-text-label;
+    margin-bottom: 12px;
+    width: fit-content;
 }
 </style>

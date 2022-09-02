@@ -89,12 +89,20 @@ export default defineComponent({
           </div>
         </div>
         <div class="screenings-filters__by-movie">
-          <AppLabel>Movie</AppLabel>
-          <AppSelect :options="moviesTitles" v-model="optionSelected" />
+          <AppSelect
+            :options="moviesTitles"
+            v-model="optionSelected"
+            option-default="All movies"
+            label-text="movie"
+        />
         </div>
       </div>
     </div>
-  <ScreeningsList :movies="movies" :daySelected="activeDayDate" :titleSelected="optionSelected" />
+  <ScreeningsList
+    :movies="movies"
+    :daySelected="activeDayDate"
+    :titleSelected="optionSelected"
+  />
   </div>
 
 </template>
@@ -111,8 +119,8 @@ export default defineComponent({
 .screenings-filters__wrapper {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 34px;
+  align-items: baseline;
+  margin-bottom: 64px;
 
   @include tablet {
     flex-direction: column;
