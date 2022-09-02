@@ -16,22 +16,20 @@ export default defineComponent({
     movieSelected: {
       type: String,
       default: 'All movies',
-    }
-  },
-  data() {
-    return {
-      screenings: []
+    },
+    screenings: {
+      type: Object,
+      required: true,
     }
   },
   computed: {
     filteredMovies() {
-      if (this.movieSelected === 'All movies') {
-        return this.movies
-      } else {
+      if (this.movieSelected !== 'All movies') {
         return this.movies.filter(movie => this.movieSelected === movie.title)
       }
-    }
-  }
+      return this.movies
+    },
+  },
 })
 </script>
 
@@ -41,7 +39,7 @@ export default defineComponent({
       v-for="movie in filteredMovies"
       :movieData="movie"
       :key="movie.id"
-      :daySelected="daySelected"
+      :movieScreenings="this.screenings.filter(screening => screening.movie === movie.id)"
     />
   </div>
 </template>

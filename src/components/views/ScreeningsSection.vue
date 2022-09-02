@@ -6,6 +6,7 @@ import AppLabel from '@/components/common/App/AppLabel.vue';
 import AppButton from '@/components/common/App/AppButton.vue';
 import AppSelect from '@/components/common/App/AppSelect.vue';
 import ScreeningsList from '@/components/views/ScreeningsList.vue';
+import { getScreeningsByDateAndMovie } from '@/api/service/Screenings';
 
 export default defineComponent({
   components: { SectionTitle, SectionSubtitle, AppLabel, AppButton, AppSelect, ScreeningsList },
@@ -17,6 +18,7 @@ export default defineComponent({
   },
   data() {
     return {
+      screenings: [],
       isActive: false,
       activeDay: 'Today',
       optionSelected: 'All movies'
@@ -54,13 +56,27 @@ export default defineComponent({
       return `${this.activeDayName} ${this.formattedActiveDayDate}`;
     },
     moviesTitles() {
-      const movieTitles = []
-      for (let movie of this.movies) {
-        movieTitles.push(movie.title)
-      }
-      return movieTitles
+      return this.movies.map(movie => movie.title);
+    },
+    screeningsFilteredByDate() {
+      return this.screenings.filter
+      (screening => screening.datetime.slice(0,10) === this.activeDayDate.toISOString().slice(0, 10))
     }
   },
+  methods: {
+    async getScreenings() {
+      try {
+        const response = await getScreeningsByDateAndMovie();
+        this.screenings = response.data;
+        console.log(this.screenings)
+      } catch(error) {
+        console.error(error)
+      }
+    },
+  },
+  mounted() {
+    this.getScreenings()
+  }
 });
 </script>
 
@@ -97,7 +113,11 @@ export default defineComponent({
         </div>
       </div>
   </div>
-  <ScreeningsList :movies="movies" :daySelected="activeDayDate" :movieSelected="optionSelected" />
+  <ScreeningsList
+    :movies="movies"
+    :screenings="screeningsFilteredByDate"
+    :daySelected="activeDayDate"
+    :movieSelected="optionSelected" />
   </div>
 </template>
 

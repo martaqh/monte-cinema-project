@@ -5,7 +5,6 @@ import MovieLength from '@/components/common/Movie/MovieLength.vue';
 import AppButton from '@/components/common/App/AppButton.vue';
 import MovieTitle from '@/components/common/Movie/MovieTitle.vue';
 import AppTag from '@/components/common/App/AppTag.vue';
-import { getScreeningsByMovieAndDate } from '@/api/service/Screenings';
 
 export default defineComponent({
   components: { MoviePoster, MovieLength, AppButton, MovieTitle, AppTag },
@@ -14,46 +13,25 @@ export default defineComponent({
       type: Object,
       required: true,
     },
-    daySelected: {
-      type: Date,
-      default: new Date().toISOString().slice(0, 10)
+    movieScreenings: {
+      type: Object,
+      required: true,
     },
     titleSelected: {
       type: String,
       default: 'All movies',
     }
   },
-  data() {
-    return {
-      screenings: [],
-    }
-  },
-  watch: {
-    daySelected() {
-      this.getScreenings()
-    },
-  },
   methods: {
     getScreeningTime(screening) {
       return screening.datetime.substring(11, 16)
     },
-    async getScreenings() {
-      try {
-        const response = await getScreeningsByMovieAndDate(this.movieData.id, this.daySelected);
-        this.screenings = response.data;
-      } catch(error) {
-        console.error(error)
-      }
-    },
-  },
-  mounted() {
-    this.getScreenings()
   }
 })
 </script>
 
 <template>
-  <div class="screenings-card" v-if="screenings.length > 0">
+  <div class="screenings-card" v-if="movieScreenings.length > 0">
     <MoviePoster :src="movieData.poster_url" />
       <div class="screenings-card__movie-info">
         <MovieTitle>{{ movieData.title }}</MovieTitle>
@@ -63,7 +41,7 @@ export default defineComponent({
         </div>
         <div class="screenings-card__screenings-times">
           <AppButton
-            v-for="screening of screenings"
+            v-for="screening of movieScreenings"
             color-scheme="main-reverse"
             :key="screening.id"
           >
