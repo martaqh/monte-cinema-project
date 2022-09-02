@@ -34,13 +34,16 @@ export default defineComponent({
   justify-content: space-between;
   box-shadow: $shadow-card;
   padding: 40px;
-  width: 421px;
+  max-width: 421px;
   border-radius: $radius-card;
-  margin-right: 40px;
+
+  @include tablet {
+    max-width: 444px;
+  }
 
   @include mobile {
       margin: 12px;
-      width: 80%;
+      max-width: 327px;
   }
 }
 </style>

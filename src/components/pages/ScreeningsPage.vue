@@ -1,18 +1,16 @@
 <script>
 import { defineComponent } from 'vue';
 import ScreeningsSection from '@/components/views/ScreeningsSection.vue';
-import { mapActions } from "pinia";
+import { mapState } from "pinia";
 import movies from '@/stores/moviesStore';
 import BreadCrumbs from '@/components/common/BreadCrumbs.vue';
 
 export default defineComponent({
   components: { ScreeningsSection, BreadCrumbs },
-  methods: {
-    ...mapActions(movies, ["getMoviesToState"]),
+  computed: {
+    ...mapState(movies, ["movies"]),
   },
-  beforeMount() {
-    this.getMoviesToState()
-  }
+
 });
 </script>
 

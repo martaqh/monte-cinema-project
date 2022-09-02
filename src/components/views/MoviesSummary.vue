@@ -61,10 +61,9 @@ export default defineComponent({
 }
 .movie-cards__wrapper {
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex: 1;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
   margin: 64px 0;
 
   :nth-child(2) {

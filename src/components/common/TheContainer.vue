@@ -7,7 +7,7 @@
 <style lang="scss" scoped>
 .container {
   max-width: 1440px;
-  padding: 0 48px;
+  padding: 24px;
   margin: 0 auto;
 
   @include mobile {

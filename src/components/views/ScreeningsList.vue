@@ -9,8 +9,8 @@ export default defineComponent({
       required: true,
     },
     daySelected: {
-        type: Date,
-        default: new Date().toISOString().slice(0, 10)
+      type: Date,
+      default: new Date().toISOString().slice(0, 10)
     },
     titleSelected: {
       type: String,
@@ -27,6 +27,7 @@ export default defineComponent({
       :movieData="movie"
       :daySelected="daySelected"
       :titleSelected="titleSelected"
+      :key="movie.id"
     />
   </div>
 </template>
