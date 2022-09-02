@@ -13,6 +13,7 @@ export default defineComponent({
       color-scheme="dark-reverse"
       arrow="left"
       class="bread-crumbs__button"
+      @click="this.$router.go(-1)"
     >
     Back</AppButton>
     <slot></slot>

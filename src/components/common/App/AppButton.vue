@@ -84,9 +84,9 @@ export default defineComponent({
     @click="this.$emit('clicked')"
   >
     <img
+      v-if="arrow === 'left'"
       src="@/assets/ArrowLeft.svg"
       alt="arrow left"
-      v-if="arrow === 'left'"
       class="button-base__arrow--left"
     />
     <slot></slot>
