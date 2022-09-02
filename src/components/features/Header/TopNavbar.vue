@@ -4,7 +4,7 @@ export default defineComponent({
   data() {
     return {
       navbarTabs: [
-        {to: {name: 'Home'}, label: 'Movies'},
+        {to: {name: 'Movies'}, label: 'Movies'},
         {to: {name: 'Screenings'}, label: 'Screenings'},
         {to: {name: 'Home'}, label: 'Contact us'},
       ],
