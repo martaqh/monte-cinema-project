@@ -68,7 +68,6 @@ export default defineComponent({
       try {
         const response = await getScreeningsByDateAndMovie();
         this.screenings = response.data;
-        console.log(this.screenings)
       } catch(error) {
         console.error(error)
       }
