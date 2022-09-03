@@ -17,7 +17,6 @@ export default defineComponent({
   data() {
     return {
       optionSelected: '',
-      label: this.labelText
     }
   }
 });
@@ -25,7 +24,7 @@ export default defineComponent({
 
 <template>
   <div class="select__wrapper">
-    <label class="select__label">{{label}}</label>
+    <label class="select__label">{{labelText}}</label>
     <select class="select" v-model="optionSelected">
       <option selected>{{ optionDefault }}</option>
       <option v-for="option of options" :key="option" :placeholder="optionDefault">{{ option }}</option>
@@ -38,7 +37,6 @@ export default defineComponent({
   margin-top: 40px;
 }
 .select {
-
   padding: 17px 24px;
   gap: 10px;
   background: $color-field-background;
@@ -47,6 +45,7 @@ export default defineComponent({
   height: fit-content;
   font-size: 18px;
   width: 100%;
+  height: 56px;
 }
 
 .select__label {

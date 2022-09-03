@@ -13,7 +13,7 @@ export default defineComponent({
   },
   data() {
     return {
-      label: this.labelText
+      inputContent: '',
     }
   }
 
@@ -22,9 +22,10 @@ export default defineComponent({
 
 <template>
   <div class="input__wrapper">
-    <label class="input__label">{{label}}</label>
+    <label class="input__label">{{labelText}}</label>
     <input class="input"
       :placeholder="placeholder"
+      v-model="inputContent"
     />
   </div>
 
