@@ -16,7 +16,7 @@ export default defineComponent({
   },
   data() {
     return {
-      optionSelected: '',
+      optionSelected: this.optionDefault,
     }
   }
 });

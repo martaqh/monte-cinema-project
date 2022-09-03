@@ -18,11 +18,8 @@ export default defineComponent({
   computed: {
     ...mapState(movies, ["movies"]),
     moviesCategories() {
-      const movieCategories = []
-      for (let movie of this.movies) {
-        movieCategories.push(movie.genre)
-      }
-      return movieCategories
+      const allCategories = this.movies.map(movie => movie.genre.name)
+      return new Set(allCategories)
     }
   },
 });
