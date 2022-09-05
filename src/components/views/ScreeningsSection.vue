@@ -6,13 +6,15 @@ import AppLabel from '@/components/common/App/AppLabel.vue';
 import AppButton from '@/components/common/App/AppButton.vue';
 import AppSelect from '@/components/common/App/AppSelect.vue';
 import ScreeningsList from '@/components/views/ScreeningsList.vue';
-import { mapState } from "pinia";
+import { getScreeningsByDateAndMovie } from '@/api/service/Screenings';
+import { mapState } from 'pinia';
 import movies from '@/stores/moviesStore'
 
 export default defineComponent({
   components: { SectionTitle, SectionSubtitle, AppLabel, AppButton, AppSelect, ScreeningsList },
   data() {
     return {
+      screenings: [],
       isActive: false,
       activeDay: 'Today',
       optionSelected: 'All movies'
@@ -51,13 +53,26 @@ export default defineComponent({
       return `${this.activeDayName} ${this.formattedActiveDayDate}`;
     },
     moviesTitles() {
-      const movieTitles = []
-      for (let movie of this.movies) {
-        movieTitles.push(movie.title)
-      }
-      return movieTitles
+      return this.movies.map(movie => movie.title);
+    },
+    screeningsFilteredByDate() {
+      return this.screenings.filter
+      (screening => screening.datetime.slice(0,10) === this.activeDayDate.toISOString().slice(0, 10))
     }
   },
+  methods: {
+    async getScreenings() {
+      try {
+        const response = await getScreeningsByDateAndMovie();
+        this.screenings = response.data;
+      } catch(error) {
+        console.error(error)
+      }
+    },
+  },
+  mounted() {
+    this.getScreenings()
+  }
 });
 </script>
 
@@ -84,7 +99,7 @@ export default defineComponent({
             {{ nextDay }}
             </AppButton>
             <div class="screenings-filters__date-picker">
-              <img src="@/assets/CalendarIcon.svg" alt="calendar icon" />
+                <img src="@/assets/CalendarIcon.svg" alt="calendar icon" />
             </div>
           </div>
         </div>
@@ -93,10 +108,13 @@ export default defineComponent({
           <AppSelect :options="moviesTitles" v-model="optionSelected" />
         </div>
       </div>
-    </div>
-  <ScreeningsList :movies="movies" :daySelected="activeDayDate" :titleSelected="optionSelected" />
   </div>
-
+  <ScreeningsList
+    :movies="movies"
+    :screenings="screeningsFilteredByDate"
+    :daySelected="activeDayDate"
+    :movieSelected="optionSelected" />
+  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -167,3 +185,4 @@ export default defineComponent({
   margin-left: 12px;
 }
 </style>
+
