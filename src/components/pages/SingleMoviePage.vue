@@ -13,7 +13,6 @@ export default defineComponent({
     return {
       movieData: {},
       screenings: [],
-
     }
   },
   computed: {
@@ -23,14 +22,13 @@ export default defineComponent({
       return segments[2]
     },
     movieYear() {
-      return this.movieData.release_date
+      return this.movieData.release_date.substring(0,4)
     }
   },
   methods: {
     async getMovieDetails() {
       try {
         const response = await getMovieById(this.movieIdFromUrl)
-        console.log(response.data)
         this.movieData = response.data
 
       } catch(error) {
@@ -40,8 +38,6 @@ export default defineComponent({
   },
   mounted() {
     this.getMovieDetails()
-    console.log(this.movieData)
-    console.log(this.url)
   }
 })
 </script>
@@ -62,7 +58,7 @@ export default defineComponent({
       <div class="single-movie__details--text">
         <SectionTitle>{{ movieData.title}}</SectionTitle>
         <div class="single-movie__details--tags">
-          <AppTag>{{ movieData.genre}}</AppTag>
+          <AppTag>{{ movieData.genre.name }}</AppTag>
           <MovieLength :lengthInMinutes="movieData.length" :year="movieYear"/>
         </div>
         <p class="single-movie__details--description">{{movieData.description}}</p>
