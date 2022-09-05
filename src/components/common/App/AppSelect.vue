@@ -1,18 +1,23 @@
 <script>
 import { defineComponent } from 'vue';
 export default defineComponent({
+  props: {
+    options: {
+      type: Array,
+    }
+  },
   data() {
     return {
       optionSelected: 'All movies',
-      options: ['Predator', 'Star Wars', 'Harry Potter and the Goblet of Fire']
+      optionDefault: 'All movies'
     }
   }
 });
 </script>
 
 <template>
-  <select class="select">
-    <option selected>{{optionSelected}}</option>
+  <select class="select" v-model="optionSelected">
+    <option selected>{{optionDefault}}</option>
     <option v-for="option of options" :key="option">{{ option }}</option>
   </select>
 </template>

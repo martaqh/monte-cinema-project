@@ -1,2 +1,2 @@
 export const MOVIES = "movies";
-export const SEANCES = "seances";
+export const SCREENINGS = "seances";

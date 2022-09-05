@@ -1,7 +1,24 @@
+<script>
+import { defineComponent } from 'vue';
+export default defineComponent({
+  data() {
+    return {
+      isActive: false
+    }
+  },
+  computed: {
+    
+  }
+});
+</script>
+
 <template>
-  <div class="top-navbar-tab">
+  <a
+    class="top-navbar-tab"
+    @click="isActive = true"
+  >
     <slot></slot>
-  </div>
+  </a>
 </template>
 
 <style lang="scss" scoped>

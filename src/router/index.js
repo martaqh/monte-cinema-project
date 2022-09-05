@@ -7,25 +7,14 @@ const routes = [
     component: () => import('@/components/pages/HomePage.vue'),
   },
   {
-    path: '/screenings',
-    name: 'Screenings',
-    component: () => import('@/components/views/ScreeningsFilters.vue'),
-  },
-
-  {
-    path: '/movies',
-    name: 'Movies',
-    component: () => import ('@/components/views/MoviesSummary.vue'),
+    path: '/no-match',
+    name: 'NoMatch',
+    component: () => import ('@/components/pages/NoMatch.vue'),
   },
   {
     path: '/:path*',
     redirect: '/no-match'
   },
-  {
-    path: '/no-match',
-    name: 'NoMatch',
-    component: () => import ('@/components/pages/NoMatch.vue'),
-  }
 ];
 
 const router = createRouter({

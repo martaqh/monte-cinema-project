@@ -5,26 +5,27 @@ import SectionSubtitle from '@/components/common/Section/SectionSubtitle.vue';
 import AppLabel from '@/components/common/App/AppLabel.vue';
 import AppButton from '@/components/common/App/AppButton.vue';
 import AppSelect from '@/components/common/App/AppSelect.vue';
+import ScreeningsList from '@/components/views/ScreeningsList.vue';
+import { getScreeningsByDateAndMovie } from '@/api/service/Screenings';
 
 export default defineComponent({
-  components: { SectionTitle, SectionSubtitle, AppLabel, AppButton, AppSelect },
+  components: { SectionTitle, SectionSubtitle, AppLabel, AppButton, AppSelect, ScreeningsList },
+  props: {
+    movies: {
+      type: Array,
+      required: true,
+    }
+  },
   data() {
     return {
+      screenings: [],
       isActive: false,
       activeDay: 'Today',
+      optionSelected: 'All movies'
     }
   },
   computed: {
-    todaysDate() {
-      return new Date().toLocaleDateString('en-GB');
-    },
-    todaysDayName() {
-      return new Date().toLocaleString('en-US', {weekday: 'long'});
-    },
-    sectionSubtitle() {
-      return `${this.todaysDayName} ${this.todaysDate}`;
-    },
-    nextDayNames() {
+    nextDaysNames() {
       const dayDigit = new Date().getDay() + 1;
       const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
       let nextDays = ['Today'];
@@ -37,12 +38,50 @@ export default defineComponent({
       }
       return nextDays
     },
+    activeDayDate() {
+      const activeDayIndex = this.nextDaysNames.indexOf(this.activeDay)
+      const today = new Date()
+      let activeDay = new Date()
+      activeDay.setDate(today.getDate() + activeDayIndex)
+      return activeDay
+    },
+    formattedActiveDayDate() {
+      const date = this.activeDayDate.toISOString().slice(0, 10)
+      return date.split('-').reverse().join("/")
+    },
+    activeDayName() {
+      return this.activeDayDate.toLocaleString('en-GB', {weekday: 'long'});
+    },
+    sectionSubtitle() {
+      return `${this.activeDayName} ${this.formattedActiveDayDate}`;
+    },
+    moviesTitles() {
+      return this.movies.map(movie => movie.title);
+    },
+    screeningsFilteredByDate() {
+      return this.screenings.filter
+      (screening => screening.datetime.slice(0,10) === this.activeDayDate.toISOString().slice(0, 10))
+    }
   },
+  methods: {
+    async getScreenings() {
+      try {
+        const response = await getScreeningsByDateAndMovie();
+        this.screenings = response.data;
+      } catch(error) {
+        console.error(error)
+      }
+    },
+  },
+  mounted() {
+    this.getScreenings()
+  }
 });
 </script>
 
 <template>
-  <div class="screenings-filters">
+  <div class="screenings">
+    <div class="screenings-filters">
       <SectionTitle>Screenings:</SectionTitle>
       <div class="screenings-filters__section-subtitle">
         <SectionSubtitle>{{ sectionSubtitle }}</SectionSubtitle>
@@ -52,7 +91,7 @@ export default defineComponent({
           <AppLabel>Day</AppLabel>
           <div class="screenings-filters__days-buttons">
             <AppButton
-              v-for="nextDay in nextDayNames"
+              v-for="nextDay in nextDaysNames"
               :is-active="activeDay === nextDay"
               size="large"
               :color-scheme="activeDay === nextDay ? 'dark' : 'dark-reverse'"
@@ -69,9 +108,15 @@ export default defineComponent({
         </div>
         <div class="screenings-filters__by-movie">
           <AppLabel>Movie</AppLabel>
-          <AppSelect />
+          <AppSelect :options="moviesTitles" v-model="optionSelected" />
         </div>
       </div>
+  </div>
+  <ScreeningsList
+    :movies="movies"
+    :screenings="screeningsFilteredByDate"
+    :daySelected="activeDayDate"
+    :movieSelected="optionSelected" />
   </div>
 </template>
 

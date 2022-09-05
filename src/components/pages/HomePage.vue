@@ -6,8 +6,8 @@ import SignSection from '@/components/features/Header/SignSection.vue';
 import TheContainer from '@/components/common/TheContainer.vue';
 import WelcomeSection from '@/components/views/WelcomeSection.vue';
 import MoviesSummary from '@/components/views/MoviesSummary.vue';
+import ScreeningsSection from '@/components/views/ScreeningsSection.vue';
 import { getAllMovies } from '@/api/service/movies';
-import ScreeningsFilters from '@/components/views/ScreeningsFilters.vue';
 
 export default defineComponent({
   components: {
@@ -17,7 +17,7 @@ export default defineComponent({
     TheContainer,
     WelcomeSection,
     MoviesSummary,
-    ScreeningsFilters
+    ScreeningsSection,
   },
   data() {
     return {
@@ -48,7 +48,7 @@ export default defineComponent({
     <WelcomeSection />
     <TheContainer>
       <MoviesSummary :movies="filteredMovies" />
-      <ScreeningsFilters />
+      <ScreeningsSection :movies="movies" />
     </TheContainer>
   </div>
 </template>
