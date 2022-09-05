@@ -5,6 +5,10 @@ export const getAllScreenings = () => {
   return axios.get(SCREENINGS)
 }
 
-export const getScreeningsByMovieAndDate = (movieId, date) => {
-  return axios.get(`${SCREENINGS}?movie_id=${movieId}&date=${date}`);
+export const getScreeningsByDateAndMovie = (screeningsDate, movieId) => {
+  const params = {
+    movie_id: movieId,
+    date: screeningsDate
+  }
+  return axios.get(SCREENINGS, { params });
 };

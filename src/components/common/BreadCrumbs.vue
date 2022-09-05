@@ -22,6 +22,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .bread-crumbs {
+  margin-bottom: 64px;
   padding: 24px 0;
   width: 100%;
   background-color: $color-tag-background;

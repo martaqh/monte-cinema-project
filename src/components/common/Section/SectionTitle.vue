@@ -32,7 +32,6 @@ export default defineComponent({
   font-weight: 600;
   line-height: 102%;
   letter-spacing: -0.01em;
-  margin-top: 64px;
   p {
     margin: 0;
     width: 100%;
@@ -51,6 +50,17 @@ export default defineComponent({
 
 .section-title[size="medium"] {
   font-size: 64px;
+
+    @include tablet {
+      font-size: 48px;
+    }
+    @include mobile {
+      font-size: 48px;
+    }
+}
+
+.section-title[size="small"] {
+  font-size: 32px;
 
     @include tablet {
       font-size: 48px;

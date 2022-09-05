@@ -17,14 +17,14 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="movie-card" >
+  <router-link :to="{name: 'SingleMoviePage', params: {movieId: movie.id}}" class="movie-card" >
     <MovieTitle>{{ movie.title }}</MovieTitle>
     <div>
       <MovieLength :lengthInMinutes="movie.length" />
       <MoviePoster :src="movie.poster_url" />
       <AppTag>{{movie.genre.name}}</AppTag>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <style lang="scss" scoped>

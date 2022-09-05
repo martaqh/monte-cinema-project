@@ -28,7 +28,7 @@ export default defineComponent({
 <template>
   <div class="all-movies">
     <BreadCrumbs>Movies</BreadCrumbs>
-    <SectionTitle>All the movies</SectionTitle>
+    <SectionTitle size="large">All the movies</SectionTitle>
     <div class="all-movies__filters">
       <AppInput
         placeholder="What are you looking for?"
@@ -56,7 +56,6 @@ export default defineComponent({
   width: 100%;
 
   &__filters {
-    margin-top: 64px;
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-gap: 100px;

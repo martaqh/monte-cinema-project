@@ -5,6 +5,10 @@ export default defineComponent({
     lengthInMinutes: {
       type: Number,
       required: true,
+    },
+    year: {
+      type: String,
+      default: '',
     }
   },
   methods: {
@@ -20,16 +24,22 @@ export default defineComponent({
 <template>
   <p class="movie-length">
     {{ lengthInHours(lengthInMinutes) }}
+    <span v-if="year !== ''">{{ year }}</span>
   </p>
 </template>
 
 <style lang="scss" scoped>
 .movie-length {
-    font-family: $font-main;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 16px;
-    color: $color-text-light;
-    margin: 20px 0;
+  font-family: $font-main;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  color: $color-text-light;
+  margin: 20px 0;
+
+  span {
+    margin-left: 20px;
+  }
+
 }
 </style>

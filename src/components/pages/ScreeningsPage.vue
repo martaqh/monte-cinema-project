@@ -1,15 +1,11 @@
 <script>
 import { defineComponent } from 'vue';
 import ScreeningsSection from '@/components/views/ScreeningsSection.vue';
-import { mapState } from "pinia";
-import movies from '@/stores/moviesStore';
+
 import BreadCrumbs from '@/components/common/BreadCrumbs.vue';
 
 export default defineComponent({
   components: { ScreeningsSection, BreadCrumbs },
-  computed: {
-    ...mapState(movies, ["movies"]),
-  },
 
 });
 </script>
