@@ -6,10 +6,7 @@ export default defineComponent({
       type: String,
       required: true,
     },
-    labelText: {
-      type: String,
-      required: true,
-    }
+
   },
   data() {
     return {
@@ -21,14 +18,10 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="input__wrapper">
-    <label class="input__label">{{labelText}}</label>
     <input class="input"
       :placeholder="placeholder"
       v-model="inputContent"
     />
-  </div>
-
 </template>
 
 <style lang="scss" scoped>

@@ -5,31 +5,24 @@ export default defineComponent({
     options: {
       type: Array,
     },
-    optionDefault: {
+    optionStart: {
       type: String,
       required: true,
     },
-    labelText: {
-      type: String,
-      required: true,
-    }
   },
   data() {
     return {
-      optionSelected: this.optionDefault,
+      optionSelected: this.optionStart,
     }
   }
 });
 </script>
 
 <template>
-  <div class="select__wrapper">
-    <label class="select__label">{{labelText}}</label>
-    <select class="select" v-model="optionSelected">
-      <option selected>{{ optionDefault }}</option>
-      <option v-for="option of options" :key="option" :placeholder="optionDefault">{{ option }}</option>
-    </select>
-  </div>
+  <select class="select" v-model="optionSelected">
+    <option selected>{{optionStart}}</option>
+    <option v-for="option of options" :key="option">{{ option }}</option>
+  </select>
 </template>
 
 <style lang="scss" scoped>

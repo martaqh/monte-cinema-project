@@ -110,12 +110,11 @@ export default defineComponent({
             </div>
           </div>
           <div class="screenings-filters__by-movie" v-if="singleMovie === null">
-            <p>{{optionSelected}}</p>
+            <AppLabel>Movie</AppLabel>
             <AppSelect
-              labelText="movie"
               :options="moviesTitles"
               v-model="optionSelected"
-              optionDefault="All movies" />
+              optionStart="All movies" />
           </div>
         </div>
     </div>
