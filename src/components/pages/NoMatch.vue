@@ -16,7 +16,7 @@ export default defineComponent({
         :to="{ name: 'Home' }"
         color-scheme="main"
       >
-      Go back to home page
+        Go back to home page
       </AppButton>
     </div>
   </TheContainer>

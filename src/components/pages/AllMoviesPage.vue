@@ -24,18 +24,18 @@ export default defineComponent({
       const allCategories = this.movies.map(movie => movie.genre.name)
       return new Set(allCategories)
     },
-    filteredMovies() {
+    moviesFilteredByCategory() {
       if (this.optionSelected !== 'All categories') {
         return this.movies.filter(movie => this.optionSelected === movie.genre.name)
       } else {
         return this.movies
       }
     },
-    moviesSearched() {
+    moviesFilteredByCategoryAndSearch() {
       if (this.inputContent !== '') {
-        return this.filteredMovies.filter(movie => movie.title.toLowerCase().includes(this.inputContent.toLowerCase()))
+        return this.moviesFilteredByCategory.filter(movie => movie.title.toLowerCase().includes(this.inputContent.toLowerCase()))
       } else {
-        return this.filteredMovies
+        return this.moviesFilteredByCategory
       }
     },
   }
@@ -68,14 +68,13 @@ export default defineComponent({
       </div>
       <div class="all-movies__cards-list">
         <MovieCard
-          v-for="movie of moviesSearched"
+          v-for="movie of moviesFilteredByCategoryAndSearch"
           :key="movie.id"
           :movie="movie"
         />
       </div>
     </div>
   </TheContainer>
-
 </template>
 
 <style lang="scss" scoped>
