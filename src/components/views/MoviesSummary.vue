@@ -65,7 +65,7 @@ export default defineComponent({
 
   :nth-child(2) {
     @include tablet {
-        margin-right: 0;
+      margin-right: 0;
     }
   }
 
@@ -73,8 +73,9 @@ export default defineComponent({
     margin-right: 0;
 
     @include tablet {
-        display: none;
+      display: none;
     }
+
   }
 
   @include mobile {

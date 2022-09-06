@@ -1,5 +1,24 @@
+<script>
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  props: {
+    variant: {
+      type: String,
+      default: 'basic',
+      validator(value) {
+        return [
+          'basic',
+          'full-width'
+        ].includes(value);
+      },
+    }
+  }
+});
+</script>
+
 <template>
-  <div class="container">
+  <div class="container" :variant="variant">
     <slot></slot>
   </div>
 </template>
@@ -12,10 +31,13 @@
 
   @include mobile {
     padding: 0 24px;
+  }
+}
 
-    &.of-welcome-section {
-      padding: 0;
-    }
+.container[variant="full-width"] {
+  @include mobile {
+    padding: 0;
+    margin: 0;
   }
 }
 </style>

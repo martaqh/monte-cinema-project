@@ -5,12 +5,14 @@ import MoviesSummary from '@/components/views/MoviesSummary.vue';
 import ScreeningsSection from '@/components/views/ScreeningsSection.vue';
 import { mapActions } from "pinia";
 import movies from '@/stores/moviesStore'
+import TheContainer from '@/components/common/TheContainer.vue';
 
 export default defineComponent({
   components: {
     WelcomeSection,
     MoviesSummary,
     ScreeningsSection,
+    TheContainer,
   },
   methods: {
     ...mapActions(movies, ["getMoviesToState"]),
@@ -23,9 +25,13 @@ export default defineComponent({
 
 <template>
   <div class="home-page">
-    <WelcomeSection />
-    <MoviesSummary />
-    <ScreeningsSection />
+    <TheContainer variant='full-width'>
+      <WelcomeSection />
+    </TheContainer>
+    <TheContainer>
+      <MoviesSummary />
+      <ScreeningsSection />
+    </TheContainer>
   </div>
 </template>
 
@@ -35,7 +41,6 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   color: $color-text-main;
-
   padding: 0;
 }
 </style>
