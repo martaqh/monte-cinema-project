@@ -6,10 +6,6 @@ import movies from '@/stores/moviesStore'
 
 export default defineComponent({
   components: { MovieCard },
-  data() {
-    return {
-    }
-  },
   computed: {
     ...mapState(movies, ["movies"]),
     filteredMovies() {
