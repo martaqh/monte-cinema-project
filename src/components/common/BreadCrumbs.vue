@@ -32,7 +32,7 @@ export default defineComponent({
   font-family: $font-mono;
 
   &__button {
-    margin-left: 24px;
+    margin: 0 24px;
   }
 }
 </style>
