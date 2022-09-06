@@ -85,116 +85,116 @@ export default defineComponent({
 });
 </script>
 
-  <template>
-    <div class="screenings" v-if="isRequestFinished">
-      <div class="screenings-filters">
-        <SectionTitle :size="singleMovie ? 'small' : 'large'">Screenings:</SectionTitle>
-        <div class="screenings-filters__section-subtitle">
-          <SectionSubtitle :size="singleMovie ? 'small' : 'large'">{{ sectionSubtitle }}</SectionSubtitle>
-        </div>
-        <div class="screenings-filters__wrapper">
-          <div class="screenings-filters__by-date">
-            <AppLabel>Day</AppLabel>
-            <div class="screenings-filters__days-buttons">
-              <AppButton
-                v-for="nextDay in nextDaysNames"
-                :is-active="activeDay === nextDay"
-                size="large"
-                :color-scheme="activeDay === nextDay ? 'dark' : 'dark-reverse'"
-                class="screenings-filters__day-button"
-                :key="nextDay"
-                @clicked="activeDay = nextDay"
-              >
-              {{ nextDay }}
-              </AppButton>
-              <div class="screenings-filters__date-picker">
-                  <img src="@/assets/CalendarIcon.svg" alt="calendar icon" />
-              </div>
+<template>
+  <div class="screenings" v-if="isRequestFinished">
+    <div class="screenings-filters">
+      <SectionTitle :size="singleMovie ? 'small' : 'large'">Screenings:</SectionTitle>
+      <div class="screenings-filters__section-subtitle">
+        <SectionSubtitle :size="singleMovie ? 'small' : 'large'">{{ sectionSubtitle }}</SectionSubtitle>
+      </div>
+      <div class="screenings-filters__wrapper">
+        <div class="screenings-filters__by-date">
+          <AppLabel>Day</AppLabel>
+          <div class="screenings-filters__days-buttons">
+            <AppButton
+              v-for="nextDay in nextDaysNames"
+              :is-active="activeDay === nextDay"
+              size="large"
+              :color-scheme="activeDay === nextDay ? 'dark' : 'dark-reverse'"
+              class="screenings-filters__day-button"
+              :key="nextDay"
+              @clicked="activeDay = nextDay"
+            >
+            {{ nextDay }}
+            </AppButton>
+            <div class="screenings-filters__date-picker">
+                <img src="@/assets/CalendarIcon.svg" alt="calendar icon" />
             </div>
           </div>
-          <div class="screenings-filters__by-movie" v-if="singleMovie === null">
-            <AppLabel>Movie</AppLabel>
-            <AppSelect
-              :options="moviesTitles"
-              v-model="optionSelected"
-              optionStart="All movies" />
-          </div>
         </div>
-    </div>
-    <ScreeningsList
-      :movies="singleMovie ? singleMovie : movies"
-      :screenings="screeningsFilteredByDate ? screeningsFilteredByDate : screenings"
-      :daySelected="activeDayDate"
-      :movieSelected="optionSelected" />
-    </div>
-  </template>
+        <div class="screenings-filters__by-movie" v-if="singleMovie === null">
+          <AppLabel>Movie</AppLabel>
+          <AppSelect
+            :options="moviesTitles"
+            v-model="optionSelected"
+            optionStart="All movies" />
+        </div>
+      </div>
+  </div>
+  <ScreeningsList
+    :movies="singleMovie ? singleMovie : movies"
+    :screenings="screeningsFilteredByDate ? screeningsFilteredByDate : screenings"
+    :daySelected="activeDayDate"
+    :movieSelected="optionSelected" />
+  </div>
+</template>
 
-  <style lang="scss" scoped>
-  .screenings-filters__section-subtitle {
-    display: flex;
-    justify-content: flex-start;
+<style lang="scss" scoped>
+.screenings-filters__section-subtitle {
+  display: flex;
+  justify-content: flex-start;
 
-    @include mobile {
-      flex-direction: column;
-    }
-  }
-  .screenings-filters__wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 34px;
-
-    @include tablet {
-      flex-direction: column;
-    }
-    @include mobile {
-      flex-direction: column;
-    }
-  }
-  .screenings-filters__by-date {
-    width: 100%;
-  }
-  .screenings-filters__by-movie {
-    width: 100%;
-    display: flex;
+  @include mobile {
     flex-direction: column;
-    margin-left: 40px;
+  }
+}
+.screenings-filters__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 34px;
 
-    @include tablet {
-      margin-top: 40px;
-      margin-left: 0px;
-    }
-    @include mobile {
-      margin-top: 40px;
-      margin-left: 0px;
-    }
+  @include tablet {
+    flex-direction: column;
+  }
+  @include mobile {
+    flex-direction: column;
+  }
+}
+.screenings-filters__by-date {
+  width: 100%;
+}
+.screenings-filters__by-movie {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 40px;
+
+  @include tablet {
+    margin-top: 40px;
+    margin-left: 0px;
+  }
+  @include mobile {
+    margin-top: 40px;
+    margin-left: 0px;
+  }
+}
+
+.screenings-filters__days-buttons {
+  display: flex;
+}
+.screenings-filters__day-button {
+  margin-right: 8px;
+
+  &:hover {
+    cursor: pointer;
   }
 
-  .screenings-filters__days-buttons {
-    display: flex;
-  }
-  .screenings-filters__day-button {
-    margin-right: 8px;
+  &:nth-last-child(-n+3) {
+    display: none;
 
-    &:hover {
-      cursor: pointer;
-    }
-
-    &:nth-last-child(-n+3) {
-      display: none;
-
-      @include desktop-large {
-        display:block;
-      }
+    @include desktop-large {
+      display:block;
     }
   }
-  .screenings-filters__date-picker {
-    color: $color-text-main;
-    border: 2px solid $color-text-main;
-    border-radius: 50%;
-    height: 32px;
-    width: 32px;
-    padding: 10px;
-    margin-left: 12px;
-  }
-  </style>
+}
+.screenings-filters__date-picker {
+  color: $color-text-main;
+  border: 2px solid $color-text-main;
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
+  padding: 10px;
+  margin-left: 12px;
+}
+</style>

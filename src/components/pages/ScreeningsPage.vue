@@ -6,7 +6,6 @@ import BreadCrumbs from '@/components/common/BreadCrumbs.vue';
 
 export default defineComponent({
   components: { ScreeningsSection, BreadCrumbs },
-
 });
 </script>
 

@@ -31,7 +31,6 @@ export default defineComponent({
       try {
         const response = await getMovieById(this.movieIdFromUrl)
         this.movieData = response.data
-
       } catch(error) {
         console.error(error)
       } finally {
@@ -112,12 +111,13 @@ export default defineComponent({
     &--poster {
       position: relative;
       max-width: 621px;
-        img {
-          position: absolute;
-          width: 100%;
-          max-height: 100%;
-          object-fit: cover;
-        }
+
+      img {
+        position: absolute;
+        width: 100%;
+        max-height: 100%;
+        object-fit: cover;
+      }
     }
   }
 }

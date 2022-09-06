@@ -37,7 +37,6 @@ export default defineComponent({
         return this.filteredMovies
       }
     },
-
   }
 });
 </script>
@@ -112,7 +111,4 @@ export default defineComponent({
     }
   }
 }
-
-
-
 </style>

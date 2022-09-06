@@ -33,5 +33,5 @@ export default defineComponent({
   &__button {
     margin: 0 32px;
   }
-  }
+}
 </style>

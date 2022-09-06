@@ -6,29 +6,23 @@ export default defineComponent({
       type: String,
       required: true,
     },
-
   },
   data() {
     return {
       inputContent: '',
     }
   }
-
 });
 </script>
 
 <template>
-    <input class="input"
-      :placeholder="placeholder"
-      v-model="inputContent"
-    />
+  <input class="input"
+    :placeholder="placeholder"
+    v-model="inputContent"
+  />
 </template>
 
 <style lang="scss" scoped>
-.input__wrapper {
-  margin-top: 40px;
-}
-
 .input {
   padding: 17px 24px;
   gap: 10px;
@@ -38,17 +32,5 @@ export default defineComponent({
   height: fit-content;
   font-size: 18px;
   width: 100%;
-}
-
-.input__label {
-    display: block;
-    font-family: $font-mono;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 18px;
-    text-transform: uppercase;
-    color: $color-text-label;
-    margin-bottom: 12px;
-    width: fit-content;
 }
 </style>
