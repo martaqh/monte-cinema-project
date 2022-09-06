@@ -40,6 +40,5 @@ export default defineComponent({
   span {
     margin-left: 20px;
   }
-
 }
 </style>

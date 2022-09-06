@@ -3,12 +3,12 @@ import { defineComponent } from 'vue';
 import BreadCrumbs from '@/components/common/BreadCrumbs.vue';
 import SectionTitle from '@/components/common/Section/SectionTitle.vue';
 import AppTag from '@/components/common/App/AppTag.vue';
-import MovieLength from '@/components/common/Movie/MovieLength.vue';
+import MovieLengthOrYear from '@/components/common/Movie/MovieLengthOrYear.vue';
 import { getMovieById } from '@/api/service/Movies';
 import ScreeningsSection from '@/components/views/ScreeningsSection.vue';
 
 export default defineComponent({
-  components: { BreadCrumbs, SectionTitle, AppTag, MovieLength, ScreeningsSection },
+  components: { BreadCrumbs, SectionTitle, AppTag, ScreeningsSection, MovieLengthOrYear },
   data() {
     return {
       isRequestFinished: false,
@@ -62,7 +62,7 @@ export default defineComponent({
         <SectionTitle>{{ movieData.title}}</SectionTitle>
         <div class="single-movie__details--tags">
           <AppTag>{{ movieData.genre.name }}</AppTag>
-          <MovieLength :lengthInMinutes="movieData.length" :year="movieYear"/>
+          <MovieLengthOrYear :lengthInMinutes="movieData.length" :year="movieYear"/>
         </div>
         <p class="single-movie__details--description">{{movieData.description}}</p>
       </div>

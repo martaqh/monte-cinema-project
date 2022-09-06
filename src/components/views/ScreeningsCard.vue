@@ -1,13 +1,13 @@
 <script>
 import { defineComponent } from 'vue';
 import MoviePoster from '@/components/common/Movie/MoviePoster.vue';
-import MovieLength from '@/components/common/Movie/MovieLength.vue';
 import AppButton from '@/components/common/App/AppButton.vue';
 import MovieTitle from '@/components/common/Movie/MovieTitle.vue';
 import AppTag from '@/components/common/App/AppTag.vue';
+import MovieLengthOrYear from '@/components/common/Movie/MovieLengthOrYear.vue';
 
 export default defineComponent({
-  components: { MoviePoster, MovieLength, AppButton, MovieTitle, AppTag },
+  components: { MoviePoster, AppButton, MovieTitle, AppTag, MovieLengthOrYear },
   props : {
     movieData: {
       type: Object,
@@ -40,7 +40,7 @@ export default defineComponent({
             </router-link>
             <div class="screenings-card__category-and-length">
               <AppTag>{{ movieData.genre.name }}</AppTag>
-              <MovieLength :lengthInMinutes="movieData.length" />
+              <MovieLengthOrYear :lengthInMinutes="movieData.length" />
             </div>
             <div class="screenings-card__screenings-times">
               <AppButton
