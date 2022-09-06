@@ -14,7 +14,7 @@ export default defineComponent({
             Welcome to the best cinema in Monterail
         </SectionTitle>
         <p class="welcome__main-text">
-            Best movies, best experiences, best people.
+            Best movies, best experiences, best people. <br />
             And all that doesn’t exist. Yikes.
         </p>
         <AppButton
@@ -50,7 +50,7 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   width: 66%;
-  padding: 80px;
+  padding: 80px 220px 80px 80px;
 
   .welcome__main-text {
     font-family: 'Roboto Mono';
@@ -69,14 +69,20 @@ export default defineComponent({
 .welcome__image-wrapper {
   min-width: 34%;
   display: none;
+  position: relative;
 
   @include desktop-large {
     display: block;
+
+    img {
+      position: absolute;
+      width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+    }
   }
 }
-.welcome__image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+
+
+
 </style>
