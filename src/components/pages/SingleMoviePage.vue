@@ -82,12 +82,14 @@ export default defineComponent({
   flex-direction: column;
 
   &__parent-link {
-    padding: 21px;
+    padding: 0 18px;
     color: $color-brand;
     cursor: pointer;
+    display: flex;
+    justify-content: baseline;
 
     span {
-      margin: 21px;
+      margin: 0 21px;
     }
   }
 
