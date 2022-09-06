@@ -6,10 +6,6 @@ import movies from '@/stores/moviesStore'
 
 export default defineComponent({
   components: { MovieCard },
-  data() {
-    return {
-    }
-  },
   computed: {
     ...mapState(movies, ["movies"]),
     filteredMovies() {
@@ -66,9 +62,19 @@ export default defineComponent({
   gap: 40px;
   margin: 64px 0;
 
+  @include tablet {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   :nth-child(2) {
     @include tablet {
-        margin-right: 0;
+      margin-right: 0;
     }
   }
 
@@ -76,13 +82,8 @@ export default defineComponent({
     margin-right: 0;
 
     @include tablet {
-        display: none;
+      display: none;
     }
-  }
-
-  @include mobile {
-    flex-direction: column;
-    align-items: center;
   }
 }
 </style>

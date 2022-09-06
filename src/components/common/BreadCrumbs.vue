@@ -13,18 +13,19 @@ export default defineComponent({
       color-scheme="dark-reverse"
       arrow="left"
       class="bread-crumbs__button"
-      @click="this.$router.go(-1)"
+      @click="$router.go(-1)"
     >
-    Back</AppButton>
+      Back
+    </AppButton>
     <slot></slot>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .bread-crumbs {
+  padding: 24px;
   margin-bottom: 64px;
-  padding: 24px 0;
-  width: 100%;
+  width: calc(100% - 32px);
   background-color: $color-tag-background;
   display: flex;
   align-items: center;

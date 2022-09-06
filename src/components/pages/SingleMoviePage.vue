@@ -6,9 +6,10 @@ import AppTag from '@/components/common/App/AppTag.vue';
 import MovieLengthOrYear from '@/components/common/Movie/MovieLengthOrYear.vue';
 import { getMovieById } from '@/api/service/Movies';
 import ScreeningsSection from '@/components/views/ScreeningsSection.vue';
+import TheContainer from '@/components/common/TheContainer.vue';
 
 export default defineComponent({
-  components: { BreadCrumbs, SectionTitle, AppTag, ScreeningsSection, MovieLengthOrYear },
+  components: { BreadCrumbs, SectionTitle, AppTag, ScreeningsSection, MovieLengthOrYear, TheContainer },
   data() {
     return {
       isRequestFinished: false,
@@ -45,32 +46,34 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="single-movie" v-if="isRequestFinished">
-    <BreadCrumbs>
-      <router-link
-        :to="{name: 'Movies'}"
-        class="single-movie__parent-link"
-      >
-      <span>Movies</span>
-      <img src="@/assets/ChevronRight.svg" alt="chevron right" />
-      </router-link>
-      {{movieData.title}}
-    </BreadCrumbs>
-    <div class="single-movie__details">
-      <div class="single-movie__details--text">
-        <SectionTitle>{{ movieData.title}}</SectionTitle>
-        <div class="single-movie__details--tags">
-          <AppTag>{{ movieData.genre.name }}</AppTag>
-          <MovieLengthOrYear :lengthInMinutes="movieData.length" :year="movieYear"/>
+  <TheContainer>
+    <div class="single-movie" v-if="isRequestFinished">
+      <BreadCrumbs>
+        <router-link
+          :to="{name: 'Movies'}"
+          class="single-movie__parent-link"
+        >
+        <span>Movies</span>
+        <img src="@/assets/ChevronRight.svg" alt="chevron right" />
+        </router-link>
+        {{movieData.title}}
+      </BreadCrumbs>
+      <div class="single-movie__details">
+        <div class="single-movie__details--text">
+          <SectionTitle>{{ movieData.title}}</SectionTitle>
+          <div class="single-movie__details--tags">
+            <AppTag>{{ movieData.genre.name }}</AppTag>
+            <MovieLengthOrYear :lengthInMinutes="movieData.length" :year="movieYear"/>
+          </div>
+          <p class="single-movie__details--description">{{movieData.description}}</p>
         </div>
-        <p class="single-movie__details--description">{{movieData.description}}</p>
+        <div class="single-movie__details--poster">
+          <img :src="movieData.poster_url"/>
+        </div>
       </div>
-      <div class="single-movie__details--poster">
-        <img :src="movieData.poster_url"/>
-      </div>
+      <ScreeningsSection :singleMovie="[movieData]"/>
     </div>
-    <ScreeningsSection :singleMovie="[movieData]"/>
-  </div>
+  </TheContainer>
 </template>
 
 <style lang="scss" scoped>

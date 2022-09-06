@@ -5,9 +5,6 @@ export default defineStore('movies', {
   state: () => ({
     movies: [],
   }),
-  getters: {
-
-  },
   actions: {
     async getMoviesToState() {
       const response = await getAllMovies();

@@ -1,23 +1,36 @@
+<script>
+import { defineComponent } from 'vue';
+import TheContainer from '@/components/common/TheContainer.vue';
+
+export default defineComponent({
+  components: {
+    TheContainer,
+  }
+})
+</script>
+
 <template>
-  <div class="header">
-    <a href="/">
-      <img
-      src="@/assets/MonterailLogo.svg"
-      class="logo"
-      alt="Monterail logo"
-      />
-    </a>
-    <a href="#">
-      <img
-        src="@/assets/HamburgerMenu.svg"
-        class="header__hamburger-menu"
-        alt="Hamburger menu"
-      />
-    </a>
-    <div class="header__slot">
-      <slot ></slot>
+  <TheContainer>
+    <div class="header">
+      <a href="/">
+        <img
+        src="@/assets/MonterailLogo.svg"
+        class="logo"
+        alt="Monterail logo"
+        />
+      </a>
+      <a href="#">
+        <img
+          src="@/assets/HamburgerMenu.svg"
+          class="header__hamburger-menu"
+          alt="Hamburger menu"
+        />
+      </a>
+      <div class="header__slot">
+        <slot ></slot>
+      </div>
     </div>
-  </div>
+  </TheContainer>
 </template>
 
 <style lang="scss" scoped>

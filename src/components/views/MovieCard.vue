@@ -42,8 +42,8 @@ export default defineComponent({
   }
 
   @include mobile {
-      margin: 12px;
-      max-width: 327px;
+    margin: 12px;
+    width: 327px;
   }
 }
 </style>
