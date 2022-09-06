@@ -20,6 +20,7 @@ export default defineComponent({
   },
   data() {
     return {
+      isRequestFinished: false,
       screenings: [],
       isActive: false,
       activeDay: 'Today',
@@ -73,6 +74,8 @@ export default defineComponent({
         this.screenings = response.data;
       } catch(error) {
         console.error(error)
+      } finally {
+        this.isRequestFinished = true
       }
     },
   },
@@ -83,7 +86,7 @@ export default defineComponent({
 </script>
 
   <template>
-    <div class="screenings">
+    <div class="screenings" v-if="isRequestFinished">
       <div class="screenings-filters">
         <SectionTitle :size="singleMovie ? 'small' : 'large'">Screenings:</SectionTitle>
         <div class="screenings-filters__section-subtitle">

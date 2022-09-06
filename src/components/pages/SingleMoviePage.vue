@@ -11,6 +11,7 @@ export default defineComponent({
   components: { BreadCrumbs, SectionTitle, AppTag, MovieLength, ScreeningsSection },
   data() {
     return {
+      isRequestFinished: false,
       movieData: {},
       screenings: [],
     }
@@ -33,6 +34,8 @@ export default defineComponent({
 
       } catch(error) {
         console.error(error)
+      } finally {
+        this.isRequestFinished = true
       }
     },
   },
@@ -43,7 +46,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="single-movie">
+  <div class="single-movie" v-if="isRequestFinished">
     <BreadCrumbs>
       <router-link
         :to="{name: 'Movies'}"
