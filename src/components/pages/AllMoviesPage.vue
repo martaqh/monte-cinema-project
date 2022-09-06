@@ -49,7 +49,6 @@ export default defineComponent({
       <SectionTitle size="large">All the movies</SectionTitle>
       <div class="all-movies__filters">
         <div class="all-movies__filters--select">
-          <p>{{inputContent}}</p>
           <AppLabel>Search</AppLabel>
           <AppInput
             placeholder="What are you looking for?"
