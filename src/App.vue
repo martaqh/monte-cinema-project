@@ -1,8 +1,16 @@
 <script setup>
+import TopNavbar from '@/components/features/Header/TopNavbar.vue';
+import SignSection from '@/components/features/Header/SignSection.vue';
+import TheHeader from '@/components/views/TheHeader.vue';
+
 </script>
 
 <template>
   <main class="app">
+    <TheHeader>
+      <TopNavbar />
+      <SignSection />
+    </TheHeader>
     <router-view />
   </main>
 </template>

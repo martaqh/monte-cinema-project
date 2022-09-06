@@ -1,66 +1,46 @@
 <script>
 import { defineComponent } from 'vue';
-import TheHeader from '@/components/views/TheHeader.vue';
-import TopNavbar from '@/components/features/Header/TopNavbar.vue';
-import SignSection from '@/components/features/Header/SignSection.vue';
-import TheContainer from '@/components/common/TheContainer.vue';
 import WelcomeSection from '@/components/views/WelcomeSection.vue';
 import MoviesSummary from '@/components/views/MoviesSummary.vue';
 import ScreeningsSection from '@/components/views/ScreeningsSection.vue';
-import { getAllMovies } from '@/api/service/movies';
+import { mapActions } from "pinia";
+import movies from '@/stores/moviesStore'
+import TheContainer from '@/components/common/TheContainer.vue';
 
 export default defineComponent({
   components: {
-    TheHeader,
-    TopNavbar,
-    SignSection,
-    TheContainer,
     WelcomeSection,
     MoviesSummary,
     ScreeningsSection,
+    TheContainer,
   },
-  data() {
-    return {
-      movies: [],
-      filteredMovies: [],
-    };
+  methods: {
+    ...mapActions(movies, ["getMoviesToState"]),
   },
-  async mounted() {
-    try {
-      const response = await getAllMovies();
-      this.movies = response.data;
-    } catch(error) {
-      console.error(error)
-    }
-    for (let i=0; i<3; i++) {
-      this.filteredMovies.push(this.movies[i])
-    }
+  beforeMount() {
+    this.getMoviesToState()
   }
 });
 </script>
 
 <template>
   <div class="home-page">
-    <TheHeader>
-      <TopNavbar />
-      <SignSection />
-    </TheHeader>
-    <WelcomeSection />
+    <TheContainer variant='full-width'>
+      <WelcomeSection />
+    </TheContainer>
     <TheContainer>
-      <MoviesSummary :movies="filteredMovies" />
-      <ScreeningsSection :movies="movies" />
+      <MoviesSummary />
+      <ScreeningsSection />
     </TheContainer>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .home-page {
-  max-width: 1440px;
   width: 100%;
   display: flex;
   flex-direction: column;
   color: $color-text-main;
-  margin: 0 auto;
   padding: 0;
 }
 </style>

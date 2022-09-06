@@ -7,15 +7,11 @@ import AppButton from '@/components/common/App/AppButton.vue';
 import AppSelect from '@/components/common/App/AppSelect.vue';
 import ScreeningsList from '@/components/views/ScreeningsList.vue';
 import { getScreeningsByDateAndMovie } from '@/api/service/Screenings';
+import { mapState } from 'pinia';
+import movies from '@/stores/moviesStore'
 
 export default defineComponent({
   components: { SectionTitle, SectionSubtitle, AppLabel, AppButton, AppSelect, ScreeningsList },
-  props: {
-    movies: {
-      type: Array,
-      required: true,
-    }
-  },
   data() {
     return {
       screenings: [],
@@ -25,6 +21,7 @@ export default defineComponent({
     }
   },
   computed: {
+    ...mapState(movies, ["movies"]),
     nextDaysNames() {
       const dayDigit = new Date().getDay() + 1;
       const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -188,3 +185,4 @@ export default defineComponent({
   margin-left: 12px;
 }
 </style>
+

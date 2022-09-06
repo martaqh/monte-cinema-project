@@ -7,6 +7,11 @@ const routes = [
     component: () => import('@/components/pages/HomePage.vue'),
   },
   {
+    path: '/screenings',
+    name: 'Screenings',
+    component: () => import('@/components/pages/ScreeningsPage.vue'),
+  },
+  {
     path: '/no-match',
     name: 'NoMatch',
     component: () => import ('@/components/pages/NoMatch.vue'),

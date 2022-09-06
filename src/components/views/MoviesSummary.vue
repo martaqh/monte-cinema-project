@@ -1,15 +1,17 @@
 <script>
 import { defineComponent } from 'vue';
-import MovieCard from '@/components/views/MovieCard.vue'
+import MovieCard from './MovieCard.vue';
+import { mapState } from "pinia";
+import movies from '@/stores/moviesStore'
 
 export default defineComponent({
   components: { MovieCard },
-  props: {
-    movies: {
-      type: Array,
-      required: true,
+  computed: {
+    ...mapState(movies, ["movies"]),
+    filteredMovies() {
+      return this.movies.slice(0,3)
     }
-  }
+  },
 });
 </script>
 
@@ -20,7 +22,7 @@ export default defineComponent({
       <a>see all</a>
     </div>
     <div class="movie-cards__wrapper">
-      <MovieCard v-for="movie of movies" :key="movie.id" :movie="movie" />
+      <MovieCard v-for="movie of filteredMovies" :key="movie.id" :movie="movie" />
     </div>
   </div>
 </template>
@@ -63,7 +65,7 @@ export default defineComponent({
 
   :nth-child(2) {
     @include tablet {
-        margin-right: 0;
+      margin-right: 0;
     }
   }
 
@@ -71,8 +73,9 @@ export default defineComponent({
     margin-right: 0;
 
     @include tablet {
-        display: none;
+      display: none;
     }
+
   }
 
   @include mobile {

@@ -27,6 +27,17 @@ export default defineComponent({
         ].includes(value);
       },
     },
+    arrow: {
+      type: String,
+      default: 'none',
+      validator(value) {
+        return [
+          'left',
+          'right',
+          'none'
+        ].includes(value);
+      },
+    },
     to: {
       type: [Object, String],
       required: false,
@@ -68,9 +79,16 @@ export default defineComponent({
     class="button-base"
     :size="size"
     :color-scheme="colorScheme"
+    :arrow="arrow"
     :type="buttonType"
     @click="this.$emit('clicked')"
   >
+    <img
+      v-if="arrow === 'left'"
+      src="@/assets/ArrowLeft.svg"
+      alt="arrow left"
+      class="button-base__arrow--left"
+    />
     <slot></slot>
   </component>
 </template>
@@ -85,7 +103,12 @@ export default defineComponent({
   font-family: $font-mono;
   padding: 0 40px;
   cursor: pointer;
+
+  &__arrow--left {
+    margin-right: 12px;
+  }
 }
+
 .button-base[color-scheme="main"] {
   border: 2px solid $color-brand;
   background-color: $color-brand;
@@ -139,4 +162,5 @@ export default defineComponent({
     font-size: 14px;
     width: fit-content;
 }
+
 </style>

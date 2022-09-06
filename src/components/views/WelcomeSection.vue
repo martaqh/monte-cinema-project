@@ -2,14 +2,12 @@
 import { defineComponent } from 'vue';
 import SectionTitle from '@/components/common/Section/SectionTitle.vue';
 import AppButton from '@/components/common/App/AppButton.vue';
-import TheContainer from '@/components/common/TheContainer.vue';
 export default defineComponent({
-  components: { SectionTitle, TheContainer, AppButton }
+  components: { SectionTitle, AppButton }
 });
 </script>
 
 <template>
-  <TheContainer class="of-welcome-section">
     <div class="welcome">
       <div class="welcome__message">
         <SectionTitle size="large">
@@ -35,7 +33,6 @@ export default defineComponent({
         />
       </div>
     </div>
-  </TheContainer>
 </template>
 
 <style lang="scss" scoped>
