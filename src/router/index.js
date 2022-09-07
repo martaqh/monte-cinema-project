@@ -23,6 +23,11 @@ const routes = [
     component: () => import('@/components/pages/ScreeningsPage.vue'),
   },
   {
+    path: '/reg',
+    name: 'Reg',
+    component: () => import('@/components/pages/Registration/RegStepOne.vue'),
+  },
+  {
     path: '/no-match',
     name: 'NoMatch',
     component: () => import ('@/components/pages/NoMatch.vue'),

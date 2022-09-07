@@ -7,10 +7,6 @@ import TheHeader from '@/components/views/TheHeader.vue';
 
 <template>
   <main class="app">
-    <TheHeader>
-      <TopNavbar />
-      <SignSection />
-    </TheHeader>
     <router-view />
   </main>
 </template>

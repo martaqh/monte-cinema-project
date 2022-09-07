@@ -25,6 +25,10 @@ export default defineComponent({
 
 <template>
   <div class="home-page">
+    <TheHeader>
+      <TopNavbar />
+      <SignSection />
+    </TheHeader>
     <TheContainer variant='full-width'>
       <WelcomeSection />
     </TheContainer>

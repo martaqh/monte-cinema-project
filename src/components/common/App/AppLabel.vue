@@ -1,11 +1,11 @@
 <template>
-  <label class="label">
+  <label class="app-label">
     <slot></slot>
   </label>
 </template>
 
 <style lang="scss" scoped>
-.label {
+.app-label {
   display: block;
   font-family: $font-mono;
   font-weight: 700;
