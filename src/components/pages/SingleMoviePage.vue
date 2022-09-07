@@ -10,6 +10,12 @@ import TheContainer from '@/components/common/TheContainer.vue';
 
 export default defineComponent({
   components: { BreadCrumbs, SectionTitle, AppTag, ScreeningsSection, MovieLengthOrYear, TheContainer },
+  props: {
+    movieId: {
+      type: Number,
+      required: true,
+    }
+  },
   data() {
     return {
       isRequestFinished: false,
@@ -18,11 +24,6 @@ export default defineComponent({
     }
   },
   computed: {
-    movieIdFromUrl() {
-      const url = window.location.pathname
-      const segments = url.split("/")
-      return segments[2]
-    },
     movieYear() {
       return this.movieData.release_date.substring(0,4)
     }
@@ -30,7 +31,7 @@ export default defineComponent({
   methods: {
     async getMovieDetails() {
       try {
-        const response = await getMovieById(this.movieIdFromUrl)
+        const response = await getMovieById(this.movieId)
         this.movieData = response.data
       } catch(error) {
         console.error(error)

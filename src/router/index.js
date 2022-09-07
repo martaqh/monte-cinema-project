@@ -15,6 +15,7 @@ const routes = [
     path: '/movies/:movieId',
     name: 'SingleMoviePage',
     component: () => import('@/components/pages/SingleMoviePage.vue'),
+    props: true,
   },
   {
     path: '/screenings',
