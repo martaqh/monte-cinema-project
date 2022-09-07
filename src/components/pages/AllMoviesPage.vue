@@ -19,11 +19,7 @@ export default defineComponent({
     }
   },
   computed: {
-    ...mapState(movies, ["movies"]),
-    moviesCategories() {
-      const allCategories = this.movies.map(movie => movie.genre.name)
-      return new Set(allCategories)
-    },
+    ...mapState(movies, ["movies", "moviesCategories"]),
     moviesFilteredByCategory() {
       if (this.optionSelected !== 'All categories') {
         return this.movies.filter(movie => this.optionSelected === movie.genre.name)
