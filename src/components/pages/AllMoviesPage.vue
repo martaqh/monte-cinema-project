@@ -60,8 +60,8 @@ export default defineComponent({
           <AppSelect
             :options="moviesCategories"
             v-model="optionSelected"
-            optionStart="All categories"
             label-text="category"
+            optionStart="All categories"
           ></AppSelect>
         </div>
       </div>

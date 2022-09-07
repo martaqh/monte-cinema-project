@@ -6,19 +6,19 @@ export default defineComponent({
       type: String,
       required: true,
     },
-  },
-  data() {
-    return {
-      inputContent: '',
+    modelValue: {
+      type: String,
+      required: true,
     }
-  }
+  },
+  emits: ['update:modelValue'],
 });
 </script>
-
 <template>
   <input class="input"
     :placeholder="placeholder"
-    v-model="inputContent"
+    :value="modelValue"
+    @input="$emit('update:modelValue', $event.target.value)"
   />
 </template>
 

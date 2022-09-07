@@ -4,22 +4,29 @@ export default defineComponent({
   props: {
     options: {
       type: Array,
+      required: true,
     },
-    optionStart: {
+    modelValue: {
       type: String,
       required: true,
     },
-  },
-  data() {
-    return {
-      optionSelected: this.optionStart,
+    optionStart: {
+      type: String,
+      required: true
     }
-  }
+  },
+  emits: ['update:modelValue'],
+
 });
 </script>
 
 <template>
-  <select class="select" v-model="optionSelected">
+  <select
+    class="select"
+    :placeholder="placeholder"
+    :value="optionSelected"
+    @change="$emit('update:modelValue', $event.target.value)"
+  >
     <option selected>{{optionStart}}</option>
     <option v-for="option of options" :key="option">{{ option }}</option>
   </select>
