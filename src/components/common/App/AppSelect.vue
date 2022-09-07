@@ -24,7 +24,7 @@ export default defineComponent({
   <select
     class="select"
     :placeholder="placeholder"
-    :value="optionSelected"
+    :value="modelValue"
     @change="$emit('update:modelValue', $event.target.value)"
   >
     <option selected>{{optionStart}}</option>
