@@ -72,7 +72,7 @@ export default defineComponent({
           <img :src="movieData.poster_url"/>
         </div>
       </div>
-      <ScreeningsSection :singleMovie="[movieData]"/>
+      <ScreeningsSection :singleMovie="movieData"/>
     </div>
   </TheContainer>
 </template>

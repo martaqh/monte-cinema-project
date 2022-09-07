@@ -14,7 +14,7 @@ export default defineComponent({
   components: { SectionTitle, SectionSubtitle, AppLabel, AppButton, AppSelect, ScreeningsList },
   props: {
     singleMovie: {
-      type: Array,
+      type: Object,
       default: null
     }
   },
@@ -122,7 +122,7 @@ export default defineComponent({
       </div>
   </div>
   <ScreeningsList
-    :movies="singleMovie ? singleMovie : movies"
+    :movies="singleMovie ? [singleMovie] : movies"
     :screenings="screeningsFilteredByDate ? screeningsFilteredByDate : screenings"
     :daySelected="activeDayDate"
     :movieSelected="optionSelected" />
