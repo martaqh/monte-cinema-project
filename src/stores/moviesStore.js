@@ -5,6 +5,12 @@ export default defineStore('movies', {
   state: () => ({
     movies: [],
   }),
+  getters: {
+    moviesCategories() {
+      const allCategories = this.movies.map(movie => movie.genre.name)
+      return new Set(allCategories)
+    },
+  },
   actions: {
     async getMoviesToState() {
       const response = await getAllMovies();

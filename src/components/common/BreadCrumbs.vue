@@ -23,15 +23,16 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .bread-crumbs {
-  padding: 24px;
-  width: calc(100% - 32px);
-  background-color: $color-tag-background;
   display: flex;
   align-items: center;
+  padding: 24px 0;
+  margin-bottom: 64px;
+  width: 100%;
+  background-color: $color-tag-background;
   font-family: $font-mono;
 
   &__button {
-    margin-right: 32px;
+    margin: 0 24px;
   }
 }
 </style>

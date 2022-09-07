@@ -12,8 +12,15 @@ import movies from '@/stores/moviesStore'
 
 export default defineComponent({
   components: { SectionTitle, SectionSubtitle, AppLabel, AppButton, AppSelect, ScreeningsList },
+  props: {
+    singleMovie: {
+      type: Object,
+      default: null
+    }
+  },
   data() {
     return {
+      isRequestFinished: false,
       screenings: [],
       isActive: false,
       activeDay: 'Today',
@@ -21,7 +28,7 @@ export default defineComponent({
     }
   },
   computed: {
-    ...mapState(movies, ["movies"]),
+    ...mapState (movies, ["movies"]),
     nextDaysNames() {
       const dayDigit = new Date().getDay() + 1;
       const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -58,7 +65,7 @@ export default defineComponent({
     screeningsFilteredByDate() {
       return this.screenings.filter
       (screening => screening.datetime.slice(0,10) === this.activeDayDate.toISOString().slice(0, 10))
-    }
+    },
   },
   methods: {
     async getScreenings() {
@@ -67,6 +74,8 @@ export default defineComponent({
         this.screenings = response.data;
       } catch(error) {
         console.error(error)
+      } finally {
+        this.isRequestFinished = true
       }
     },
   },
@@ -77,11 +86,11 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="screenings">
+  <div class="screenings" v-if="isRequestFinished">
     <div class="screenings-filters">
-      <SectionTitle>Screenings:</SectionTitle>
+      <SectionTitle :size="singleMovie ? 'small' : 'large'">Screenings:</SectionTitle>
       <div class="screenings-filters__section-subtitle">
-        <SectionSubtitle>{{ sectionSubtitle }}</SectionSubtitle>
+        <SectionSubtitle :size="singleMovie ? 'small' : 'large'">{{ sectionSubtitle }}</SectionSubtitle>
       </div>
       <div class="screenings-filters__wrapper">
         <div class="screenings-filters__by-date">
@@ -103,15 +112,18 @@ export default defineComponent({
             </div>
           </div>
         </div>
-        <div class="screenings-filters__by-movie">
+        <div class="screenings-filters__by-movie" v-if="singleMovie === null">
           <AppLabel>Movie</AppLabel>
-          <AppSelect :options="moviesTitles" v-model="optionSelected" />
+          <AppSelect
+            :options="moviesTitles"
+            v-model="optionSelected"
+            optionStart="All movies" />
         </div>
       </div>
   </div>
   <ScreeningsList
-    :movies="movies"
-    :screenings="screeningsFilteredByDate"
+    :movies="singleMovie ? [singleMovie] : movies"
+    :screenings="screeningsFilteredByDate ? screeningsFilteredByDate : screenings"
     :daySelected="activeDayDate"
     :movieSelected="optionSelected" />
   </div>
@@ -129,7 +141,7 @@ export default defineComponent({
 .screenings-filters__wrapper {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   margin-bottom: 34px;
 
   @include tablet {
@@ -157,6 +169,7 @@ export default defineComponent({
     margin-left: 0px;
   }
 }
+
 .screenings-filters__days-buttons {
   display: flex;
 }

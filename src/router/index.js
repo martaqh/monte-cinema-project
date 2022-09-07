@@ -7,6 +7,17 @@ const routes = [
     component: () => import('@/components/pages/HomePage.vue'),
   },
   {
+    path: '/movies',
+    name: 'Movies',
+    component: () => import('@/components/pages/AllMoviesPage.vue'),
+  },
+  {
+    path: '/movies/:movieId',
+    name: 'SingleMoviePage',
+    component: () => import('@/components/pages/SingleMoviePage.vue'),
+    props: true,
+  },
+  {
     path: '/screenings',
     name: 'Screenings',
     component: () => import('@/components/pages/ScreeningsPage.vue'),

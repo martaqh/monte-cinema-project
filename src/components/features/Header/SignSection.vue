@@ -29,7 +29,7 @@ export default defineComponent({
 .sign-section {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 33%;
   height: 100%;
   font-family: $font-mono;

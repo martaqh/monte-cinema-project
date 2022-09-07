@@ -162,5 +162,4 @@ export default defineComponent({
     font-size: 14px;
     width: fit-content;
 }
-
 </style>

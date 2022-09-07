@@ -1,12 +1,12 @@
 <script>
 import { defineComponent } from 'vue';
 import AppTag from '@/components/common/App/AppTag.vue';
-import MovieLength from '@/components/common/Movie/MovieLength.vue';
 import MovieTitle from '@/components/common/Movie/MovieTitle.vue';
 import MoviePoster from '@/components/common/Movie/MoviePoster.vue';
+import MovieLengthOrYear from '@/components/common/Movie/MovieLengthOrYear.vue';
 
 export default defineComponent({
-  components: { AppTag, MovieLength, MovieTitle, MoviePoster },
+  components: { AppTag, MovieTitle, MoviePoster, MovieLengthOrYear },
   props: {
     movie: {
       type:Object,
@@ -17,14 +17,14 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="movie-card" >
+  <router-link :to="{name: 'SingleMoviePage', params: {movieId: movie.id}}" class="movie-card" >
     <MovieTitle>{{ movie.title }}</MovieTitle>
     <div>
-      <MovieLength :lengthInMinutes="movie.length" />
+      <MovieLengthOrYear :lengthInMinutes="movie.length" />
       <MoviePoster :src="movie.poster_url" />
       <AppTag>{{movie.genre.name}}</AppTag>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <style lang="scss" scoped>
@@ -34,17 +34,16 @@ export default defineComponent({
   justify-content: space-between;
   box-shadow: $shadow-card;
   padding: 40px;
-  width: 40%;
+  max-width: 421px;
   border-radius: $radius-card;
-  margin-right: 40px;
 
   @include tablet {
-    width: 60%;
+    max-width: 444px;
   }
 
   @include mobile {
     margin: 12px;
-    width: 80%;
+    width: 327px;
   }
 }
 </style>

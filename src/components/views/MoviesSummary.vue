@@ -57,11 +57,20 @@ export default defineComponent({
 }
 .movie-cards__wrapper {
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex: 1;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
   margin: 64px 0;
+
+  @include tablet {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   :nth-child(2) {
     @include tablet {
@@ -75,12 +84,6 @@ export default defineComponent({
     @include tablet {
       display: none;
     }
-
-  }
-
-  @include mobile {
-    flex-direction: column;
-    align-items: center;
   }
 }
 </style>
