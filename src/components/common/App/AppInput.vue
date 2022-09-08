@@ -15,6 +15,10 @@ export default defineComponent({
     },
     label: {
       type: String,
+    },
+    type: {
+      type: String,
+      default: 'text'
     }
   },
   emits: ['update:modelValue', 'blur'],
@@ -25,6 +29,7 @@ export default defineComponent({
   <div class="app-input">
     <AppLabel>{{ label }}</AppLabel>
     <input class="input"
+      :type="type"
       :placeholder="placeholder"
       :value="modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
@@ -54,5 +59,12 @@ export default defineComponent({
   &:placeholder-shown {
     text-overflow: ellipsis;
   }
+  &[type="date"] {
+    text-indent: 12px;
+    font-family: $font-main;
+  }
+}
+.not-valid {
+  border: solid $color-brand;
 }
 </style>

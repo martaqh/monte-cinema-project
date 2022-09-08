@@ -25,7 +25,7 @@ const routes = [
   {
     path: '/reg',
     name: 'Reg',
-    component: () => import('@/components/pages/Registration/RegStepOne.vue'),
+    component: () => import('@/components/pages/RegistrationPage.vue'),
   },
   {
     path: '/no-match',

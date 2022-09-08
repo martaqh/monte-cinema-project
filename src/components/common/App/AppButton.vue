@@ -142,24 +142,24 @@ export default defineComponent({
 .button-base[size="large"] {
     height: 56px;
     font-size: 18px;
-    width: fit-content;
+
 }
 
 .button-base[size="medium"] {
     height: 40px;
     font-size: 16px;
-    width: fit-content;
+
 }
 
 .button-base[size="small"] {
     height: 32px;
     font-size: 14px;
-    width: fit-content;
+
 }
 
 .button-base[size="tiny"] {
     height: 24px;
     font-size: 14px;
-    width: fit-content;
+
 }
 </style>

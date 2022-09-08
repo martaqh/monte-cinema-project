@@ -1,24 +1,20 @@
 <script>
 import { defineComponent } from 'vue';
-import TheContainer from '@/components/common/TheContainer.vue';
 import AppInput from '@/components/common/App/AppInput.vue';
 import FormCard from '@/components/views/FormCard.vue';
 import ValidationMessage from '@/components/common/Form/ValidationMessage.vue';
 import AppButton from '@/components/common/App/AppButton.vue';
 import SectionTitle from '@/components/common/Section/SectionTitle.vue';
 import SectionSubtitle from '@/components/common/Section/SectionSubtitle.vue';
-import TheHeader from '@/components/views/TheHeader.vue';
 
 export default defineComponent({
   components: {
-    TheContainer,
     AppInput,
     FormCard,
     ValidationMessage,
     AppButton,
     SectionTitle,
     SectionSubtitle,
-    TheHeader,
   },
   data() {
     return {
@@ -28,19 +24,20 @@ export default defineComponent({
       passwordTouched: false,
     }
   },
+  emits: ['completed'],
   computed: {
-    emailError() {
+    emailErrorMessage() {
       if (!this.email && this.emailTouched) {
         return 'Please enter your email'
       }
-      if (this.email && this.emailTouched && !this.isValidEmail(this.email)) {
+      if (this.email && this.emailTouched && !this.isEmailValid(this.email)) {
         return 'Please enter CORRECT email'
       }
       return ''
     },
   },
   methods: {
-    isValidEmail(input) {
+    isEmailValid(input) {
       return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(input)
     },
     hasOneDigit(input) {
@@ -50,7 +47,26 @@ export default defineComponent({
       return /[a-zA-Z]/.test(input)
     },
     isLongEnough(input) {
-      return input.length >= 8 ? true : false
+      return input.length >= 8
+    },
+    isPasswordValid(input) {
+      return this.hasOneDigit(input) &&
+      this.hasOneLetter(input) &&
+      this.isLongEnough(input)
+    },
+    isFormValid() {
+      return this.isEmailValid(this.email) && this.isPasswordValid(this.password)
+    },
+    handleSubmit(e) {
+      e.preventDefault();
+      console.log(this.isFormValid())
+      if (this.isFormValid()) {
+        this.$emit('completed', { email: this.email, password: this.password })
+        console.log('Data is valid')
+      } else {
+        console.log('Data not valid')
+        alert('Please provide correct data to continue')
+      }
     },
   }
 });
@@ -58,15 +74,14 @@ export default defineComponent({
 
 <template>
   <div class="reg-step-one">
-    <TheContainer>
-      <TheHeader>
-
-      </TheHeader>
-    </TheContainer>
-    <TheContainer variant="form">
-      <SectionTitle size="large">Ahoy you!</SectionTitle>
-      <SectionSubtitle size="large">Care to register?</SectionSubtitle>
-      <FormCard>
+    <SectionTitle size="large">Ahoy you!</SectionTitle>
+    <SectionSubtitle size="large">Care to register?</SectionSubtitle>
+    <FormCard>
+      <form
+        class="step-one"
+        @completed="onStep1Completed"
+        @submit="handleSubmit"
+      >
         <AppInput
           label="e-mail"
           type="email"
@@ -75,10 +90,10 @@ export default defineComponent({
           @blur="emailTouched = true"
         />
         <ValidationMessage
-          v-if="emailError"
+          v-if="emailErrorMessage"
           class='not-valid'
         >
-          {{ emailError }}
+          {{ emailErrorMessage }}
         </ValidationMessage>
         <AppInput
           label="password"
@@ -88,17 +103,20 @@ export default defineComponent({
           @blur="passwordTouched = true"
         />
         <ValidationMessage
-          :class="isLongEnough(password) ? 'valid' : 'not-valid'"
+          :class="isLongEnough(password) ?
+          'valid' : passwordTouched ? 'not-valid' : null"
         >
           At least 8 characters
         </ValidationMessage>
         <ValidationMessage
-          :class="hasOneLetter(password) ? 'valid' : 'not-valid'"
+          :class="hasOneLetter(password) ?
+          'valid' : passwordTouched ? 'not-valid' : null"
         >
           At least one letter
         </ValidationMessage>
         <ValidationMessage
-          :class="hasOneDigit(password) ? 'valid' : 'not-valid'"
+          :class="hasOneDigit(password) ?
+          'valid' : passwordTouched ? 'not-valid' : null"
         >
           At least one digit
         </ValidationMessage>
@@ -112,14 +130,13 @@ export default defineComponent({
           <AppButton
             size="large"
             color-scheme="main"
+            @click="handleSubmit"
           >
             Next step
           </AppButton>
         </div>
+      </form>
       </FormCard>
-    </TheContainer>
-
-
   </div>
 </template>
 
