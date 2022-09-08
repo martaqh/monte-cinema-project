@@ -18,13 +18,40 @@ export default defineComponent({
     AppButton,
     SectionTitle,
     SectionSubtitle,
-    TheHeader
+    TheHeader,
   },
   data() {
     return {
       email: '',
-      password: ''
+      password: '',
+      emailTouched: false,
+      passwordTouched: false,
     }
+  },
+  computed: {
+    emailError() {
+      if (!this.email && this.emailTouched) {
+        return 'Please enter your email'
+      }
+      if (this.email && this.emailTouched && !this.isValidEmail(this.email)) {
+        return 'Please enter CORRECT email'
+      }
+      return ''
+    },
+  },
+  methods: {
+    isValidEmail(input) {
+      return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(input)
+    },
+    hasOneDigit(input) {
+      return /\d/.test(input)
+    },
+    hasOneLetter(input) {
+      return /[a-zA-Z]/.test(input)
+    },
+    isLongEnough(input) {
+      return input.length >= 8 ? true : false
+    },
   }
 });
 </script>
@@ -41,18 +68,40 @@ export default defineComponent({
       <SectionSubtitle size="large">Care to register?</SectionSubtitle>
       <FormCard>
         <AppInput
-          label="email"
+          label="e-mail"
+          type="email"
           placeholder="Something ending with monterail.com"
+          v-model="email"
+          @blur="emailTouched = true"
         />
-
+        <ValidationMessage
+          v-if="emailError"
+          class='not-valid'
+        >
+          {{ emailError }}
+        </ValidationMessage>
         <AppInput
           label="password"
+          type="password"
           placeholder="Enter your password"
+          v-model="password"
+          @blur="passwordTouched = true"
         />
-
-        <ValidationMessage>At least 8 characters</ValidationMessage>
-        <ValidationMessage>At least one letter</ValidationMessage>
-        <ValidationMessage>At least one digit</ValidationMessage>
+        <ValidationMessage
+          :class="isLongEnough(password) ? 'valid' : 'not-valid'"
+        >
+          At least 8 characters
+        </ValidationMessage>
+        <ValidationMessage
+          :class="hasOneLetter(password) ? 'valid' : 'not-valid'"
+        >
+          At least one letter
+        </ValidationMessage>
+        <ValidationMessage
+          :class="hasOneDigit(password) ? 'valid' : 'not-valid'"
+        >
+          At least one digit
+        </ValidationMessage>
         <div class="reg-setp-one__buttons">
           <AppButton
             size="large"

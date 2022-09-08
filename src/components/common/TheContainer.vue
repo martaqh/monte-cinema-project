@@ -29,6 +29,7 @@ export default defineComponent({
   max-width: 1440px;
   padding: 0 24px;
   margin: 0 auto;
+
 }
 
 .container[variant="full-width"] {

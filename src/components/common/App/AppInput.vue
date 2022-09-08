@@ -17,7 +17,7 @@ export default defineComponent({
       type: String,
     }
   },
-  emits: ['update:modelValue'],
+  emits: ['update:modelValue', 'blur'],
 });
 </script>
 
@@ -28,6 +28,7 @@ export default defineComponent({
       :placeholder="placeholder"
       :value="modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
+      @blur="$emit('blur', $event)"
     />
   </div>
 </template>

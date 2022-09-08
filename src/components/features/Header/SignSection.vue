@@ -9,7 +9,7 @@ export default defineComponent({
 <template>
   <div class="sign-section">
     <AppButton
-      :to="{ name: 'Home' }"
+      :to="{ name: 'Reg' }"
       size="medium"
       color-scheme="no-border"
     >

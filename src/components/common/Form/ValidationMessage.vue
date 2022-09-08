@@ -23,17 +23,20 @@ export default defineComponent({
   letter-spacing: 0.04em;
   line-height: 170%;
 
-  .valid {
-      color: $color-success;
-  }
-
-  .notValid {
-      color: $color-brand;
-  }
-
   p {
       margin: 0;
       padding: 0;
   }
+}
+
+.valid {
+  color: $color-success;
+}
+
+.not-valid {
+  color: $color-brand;
+}
+.disapear {
+  display: none;
 }
 </style>
