@@ -1,10 +1,10 @@
-import axios from "@/api/axiosConfig.js";
+import { defaultClient } from "@/api/axiosConfig.js";
 import { MOVIES } from "@/api/apiEndpoints.js";
 
 export const getAllMovies = () => {
-  return axios.get(MOVIES);
+  return defaultClient.get(MOVIES);
 };
 
 export const getMovieById = (movieId) => {
-  return axios.get(`${MOVIES}/${movieId}`);
+  return defaultClient.get(`${MOVIES}/${movieId}`);
 };

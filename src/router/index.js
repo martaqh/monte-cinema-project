@@ -28,6 +28,11 @@ const routes = [
     component: () => import('@/components/pages/RegistrationPage.vue'),
   },
   {
+    path: '/success',
+    name: 'Success',
+    component: () => import('@/components/views/SuccessMessage.vue'),
+  },
+  {
     path: '/no-match',
     name: 'NoMatch',
     component: () => import ('@/components/pages/NoMatch.vue'),

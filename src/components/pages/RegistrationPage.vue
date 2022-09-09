@@ -4,7 +4,7 @@ import TheContainer from '@/components/common/TheContainer.vue';
 import TheHeader from '@/components/views/TheHeader.vue';
 import RegStepOne from '@/components/features/Registration/RegStepOne.vue'
 import RegStepTwo from '@/components/features/Registration/RegStepTwo.vue'
-import { registerNewUser } from '@/api/service/User'
+import { useAuthStore } from '@/stores/authStore';
 
 
 export default defineComponent({
@@ -13,6 +13,10 @@ export default defineComponent({
     TheHeader,
     RegStepOne,
     RegStepTwo
+  },
+  setup() {
+    const auth = useAuthStore();
+    return { auth };
   },
   data() {
     return {
@@ -36,13 +40,14 @@ export default defineComponent({
       this.lastName = data.lastName;
       this.birthDate = data.birthDate;
       try {
-        await registerNewUser({
+        await this.auth.register({
           email:this.email,
           password: this.password,
           first_name: this.firstName,
           last_name: this.lastName,
           date_of_birth: this.birthDate
         })
+        this.$router.push({ name: 'Success' })
       } catch(error) {
         console.error(error)
       } finally {
