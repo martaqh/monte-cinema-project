@@ -21,8 +21,8 @@ export default defineComponent({
       <TheContainer>
         <div class="not-found__content">
         <SectionSubtitle size="large">
-          Ups, we haven't found <br/>
-          what you were looking for :(
+          Sorry, we haven't found <br/>
+          what you were looking for
         </SectionSubtitle>
         <AppButton
           :to="{ name: 'Home' }"

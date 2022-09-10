@@ -13,7 +13,7 @@ defaultClient.interceptors.response.use(
     if (error.response.status === 401) {
       const auth = useAuthStore();
       await auth.logout();
-      router.push({ name: "AuthLogin" });
+      router.push({ name: "Login" });
     }
     return Promise.reject(error);
   }

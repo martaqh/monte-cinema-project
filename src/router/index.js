@@ -23,14 +23,19 @@ const routes = [
     component: () => import('@/components/pages/ScreeningsPage.vue'),
   },
   {
-    path: '/reg',
-    name: 'Reg',
+    path: '/register',
+    name: 'Register',
     component: () => import('@/components/pages/RegistrationPage.vue'),
   },
   {
-    path: '/success',
-    name: 'Success',
-    component: () => import('@/components/views/SuccessMessage.vue'),
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/components/pages/LoginPage.vue'),
+  },
+  {
+    path: '/choose-seats',
+    name: 'ChooseSeats',
+    component: () => import('@/components/pages/ChooseSeatsPage.vue'),
   },
   {
     path: '/no-match',

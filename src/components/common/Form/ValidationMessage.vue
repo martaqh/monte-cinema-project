@@ -1,12 +1,3 @@
-<script>
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-  computed: {
-
-  }
-});
-</script>
 <template>
   <div class="validation-message">
     <p>
@@ -17,15 +8,19 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .validation-message {
+  margin-top: 8px;
   font-size: 14px;
   font-family: $font-main;
   color: $color-text-main;
   letter-spacing: 0.04em;
   line-height: 170%;
 
-  p {
-    margin: 0;
-    padding: 0;
+  &[id='2'] {
+    margin-top: 0;
+  }
+
+  &[id='3'] {
+    margin-top: 0;
   }
 }
 

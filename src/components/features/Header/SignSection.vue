@@ -9,14 +9,14 @@ export default defineComponent({
 <template>
   <div class="sign-section">
     <AppButton
-      :to="{ name: 'Reg' }"
+      :to="{ name: 'Register' }"
       size="medium"
       color-scheme="no-border"
     >
     Register
     </AppButton>
     <AppButton
-      :to="{ name: 'Home' }"
+      :to="{ name: 'Login' }"
       size="medium"
       color-scheme="main"
     >

@@ -50,21 +50,29 @@ export default defineComponent({
       return input.length >= 8
     },
     isPasswordValid(input) {
-      return this.hasOneDigit(input) &&
-      this.hasOneLetter(input) &&
-      this.isLongEnough(input)
+      return this.password !== '' &&
+        this.passwordTouched === true &&
+        this.hasOneDigit(input) &&
+        this.hasOneLetter(input) &&
+        this.isLongEnough(input)
     },
     isFormValid() {
       return this.isEmailValid(this.email) && this.isPasswordValid(this.password)
     },
+    allTouched() {
+      this.emailTouched = true;
+      this.passwordTouched = true;
+    },
     handleSubmit(e) {
       e.preventDefault();
+      this.allTouched();
+      console.log(this.passwordTouched)
       console.log(this.isFormValid())
       if (this.isFormValid()) {
         this.$emit('completed', { email: this.email, password: this.password })
         console.log('Data is valid')
       } else {
-        console.log('Data not valid')
+        console.error('Data is NOT valid')
         alert('Please provide correct data to continue')
       }
     },
@@ -102,22 +110,24 @@ export default defineComponent({
           placeholder="Enter your password"
           v-model="password"
           @blur="passwordTouched = true"
-          :is-valid="paswordTouched && isPasswordValid(password)"
+          :isValid="passwordTouched ? isPasswordValid(password) : true"
         />
-
         <ValidationMessage
+          id='1'
           :class="isLongEnough(password) ?
           'valid' : passwordTouched ? 'not-valid' : null"
         >
           At least 8 characters
         </ValidationMessage>
         <ValidationMessage
+          id='2'
           :class="hasOneLetter(password) ?
           'valid' : passwordTouched ? 'not-valid' : null"
         >
           At least one letter
         </ValidationMessage>
         <ValidationMessage
+          id='3'
           :class="hasOneDigit(password) ?
           'valid' : passwordTouched ? 'not-valid' : null"
         >
@@ -151,4 +161,5 @@ export default defineComponent({
   display: flex;
   justify-content: space-between;
 }
+
 </style>
