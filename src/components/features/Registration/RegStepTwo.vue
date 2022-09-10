@@ -32,25 +32,16 @@ export default defineComponent({
       if (!this.firstName && this.firstNameTouched) {
         return 'Please enter your first name'
       }
-      if (this.firstName && this.firstNameTouched && !this.isNameValid(this.firstName)) {
-        return 'Please enter CORRECT first name'
-      }
       return ''
     },
     lastNameErrorMessage() {
       if (!this.lastName && this.lastNameTouched) {
         return 'Please enter your last name'
       }
-      if (this.lastName && this.lastNameTouched && !this.isNameValid(this.lastName)) {
-        return 'Please enter CORRECT last name'
-      }
       return ''
     },
   },
   methods: {
-    isNameValid(input) {
-      return /(^[a-zA-Z][a-zA-Z\s]{0,20}[a-zA-Z]$)/.test(input)
-    },
     isUserAbove18(birthDate) {
       const dateOfBirth = new Date(birthDate);
       const monthDifference = Date.now() - dateOfBirth.getTime();
@@ -60,12 +51,7 @@ export default defineComponent({
       return age >= 18
     },
     isFormValid() {
-      console.log(this.isNameValid(this.firstName))
-      console.log(this.isNameValid(this.lastName))
-      console.log(this.isUserAbove18(this.birthDate))
-      return this.isNameValid(this.firstName)
-      && this.isNameValid(this.lastName)
-      && this.isUserAbove18(this.birthDate)
+      return this.isUserAbove18(this.birthDate) && this.firstName && this.lastName
     },
     handleSubmit(e) {
       e.preventDefault();
