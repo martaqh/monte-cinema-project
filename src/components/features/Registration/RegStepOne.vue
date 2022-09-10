@@ -88,6 +88,7 @@ export default defineComponent({
           placeholder="Something ending with monterail.com"
           v-model="email"
           @blur="emailTouched = true"
+          :is-valid="!emailErrorMessage"
         />
         <ValidationMessage
           v-if="emailErrorMessage"
@@ -101,7 +102,9 @@ export default defineComponent({
           placeholder="Enter your password"
           v-model="password"
           @blur="passwordTouched = true"
+          :is-valid="paswordTouched && isPasswordValid(password)"
         />
+
         <ValidationMessage
           :class="isLongEnough(password) ?
           'valid' : passwordTouched ? 'not-valid' : null"
@@ -124,12 +127,14 @@ export default defineComponent({
           <AppButton
             size="large"
             color-scheme="no-border"
+            usage="form"
           >
             Log in instead
           </AppButton>
           <AppButton
             size="large"
             color-scheme="main"
+            usage="form"
             @click="handleSubmit"
           >
             Next step

@@ -24,8 +24,8 @@ export default defineComponent({
   line-height: 170%;
 
   p {
-      margin: 0;
-      padding: 0;
+    margin: 0;
+    padding: 0;
   }
 }
 
