@@ -29,34 +29,38 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .movies-summary {
-  margin-bottom: 64px;
-  &__header {
-  width: 100%;
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  font-family: $font-mono;
-  font-weight: 700;
-  font-size: 22px;
-  line-height: 170%;
-  letter-spacing: 0.015em;
-  text-transform: uppercase;
-  margin-top: 64px;
+  flex-direction: column;
+  margin-bottom: 64px;
+  width: 100%;
 
-  p {
-    color: $color-text-main;
-  }
+  &__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: $font-mono;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 170%;
+    letter-spacing: 0.015em;
+    text-transform: uppercase;
+    margin-top: 64px;
 
-  a {
-    color: $color-brand;
-  }
+    p {
+      color: $color-text-main;
+    }
 
-  span {
-    @include mobile {
-      display: none;
+    a {
+      color: $color-brand;
+    }
+
+    span {
+      @include mobile {
+        display: none;
+      }
     }
   }
-}
 }
 .movie-cards__wrapper {
   width: 100%;

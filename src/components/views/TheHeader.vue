@@ -10,7 +10,6 @@ export default defineComponent({
     TopNavbar,
     SignSection,
   },
-
   computed: {
     publicContent() {
       return ['Home', 'Movies', 'Screenings', 'SingleMovie'].includes(this.$route.name);
@@ -56,6 +55,7 @@ export default defineComponent({
   align-items: center;
   justify-content: space-between;
 }
+
 .header__hamburger-menu {
   display: none;
 
@@ -63,6 +63,7 @@ export default defineComponent({
     display: block;
   }
 }
+
 .header__navbar {
   width: 75%;
   display: flex;
@@ -81,5 +82,9 @@ export default defineComponent({
   line-height: 21px;
   letter-spacing: 0.03em;
   text-transform: uppercase;
+
+  @include mobile {
+    display: none;
+  }
 }
 </style>

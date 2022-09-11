@@ -134,7 +134,7 @@ export default defineComponent({
 }
 
 .button-base[color-scheme="no-border"] {
-  border: none;
+  border: 2px solid transparent;
   color: $color-brand;
   background-color: inherit;
 }
@@ -161,6 +161,6 @@ export default defineComponent({
 
 .button-base[usage="form"] {
   width: 100%;
-  padding: 0 20px;
+  padding: 0;
 }
 </style>

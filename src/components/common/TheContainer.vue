@@ -28,7 +28,6 @@ export default defineComponent({
 .container {
   max-width: 1440px;
   padding: 0 24px;
-
 }
 
 .container[variant="full-width"] {
@@ -40,6 +39,6 @@ export default defineComponent({
 .container[variant="form"] {
     max-width: 603px;
     min-width: 220px;
-    margin: 120px auto 0;
+    margin: 64px auto 0;
 }
 </style>

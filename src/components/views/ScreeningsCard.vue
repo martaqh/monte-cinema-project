@@ -5,9 +5,14 @@ import AppButton from '@/components/common/App/AppButton.vue';
 import MovieTitle from '@/components/common/Movie/MovieTitle.vue';
 import AppTag from '@/components/common/App/AppTag.vue';
 import MovieLengthOrYear from '@/components/common/Movie/MovieLengthOrYear.vue';
+import { useAuthStore } from '@/stores/authStore';
 
 export default defineComponent({
   components: { MoviePoster, AppButton, MovieTitle, AppTag, MovieLengthOrYear },
+  setup() {
+    const auth = useAuthStore();
+    return { auth };
+  },
   props : {
     movieData: {
       type: Object,
@@ -20,6 +25,14 @@ export default defineComponent({
     titleSelected: {
       type: String,
       default: 'All movies',
+    }
+  },
+  computed: {
+    isLoggedIn() {
+      return this.auth.isLoggedIn
+    },
+    routerPath() {
+      return this.isLoggedIn ? {name: 'ChooseSeats'} : {name: 'Login'}
     }
   },
   methods: {
@@ -46,6 +59,7 @@ export default defineComponent({
               v-for="screening of movieScreenings"
               color-scheme="main-reverse"
               :key="screening.id"
+              :to="routerPath"
             >
             {{ getScreeningTime(screening) }}
             </AppButton>
@@ -77,7 +91,7 @@ export default defineComponent({
   flex-wrap: wrap;
   margin-top: 0;
 
-  button {
+  a {
     margin-right: 10px;
   }
 }

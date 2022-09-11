@@ -76,8 +76,10 @@ export default defineComponent({
 <template>
   <div class="login-page">
     <TheContainer variant="form">
-      <SectionTitle size="large">Hi there!</SectionTitle>
-      <SectionSubtitle size="large">Care to log in?</SectionSubtitle>
+      <div class="login-page__header">
+        <SectionTitle size="large">Hi there!</SectionTitle>
+        <SectionSubtitle size="large">Care to log in?</SectionSubtitle>
+      </div>
       <FormCard>
         <form
           @submit="handleSubmit"
@@ -130,14 +132,41 @@ export default defineComponent({
           </div>
         </form>
       </FormCard>
+      <p class="reset-password-link">Did you forget your password?
+        <router-link :to="{name: 'Home'}">
+          <span>Reset it now</span>
+        </router-link>
+      </p>
     </TheContainer>
   </div>
 </template>
 
 <style lang="scss" scoped>
-  .login-page__buttons {
-    margin-top: 40px;
-    display: flex;
-    justify-content: space-between;
+.login-page__header {
+  @include mobile {
+    text-align: center;
   }
-  </style>
+}
+.login-page__buttons {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+
+  @include mobile {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.reset-password-link {
+  margin-bottom: 100px;
+  font-family: $font-main;
+  font-size: 16px;
+  line-height: 170%;
+  letter-spacing: 0.04em;
+
+  span {
+    color: $color-brand;
+  }
+}
+</style>

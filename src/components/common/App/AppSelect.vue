@@ -22,7 +22,6 @@ export default defineComponent({
     }
   },
   emits: ['update:modelValue'],
-
 });
 </script>
 
@@ -43,11 +42,10 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .app-select {
-  margin-top: 40px;
+  width: 100%;
 }
 .app-select__field {
   padding: 17px 24px;
-  gap: 10px;
   background: $color-field-background;
   border-radius: 8px;
   border: none;

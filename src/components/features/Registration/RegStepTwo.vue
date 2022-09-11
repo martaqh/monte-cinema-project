@@ -80,8 +80,11 @@ export default defineComponent({
         alert('Please accept our Privacy Policy to continue')
       }
       if (this.isFormValid()) {
-        this.$emit('completed', { firstName: this.firstName, lastName: this.lastName, birthDate: this.birthDate })
-        console.log('Data is valid')
+        this.$emit('completed', {
+          firstName: this.firstName,
+          lastName: this.lastName,
+          birthDate: this.birthDate
+        })
       } else {
         console.error('Data is NOT valid')
       }
@@ -92,10 +95,12 @@ export default defineComponent({
 
 <template>
   <div class="reg-step-one">
-    <SectionTitle size="large">Great!</SectionTitle>
-    <SectionSubtitle size="large">Now your name</SectionSubtitle>
+    <div class="reg-step-two__header">
+      <SectionTitle size="large">Great!</SectionTitle>
+      <SectionSubtitle size="large">Now your name</SectionSubtitle>
+    </div>
     <FormCard>
-      <form
+     <form
         class="step-two"
         @completed="onStep2Completed"
         @submit="handleSubmit"
@@ -146,14 +151,17 @@ export default defineComponent({
           :labelLink="{text: 'Privacy Policy', to: {name: 'Home'}}"
           v-model="privacyPolicy"
         />
-        <div class="reg-setp-two__buttons">
+        <div class="reg-step-two__buttons">
           <AppButton
+            usage="form"
             size="large"
             color-scheme="no-border"
+            :to="{name: 'Login'}"
           >
             Log in instead
           </AppButton>
           <AppButton
+            usage="form"
             size="large"
             color-scheme="main"
             @click="handleSubmit"
@@ -167,10 +175,21 @@ export default defineComponent({
 </template>
 
 <style lang="scss" scoped>
-.reg-setp-two__buttons {
+.reg-step-two__header {
+  @include mobile {
+    text-align: center;
+  }
+}
+
+.reg-step-two__buttons {
   margin-top: 40px;
   display: flex;
   justify-content: space-between;
+
+  @include mobile {
+    flex-direction: column;
+    width: 100%;
+  }
 }
 
 .reg-step-two__validation-message {

@@ -9,7 +9,6 @@
   display: flex;
   flex-direction: column;
   padding: 40px 64px 64px 64px;
-  margin-top: 40px;
   margin-bottom: 40px;
   max-width: 603px;
   min-width: 220px;

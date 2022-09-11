@@ -49,7 +49,6 @@ export default defineComponent({
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   height: 100%;
   font-family: $font-mono;
   font-size: 16px;

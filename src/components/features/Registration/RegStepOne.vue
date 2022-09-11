@@ -66,11 +66,8 @@ export default defineComponent({
     handleSubmit(e) {
       e.preventDefault();
       this.allTouched();
-      console.log(this.passwordTouched)
-      console.log(this.isFormValid())
       if (this.isFormValid()) {
         this.$emit('completed', { email: this.email, password: this.password })
-        console.log('Data is valid')
       } else {
         console.error('Data is NOT valid')
       }
@@ -81,8 +78,10 @@ export default defineComponent({
 
 <template>
   <div class="reg-step-one">
-    <SectionTitle size="large">Ahoy you!</SectionTitle>
-    <SectionSubtitle size="large">Care to register?</SectionSubtitle>
+    <div class="reg-step-one__header">
+      <SectionTitle size="large">Ahoy you!</SectionTitle>
+      <SectionSubtitle size="large">Care to register?</SectionSubtitle>
+    </div>
     <FormCard>
       <form
         class="step-one"
@@ -132,7 +131,7 @@ export default defineComponent({
         >
           At least one digit
         </ValidationMessage>
-        <div class="reg-setp-one__buttons">
+        <div class="reg-step-one__buttons">
           <AppButton
             size="large"
             color-scheme="no-border"
@@ -156,10 +155,21 @@ export default defineComponent({
 </template>
 
 <style lang="scss" scoped>
-.reg-setp-one__buttons {
+.reg-step-one__header {
+  @include mobile {
+    text-align: center;
+  }
+}
+
+.reg-step-one__buttons {
   margin-top: 40px;
   display: flex;
   justify-content: space-between;
+
+  @include mobile {
+    flex-direction: column;
+    width: 100%;
+  }
 }
 
 </style>

@@ -23,7 +23,6 @@ export default defineComponent({
 })
 </script>
 
-
 <template>
   <div class="app-checkbox">
     <input
@@ -39,7 +38,6 @@ export default defineComponent({
       </router-link>
     </label>
   </div>
-
 </template>
 
 <style lang="scss" scoped>

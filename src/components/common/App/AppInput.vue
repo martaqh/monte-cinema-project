@@ -113,8 +113,8 @@ export default defineComponent({
 
 .app-input__visibility-toggle {
   position: absolute;
-  left: 90%;
-  top: 47%;
+  left: 85%;
+  top: 48%;
   border: none;
   background-color: inherit;
   cursor: pointer;
@@ -127,6 +127,4 @@ export default defineComponent({
     }
   }
 }
-
-
 </style>
