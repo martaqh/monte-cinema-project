@@ -79,7 +79,6 @@ export default defineComponent({
         console.log('Data is valid')
       } else {
         console.error('Data is NOT valid')
-        alert('Please provide your data to continue')
       }
     }
   }

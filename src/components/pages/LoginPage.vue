@@ -6,6 +6,7 @@ import AppButton from '@/components/common/App/AppButton.vue';
 import FormCard from '@/components/views/FormCard.vue';
 import SectionTitle from '@/components/common/Section/SectionTitle.vue';
 import SectionSubtitle from '@/components/common/Section/SectionSubtitle.vue';
+import ValidationMessage from '@/components/common/Form/ValidationMessage.vue';
 import { useAuthStore } from '@/stores/authStore';
 
 export default defineComponent({
@@ -15,7 +16,8 @@ export default defineComponent({
     AppButton,
     FormCard,
     SectionSubtitle,
-    SectionTitle
+    SectionTitle,
+    ValidationMessage
   },
   setup() {
     const auth = useAuthStore();
@@ -23,19 +25,40 @@ export default defineComponent({
   },
   data() {
     return {
-      isRequestFinished: false,
-
       email: '',
       password: '',
+      emailTouched: false,
+      passwordTouched: false,
     }
   },
   computed: {
     isLoggedIn() {
       return this.auth.isLoggedIn
+    },
+    emailErrorMessage() {
+      if (this.email === '' && this.emailTouched) {
+        return 'Please enter your email'
+      }
+      return ''
+    },
+    passwordErrorMessage() {
+      if (this.password === '' && this.passwordTouched) {
+        return 'Please enter your password'
+      }
+      return ''
+    },
+    isFormValid() {
+      return this.emailProvided && this.passwordProvided
     }
   },
   methods: {
-    async handleLogin() {
+    allTouched() {
+      this.emailTouched = true;
+      this.passwordTouched = true;
+    },
+    async handleLogin(e) {
+      e.preventDefault();
+      this.allTouched();
       try {
         await this.auth.login({
           email: this.email,
@@ -67,21 +90,32 @@ export default defineComponent({
             @blur="emailTouched = true"
             :is-valid="!emailErrorMessage"
           />
-
+          <ValidationMessage
+            v-if="emailErrorMessage"
+            class='not-valid'
+          >
+            {{ emailErrorMessage }}
+          </ValidationMessage>
           <AppInput
             label="password"
             type="password"
             placeholder="Enter your password"
             v-model="password"
             @blur="passwordTouched = true"
-            :is-valid="paswordTouched && isPasswordValid(password)"
+            :is-valid="!passwordErrorMessage"
           />
-
+          <ValidationMessage
+            v-if="passwordErrorMessage"
+            class='not-valid'
+          >
+            {{ passwordErrorMessage }}
+          </ValidationMessage>
           <div class="login-page__buttons">
             <AppButton
               size="large"
               color-scheme="no-border"
               usage="form"
+              :to="{name: 'Register'}"
             >
               Register instead
             </AppButton>
@@ -89,7 +123,7 @@ export default defineComponent({
               size="large"
               color-scheme="main"
               usage="form"
-              @click="handleLogin()"
+              @click="handleLogin"
             >
               Log in
             </AppButton>

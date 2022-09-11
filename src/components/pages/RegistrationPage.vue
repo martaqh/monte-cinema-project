@@ -44,7 +44,7 @@ export default defineComponent({
           last_name: this.lastName,
           date_of_birth: this.birthDate
         })
-        this.$router.push({ name: 'Login' })
+        this.$router.push({ name: 'ChooseSeats' })
       } catch(error) {
         console.error(error)
       } finally {

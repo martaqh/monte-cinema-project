@@ -73,7 +73,6 @@ export default defineComponent({
         console.log('Data is valid')
       } else {
         console.error('Data is NOT valid')
-        alert('Please provide correct data to continue')
       }
     },
   }
@@ -138,6 +137,7 @@ export default defineComponent({
             size="large"
             color-scheme="no-border"
             usage="form"
+            :to="{name:'Login'}"
           >
             Log in instead
           </AppButton>
