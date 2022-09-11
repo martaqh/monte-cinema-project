@@ -6,6 +6,7 @@ import ValidationMessage from '@/components/common/Form/ValidationMessage.vue';
 import AppButton from '@/components/common/App/AppButton.vue';
 import SectionTitle from '@/components/common/Section/SectionTitle.vue';
 import SectionSubtitle from '@/components/common/Section/SectionSubtitle.vue';
+import AppCheckbox from '@/components/common/App/AppCheckbox.vue';
 
 export default defineComponent({
   components: {
@@ -15,6 +16,7 @@ export default defineComponent({
     AppButton,
     SectionTitle,
     SectionSubtitle,
+    AppCheckbox
   },
   data() {
     return {
@@ -24,6 +26,7 @@ export default defineComponent({
       firstNameTouched: false,
       lastNameTouched: false,
       birthDateTouched: false,
+      privacyPolicy: false
     }
   },
   emits: ['completed'],
@@ -63,7 +66,7 @@ export default defineComponent({
     isFormValid() {
       return !this.firstNameErrorMessage &&
         !this.lastNameErrorMessage &&
-        this.isBirthDateValid
+        this.isBirthDateValid && this.privacyPolicy
     },
     allTouched() {
       this.firstNameTouched = true;
@@ -73,7 +76,9 @@ export default defineComponent({
     handleSubmit(e) {
       e.preventDefault();
       this.allTouched();
-      console.log(this.isFormValid())
+      if (!this.privacyPolicy) {
+        alert('Please accept our Privacy Policy to continue')
+      }
       if (this.isFormValid()) {
         this.$emit('completed', { firstName: this.firstName, lastName: this.lastName, birthDate: this.birthDate })
         console.log('Data is valid')
@@ -136,6 +141,11 @@ export default defineComponent({
         >
           You should be minimum 18 years old
         </ValidationMessage>
+        <AppCheckbox
+          labelText="I accept"
+          :labelLink="{text: 'Privacy Policy', to: {name: 'Home'}}"
+          v-model="privacyPolicy"
+        />
         <div class="reg-setp-two__buttons">
           <AppButton
             size="large"
