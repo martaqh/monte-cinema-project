@@ -1,8 +1,19 @@
 <script>
 import { defineComponent } from 'vue';
 import AppButton from '@/components/common/App/AppButton.vue';
+import { useAuthStore } from '@/stores/authStore';
+
 export default defineComponent({
-  components: { AppButton }
+  components: { AppButton },
+  setup() {
+    const auth = useAuthStore();
+    return { auth };
+  },
+  computed: {
+    isLoggedIn() {
+      return this.auth.isLoggedIn
+    }
+  }
 });
 </script>
 
@@ -16,12 +27,20 @@ export default defineComponent({
     Register
     </AppButton>
     <AppButton
+      v-if="!isLoggedIn"
       :to="{ name: 'Login' }"
       size="medium"
       color-scheme="main"
     >
     Log in
     </AppButton>
+    <AppButton
+        v-if="isLoggedIn"
+        @click="this.auth.logout()"
+        color-scheme="main-reverse"
+      >
+        Log out
+      </AppButton>
   </div>
 </template>
 
@@ -30,7 +49,7 @@ export default defineComponent({
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 33%;
+
   height: 100%;
   font-family: $font-mono;
   font-size: 16px;

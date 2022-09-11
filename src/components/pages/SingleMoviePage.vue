@@ -9,7 +9,13 @@ import ScreeningsSection from '@/components/views/ScreeningsSection.vue';
 import TheContainer from '@/components/common/TheContainer.vue';
 
 export default defineComponent({
-  components: { BreadCrumbs, SectionTitle, AppTag, ScreeningsSection, MovieLengthOrYear, TheContainer },
+  components: { BreadCrumbs,
+    SectionTitle,
+    AppTag,
+    ScreeningsSection,
+    MovieLengthOrYear,
+    TheContainer
+  },
   props: {
     movieId: {
       type: Number,

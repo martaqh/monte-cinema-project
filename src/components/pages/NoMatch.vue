@@ -3,21 +3,14 @@ import { defineComponent } from 'vue';
 import AppButton from '@/components/common/App/AppButton.vue';
 import TheContainer from '@/components/common/TheContainer.vue';
 import SectionSubtitle from '@/components/common/Section/SectionSubtitle.vue';
-import TheHeader from '@/components/views/TheHeader.vue';
-import TopNavbar from '@/components/features/Header/TopNavbar.vue';
-import SignSection from '@/components/features/Header/SignSection.vue';
 
 export default defineComponent({
-  components: { AppButton, TheContainer, SectionSubtitle, TheHeader, TopNavbar, SignSection }
+  components: { AppButton, TheContainer, SectionSubtitle }
 });
 </script>
 
 <template>
     <div class="not-found">
-      <TheHeader>
-        <TopNavbar />
-        <SignSection />
-      </TheHeader>
       <TheContainer>
         <div class="not-found__content">
         <SectionSubtitle size="large">

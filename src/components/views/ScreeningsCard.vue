@@ -34,7 +34,7 @@ export default defineComponent({
     <div class="screenings-card" v-if="movieScreenings.length > 0">
       <MoviePoster :src="movieData.poster_url" />
         <div class="screenings-card__movie-info">
-          <router-link :to="{name: 'SingleMoviePage', params: {movieId: movieData.id}}">
+          <router-link :to="{name: 'SingleMovie', params: {movieId: movieData.id}}">
             <MovieTitle>{{ movieData.title }}</MovieTitle>
           </router-link>
           <div class="screenings-card__category-and-length">

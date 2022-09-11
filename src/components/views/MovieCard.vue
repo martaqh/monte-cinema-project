@@ -17,7 +17,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <router-link :to="{name: 'SingleMoviePage', params: {movieId: movie.id}}" class="movie-card" >
+  <router-link :to="{name: 'SingleMovie', params: {movieId: movie.id}}" class="movie-card" >
     <MovieTitle>{{ movie.title }}</MovieTitle>
     <div>
       <MovieLengthOrYear :lengthInMinutes="movie.length" />

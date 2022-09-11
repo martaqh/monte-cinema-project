@@ -1,7 +1,6 @@
 <script>
 import { defineComponent } from 'vue';
 import TheContainer from '@/components/common/TheContainer.vue';
-import TheHeader from '@/components/views/TheHeader.vue';
 import AppInput from '@/components/common/App/AppInput.vue';
 import AppButton from '@/components/common/App/AppButton.vue';
 import FormCard from '@/components/views/FormCard.vue';
@@ -12,13 +11,11 @@ import { useAuthStore } from '@/stores/authStore';
 export default defineComponent({
   components: {
     TheContainer,
-    TheHeader,
     AppInput,
     AppButton,
     FormCard,
     SectionSubtitle,
     SectionTitle
-
   },
   setup() {
     const auth = useAuthStore();
@@ -55,17 +52,6 @@ export default defineComponent({
 
 <template>
   <div class="login-page">
-    <TheContainer>
-      <TheHeader>
-        <AppButton
-          v-if="isLoggedIn"
-          @click="this.auth.logout()"
-        >
-          Log out
-        </AppButton>
-        <p>developed with love</p>
-      </TheHeader>
-    </TheContainer>
     <TheContainer variant="form">
       <SectionTitle size="large">Hi there!</SectionTitle>
       <SectionSubtitle size="large">Care to log in?</SectionSubtitle>

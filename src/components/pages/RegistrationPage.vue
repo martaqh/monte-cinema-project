@@ -1,16 +1,13 @@
 <script>
 import { defineComponent } from 'vue';
 import TheContainer from '@/components/common/TheContainer.vue';
-import TheHeader from '@/components/views/TheHeader.vue';
 import RegStepOne from '@/components/features/Registration/RegStepOne.vue'
 import RegStepTwo from '@/components/features/Registration/RegStepTwo.vue'
 import { useAuthStore } from '@/stores/authStore';
 
-
 export default defineComponent({
   components: {
     TheContainer,
-    TheHeader,
     RegStepOne,
     RegStepTwo
   },
@@ -60,11 +57,6 @@ export default defineComponent({
 
 <template>
   <div class="registration-page">
-   <TheContainer>
-      <TheHeader>
-        <p>developed with love</p>
-      </TheHeader>
-    </TheContainer>
     <TheContainer variant="form">
       <RegStepOne
         v-if="currentStep === 1"

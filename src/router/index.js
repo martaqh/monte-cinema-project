@@ -13,7 +13,7 @@ const routes = [
   },
   {
     path: '/movies/:movieId',
-    name: 'SingleMoviePage',
+    name: 'SingleMovie',
     component: () => import('@/components/pages/SingleMoviePage.vue'),
     props: true,
   },

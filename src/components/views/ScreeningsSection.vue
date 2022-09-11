@@ -88,9 +88,9 @@ export default defineComponent({
 <template>
   <div class="screenings" v-if="isRequestFinished">
     <div class="screenings-filters">
-      <SectionTitle :size="singleMovie ? 'small' : 'large'">Screenings:</SectionTitle>
+      <SectionTitle :size="singleMovie ? 'small' : 'medium'">Screenings:</SectionTitle>
       <div class="screenings-filters__section-subtitle">
-        <SectionSubtitle :size="singleMovie ? 'small' : 'large'">{{ sectionSubtitle }}</SectionSubtitle>
+        <SectionSubtitle :size="singleMovie ? 'small' : 'medium'">{{ sectionSubtitle }}</SectionSubtitle>
       </div>
       <div class="screenings-filters__wrapper">
         <div class="screenings-filters__by-date">

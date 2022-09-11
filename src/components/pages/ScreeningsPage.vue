@@ -5,13 +5,19 @@ import BreadCrumbs from '@/components/common/BreadCrumbs.vue';
 import TheContainer from '@/components/common/TheContainer.vue';
 
 export default defineComponent({
-  components: { ScreeningsSection, BreadCrumbs, TheContainer },
+  components: {
+    ScreeningsSection,
+    BreadCrumbs,
+    TheContainer
+  },
 });
 </script>
 
 <template>
-  <TheContainer>
-    <BreadCrumbs>Screenings</BreadCrumbs>
-    <ScreeningsSection />
-  </TheContainer>
+  <div class="screenings-page">
+    <TheContainer>
+      <BreadCrumbs>Screenings</BreadCrumbs>
+      <ScreeningsSection />
+    </TheContainer>
+  </div>
 </template>

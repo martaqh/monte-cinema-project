@@ -6,10 +6,6 @@ import ScreeningsSection from '@/components/views/ScreeningsSection.vue';
 import { mapActions } from "pinia";
 import movies from '@/stores/moviesStore'
 import TheContainer from '@/components/common/TheContainer.vue';
-import TheHeader from '../views/TheHeader.vue';
-import TopNavbar from '@/components/features/Header/TopNavbar.vue';
-import SignSection from '../features/Header/SignSection.vue';
-
 
 export default defineComponent({
   components: {
@@ -17,10 +13,7 @@ export default defineComponent({
     MoviesSummary,
     ScreeningsSection,
     TheContainer,
-    TheHeader,
-    TopNavbar,
-    SignSection,
-},
+  },
   methods: {
     ...mapActions(movies, ["getMoviesToState"]),
   },
@@ -32,12 +25,6 @@ export default defineComponent({
 
 <template>
   <div class="home-page">
-    <TheContainer>
-        <TheHeader>
-          <TopNavbar />
-          <SignSection />
-        </TheHeader>
-    </TheContainer>
     <TheContainer variant='full-width'>
       <WelcomeSection />
     </TheContainer>

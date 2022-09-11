@@ -28,7 +28,9 @@ export default defineComponent({
 </template>
 
 <style lang="scss" scoped>
-.movies-summary__header {
+.movies-summary {
+  margin-bottom: 64px;
+  &__header {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -54,6 +56,7 @@ export default defineComponent({
       display: none;
     }
   }
+}
 }
 .movie-cards__wrapper {
   width: 100%;

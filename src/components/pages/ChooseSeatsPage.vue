@@ -19,7 +19,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div>
+  <div class="choose-seats-page">
     <h2>Choose seats!</h2>
     <AppButton
       v-if="isLoggedIn"
@@ -27,5 +27,25 @@ export default defineComponent({
     >
       Log out
     </AppButton>
+    <AppButton
+      :to="{ name: 'Home' }"
+      color-scheme="main-reverse"
+    >
+      Go back to home page
+    </AppButton>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.choose-seats-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 100px;
+
+  > * {
+    font-size: 60px;
+    margin: 20px;
+  }
+}
+</style>
