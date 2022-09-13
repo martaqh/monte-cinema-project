@@ -6,6 +6,7 @@ import ValidationMessage from '@/components/common/Form/ValidationMessage.vue';
 import AppButton from '@/components/common/App/AppButton.vue';
 import SectionTitle from '@/components/common/Section/SectionTitle.vue';
 import SectionSubtitle from '@/components/common/Section/SectionSubtitle.vue';
+import { isEmailValid, hasOneDigit, hasOneLetter, isLongEnough } from '@/helpers/validationHelpers';
 
 export default defineComponent({
   components: {
@@ -26,45 +27,40 @@ export default defineComponent({
   },
   emits: ['completed'],
   computed: {
+    checks() {
+      return {
+        isEmailValid: isEmailValid(this.email),
+        hasOneDigit: hasOneDigit(this.password),
+        hasOneLetter: hasOneLetter(this.password),
+        has8Digits: isLongEnough(this.password, 8)
+      }
+    },
     emailErrorMessage() {
       if (!this.email && this.emailTouched) {
         return 'Please enter your email'
       }
-      if (this.email && this.emailTouched && !this.isEmailValid(this.email)) {
+      if (this.email && this.emailTouched && !isEmailValid(this.email)) {
         return 'Please enter CORRECT email'
       }
       return ''
     },
   },
   methods: {
-    isEmailValid(input) {
-      return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(input)
-    },
-    hasOneDigit(input) {
-      return /\d/.test(input)
-    },
-    hasOneLetter(input) {
-      return /[a-zA-Z]/.test(input)
-    },
-    isLongEnough(input) {
-      return input.length >= 8
-    },
-    isPasswordValid(input) {
+    isPasswordValid() {
       return this.password !== '' &&
         this.passwordTouched === true &&
-        this.hasOneDigit(input) &&
-        this.hasOneLetter(input) &&
-        this.isLongEnough(input)
+        hasOneDigit(this.password) &&
+        hasOneLetter(this.password) &&
+        isLongEnough(this.password, 8)
     },
     isFormValid() {
-      return this.isEmailValid(this.email) && this.isPasswordValid(this.password)
+      return this.checks.isEmailValid && this.isPasswordValid()
     },
     allTouched() {
       this.emailTouched = true;
       this.passwordTouched = true;
     },
-    handleSubmit(e) {
-      e.preventDefault();
+    handleSubmit() {
       this.allTouched();
       if (this.isFormValid()) {
         this.$emit('completed', { email: this.email, password: this.password })
@@ -86,7 +82,7 @@ export default defineComponent({
       <form
         class="reg-step-one__form"
         @completed="onStep1Completed"
-        @submit="handleSubmit"
+        @submit.prevent="handleSubmit"
       >
         <AppInput
           label="e-mail"
@@ -108,23 +104,23 @@ export default defineComponent({
           placeholder="Enter your password"
           v-model="password"
           @blur="passwordTouched = true"
-          :isValid="passwordTouched ? isPasswordValid(password) : true"
+          :isValid="passwordTouched ? isPasswordValid() : true"
         />
         <div class="reg-step-one__password--validation-messages">
           <ValidationMessage
-            :class="isLongEnough(password) ?
+            :class="checks.has8Digits ?
             'valid' : passwordTouched ? 'not-valid' : null"
           >
             At least 8 characters
           </ValidationMessage>
           <ValidationMessage
-            :class="hasOneLetter(password) ?
+            :class="checks.hasOneLetter ?
             'valid' : passwordTouched ? 'not-valid' : null"
           >
             At least one letter
           </ValidationMessage>
           <ValidationMessage
-            :class="hasOneDigit(password) ?
+            :class="checks.hasOneDigit ?
             'valid' : passwordTouched ? 'not-valid' : null"
           >
             At least one digit
@@ -143,7 +139,6 @@ export default defineComponent({
             size="large"
             color-scheme="main"
             usage="form"
-            @click="handleSubmit"
           >
             Next step
           </AppButton>
