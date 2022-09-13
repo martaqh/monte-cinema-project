@@ -60,6 +60,8 @@ export default defineComponent({
               color-scheme="main-reverse"
               :key="screening.id"
               :to="routerPath"
+              :id="screeningId"
+              @clicked="$emit('screening_selected', { screeningId: screening.id})"
             >
             {{ getScreeningTime(screening) }}
             </AppButton>

@@ -30,6 +30,12 @@ export default defineComponent({
       return this.movies
     },
   },
+  methods: {
+    procedeToChooseSeats(data) {
+      console.log(data)
+      this.$router.push({ name: 'ChooseSeats', params: {screeningId: data.screeningId}})
+    }
+  }
 })
 </script>
 
@@ -40,6 +46,7 @@ export default defineComponent({
       :movieData="movie"
       :key="movie.id"
       :movieScreenings="this.screenings.filter(screening => screening.movie === movie.id)"
+      @screening_selected="procedeToChooseSeats"
     />
   </div>
 </template>

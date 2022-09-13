@@ -36,6 +36,13 @@ const routes = [
     path: '/choose-seats',
     name: 'ChooseSeats',
     component: () => import('@/components/pages/ChooseSeatsPage.vue'),
+    props: true
+  },
+  {
+    path: '/choose-seats/:screeningId',
+    name: 'ChooseSeatsForScreening',
+    component: () => import('@/components/pages/ChooseSeatsPage.vue'),
+    props: true
   },
   {
     path: '/no-match',
