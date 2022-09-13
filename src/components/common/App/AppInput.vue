@@ -27,17 +27,21 @@ export default defineComponent({
   },
   data() {
     return {
+      passwordChangingType: 'password',
       eyeClicked: false,
     }
   },
   emits: ['update:modelValue', 'blur'],
+  computed: {
+    inputType() {
+      return this.type === 'password' ? this.passwordChangingType : this.type
+    }
+  },
   methods: {
     toggleVisibility() {
-      const inputSibling = document.getElementById('password');
-      const type = inputSibling.getAttribute('type');
-      type === "password" ?
-        inputSibling.setAttribute('type', "text")
-        : inputSibling.setAttribute('type', "password");
+      this.passwordChangingType === 'password'
+        ? this.passwordChangingType = 'text'
+        : this.passwordChangingType = 'password'
       this.eyeClicked = !this.eyeClicked
     }
   }
@@ -48,8 +52,7 @@ export default defineComponent({
   <div class="app-input">
     <AppLabel>{{ label }}</AppLabel>
     <input class="app-input__field"
-      :type="type"
-      :id="type"
+      :type="inputType"
       :placeholder="placeholder"
       :value="modelValue"
       :isValid="isValid"
@@ -63,11 +66,13 @@ export default defineComponent({
       @click="toggleVisibility()"
     >
       <img
+        v-if="passwordChangingType === 'password'"
         class="app-input__visibility-toggle--icon"
         src='@/assets/PasswordEye.svg'
         :clicked="!eyeClicked"
       />
       <img
+        v-if="passwordChangingType === 'text'"
         class="app-input__visibility-toggle--icon"
         src='@/assets/PasswordEyeOff.svg'
         :clicked="eyeClicked"

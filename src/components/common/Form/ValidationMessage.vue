@@ -14,14 +14,6 @@
   color: $color-text-main;
   letter-spacing: 0.04em;
   line-height: 170%;
-
-  &[id='2'] {
-    margin-top: 0;
-  }
-
-  &[id='3'] {
-    margin-top: 0;
-  }
 }
 
 .valid {

@@ -84,7 +84,7 @@ export default defineComponent({
     </div>
     <FormCard>
       <form
-        class="step-one"
+        class="reg-step-one__form"
         @completed="onStep1Completed"
         @submit="handleSubmit"
       >
@@ -110,27 +110,26 @@ export default defineComponent({
           @blur="passwordTouched = true"
           :isValid="passwordTouched ? isPasswordValid(password) : true"
         />
-        <ValidationMessage
-          id='1'
-          :class="isLongEnough(password) ?
-          'valid' : passwordTouched ? 'not-valid' : null"
-        >
-          At least 8 characters
-        </ValidationMessage>
-        <ValidationMessage
-          id='2'
-          :class="hasOneLetter(password) ?
-          'valid' : passwordTouched ? 'not-valid' : null"
-        >
-          At least one letter
-        </ValidationMessage>
-        <ValidationMessage
-          id='3'
-          :class="hasOneDigit(password) ?
-          'valid' : passwordTouched ? 'not-valid' : null"
-        >
-          At least one digit
-        </ValidationMessage>
+        <div class="reg-step-one__password--validation-messages">
+          <ValidationMessage
+            :class="isLongEnough(password) ?
+            'valid' : passwordTouched ? 'not-valid' : null"
+          >
+            At least 8 characters
+          </ValidationMessage>
+          <ValidationMessage
+            :class="hasOneLetter(password) ?
+            'valid' : passwordTouched ? 'not-valid' : null"
+          >
+            At least one letter
+          </ValidationMessage>
+          <ValidationMessage
+            :class="hasOneDigit(password) ?
+            'valid' : passwordTouched ? 'not-valid' : null"
+          >
+            At least one digit
+          </ValidationMessage>
+        </div>
         <div class="reg-step-one__buttons">
           <AppButton
             size="large"
@@ -169,6 +168,17 @@ export default defineComponent({
   @include mobile {
     flex-direction: column;
     width: 100%;
+  }
+}
+
+.reg-step-one__password--validation-messages {
+
+  :nth-child(2) {
+    margin: 0;
+  }
+
+  :nth-child(3) {
+    margin: 0;
   }
 }
 
