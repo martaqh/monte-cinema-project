@@ -20,11 +20,23 @@ export default defineComponent({
     },
     movieScreenings: {
       type: Array,
-      required: true,
     },
     titleSelected: {
       type: String,
       default: 'All movies',
+    },
+    usage: {
+      type: String,
+      default: 'ScreeningsSection'
+    },
+    dayName:{
+      type: String,
+    },
+    date: {
+      type: String,
+    },
+    time: {
+      type: String,
     }
   },
   computed: {
@@ -33,6 +45,12 @@ export default defineComponent({
     },
     routerPath() {
       return this.isLoggedIn ? {name: 'ChooseSeats'} : {name: 'Login'}
+    },
+    hasScreeningsTimes() {
+      return this.usage === 'ScreeningsSection' && this.movieScreenings.length > 0
+    },
+    screeningDateAndTime() {
+      return `${this.date} - ${this.time}`
     }
   },
   methods: {
@@ -44,17 +62,20 @@ export default defineComponent({
 </script>
 
   <template>
-    <div class="screenings-card" v-if="movieScreenings.length > 0">
+    <div class="screenings-card">
       <MoviePoster :src="movieData.poster_url" />
         <div class="screenings-card__movie-info">
           <router-link :to="{name: 'SingleMovie', params: {movieId: movieData.id}}">
             <MovieTitle>{{ movieData.title }}</MovieTitle>
           </router-link>
-          <div class="screenings-card__category-and-length">
+          <div
+            class="screenings-card__category-and-length"
+            :usage="usage"
+          >
             <AppTag>{{ movieData.genre.name }}</AppTag>
             <MovieLengthOrYear :lengthInMinutes="movieData.length" />
           </div>
-          <div class="screenings-card__screenings-times">
+          <div class="screenings-card__screenings-times" v-if="hasScreeningsTimes">
             <AppButton
               v-for="screening of movieScreenings"
               color-scheme="main-reverse"
@@ -66,6 +87,12 @@ export default defineComponent({
             {{ getScreeningTime(screening) }}
             </AppButton>
           </div>
+          <AppTag
+            v-if="usage === 'ChooseSeats'"
+            usage='ChooseSeats'
+          >
+            {{ screeningDateAndTime }}
+          </AppTag>
         </div>
     </div>
   </template>
@@ -87,6 +114,10 @@ export default defineComponent({
   display: flex;
   margin-bottom: 32px;
   align-items: baseline;
+
+  &[usage="ChooseSeats"] {
+    margin-bottom: 0;
+  }
 }
 .screenings-card__screenings-times {
   display: flex;

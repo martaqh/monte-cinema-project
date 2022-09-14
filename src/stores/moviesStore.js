@@ -12,9 +12,12 @@ export default defineStore('movies', {
     },
   },
   actions: {
-    async getMoviesToState() {
+    async fetchMoviesToState() {
       const response = await getAllMovies();
       this.movies = response.data;
+    },
+    getMovieByMovieId(movieId) {
+      return this.movies.find(movie => movie.id === movieId)
     }
   },
 })

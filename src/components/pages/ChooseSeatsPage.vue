@@ -1,9 +1,13 @@
 <script>
 import { defineComponent } from 'vue';
-import AppButton from '@/components/common/App/AppButton.vue';
 import { useAuthStore } from '@/stores/authStore';
 import CinemaHall from '@/components/views/CinemaHall.vue';
 import { getScreeningById } from '@/api/service/Screenings';
+import SectionTitle from '@/components/common/Section/SectionTitle.vue';
+import TheContainer from '@/components/common/TheContainer.vue';
+import { mapActions } from "pinia";
+import movies from '@/stores/moviesStore';
+import ScreeningsCard from '@/components/views/ScreeningsCard.vue';
 
 export default defineComponent({
   setup() {
@@ -22,8 +26,17 @@ export default defineComponent({
       screeningData: {},
     }
   },
-  components: { AppButton, CinemaHall },
+  components: { SectionTitle, CinemaHall, TheContainer, ScreeningsCard },
   computed: {
+    movieData() {
+      return this.getMovieByMovieId(this.screeningData.movie)
+    },
+    screeningDate() {
+      return this.screeningData.datetime.substring(0, 10).split('-').reverse().join("/")
+    },
+    screeningTime() {
+      return this.screeningData.datetime.substring(11,16)
+    },
     isLoggedIn() {
       return this.auth.isLoggedIn
     },
@@ -45,6 +58,7 @@ export default defineComponent({
     },
   },
   methods: {
+    ...mapActions(movies, ['getMovieByMovieId']),
     async getScreeningData() {
       try {
         const response = await getScreeningById(this.screeningId);
@@ -57,32 +71,29 @@ export default defineComponent({
       }
     },
   },
-  mounted() {
+  beforeMount() {
     this.getScreeningData()
   }
+
 })
 </script>
 
 <template>
   <div class="choose-seats-page" v-if="isRequestFinished">
-    <h2>Choose seats!</h2>
-    <AppButton
-      v-if="isLoggedIn"
-      @click="this.auth.logout()"
-    >
-      Log out
-    </AppButton>
-    <AppButton
-      :to="{ name: 'Home' }"
-      color-scheme="main-reverse"
-    >
-      Go back to home page
-    </AppButton>
-
-    <CinemaHall
-      :rows="rowsNumber"
-      :seats="seatsInRow"
-    />
+    <TheContainer>
+      <SectionTitle>Choose your seats</SectionTitle>
+      <ScreeningsCard
+        :movieData="movieData"
+        usage="ChooseSeats"
+        :dayName="screeningDayName"
+        :date="screeningDate"
+        :time="screeningTime"
+      />
+      <CinemaHall
+        :rows="rowsNumber"
+        :seats="seatsInRow"
+      />
+    </TheContainer>
   </div>
 </template>
 
@@ -91,7 +102,7 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 100px;
+
 
   > * {
     font-size: 60px;

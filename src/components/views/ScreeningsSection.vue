@@ -8,7 +8,7 @@ import AppSelect from '@/components/common/App/AppSelect.vue';
 import ScreeningsList from '@/components/views/ScreeningsList.vue';
 import { getScreeningsByDateAndMovie } from '@/api/service/Screenings';
 import { mapState } from 'pinia';
-import movies from '@/stores/moviesStore'
+import movies from '@/stores/moviesStore';
 
 export default defineComponent({
   components: { SectionTitle, SectionSubtitle, AppLabel, AppButton, AppSelect, ScreeningsList },
@@ -50,11 +50,10 @@ export default defineComponent({
       return activeDay
     },
     formattedActiveDayDate() {
-      const date = this.activeDayDate.toISOString().slice(0, 10)
-      return date.split('-').reverse().join("/")
+      return this.activeDayDate.toISOString().slice(0, 10).split('-').reverse().join("/")
     },
     activeDayName() {
-      return this.activeDayDate.toLocaleString('en-GB', {weekday: 'long'});
+      return this.activeDayDate.toLocaleString('en-GB', {weekday: 'long'})
     },
     sectionSubtitle() {
       return `${this.activeDayName} ${this.formattedActiveDayDate}`;

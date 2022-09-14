@@ -15,10 +15,10 @@ export default defineComponent({
     TheContainer,
   },
   methods: {
-    ...mapActions(movies, ["getMoviesToState"]),
+    ...mapActions(movies, ["fetchMoviesToState"]),
   },
   beforeMount() {
-    this.getMoviesToState()
+    this.fetchMoviesToState()
   }
 });
 </script>
