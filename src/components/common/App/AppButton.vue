@@ -27,6 +27,16 @@ export default defineComponent({
         ].includes(value);
       },
     },
+    usage: {
+      type: String,
+      default: 'common',
+      validator(value) {
+        return [
+          'common',
+          'form',
+        ].includes(value);
+      },
+    },
     arrow: {
       type: String,
       default: 'none',
@@ -46,16 +56,6 @@ export default defineComponent({
       type: String,
       required: false
     },
-    buttonType: {
-      type: String,
-      default: 'button',
-      validator(value) {
-        return [
-          'button',
-          'submit'
-        ].includes(value);
-      },
-    }
   },
   computed: {
     componentVariant() {
@@ -67,7 +67,10 @@ export default defineComponent({
         return 'button'
       }
     },
-  }
+    buttonType() {
+      return this.usage === 'form' ? 'submit' : 'button'
+    }
+  },
 });
 </script>
 
@@ -80,6 +83,7 @@ export default defineComponent({
     :size="size"
     :color-scheme="colorScheme"
     :arrow="arrow"
+    :usage="usage"
     :type="buttonType"
     @click="this.$emit('clicked')"
   >

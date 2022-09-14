@@ -7,6 +7,7 @@ import AppButton from '@/components/common/App/AppButton.vue';
 import SectionTitle from '@/components/common/Section/SectionTitle.vue';
 import SectionSubtitle from '@/components/common/Section/SectionSubtitle.vue';
 import AppCheckbox from '@/components/common/App/AppCheckbox.vue';
+import { isUserOlderThan } from '@/helpers/validationHelpers';
 
 export default defineComponent({
   components: {
@@ -43,6 +44,9 @@ export default defineComponent({
       }
       return ''
     },
+    isUserAbove18() {
+      return isUserOlderThan(this.birthDate, 18)
+    },
     birthDateErrorMessage() {
       if (this.birthDate === '' && this.birthDateTouched) {
         return 'Please enter your date of birth'
@@ -51,18 +55,10 @@ export default defineComponent({
     },
     isBirthDateValid() {
       return !this.birthDateErrorMessage &&
-        this.isUserAbove18(this.birthDate)
+        this.isUserAbove18
     }
   },
   methods: {
-    isUserAbove18(birthDate) {
-      const dateOfBirth = new Date(birthDate);
-      const monthDifference = Date.now() - dateOfBirth.getTime();
-      const ageInDateFormat = new Date(monthDifference);
-      const year = ageInDateFormat.getUTCFullYear();
-      const age = Math.abs(year - 1970);
-      return age >= 18
-    },
     isFormValid() {
       return !this.firstNameErrorMessage &&
         !this.lastNameErrorMessage &&
@@ -73,8 +69,7 @@ export default defineComponent({
       this.lastNameTouched = true;
       this.birthDateTouched = true;
     },
-    handleSubmit(e) {
-      e.preventDefault();
+    handleSubmit() {
       this.allTouched();
       if (!this.privacyPolicy) {
         alert('Please accept our Privacy Policy to continue')
@@ -103,7 +98,7 @@ export default defineComponent({
      <form
         class="step-two"
         @completed="onStep2Completed"
-        @submit="handleSubmit"
+        @submit.prevent="handleSubmit"
       >
         <AppInput
           label="first name"
@@ -142,7 +137,7 @@ export default defineComponent({
           :is-valid="birthDateTouched ? isBirthDateValid : true"
         />
         <ValidationMessage
-          :class="isUserAbove18(this.birthDate) ? 'valid' : birthDateTouched ? 'not-valid' : null"
+          :class="this.isUserAbove18 ? 'valid' : birthDateTouched ? 'not-valid' : null"
         >
           You should be minimum 18 years old
         </ValidationMessage>
@@ -164,7 +159,6 @@ export default defineComponent({
             usage="form"
             size="large"
             color-scheme="main"
-            @click="handleSubmit"
           >
             Register
           </AppButton>

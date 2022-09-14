@@ -11,10 +11,10 @@ export default defineComponent({
     SignSection,
   },
   computed: {
-    publicContent() {
+    isPublicContent() {
       return ['Home', 'Movies', 'Screenings', 'SingleMovie'].includes(this.$route.name);
     },
-    authSection() {
+    hasAuthSection() {
       return ['Register', 'Login'].includes(this.$route.name);
     },
   }
@@ -38,8 +38,8 @@ export default defineComponent({
           alt="Hamburger menu"
         />
       </a>
-      <p class="header__monte-slogan" v-if="authSection">Developed with ❤️ by Monterail</p>
-      <div class="header__navbar" v-if="publicContent">
+      <p class="header__monte-slogan" v-if="hasAuthSection">Developed with ❤️ by Monterail</p>
+      <div class="header__navbar" v-if="isPublicContent">
         <TopNavbar />
         <SignSection />
       </div>

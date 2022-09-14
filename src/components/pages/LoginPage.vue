@@ -56,8 +56,7 @@ export default defineComponent({
       this.emailTouched = true;
       this.passwordTouched = true;
     },
-    async handleLogin(e) {
-      e.preventDefault();
+    async handleLogin() {
       this.allTouched();
       try {
         await this.auth.login({
@@ -82,7 +81,7 @@ export default defineComponent({
       </div>
       <FormCard>
         <form
-          @submit="handleSubmit"
+          @submit.prevent="handleLogin"
         >
           <AppInput
             label="e-mail"
@@ -125,7 +124,6 @@ export default defineComponent({
               size="large"
               color-scheme="main"
               usage="form"
-              @click="handleLogin"
             >
               Log in
             </AppButton>

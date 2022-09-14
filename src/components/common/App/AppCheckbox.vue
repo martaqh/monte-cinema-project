@@ -7,12 +7,7 @@ export default defineComponent({
       required: true,
     },
     labelLink: {
-      text: {
-        type: String,
-      },
-      to: {
-        type: Object
-      }
+      type: Object,
     },
     modelValue: {
       type: String,
