@@ -7,11 +7,17 @@ import SectionTitle from '@/components/common/Section/SectionTitle.vue';
 import AppSelect from '@/components/common/App/AppSelect.vue';
 import MovieCard from '@/components/views/MovieCard.vue';
 import AppInput from '@/components/common/App/AppInput.vue';
-import AppLabel from '@/components/common/App/AppLabel.vue';
 import TheContainer from '@/components/common/TheContainer.vue';
 
 export default defineComponent({
-  components: { BreadCrumbs, SectionTitle, AppSelect, MovieCard, AppInput, AppLabel, TheContainer },
+  components: {
+    BreadCrumbs,
+    SectionTitle,
+    AppSelect,
+    MovieCard,
+    AppInput,
+    TheContainer
+  },
   data() {
     return {
       optionSelected: 'All categories',
@@ -39,24 +45,23 @@ export default defineComponent({
 </script>
 
 <template>
-  <TheContainer>
-    <div class="all-movies">
+  <div class="all-movies">
+    <TheContainer>
       <BreadCrumbs>Movies</BreadCrumbs>
       <SectionTitle size="large">All the movies</SectionTitle>
       <div class="all-movies__filters">
         <div class="all-movies__filters--select">
-          <AppLabel>Search</AppLabel>
           <AppInput
             placeholder="What are you looking for?"
             v-model="inputContent"
+            label="search"
           />
         </div>
         <div class="all-movies__filters--select">
-          <AppLabel>Category</AppLabel>
           <AppSelect
             :options="moviesCategories"
             v-model="optionSelected"
-            label-text="category"
+            label="category"
             optionStart="All categories"
           ></AppSelect>
         </div>
@@ -68,8 +73,8 @@ export default defineComponent({
           :movie="movie"
         />
       </div>
-    </div>
-  </TheContainer>
+    </TheContainer>
+  </div>
 </template>
 
 <style lang="scss" scoped>

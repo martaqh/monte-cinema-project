@@ -17,7 +17,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <router-link :to="{name: 'SingleMoviePage', params: {movieId: movie.id}}" class="movie-card" >
+  <router-link :to="{name: 'SingleMovie', params: {movieId: movie.id}}" class="movie-card" >
     <MovieTitle>{{ movie.title }}</MovieTitle>
     <div>
       <MovieLengthOrYear :lengthInMinutes="movie.length" />
@@ -42,8 +42,7 @@ export default defineComponent({
   }
 
   @include mobile {
-    margin: 12px;
-    width: 327px;
+    width: 100%;
   }
 }
 </style>

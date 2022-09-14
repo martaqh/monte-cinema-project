@@ -13,7 +13,7 @@ const routes = [
   },
   {
     path: '/movies/:movieId',
-    name: 'SingleMoviePage',
+    name: 'SingleMovie',
     component: () => import('@/components/pages/SingleMoviePage.vue'),
     props: true,
   },
@@ -21,6 +21,21 @@ const routes = [
     path: '/screenings',
     name: 'Screenings',
     component: () => import('@/components/pages/ScreeningsPage.vue'),
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: () => import('@/components/pages/RegistrationPage.vue'),
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/components/pages/LoginPage.vue'),
+  },
+  {
+    path: '/choose-seats',
+    name: 'ChooseSeats',
+    component: () => import('@/components/pages/ChooseSeatsPage.vue'),
   },
   {
     path: '/no-match',

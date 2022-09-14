@@ -9,7 +9,8 @@ export default defineComponent({
       validator(value) {
         return [
           'basic',
-          'full-width'
+          'hero',
+          'form'
         ].includes(value);
       },
     }
@@ -27,7 +28,6 @@ export default defineComponent({
 .container {
   max-width: 1440px;
   padding: 0 24px;
-  margin: 0 auto;
 }
 
 .container[variant="full-width"] {
@@ -35,5 +35,10 @@ export default defineComponent({
     padding: 0;
     margin: 0;
   }
+}
+.container[variant="form"] {
+    max-width: 603px;
+    min-width: 220px;
+    margin: 64px auto 0;
 }
 </style>

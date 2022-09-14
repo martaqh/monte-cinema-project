@@ -1,4 +1,4 @@
-import axios from "@/api/axiosConfig.js";
+import { defaultClient } from "@/api/axiosConfig.js";
 import { SCREENINGS } from "@/api/apiEndpoints.js";
 
 export const getScreeningsByDateAndMovie = (screeningsDate, movieId) => {
@@ -6,5 +6,5 @@ export const getScreeningsByDateAndMovie = (screeningsDate, movieId) => {
     date: screeningsDate,
     movie_id: movieId,
   }
-  return axios.get(SCREENINGS, { params });
+  return defaultClient.get(SCREENINGS, { params });
 };

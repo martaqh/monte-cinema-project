@@ -88,9 +88,9 @@ export default defineComponent({
 <template>
   <div class="screenings" v-if="isRequestFinished">
     <div class="screenings-filters">
-      <SectionTitle :size="singleMovie ? 'small' : 'large'">Screenings:</SectionTitle>
+      <SectionTitle :size="singleMovie ? 'small' : 'medium'">Screenings:</SectionTitle>
       <div class="screenings-filters__section-subtitle">
-        <SectionSubtitle :size="singleMovie ? 'small' : 'large'">{{ sectionSubtitle }}</SectionSubtitle>
+        <SectionSubtitle :size="singleMovie ? 'small' : 'medium'">{{ sectionSubtitle }}</SectionSubtitle>
       </div>
       <div class="screenings-filters__wrapper">
         <div class="screenings-filters__by-date">
@@ -113,11 +113,12 @@ export default defineComponent({
           </div>
         </div>
         <div class="screenings-filters__by-movie" v-if="singleMovie === null">
-          <AppLabel>Movie</AppLabel>
           <AppSelect
+            label="Movies"
             :options="moviesTitles"
             v-model="optionSelected"
-            optionStart="All movies" />
+            optionStart="All movies"
+           />
         </div>
       </div>
   </div>
@@ -147,6 +148,7 @@ export default defineComponent({
   @include tablet {
     flex-direction: column;
   }
+
   @include mobile {
     flex-direction: column;
   }
@@ -154,6 +156,7 @@ export default defineComponent({
 .screenings-filters__by-date {
   width: 100%;
 }
+
 .screenings-filters__by-movie {
   width: 100%;
   display: flex;
@@ -164,6 +167,7 @@ export default defineComponent({
     margin-top: 40px;
     margin-left: 0px;
   }
+
   @include mobile {
     margin-top: 40px;
     margin-left: 0px;
@@ -173,6 +177,7 @@ export default defineComponent({
 .screenings-filters__days-buttons {
   display: flex;
 }
+
 .screenings-filters__day-button {
   margin-right: 8px;
 
@@ -188,6 +193,7 @@ export default defineComponent({
     }
   }
 }
+
 .screenings-filters__date-picker {
   color: $color-text-main;
   border: 2px solid $color-text-main;
