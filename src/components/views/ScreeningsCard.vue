@@ -40,17 +40,11 @@ export default defineComponent({
     }
   },
   computed: {
-    isLoggedIn() {
-      return this.auth.isLoggedIn
-    },
-    routerPath() {
-      return this.isLoggedIn ? {name: 'ChooseSeats'} : {name: 'Login'}
-    },
     hasScreeningsTimes() {
       return this.usage === 'ScreeningsSection' && this.movieScreenings.length > 0
     },
     screeningDateAndTime() {
-      return `${this.date} - ${this.time}`
+      return `${this.dayName} ${this.date} - ${this.time}`
     }
   },
   methods: {
@@ -80,9 +74,9 @@ export default defineComponent({
               v-for="screening of movieScreenings"
               color-scheme="main-reverse"
               :key="screening.id"
-              :to="routerPath"
+              :to="{ name: 'ChooseSeatsPage'}"
               :id="screeningId"
-              @clicked="$emit('screening_selected', { screeningId: screening.id})"
+              @clicked="$emit('screening-selected', { screeningId: screening.id})"
             >
             {{ getScreeningTime(screening) }}
             </AppButton>
@@ -101,6 +95,7 @@ export default defineComponent({
 .screenings-card {
   display: flex;
   box-shadow: $shadow-card;
+  border-radius: $radius-card;
   padding: 40px;
   margin-bottom: 40px;
 }

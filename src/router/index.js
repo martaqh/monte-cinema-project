@@ -34,7 +34,7 @@ const routes = [
   },
   {
     path: '/choose-seats',
-    name: 'ChooseSeats',
+    name: 'ChooseSeatsPage',
     component: () => import('@/components/pages/ChooseSeatsPage.vue'),
     props: true
   },

@@ -3,13 +3,21 @@ import AppButton from '@/components/common/App/AppButton.vue';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  components: { AppButton }
+  components: { AppButton },
+  props: {
+    variant: {
+      type: String,
+      default: 'basic'
+
+    }
+  }
 });
 </script>
 
 <template>
   <div class="bread-crumbs">
     <AppButton
+      v-if="variant === 'basic'"
       color-scheme="dark-reverse"
       arrow="left"
       class="bread-crumbs__button"

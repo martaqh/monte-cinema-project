@@ -12,7 +12,7 @@ export default defineComponent({
   },
   computed: {
     isPublicContent() {
-      return ['Home', 'Movies', 'Screenings', 'SingleMovie'].includes(this.$route.name);
+      return ['Home', 'Movies', 'Screenings', 'SingleMovie', 'ChooseSeatsPage'].includes(this.$route.name);
     },
     hasAuthSection() {
       return ['Register', 'Login'].includes(this.$route.name);
