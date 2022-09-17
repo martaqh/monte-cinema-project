@@ -39,9 +39,9 @@ const routes = [
     props: true
   },
   {
-    path: '/choose-seats/:screeningId',
-    name: 'ChooseSeatsForScreening',
-    component: () => import('@/components/pages/ChooseSeatsPage.vue'),
+    path: '/choose-tickets',
+    name: 'ChooseTicketsPage',
+    component: () => import('@/components/pages/ChooseTicketsPage.vue'),
     props: true
   },
   {

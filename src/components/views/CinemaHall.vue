@@ -18,6 +18,7 @@ export default defineComponent({
   },
   emits: ["seats-selected"],
   setup(props, context) {
+
     const rowLetter = (rowNumber) => {
       return String.fromCharCode(96 + rowNumber).toUpperCase();
     }
@@ -25,6 +26,7 @@ export default defineComponent({
     const isSeatTaken = (seat) => {
       return props.seatsTaken.includes(seat)
     }
+
     const seatsSelected = ref([]);
 
     const handleClick = (e) => {
@@ -32,7 +34,6 @@ export default defineComponent({
       if (!props.seatsTaken.includes(e.target.value)) {
         if (seatsSelected.value.includes(e.target.value)) {
           seatsSelected.value = seatsSelected.value.filter(item => item !== e.target.value);
-          console.log(seatsSelected.value);
         }
         else {
           seatsSelected.value.push(e.target.value);
@@ -76,6 +77,8 @@ export default defineComponent({
   box-shadow: $shadow-card;
   border-radius: $radius-card;
   padding: 40px;
+  margin-top: 64px;
+  align-items: center;
 
   &__row {
     display: flex;

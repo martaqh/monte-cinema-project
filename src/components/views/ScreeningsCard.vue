@@ -75,7 +75,6 @@ export default defineComponent({
               color-scheme="main-reverse"
               :key="screening.id"
               :to="{ name: 'ChooseSeatsPage'}"
-              :id="screeningId"
               @clicked="$emit('screening-selected', { screeningId: screening.id})"
             >
             {{ getScreeningTime(screening) }}

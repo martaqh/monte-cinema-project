@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { getAllMovies } from '@/api/service/movies';
 
-export default defineStore('movies', {
+export const useMoviesStore = defineStore('movies', {
   state: () => ({
     movies: [],
   }),

@@ -3,8 +3,7 @@ import { defineComponent } from 'vue';
 import WelcomeSection from '@/components/views/WelcomeSection.vue';
 import MoviesSummary from '@/components/views/MoviesSummary.vue';
 import ScreeningsSection from '@/components/views/ScreeningsSection.vue';
-import { mapActions } from "pinia";
-import movies from '@/stores/moviesStore'
+import { useMoviesStore } from '@/stores/moviesStore';
 import TheContainer from '@/components/common/TheContainer.vue';
 
 export default defineComponent({
@@ -14,11 +13,12 @@ export default defineComponent({
     ScreeningsSection,
     TheContainer,
   },
-  methods: {
-    ...mapActions(movies, ["fetchMoviesToState"]),
+  setup() {
+    const moviesStore = useMoviesStore();
+    return { moviesStore }
   },
   beforeMount() {
-    this.fetchMoviesToState()
+    this.moviesStore.fetchMoviesToState()
   }
 });
 </script>

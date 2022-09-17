@@ -7,8 +7,13 @@ export default defineComponent({
   props: {
     variant: {
       type: String,
-      default: 'basic'
-
+      default: 'basic',
+      validator(value) {
+        return [
+          'basic',
+          'progress-bar'
+        ].includes(value);
+      },
     }
   }
 });
@@ -38,9 +43,13 @@ export default defineComponent({
   width: 100%;
   background-color: $color-tag-background;
   font-family: $font-mono;
+  justify-content: center;
 
   &__button {
     margin: 0 24px;
   }
 }
+
+
+
 </style>

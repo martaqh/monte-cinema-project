@@ -31,9 +31,12 @@ export default defineComponent({
     },
   },
   methods: {
-    procedeToChooseSeats(data) {
-      console.log(data)
-      this.$router.push({ name: 'ChooseSeatsPage', params: {screeningId: data.screeningId}})
+    goToChooseSeats(data) {
+      this.$router.push(
+        { name: 'ChooseSeatsPage',
+          params: {screeningId: data.screeningId}
+        }
+      )
     }
   }
 })
@@ -46,7 +49,7 @@ export default defineComponent({
       :movieData="movie"
       :key="movie.id"
       :movieScreenings="this.screenings.filter(screening => screening.movie === movie.id)"
-      @screening-selected="procedeToChooseSeats"
+      @screening-selected="goToChooseSeats"
     />
   </div>
 </template>
