@@ -11,8 +11,6 @@ import BreadCrumbs from '@/components/common/BreadCrumbs.vue';
 import ProgressStep from '@/components/common/ProgressStep.vue';
 import CinemaHall from '@/components/views/CinemaHall.vue';
 
-const router = useRouter();
-
 const props = defineProps({
   screeningId: {
     type: Number,
@@ -20,9 +18,10 @@ const props = defineProps({
   }
 })
 
+const router = useRouter();
+
 const moviesStore = useMoviesStore()
 const movieData = computed(() => moviesStore.getMovieByMovieId(screeningData.value.movie))
-
 
 const screeningData = ref({});
 const screeningDate = computed(() =>

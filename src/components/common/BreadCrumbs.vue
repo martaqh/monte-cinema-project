@@ -26,7 +26,6 @@ export default defineComponent({
   >
     <AppButton
       v-if="variant === 'basic'"
-
       color-scheme="dark-reverse"
       arrow="left"
       class="bread-crumbs__button"
@@ -51,13 +50,9 @@ export default defineComponent({
   &__button {
     margin: 0 24px;
   }
-
-
 }
 
 .bread-crumbs[variant="progress-bar"] {
   justify-content: center;
-
 }
-
 </style>
