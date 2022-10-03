@@ -1,7 +1,6 @@
 <script>
 import { defineComponent } from 'vue';
-import { mapState } from "pinia";
-import movies from '@/stores/moviesStore';
+import { useMoviesStore } from '@/stores/moviesStore';
 import BreadCrumbs from '@/components/common/BreadCrumbs.vue';
 import SectionTitle from '@/components/common/Section/SectionTitle.vue';
 import AppSelect from '@/components/common/App/AppSelect.vue';
@@ -24,13 +23,16 @@ export default defineComponent({
       inputContent: '',
     }
   },
+  setup() {
+    const moviesStore = useMoviesStore();
+    return { moviesStore }
+  },
   computed: {
-    ...mapState(movies, ["movies", "moviesCategories"]),
     moviesFilteredByCategory() {
       if (this.optionSelected !== 'All categories') {
-        return this.movies.filter(movie => this.optionSelected === movie.genre.name)
+        return this.moviesStore.movies.filter(movie => this.optionSelected === movie.genre.name)
       } else {
-        return this.movies
+        return this.moviesStore.movies
       }
     },
     moviesFilteredByCategoryAndSearch() {
