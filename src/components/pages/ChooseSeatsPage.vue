@@ -72,7 +72,7 @@ const getScreeningData = async () => {
 }
 
 const seatsSelected = ref([]);
-const howManySeats = ref(0)
+const howManySeats = ref(0);
 
 const handleSelection = (data) => {
   seatsSelected.value = data.seatsSelected
@@ -92,7 +92,8 @@ onBeforeMount(() => {
   <TheContainer>
     <div class="choose-seats-page" v-if="isRequestFinished === true">
         <BreadCrumbs variant="progress-bar">
-          <ProgressStep>Choose seats</ProgressStep>
+          <ProgressStep step="1">Choose seats</ProgressStep>
+          <ProgressStep step="2" state="inactive">Book tickets</ProgressStep>
         </BreadCrumbs>
         <div class="choose-seats-page__title">
           <SectionTitle>Choose your seats</SectionTitle>

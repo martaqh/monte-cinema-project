@@ -3,7 +3,7 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   props: {
-    variant: {
+    state: {
       type: String,
       default: 'active',
       validator(value) {
@@ -12,6 +12,10 @@ export default defineComponent({
           'inactive',
         ].includes(value);
       },
+    },
+    step: {
+      type: String,
+      default: '1'
     }
   }
 })
@@ -20,9 +24,12 @@ export default defineComponent({
 <template>
   <div
     class="progress-step"
-    :color-scheme="variant"
+    :state="state"
   >
-  <img src="@/assets/ProgressCircle1Active.svg" />
+  <img v-if="step === '1' && state === 'active'" src="@/assets/circle1Active.svg" />
+  <img v-if="step === '2' && state === 'active'" src="@/assets/circle2Active.svg" />
+  <img v-if="step === '1' && state === 'inactive'" src="@/assets/circle1Inactive.svg" />
+  <img v-if="step === '2' && state === 'inactive'" src="@/assets/circle2Inactive.svg" />
     <slot></slot>
   </div>
 </template>
@@ -36,6 +43,7 @@ export default defineComponent({
   border-radius: $radius-button;
   font-family: $font-mono;
   font-size: 16px;
+  margin: 16px;
   padding: 10px;
   padding-right: 20px;
   border: 2px solid $color-text-main;
@@ -43,5 +51,10 @@ export default defineComponent({
   img {
     margin-right: 12px;
   }
+}
+
+.progress-step[state="inactive"] {
+  border: 2px solid $color-inactive-step;
+  color: $color-inactive-step;
 }
 </style>
