@@ -49,7 +49,7 @@ export default defineComponent({
   },
   methods: {
     getScreeningTime(screening) {
-      return screening.datetime.substring(11, 16)
+      return new Date(screening.datetime).toLocaleString('en-GB', {timeStyle: 'short'})
     },
   }
 })

@@ -23,7 +23,7 @@ const router = useRouter();
 const moviesStore = useMoviesStore()
 const movieData = computed(() => moviesStore.getMovieByMovieId(screeningData.value.movie))
 
-const screeningData = ref({});
+const screeningData = ref(null);
 const screeningDate = computed(() =>
   screeningData.value.datetime
     .substring(0, 10)
@@ -31,7 +31,7 @@ const screeningDate = computed(() =>
     .reverse()
     .join("/")
 )
-const screeningTime = computed(() => screeningData.value.datetime.substring(11,16))
+const screeningTime = computed(() => new Date(screeningData.value.datetime).toLocaleString('en-GB', {timeStyle: 'short'}))
 const screeningDayName = computed(() =>
   new Date(screeningData.value.datetime)
     .toLocaleString('en-GB', {weekday: 'long'})
@@ -57,25 +57,20 @@ const rowsNumber = computed(() => {
 
 const seatsInRow = computed(() => parseInt(lastSeat.value[0].slice(1, 3)))
 
-const isRequestFinished = ref(false)
-
 const getScreeningData = async () => {
   try {
     const response = await getScreeningById(props.screeningId);
     screeningData.value = response.data;
   } catch (error) {
     console.error(error)
-  } finally {
-    isRequestFinished.value = true
   }
 }
 
 const seatsSelected = ref([]);
-const howManySeats = ref(0);
+const howManySeats = computed(() => seatsSelected.value.length )
 
 const handleSelection = (data) => {
   seatsSelected.value = data.seatsSelected
-  howManySeats.value = data.seatsSelected.length
 }
 
 const goToChooseTickets = () => {
@@ -89,7 +84,7 @@ onBeforeMount(() => {
 
 <template>
   <TheContainer>
-    <div class="choose-seats-page" v-if="isRequestFinished === true">
+    <div class="choose-seats-page" v-if="!!screeningData">
         <BreadCrumbs variant="progress-bar">
           <ProgressStep step="1">Choose seats</ProgressStep>
           <ProgressStep step="2" state="inactive">Book tickets</ProgressStep>

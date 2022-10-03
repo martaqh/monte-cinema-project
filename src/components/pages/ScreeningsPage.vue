@@ -16,10 +16,8 @@ export default defineComponent({
 <template>
   <TheContainer>
   <div class="screenings-page">
-
-      <BreadCrumbs>Screenings</BreadCrumbs>
-      <ScreeningsSection />
-
+    <BreadCrumbs>Screenings</BreadCrumbs>
+    <ScreeningsSection />
   </div>
 </TheContainer>
 </template>
