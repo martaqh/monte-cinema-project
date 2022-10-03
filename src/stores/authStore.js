@@ -37,7 +37,6 @@ export const useAuthStore = defineStore("auth", {
         }
       } catch (error) {
         console.error(error);
-        // clear invalid data from storage
         this.resetUserData();
       }
     },
@@ -59,7 +58,6 @@ export const useAuthStore = defineStore("auth", {
     },
     async logout() {
       if (!this.isLoggedIn) return;
-      // TODO: logout from API
       this.resetUserData();
       removeAuthHeader();
     },

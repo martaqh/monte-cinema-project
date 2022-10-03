@@ -8,3 +8,7 @@ export const getScreeningsByDateAndMovie = (screeningsDate, movieId) => {
   }
   return defaultClient.get(SCREENINGS, { params });
 };
+
+export const getScreeningById = (screeningId) => {
+  return defaultClient.get(`${SCREENINGS}/${screeningId}`)
+}

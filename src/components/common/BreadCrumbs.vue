@@ -3,13 +3,29 @@ import AppButton from '@/components/common/App/AppButton.vue';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  components: { AppButton }
+  components: { AppButton },
+  props: {
+    variant: {
+      type: String,
+      default: 'basic',
+      validator(value) {
+        return [
+          'basic',
+          'progress-bar'
+        ].includes(value);
+      },
+    }
+  }
 });
 </script>
 
 <template>
-  <div class="bread-crumbs">
+  <div
+    class="bread-crumbs"
+    :variant="variant"
+  >
     <AppButton
+      v-if="variant === 'basic'"
       color-scheme="dark-reverse"
       arrow="left"
       class="bread-crumbs__button"
@@ -17,7 +33,7 @@ export default defineComponent({
     >
       Back
     </AppButton>
-    <slot></slot>
+    <slot class="bread-crumbs__slot"></slot>
   </div>
 </template>
 
@@ -34,5 +50,9 @@ export default defineComponent({
   &__button {
     margin: 0 24px;
   }
+}
+
+.bread-crumbs[variant="progress-bar"] {
+  justify-content: center;
 }
 </style>

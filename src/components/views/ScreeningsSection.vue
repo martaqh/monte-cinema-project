@@ -7,8 +7,8 @@ import AppButton from '@/components/common/App/AppButton.vue';
 import AppSelect from '@/components/common/App/AppSelect.vue';
 import ScreeningsList from '@/components/views/ScreeningsList.vue';
 import { getScreeningsByDateAndMovie } from '@/api/service/Screenings';
-import { mapState } from 'pinia';
-import movies from '@/stores/moviesStore'
+import { useMoviesStore } from '@/stores/moviesStore';
+
 
 export default defineComponent({
   components: { SectionTitle, SectionSubtitle, AppLabel, AppButton, AppSelect, ScreeningsList },
@@ -27,8 +27,11 @@ export default defineComponent({
       optionSelected: 'All movies'
     }
   },
+  setup() {
+    const moviesStore = useMoviesStore();
+    return { moviesStore }
+  },
   computed: {
-    ...mapState (movies, ["movies"]),
     nextDaysNames() {
       const dayDigit = new Date().getDay() + 1;
       const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -50,17 +53,16 @@ export default defineComponent({
       return activeDay
     },
     formattedActiveDayDate() {
-      const date = this.activeDayDate.toISOString().slice(0, 10)
-      return date.split('-').reverse().join("/")
+      return this.activeDayDate.toISOString().slice(0, 10).split('-').reverse().join("/")
     },
     activeDayName() {
-      return this.activeDayDate.toLocaleString('en-GB', {weekday: 'long'});
+      return this.activeDayDate.toLocaleString('en-GB', {weekday: 'long'})
     },
     sectionSubtitle() {
       return `${this.activeDayName} ${this.formattedActiveDayDate}`;
     },
     moviesTitles() {
-      return this.movies.map(movie => movie.title);
+      return this.moviesStore.movies.map(movie => movie.title);
     },
     screeningsFilteredByDate() {
       return this.screenings.filter
@@ -123,7 +125,7 @@ export default defineComponent({
       </div>
   </div>
   <ScreeningsList
-    :movies="singleMovie ? [singleMovie] : movies"
+    :movies="singleMovie ? [singleMovie] : moviesStore.movies"
     :screenings="screeningsFilteredByDate ? screeningsFilteredByDate : screenings"
     :daySelected="activeDayDate"
     :movieSelected="optionSelected" />
