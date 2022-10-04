@@ -1,8 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { shallowMount } from "@vue/test-utils";
 import CinemaHall from "@/components/views/CinemaHall.vue";
-import rowLetter from "@/components/views/CinemaHall.vue";
-import isSeatTaken from "@/components/views/CinemaHall.vue"
 
 
 const createComponent = () =>
@@ -11,44 +9,40 @@ const createComponent = () =>
   });
 
 const rows = 10;
-const seats = 10;
-const seatsTaken = ['A1'];
+const seats = 26;
+const seatsTaken = ['A1', 'A2', 'A3'];
 
 describe("CinemaHall.vue", () => {
-  it("expects to be mounted", () => {
-    const wrapper = createComponent();
-    expect(wrapper).toBeTruthy();
-  });
-
-  it("should display a given seats number in a row", () => {
-    const wrapper = createComponent();
-    expect(wrapper.findAll('.cinema-hall__row').length).toBe(seats)
-  });
 
   it("should display a given number of rows", () => {
     const wrapper = createComponent();
     expect(wrapper.findAll('[data-spec="row"]').length).toBe(rows)
   });
 
-  it("should generate letters for rows numbers", () => {
-    const wrapper = shallowMount(rowLetter)
-    expect(wrapper.vm.rowLetter(3)).toBe('C')
+  it("should display a given total number of seats", () => {
+    const wrapper = createComponent();
+    expect(wrapper.findAll('[data-spec="seat"]').length).toBe(seats * rows)
+  });
+
+  it("should display a given number of seats in a row", () => {
+    const wrapper = createComponent();
+    expect(wrapper.findAll('[row-letter="B"]').length).toBe(seats)
+  });
+
+  it("should display row letters", () => {
+    const wrapper = createComponent()
+    expect(wrapper.findAll('[data-spec="letter"]').at(3).text()).toMatch('D')
   })
 
-  it("should recognize if a given seat is taken", () => {
-    const wrapper = shallowMount(isSeatTaken, {
-      propsData: {
-        seatsTaken: ['A1', 'A2'],
-      }
-    });
-    expect(wrapper.vm.isSeatTaken('A7')).toBe(false)
-  })
+  it("seats taken should be displayed as such", () => {
+    const wrapper = createComponent();
+    const seat = wrapper.findAll('button').at(2)
+    expect(seat.attributes('taken')).toBe('true')
+  });
 
   it("shoudl emit a custom event seats-selected", async () => {
-    const wrapper = createComponent();
-    wrapper.vm.$emit("seats-selected")
-    wrapper.vm.$emit("seats-selected", 'C7')
-    await wrapper.vm.$nextTick()
+    const wrapper = createComponent()
+    wrapper.findAll('button').at(100).trigger('click')
     expect(wrapper.emitted('seats-selected')).toBeTruthy()
   })
 })

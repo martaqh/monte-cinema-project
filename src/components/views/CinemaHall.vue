@@ -52,12 +52,18 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="cinema-hall">
+  <div class="cinema-hall" data-spec="matrix">
     <div v-for="row in rows" class="cinema-hall__row" :key="row" data-spec="row">
-      <div class="cinema-hall__row--letter"><span>{{ rowLetter(row) }}</span></div>
+      <div
+        class="cinema-hall__row--letter"
+      >
+        <span data-spec="letter">{{ rowLetter(row) }}</span>
+      </div>
       <button class="cinema-hall__seat"
         v-for="seat in seats"
         :key="seat"
+        data-spec="seat"
+        :row-letter="rowLetter(row)"
         :value="`${rowLetter(row)}${seat}`"
         :taken="isSeatTaken(`${rowLetter(row)}${seat}`)"
         @click="handleClick"
