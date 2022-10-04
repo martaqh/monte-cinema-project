@@ -36,13 +36,13 @@ describe("CinemaHall.vue", () => {
 
   it("seats taken should be displayed as such", () => {
     const wrapper = createComponent();
-    const seat = wrapper.findAll('button').at(2)
+    const seat = wrapper.findAll('[data-spec="seat"]').at(2)
     expect(seat.attributes('taken')).toBe('true')
   });
 
   it("shoudl emit a custom event seats-selected", async () => {
     const wrapper = createComponent()
-    wrapper.findAll('button').at(100).trigger('click')
+    wrapper.findAll('[data-spec="seat"]').at(100).trigger('click')
     expect(wrapper.emitted('seats-selected')).toBeTruthy()
   })
 })
