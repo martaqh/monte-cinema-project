@@ -20,50 +20,72 @@ export default defineComponent({
     },
     movieScreenings: {
       type: Array,
-      required: true,
     },
     titleSelected: {
       type: String,
       default: 'All movies',
+    },
+    usage: {
+      type: String,
+      default: 'ScreeningsSection'
+    },
+    dayName:{
+      type: String,
+    },
+    date: {
+      type: String,
+    },
+    time: {
+      type: String,
     }
   },
   computed: {
-    isLoggedIn() {
-      return this.auth.isLoggedIn
+    hasScreeningsTimes() {
+      return this.usage === 'ScreeningsSection' && this.movieScreenings.length > 0
     },
-    routerPath() {
-      return this.isLoggedIn ? {name: 'ChooseSeats'} : {name: 'Login'}
+    screeningDateAndTime() {
+      return `${this.dayName} ${this.date} - ${this.time}`
     }
   },
   methods: {
     getScreeningTime(screening) {
-      return screening.datetime.substring(11, 16)
+      return new Date(screening.datetime).toLocaleString('en-GB', {timeStyle: 'short'})
     },
   }
 })
 </script>
 
   <template>
-    <div class="screenings-card" v-if="movieScreenings.length > 0">
+    <div class="screenings-card">
       <MoviePoster :src="movieData.poster_url" />
         <div class="screenings-card__movie-info">
           <router-link :to="{name: 'SingleMovie', params: {movieId: movieData.id}}">
             <MovieTitle>{{ movieData.title }}</MovieTitle>
           </router-link>
-          <div class="screenings-card__category-and-length">
+          <div
+            class="screenings-card__category-and-length"
+            :usage="usage"
+          >
             <AppTag>{{ movieData.genre.name }}</AppTag>
             <MovieLengthOrYear :lengthInMinutes="movieData.length" />
           </div>
-          <div class="screenings-card__screenings-times">
+          <div class="screenings-card__screenings-times" v-if="hasScreeningsTimes">
             <AppButton
               v-for="screening of movieScreenings"
               color-scheme="main-reverse"
               :key="screening.id"
-              :to="routerPath"
+              :to="{ name: 'ChooseSeatsPage'}"
+              @clicked="$emit('screening-selected', { screeningId: screening.id})"
             >
             {{ getScreeningTime(screening) }}
             </AppButton>
           </div>
+          <AppTag
+            v-if="usage === 'ChooseSeats'"
+            usage='ChooseSeats'
+          >
+            {{ screeningDateAndTime }}
+          </AppTag>
         </div>
     </div>
   </template>
@@ -72,6 +94,7 @@ export default defineComponent({
 .screenings-card {
   display: flex;
   box-shadow: $shadow-card;
+  border-radius: $radius-card;
   padding: 40px;
   margin-bottom: 40px;
 }
@@ -85,6 +108,10 @@ export default defineComponent({
   display: flex;
   margin-bottom: 32px;
   align-items: baseline;
+
+  &[usage="ChooseSeats"] {
+    margin-bottom: 0;
+  }
 }
 .screenings-card__screenings-times {
   display: flex;

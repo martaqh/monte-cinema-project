@@ -63,7 +63,6 @@ export default defineComponent({
           email: this.email,
           password: this.password
         })
-        this.$router.push({name: 'ChooseSeats'})
       } catch (error) {
         console.error(error)
       }

@@ -14,10 +14,10 @@ export default defineComponent({
 </script>
 
 <template>
+  <TheContainer>
   <div class="screenings-page">
-    <TheContainer>
-      <BreadCrumbs>Screenings</BreadCrumbs>
-      <ScreeningsSection />
-    </TheContainer>
+    <BreadCrumbs>Screenings</BreadCrumbs>
+    <ScreeningsSection />
   </div>
+</TheContainer>
 </template>

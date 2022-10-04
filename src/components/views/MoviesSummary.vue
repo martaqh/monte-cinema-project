@@ -1,15 +1,18 @@
 <script>
 import { defineComponent } from 'vue';
 import MovieCard from './MovieCard.vue';
-import { mapState } from "pinia";
-import movies from '@/stores/moviesStore'
+import { useMoviesStore } from '@/stores/moviesStore';
 
 export default defineComponent({
   components: { MovieCard },
+  setup() {
+    const moviesStore = useMoviesStore();
+    return { moviesStore }
+  },
   computed: {
-    ...mapState(movies, ["movies"]),
+
     filteredMovies() {
-      return this.movies.slice(0,3)
+      return this.moviesStore.movies.slice(0,3)
     }
   },
 });
