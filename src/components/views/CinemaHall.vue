@@ -53,7 +53,7 @@ export default defineComponent({
 
 <template>
   <div class="cinema-hall">
-    <div v-for="row in rows" class="cinema-hall__row" :key="row">
+    <div v-for="row in rows" class="cinema-hall__row" :key="row" data-spec="row">
       <div class="cinema-hall__row--letter"><span>{{ rowLetter(row) }}</span></div>
       <button class="cinema-hall__seat"
         v-for="seat in seats"
