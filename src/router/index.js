@@ -33,7 +33,7 @@ const routes = [
     component: () => import('@/components/pages/LoginPage.vue'),
   },
   {
-    path: '/choose-seats',
+    path: '/choose-seats/:screeningId',
     name: 'ChooseSeatsPage',
     component: () => import('@/components/pages/ChooseSeatsPage.vue'),
     props: true
