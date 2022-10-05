@@ -42,6 +42,9 @@ export default defineComponent({
         return this.moviesFilteredByCategory
       }
     },
+  },
+  beforeMount() {
+    this.moviesStore.fetchMoviesToState()
   }
 });
 </script>
