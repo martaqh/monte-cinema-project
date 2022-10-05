@@ -1,23 +1,25 @@
 <template>
-  <div class="contact-details">
-    <div class="contact-details__address">
-      <div class="contact-details__image-wrapper">
-        <img src="@/assets/RedPin.svg" />
+  <div class="contact-section">
+    <div class="contact-details">
+      <div class="contact-details__address">
+        <div class="contact-details__image-wrapper">
+          <img src="@/assets/RedPin.svg" />
+        </div>
+        <p>
+          Monterail Sp. z o.o.<br />
+          ul. Oławska 27-29<br />
+          50-123 Wrocław<br />
+          Poland
+        </p>
       </div>
-      <p>
-        Monterail Sp. z o.o.<br />
-        ul. Oławska 27-29<br />
-        50-123 Wrocław<br />
-        Poland
-      </p>
-    </div>
-    <div class="contact-details__email">
-      <img src="@/assets/RedEnvelope.svg" />
-      <p>hello@monterial.com</p>
-    </div>
-    <div class="contact-details__phone">
-      <img src="@/assets/RedPhone.svg" />
-      <p>+48 533 600 136</p>
+      <div class="contact-details__email">
+        <img src="@/assets/RedEnvelope.svg" />
+        <p>hello@monterial.com</p>
+      </div>
+      <div class="contact-details__phone">
+        <img src="@/assets/RedPhone.svg" />
+        <p>+48 533 600 136</p>
+      </div>
     </div>
   </div>
 </template>
@@ -30,7 +32,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  width: 40%;
   height: fit-content;
   background-color: $color-field-background;
   font-family: $font-mono;

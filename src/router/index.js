@@ -33,6 +33,11 @@ const routes = [
     component: () => import('@/components/pages/LoginPage.vue'),
   },
   {
+    path: '/contact',
+    name: 'Contact',
+    component: () => import('@/components/pages/ContactPage.vue'),
+  },
+  {
     path: '/choose-seats',
     name: 'ChooseSeatsPage',
     component: () => import('@/components/pages/ChooseSeatsPage.vue'),

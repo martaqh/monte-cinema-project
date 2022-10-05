@@ -23,7 +23,8 @@ export default defineComponent({
           'main-reverse',
           'dark',
           'dark-reverse',
-          'no-border'
+          'no-border',
+          'grey'
         ].includes(value);
       },
     },
@@ -110,6 +111,10 @@ export default defineComponent({
   padding: 0 40px;
   cursor: pointer;
 
+  &:hover {
+    outline: 5px solid $color-hover-border;
+  }
+
   &__arrow--left {
     margin-right: 12px;
   }
@@ -145,6 +150,11 @@ export default defineComponent({
   background-color: inherit;
 }
 
+.button-base[color-scheme="grey"] {
+  color: $color-text-reverse;
+  background-color: inherit;
+}
+
 .button-base[size="large"] {
     height: 56px;
     font-size: 18px;
@@ -175,9 +185,9 @@ export default defineComponent({
 }
 
 .button-base[usage="contact"] {
-  padding: 20px;
-  font-size: 30px;
-  width: 30px;
+  padding: 0;
+  width: 32px;
+  height: 32px;
   text-align: center;
   text-decoration: none;
   border-radius: 50%;
