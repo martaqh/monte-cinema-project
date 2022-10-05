@@ -10,5 +10,9 @@
   font-size: 36px;
   line-height: 42px;
   font-family: $font-main;
+
+  @include mobile {
+    font-size: 24px;
+  }
 }
 </style>

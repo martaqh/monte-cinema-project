@@ -34,6 +34,8 @@ export default defineComponent({
         return [
           'common',
           'form',
+          'screenings-card',
+          'contact'
         ].includes(value);
       },
     },
@@ -166,5 +168,18 @@ export default defineComponent({
 .button-base[usage="form"] {
   width: 100%;
   padding: 0;
+}
+
+.button-base[usage="screenings-card"] {
+  margin-top: 20px;
+}
+
+.button-base[usage="contact"] {
+  padding: 20px;
+  font-size: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
 }
 </style>

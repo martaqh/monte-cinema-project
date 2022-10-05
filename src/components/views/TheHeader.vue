@@ -11,10 +11,10 @@ export default defineComponent({
     SignSection,
   },
   computed: {
-    isPublicContent() {
-      return ['Home', 'Movies', 'Screenings', 'SingleMovie', 'ChooseSeatsPage'].includes(this.$route.name);
+    hasMainHeader() {
+      return ['Home', 'Movies', 'Screenings', 'Contact', 'SingleMovie', 'ChooseSeatsPage'].includes(this.$route.name);
     },
-    hasAuthSection() {
+    hasAuthHeader() {
       return ['Register', 'Login'].includes(this.$route.name);
     },
   }
@@ -38,8 +38,8 @@ export default defineComponent({
           alt="Hamburger menu"
         />
       </a>
-      <p class="header__monte-slogan" v-if="hasAuthSection">Developed with ❤️ by Monterail</p>
-      <div class="header__navbar" v-if="isPublicContent">
+      <p class="header__monte-slogan" v-if="hasAuthHeader">Developed with ❤️ by Monterail</p>
+      <div class="header__navbar" v-if="hasMainHeader">
         <TopNavbar />
         <SignSection />
       </div>

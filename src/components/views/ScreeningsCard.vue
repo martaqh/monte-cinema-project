@@ -57,7 +57,7 @@ export default defineComponent({
 
   <template>
     <div class="screenings-card">
-      <MoviePoster :src="movieData.poster_url" />
+      <MoviePoster :src="movieData.poster_url" usage="screenings-card" />
         <div class="screenings-card__movie-info">
           <router-link :to="{name: 'SingleMovie', params: {movieId: movieData.id}}">
             <MovieTitle>{{ movieData.title }}</MovieTitle>
@@ -73,6 +73,7 @@ export default defineComponent({
             <AppButton
               v-for="screening of movieScreenings"
               color-scheme="main-reverse"
+              usage="screenings-card"
               :key="screening.id"
               :to="{ name: 'ChooseSeatsPage'}"
               @clicked="$emit('screening-selected', { screeningId: screening.id})"
@@ -106,7 +107,7 @@ export default defineComponent({
 }
 .screenings-card__category-and-length {
   display: flex;
-  margin-bottom: 32px;
+  margin-bottom: 20px;
   align-items: baseline;
 
   &[usage="ChooseSeats"] {
