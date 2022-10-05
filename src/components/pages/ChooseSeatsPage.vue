@@ -72,8 +72,8 @@ const handleSelection = (data: Record<string, string[]>) => {
   seatsSelected.value = data.seatsSelected
 }
 
-function goToChooseTickets() {
-router.push({ name: 'ChooseTicketsPage', params: { seatsSelected: seatsSelected.value } });
+const goToChooseTickets = () => {
+  router.push({ name: 'ChooseTicketsPage', params: { seatsSelected: seatsSelected.value } });
 }
 
 onBeforeMount(() => {
