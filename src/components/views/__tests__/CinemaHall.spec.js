@@ -42,7 +42,13 @@ describe("CinemaHall.vue", () => {
 
   it("shoudl emit a custom event seats-selected", async () => {
     const wrapper = createComponent()
-    wrapper.findAll('[data-spec="seat"]').at(100).trigger('click')
-    expect(wrapper.emitted('seats-selected')).toBeTruthy()
+    wrapper.findAll('[data-spec="seat"]').at(26).trigger('click')
+    wrapper.findAll('[data-spec="seat"]').at(27).trigger('click')
+    const event = wrapper.emitted('seats-selected')
+    expect(event).toBeTruthy()
+    expect(event[0]).toEqual([
+      {
+        seatsSelected: ['B1', 'B2']
+      }])
   })
 })

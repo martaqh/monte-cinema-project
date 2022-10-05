@@ -29,14 +29,13 @@ export default defineComponent({
 
     const seatsSelected = ref([]);
 
-    const handleClick = (e) => {
-      e.preventDefault();
-      if (!props.seatsTaken.includes(e.target.value)) {
-        if (seatsSelected.value.includes(e.target.value)) {
-          seatsSelected.value = seatsSelected.value.filter(item => item !== e.target.value);
+    const handleClick = (seatValue) => {
+      if (!props.seatsTaken.includes(seatValue)) {
+        if (seatsSelected.value.includes(seatValue)) {
+          seatsSelected.value = seatsSelected.value.filter(item => item !== seatValue);
         }
         else {
-          seatsSelected.value.push(e.target.value);
+          seatsSelected.value.push(seatValue);
         }
         context.emit('seats-selected', { seatsSelected: seatsSelected.value})
       }
@@ -66,7 +65,7 @@ export default defineComponent({
         :row-letter="rowLetter(row)"
         :value="`${rowLetter(row)}${seat}`"
         :taken="isSeatTaken(`${rowLetter(row)}${seat}`)"
-        @click="handleClick"
+        @click="handleClick(`${rowLetter(row)}${seat}`)"
         :selected="seatsSelected.includes(`${rowLetter(row)}${seat}`)"
         >
         {{ seat }}
