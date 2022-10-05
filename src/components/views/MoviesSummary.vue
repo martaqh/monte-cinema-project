@@ -15,6 +15,7 @@ export default defineComponent({
       return this.moviesStore.movies.slice(0,3)
     }
   },
+
 });
 </script>
 
