@@ -81,7 +81,8 @@ export default defineComponent({
       }
     },
   },
-  mounted() {
+  beforeMount() {
+    this.moviesStore.fetchMoviesToState()
     this.getScreenings()
   }
 });
