@@ -13,8 +13,9 @@ const routes = [
   },
   {
     path: '/movies/:movieId',
-    name: 'SingleMoviePage',
+    name: 'SingleMovie',
     component: () => import('@/components/pages/SingleMoviePage.vue'),
+    props: true,
   },
   {
     path: '/screenings',
@@ -22,9 +23,26 @@ const routes = [
     component: () => import('@/components/pages/ScreeningsPage.vue'),
   },
   {
-    path: '/contact',
-    name: 'Contact',
-    component: () => import('@/components/pages/ContactPage.vue'),
+    path: '/register',
+    name: 'Register',
+    component: () => import('@/components/pages/RegistrationPage.vue'),
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/components/pages/LoginPage.vue'),
+  },
+  {
+    path: '/choose-seats',
+    name: 'ChooseSeatsPage',
+    component: () => import('@/components/pages/ChooseSeatsPage.vue'),
+    props: true
+  },
+  {
+    path: '/choose-tickets',
+    name: 'ChooseTicketsPage',
+    component: () => import('@/components/pages/ChooseTicketsPage.vue'),
+    props: true
   },
   {
     path: '/no-match',

@@ -27,6 +27,16 @@ export default defineComponent({
         ].includes(value);
       },
     },
+    usage: {
+      type: String,
+      default: 'common',
+      validator(value) {
+        return [
+          'common',
+          'form',
+        ].includes(value);
+      },
+    },
     arrow: {
       type: String,
       default: 'none',
@@ -46,16 +56,6 @@ export default defineComponent({
       type: String,
       required: false
     },
-    buttonType: {
-      type: String,
-      default: 'button',
-      validator(value) {
-        return [
-          'button',
-          'submit'
-        ].includes(value);
-      },
-    }
   },
   computed: {
     componentVariant() {
@@ -67,7 +67,10 @@ export default defineComponent({
         return 'button'
       }
     },
-  }
+    buttonType() {
+      return this.usage === 'form' ? 'submit' : 'button'
+    }
+  },
 });
 </script>
 
@@ -80,6 +83,7 @@ export default defineComponent({
     :size="size"
     :color-scheme="colorScheme"
     :arrow="arrow"
+    :usage="usage"
     :type="buttonType"
     @click="this.$emit('clicked')"
   >
@@ -134,7 +138,7 @@ export default defineComponent({
 }
 
 .button-base[color-scheme="no-border"] {
-  border: none;
+  border: 2px solid transparent;
   color: $color-brand;
   background-color: inherit;
 }
@@ -142,25 +146,25 @@ export default defineComponent({
 .button-base[size="large"] {
     height: 56px;
     font-size: 18px;
-    width: fit-content;
 }
 
 .button-base[size="medium"] {
     height: 40px;
     font-size: 16px;
-    width: fit-content;
 }
 
 .button-base[size="small"] {
     height: 32px;
     font-size: 14px;
-    width: fit-content;
 }
 
 .button-base[size="tiny"] {
     height: 24px;
     font-size: 14px;
-    width: fit-content;
 }
 
+.button-base[usage="form"] {
+  width: 100%;
+  padding: 0;
+}
 </style>

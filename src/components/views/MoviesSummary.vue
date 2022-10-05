@@ -1,19 +1,18 @@
 <script>
 import { defineComponent } from 'vue';
 import MovieCard from './MovieCard.vue';
-import { mapState } from "pinia";
-import movies from '@/stores/moviesStore'
+import { useMoviesStore } from '@/stores/moviesStore';
 
 export default defineComponent({
   components: { MovieCard },
-  data() {
-    return {
-    }
+  setup() {
+    const moviesStore = useMoviesStore();
+    return { moviesStore }
   },
   computed: {
-    ...mapState(movies, ["movies"]),
+
     filteredMovies() {
-      return this.movies.slice(0,3)
+      return this.moviesStore.movies.slice(0,3)
     }
   },
 });
@@ -32,30 +31,37 @@ export default defineComponent({
 </template>
 
 <style lang="scss" scoped>
-.movies-summary__header {
-  width: 100%;
+.movies-summary {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  font-family: $font-mono;
-  font-weight: 700;
-  font-size: 22px;
-  line-height: 170%;
-  letter-spacing: 0.015em;
-  text-transform: uppercase;
-  margin-top: 64px;
+  flex-direction: column;
+  margin-bottom: 64px;
+  width: 100%;
 
-  p {
-    color: $color-text-main;
-  }
+  &__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: $font-mono;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 170%;
+    letter-spacing: 0.015em;
+    text-transform: uppercase;
+    margin-top: 64px;
 
-  a {
-    color: $color-brand;
-  }
+    p {
+      color: $color-text-main;
+    }
 
-  span {
-    @include mobile {
-      display: none;
+    a {
+      color: $color-brand;
+    }
+
+    span {
+      @include mobile {
+        display: none;
+      }
     }
   }
 }
@@ -66,9 +72,19 @@ export default defineComponent({
   gap: 40px;
   margin: 64px 0;
 
+  @include tablet {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   :nth-child(2) {
     @include tablet {
-        margin-right: 0;
+      margin-right: 0;
     }
   }
 
@@ -76,13 +92,8 @@ export default defineComponent({
     margin-right: 0;
 
     @include tablet {
-        display: none;
+      display: none;
     }
-  }
-
-  @include mobile {
-    flex-direction: column;
-    align-items: center;
   }
 }
 </style>

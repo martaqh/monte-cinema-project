@@ -1,32 +1,27 @@
-<script setup>
-import TopNavbar from '@/components/features/Header/TopNavbar.vue';
-import SignSection from '@/components/features/Header/SignSection.vue';
-import TheContainer from '@/components/common/TheContainer.vue';
+<script>
+import { defineComponent } from 'vue';
+import { useAuthStore } from '@/stores/authStore';
 import TheHeader from '@/components/views/TheHeader.vue';
 
+export default defineComponent({
+  components: { TheHeader },
+  setup() {
+    const auth = useAuthStore();
+    return { auth };
+  },
+  created() {
+    this.auth.restoreUserData();
+  },
+});
 </script>
 
 <template>
   <main class="app">
-    <TheContainer>
-      <TheHeader>
-        <TopNavbar />
-        <SignSection />
-      </TheHeader>
-      <router-view />
-    </TheContainer>
+    <TheHeader />
+    <router-view />
   </main>
 </template>
 
 <style scoped>
-.app {
-  margin: 0 auto;
-  width: 100%;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-}
 
 </style>

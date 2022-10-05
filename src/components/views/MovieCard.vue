@@ -1,12 +1,12 @@
 <script>
 import { defineComponent } from 'vue';
 import AppTag from '@/components/common/App/AppTag.vue';
-import MovieLength from '@/components/common/Movie/MovieLength.vue';
 import MovieTitle from '@/components/common/Movie/MovieTitle.vue';
 import MoviePoster from '@/components/common/Movie/MoviePoster.vue';
+import MovieLengthOrYear from '@/components/common/Movie/MovieLengthOrYear.vue';
 
 export default defineComponent({
-  components: { AppTag, MovieLength, MovieTitle, MoviePoster },
+  components: { AppTag, MovieTitle, MoviePoster, MovieLengthOrYear },
   props: {
     movie: {
       type:Object,
@@ -17,10 +17,10 @@ export default defineComponent({
 </script>
 
 <template>
-  <router-link :to="{name: 'SingleMoviePage', params: {movieId: movie.id}}" class="movie-card" >
+  <router-link :to="{name: 'SingleMovie', params: {movieId: movie.id}}" class="movie-card" >
     <MovieTitle>{{ movie.title }}</MovieTitle>
     <div>
-      <MovieLength :lengthInMinutes="movie.length" />
+      <MovieLengthOrYear :lengthInMinutes="movie.length" />
       <MoviePoster :src="movie.poster_url" />
       <AppTag>{{movie.genre.name}}</AppTag>
     </div>
@@ -42,8 +42,7 @@ export default defineComponent({
   }
 
   @include mobile {
-      margin: 12px;
-      max-width: 327px;
+    width: 100%;
   }
 }
 </style>

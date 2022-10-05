@@ -1,13 +1,18 @@
 <script>
 import { defineComponent } from 'vue';
 import MoviePoster from '@/components/common/Movie/MoviePoster.vue';
-import MovieLength from '@/components/common/Movie/MovieLength.vue';
 import AppButton from '@/components/common/App/AppButton.vue';
 import MovieTitle from '@/components/common/Movie/MovieTitle.vue';
 import AppTag from '@/components/common/App/AppTag.vue';
+import MovieLengthOrYear from '@/components/common/Movie/MovieLengthOrYear.vue';
+import { useAuthStore } from '@/stores/authStore';
 
 export default defineComponent({
-  components: { MoviePoster, MovieLength, AppButton, MovieTitle, AppTag },
+  components: { MoviePoster, AppButton, MovieTitle, AppTag, MovieLengthOrYear },
+  setup() {
+    const auth = useAuthStore();
+    return { auth };
+  },
   props : {
     movieData: {
       type: Object,
@@ -15,72 +20,106 @@ export default defineComponent({
     },
     movieScreenings: {
       type: Array,
-      required: true,
     },
     titleSelected: {
       type: String,
       default: 'All movies',
+    },
+    usage: {
+      type: String,
+      default: 'ScreeningsSection'
+    },
+    dayName:{
+      type: String,
+    },
+    date: {
+      type: String,
+    },
+    time: {
+      type: String,
+    }
+  },
+  computed: {
+    hasScreeningsTimes() {
+      return this.usage === 'ScreeningsSection' && this.movieScreenings.length > 0
+    },
+    screeningDateAndTime() {
+      return `${this.dayName} ${this.date} - ${this.time}`
     }
   },
   methods: {
     getScreeningTime(screening) {
-      return screening.datetime.substring(11, 16)
+      return new Date(screening.datetime).toLocaleString('en-GB', {timeStyle: 'short'})
     },
   }
 })
 </script>
 
   <template>
-
-      <div class="screenings-card" v-if="movieScreenings.length > 0">
-        <MoviePoster :src="movieData.poster_url" />
-          <div class="screenings-card__movie-info">
-            <router-link :to="{name: 'SingleMoviePage', params: {movieId: movieData.id}}">
-              <MovieTitle>{{ movieData.title }}</MovieTitle>
-            </router-link>
-            <div class="screenings-card__category-and-length">
-              <AppTag>{{ movieData.genre.name }}</AppTag>
-              <MovieLength :lengthInMinutes="movieData.length" />
-            </div>
-            <div class="screenings-card__screenings-times">
-              <AppButton
-                v-for="screening of movieScreenings"
-                color-scheme="main-reverse"
-                :key="screening.id"
-              >
-              {{ getScreeningTime(screening) }}
-              </AppButton>
-            </div>
+    <div class="screenings-card">
+      <MoviePoster :src="movieData.poster_url" />
+        <div class="screenings-card__movie-info">
+          <router-link :to="{name: 'SingleMovie', params: {movieId: movieData.id}}">
+            <MovieTitle>{{ movieData.title }}</MovieTitle>
+          </router-link>
+          <div
+            class="screenings-card__category-and-length"
+            :usage="usage"
+          >
+            <AppTag>{{ movieData.genre.name }}</AppTag>
+            <MovieLengthOrYear :lengthInMinutes="movieData.length" />
           </div>
-      </div>
-
+          <div class="screenings-card__screenings-times" v-if="hasScreeningsTimes">
+            <AppButton
+              v-for="screening of movieScreenings"
+              color-scheme="main-reverse"
+              :key="screening.id"
+              :to="{ name: 'ChooseSeatsPage'}"
+              @clicked="$emit('screening-selected', { screeningId: screening.id})"
+            >
+            {{ getScreeningTime(screening) }}
+            </AppButton>
+          </div>
+          <AppTag
+            v-if="usage === 'ChooseSeats'"
+            usage='ChooseSeats'
+          >
+            {{ screeningDateAndTime }}
+          </AppTag>
+        </div>
+    </div>
   </template>
 
-  <style lang="scss" scoped>
-  .screenings-card {
-    display: flex;
-    box-shadow: $shadow-card;
-    padding: 40px;
-    margin-bottom: 40px;
-  }
-  .screenings-card__movie-info {
-    display: flex;
-    flex-direction: column;
-    padding-left: 40px;
-    width: 100%;
-  }
-  .screenings-card__category-and-length {
-    display: flex;
-    margin-bottom: 32px;
-    align-items: baseline;
-  }
-  .screenings-card__screenings-times {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 0;
+<style lang="scss" scoped>
+.screenings-card {
+  display: flex;
+  box-shadow: $shadow-card;
+  border-radius: $radius-card;
+  padding: 40px;
+  margin-bottom: 40px;
+}
+.screenings-card__movie-info {
+  display: flex;
+  flex-direction: column;
+  padding-left: 40px;
+  width: 100%;
+}
+.screenings-card__category-and-length {
+  display: flex;
+  margin-bottom: 32px;
+  align-items: baseline;
 
-    button {
-      margin-right: 10px;
-    }
+  &[usage="ChooseSeats"] {
+    margin-bottom: 0;
   }
-  </style>
+}
+.screenings-card__screenings-times {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0;
+
+  a {
+    margin-right: 10px;
+  }
+}
+</style>

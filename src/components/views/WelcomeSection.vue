@@ -18,11 +18,11 @@ export default defineComponent({
             And all that doesn’t exist. Yikes.
         </p>
         <AppButton
-          href="http://monterail.com"
+          :to="{name: 'Login'}"
           size="large"
           color-scheme="main"
         >
-        Book a ticket
+          Book a ticket
         </AppButton>
       </div>
       <div class="welcome__image-wrapper">
@@ -46,6 +46,7 @@ export default defineComponent({
     text-align: center;
   }
 }
+
 .welcome__message {
   display: flex;
   flex-direction: column;
@@ -66,10 +67,14 @@ export default defineComponent({
     align-items: center;
   }
 }
+
 .welcome__image-wrapper {
   min-width: 34%;
   display: none;
-  position: relative;
+
+  @include desktop {
+    display: block;
+  }
 
   @include desktop-large {
     display: block;
@@ -81,8 +86,6 @@ export default defineComponent({
       object-fit: cover;
     }
   }
+
 }
-
-
-
 </style>

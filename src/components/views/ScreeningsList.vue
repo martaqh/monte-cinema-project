@@ -30,23 +30,33 @@ export default defineComponent({
       return this.movies
     },
   },
+  methods: {
+    goToChooseSeats(data) {
+      this.$router.push(
+        { name: 'ChooseSeatsPage',
+          params: {screeningId: data.screeningId}
+        }
+      )
+    }
+  }
 })
 </script>
 
-  <template>
-    <div class="screenings-list">
-      <ScreeningsCard
-        v-for="movie in filteredMovies"
-        :movieData="movie"
-        :key="movie.id"
-        :movieScreenings="this.screenings.filter(screening => screening.movie === movie.id)"
-      />
-    </div>
-  </template>
+<template>
+  <div class="screenings-list">
+    <ScreeningsCard
+      v-for="movie in filteredMovies"
+      :movieData="movie"
+      :key="movie.id"
+      :movieScreenings="this.screenings.filter(screening => screening.movie === movie.id)"
+      @screening-selected="goToChooseSeats"
+    />
+  </div>
+</template>
 
-  <style lang="scss" scoped>
-  .screeinigs-list {
-    display: flex;
-    flex-direction: column;
-  }
-  </style>
+<style lang="scss" scoped>
+.screeinigs-list {
+  display: flex;
+  flex-direction: column;
+}
+</style>

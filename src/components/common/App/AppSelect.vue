@@ -1,37 +1,51 @@
 <script>
 import { defineComponent } from 'vue';
+import AppLabel from '@/components/common/App/AppLabel.vue';
+
 export default defineComponent({
+  components: { AppLabel },
   props: {
+    label: {
+      type: String,
+    },
     options: {
       type: Array,
+      required: true,
     },
-    optionStart: {
+    modelValue: {
       type: String,
       required: true,
     },
-  },
-  data() {
-    return {
-      optionSelected: this.optionStart,
+    optionStart: {
+      type: String,
+      required: true
     }
-  }
+  },
+  emits: ['update:modelValue'],
 });
 </script>
 
 <template>
-  <select class="select" v-model="optionSelected">
-    <option selected>{{optionStart}}</option>
-    <option v-for="option of options" :key="option">{{ option }}</option>
-  </select>
+  <div class="app-select">
+    <AppLabel>{{ label }}</AppLabel>
+    <select
+      class="app-select__field"
+      :placeholder="placeholder"
+      :value="modelValue"
+      @change="$emit('update:modelValue', $event.target.value)"
+    >
+      <option selected>{{optionStart}}</option>
+      <option v-for="option of options" :key="option">{{ option }}</option>
+    </select>
+  </div>
 </template>
 
 <style lang="scss" scoped>
-.select__wrapper {
-  margin-top: 40px;
+.app-select {
+  width: 100%;
 }
-.select {
+.app-select__field {
   padding: 17px 24px;
-  gap: 10px;
   background: $color-field-background;
   border-radius: 8px;
   border: none;
@@ -39,17 +53,5 @@ export default defineComponent({
   font-size: 18px;
   width: 100%;
   height: 56px;
-}
-
-.select__label {
-    display: block;
-    font-family: $font-mono;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 18px;
-    text-transform: uppercase;
-    color: $color-text-label;
-    margin-bottom: 12px;
-    width: fit-content;
 }
 </style>

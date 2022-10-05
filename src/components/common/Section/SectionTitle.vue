@@ -22,7 +22,7 @@ export default defineComponent({
     :size="size"
   >
     <slot></slot>
-  </p>
+</p>
 </template>
 
 <style lang="scss" scoped>
@@ -32,10 +32,6 @@ export default defineComponent({
   font-weight: 600;
   line-height: 102%;
   letter-spacing: -0.01em;
-  p {
-    margin: 0;
-    width: 100%;
-  }
 }
 
 .section-title[size="large"] {

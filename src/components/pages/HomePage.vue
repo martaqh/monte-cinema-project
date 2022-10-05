@@ -3,37 +3,35 @@ import { defineComponent } from 'vue';
 import WelcomeSection from '@/components/views/WelcomeSection.vue';
 import MoviesSummary from '@/components/views/MoviesSummary.vue';
 import ScreeningsSection from '@/components/views/ScreeningsSection.vue';
-import { mapActions } from "pinia";
-import movies from '@/stores/moviesStore'
-import ContactSection from '@/components/views/ContactSection.vue';
-import SectionTitle from '@/components/common/Section/SectionTitle.vue';
+import { useMoviesStore } from '@/stores/moviesStore';
+import TheContainer from '@/components/common/TheContainer.vue';
 
 export default defineComponent({
   components: {
     WelcomeSection,
     MoviesSummary,
     ScreeningsSection,
-    SectionTitle,
-    ContactSection
+    TheContainer,
   },
-  methods: {
-    ...mapActions(movies, ["getMoviesToState"]),
+  setup() {
+    const moviesStore = useMoviesStore();
+    return { moviesStore }
   },
   beforeMount() {
-    this.getMoviesToState()
+    this.moviesStore.fetchMoviesToState()
   }
 });
 </script>
 
 <template>
   <div class="home-page">
-    <WelcomeSection />
-    <MoviesSummary />
-    <ScreeningsSection />
-    <div class="contact">
-      <SectionTitle size="medium">Contact us</SectionTitle>
-      <ContactSection />
-    </div>
+    <TheContainer variant='full-width'>
+      <WelcomeSection />
+    </TheContainer>
+    <TheContainer>
+      <MoviesSummary />
+      <ScreeningsSection />
+    </TheContainer>
   </div>
 </template>
 
