@@ -10,7 +10,6 @@ export default defineComponent({
     return { moviesStore }
   },
   computed: {
-
     filteredMovies() {
       return this.moviesStore.movies.slice(0,3)
     }

@@ -1,10 +1,8 @@
 <script lang="ts" setup>
-const props = defineProps({
-  seatsSelected: {
-    type: Array,
-    required: true
-  }
-})
+
+const props = defineProps<{
+  seatsSelected: Array<string>
+}>();
 
 </script>
 
