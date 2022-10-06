@@ -1,19 +1,14 @@
-<script>
+<script lang="ts" setup>
 import { defineComponent } from 'vue';
 import AppTag from '@/components/common/App/AppTag.vue';
 import MovieTitle from '@/components/common/Movie/MovieTitle.vue';
 import MoviePoster from '@/components/common/Movie/MoviePoster.vue';
 import MovieLengthOrYear from '@/components/common/Movie/MovieLengthOrYear.vue';
+import type { Movie } from '@/types/movieData'
 
-export default defineComponent({
-  components: { AppTag, MovieTitle, MoviePoster, MovieLengthOrYear },
-  props: {
-    movie: {
-      type:Object,
-      required: true,
-    }
-  },
-});
+const props = defineProps<{
+  movie: Movie
+}>();
 </script>
 
 <template>

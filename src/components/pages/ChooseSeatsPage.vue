@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 import { ref, computed, onBeforeMount } from 'vue';
 import { useRouter } from "vue-router";
 import { useMoviesStore } from '@/stores/moviesStore';
@@ -11,12 +11,9 @@ import BreadCrumbs from '@/components/common/BreadCrumbs.vue';
 import ProgressStep from '@/components/common/ProgressStep.vue';
 import CinemaHall from '@/components/views/CinemaHall.vue';
 
-const props = defineProps({
-  screeningId: {
-    type: Number,
-    required: true
-  }
-})
+const props = defineProps<{
+  screeningId: number
+}>();
 
 const router = useRouter();
 
@@ -24,6 +21,7 @@ const moviesStore = useMoviesStore()
 const movieData = computed(() => moviesStore.getMovieByMovieId(screeningData.value.movie))
 
 const screeningData = ref(null);
+
 const screeningDate = computed(() =>
   screeningData.value.datetime
     .substring(0, 10)
@@ -66,15 +64,16 @@ const getScreeningData = async () => {
   }
 }
 
-const seatsSelected = ref([]);
+const seatsSelected = ref<string[]>([]);
+
 const howManySeats = computed(() => seatsSelected.value.length )
 
-const handleSelection = (data) => {
+const handleSelection = (data: Record<string, string[]>) => {
   seatsSelected.value = data.seatsSelected
 }
 
 const goToChooseTickets = () => {
-  router.push({ name: 'ChooseTicketsPage', params: {seatsSelected: seatsSelected.value}})
+  router.push({ name: 'ChooseTicketsPage', params: { seatsSelected: seatsSelected.value } });
 }
 
 onBeforeMount(() => {

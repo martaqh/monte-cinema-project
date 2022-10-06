@@ -1,5 +1,5 @@
-<script>
-import { defineComponent } from 'vue';
+<script lang="ts" setup>
+import { ref, computed, onBeforeMount } from 'vue';
 import BreadCrumbs from '@/components/common/BreadCrumbs.vue';
 import SectionTitle from '@/components/common/Section/SectionTitle.vue';
 import AppTag from '@/components/common/App/AppTag.vue';
@@ -7,48 +7,30 @@ import MovieLengthOrYear from '@/components/common/Movie/MovieLengthOrYear.vue';
 import { getMovieById } from '@/api/service/Movies';
 import ScreeningsSection from '@/components/views/ScreeningsSection.vue';
 import TheContainer from '@/components/common/TheContainer.vue';
+import type { Movie } from '@/types/movieData';
 
-export default defineComponent({
-  components: { BreadCrumbs,
-    SectionTitle,
-    AppTag,
-    ScreeningsSection,
-    MovieLengthOrYear,
-    TheContainer
-  },
-  props: {
-    movieId: {
-      type: Number,
-      required: true,
-    }
-  },
-  data() {
-    return {
-      isRequestFinished: false,
-      movieData: {},
-      screenings: [],
-    }
-  },
-  computed: {
-    movieYear() {
-      return this.movieData.release_date.substring(0,4)
-    }
-  },
-  methods: {
-    async getMovieDetails() {
-      try {
-        const response = await getMovieById(this.movieId)
-        this.movieData = response.data
-      } catch(error) {
-        console.error(error)
-      } finally {
-        this.isRequestFinished = true
-      }
-    },
-  },
-  mounted() {
-    this.getMovieDetails()
+const props = defineProps<{
+  movieId: string
+}>();
+
+const isRequestFinished = ref(false)
+const movieData = ref<Movie | null>(null)
+
+const getMovieDetails = async () => {
+  try {
+    const response = await getMovieById(props.movieId)
+    movieData.value = response.data
+  } catch(error) {
+    console.error(error)
+  } finally {
+    isRequestFinished.value = true
   }
+}
+
+const movieYear = computed(() => movieData.value.release_date.substring(0,4))
+
+onBeforeMount(() => {
+  getMovieDetails()
 })
 </script>
 

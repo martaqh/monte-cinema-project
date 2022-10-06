@@ -1,53 +1,37 @@
-<script>
+<script lang="ts" setup>
 import { defineComponent, ref } from 'vue';
 
-export default defineComponent({
-  props: {
-    rows: {
-      type: Number,
-      required: true,
-    },
-    seats: {
-      type: Number,
-      required: true,
-    },
-    seatsTaken: {
-      type: Array,
-      required: true
-    }
-  },
-  emits: ["seats-selected"],
-  setup(props, context) {
+const props = defineProps<{
+  rows: number,
+  seats: number,
+  seatsTaken: string[]
+}>();
 
-    const rowLetter = (rowNumber) => {
-      return String.fromCharCode(96 + rowNumber).toUpperCase();
-    }
+const emit = defineEmits<{
+  (e: 'seats-selected', seatsSelected: Record<string, string[]>): void
+}>()
 
-    const isSeatTaken = (seat) => {
-      return props.seatsTaken.includes(seat)
-    }
+const seatsSelected = ref<string[]>([]);
 
-    const seatsSelected = ref([]);
+const rowLetter = (rowNumber: number) => {
+  return String.fromCharCode(96 + rowNumber).toUpperCase();
+}
 
-    const handleClick = (seatValue) => {
-      if (!props.seatsTaken.includes(seatValue)) {
-        if (seatsSelected.value.includes(seatValue)) {
-          seatsSelected.value = seatsSelected.value.filter(item => item !== seatValue);
-        }
-        else {
-          seatsSelected.value.push(seatValue);
-        }
-        context.emit('seats-selected', { seatsSelected: seatsSelected.value})
-      }
+const isSeatTaken = (seat: string) => {
+  return props.seatsTaken.includes(seat)
+}
+
+const handleClick = (seatValue: string) => {
+  if (!props.seatsTaken.includes(seatValue)) {
+    if (seatsSelected.value.includes(seatValue)) {
+      seatsSelected.value = seatsSelected.value.filter(item => item !== seatValue);
     }
-    return {
-      seatsSelected,
-      rowLetter,
-      handleClick,
-      isSeatTaken
-    };
-  },
-})
+    else {
+      seatsSelected.value.push(seatValue);
+    }
+    emit('seats-selected', { seatsSelected: seatsSelected.value })
+  }
+}
 </script>
 
 <template>

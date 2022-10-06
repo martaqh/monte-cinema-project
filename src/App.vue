@@ -22,6 +22,9 @@ export default defineComponent({
   </main>
 </template>
 
-<style scoped>
-
+<style lang="scss" scoped>
+.app {
+  max-width: 1440px;
+  margin: 0 auto;
+}
 </style>
