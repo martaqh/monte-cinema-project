@@ -14,7 +14,7 @@ const props = defineProps<{
 }>();
 
 const isRequestFinished = ref(false)
-const movieData = ref<Movie>(null)
+const movieData = ref<Movie | null>(null)
 
 const getMovieDetails = async () => {
   try {

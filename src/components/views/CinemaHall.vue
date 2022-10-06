@@ -4,7 +4,7 @@ import { defineComponent, ref } from 'vue';
 const props = defineProps<{
   rows: number,
   seats: number,
-  seatsTaken: Array<string>
+  seatsTaken: string[]
 }>();
 
 const emit = defineEmits<{

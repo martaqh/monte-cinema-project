@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 
 const props = defineProps<{
-  seatsSelected: Array<string>
+  seatsSelected: string[];
 }>();
 
 </script>
