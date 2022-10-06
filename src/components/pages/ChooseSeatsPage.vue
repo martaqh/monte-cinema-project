@@ -131,6 +131,10 @@ onBeforeMount(() => {
     margin: 64px 0;
     display: flex;
     justify-content: flex-end;
+
+    @include mobile {
+      justify-content: center;
+    }
   }
 
   &__title {

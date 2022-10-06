@@ -25,6 +25,13 @@
 </template>
 
 <style lang="scss" scoped>
+.contact-section {
+  display: flex;
+
+  @include mobile {
+    flex-direction: column;
+  }
+}
 .contact-details  {
   margin-top: 48px;
   padding: 74px;
@@ -58,6 +65,15 @@
   &__phone {
     display: flex;
     margin-bottom: 0;
+  }
+
+  @include mobile {
+    padding: 33px;
+    width: 100%;
+  }
+
+  @include tablet {
+    width: 100%;
   }
 }
 

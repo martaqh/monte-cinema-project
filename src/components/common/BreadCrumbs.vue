@@ -29,9 +29,10 @@ export default defineComponent({
       color-scheme="dark-reverse"
       arrow="left"
       class="bread-crumbs__button"
+      usage="bread-crumbs"
       @click="$router.go(-1)"
     >
-      Back
+      <span>Back</span>
     </AppButton>
     <slot class="bread-crumbs__slot"></slot>
   </div>
@@ -49,6 +50,12 @@ export default defineComponent({
 
   &__button {
     margin: 0 24px;
+
+    span {
+      @include mobile {
+        display: none;
+      }
+    }
   }
 }
 

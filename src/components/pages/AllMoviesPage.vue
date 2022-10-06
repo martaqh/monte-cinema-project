@@ -93,6 +93,7 @@ export default defineComponent({
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
+      margin-top: 16px;
     }
 
     @include mobile {

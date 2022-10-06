@@ -8,7 +8,6 @@ export default defineComponent({
       default: 'ScreeningsCard'
     }
   }
-
 })
 </script>
 
@@ -38,7 +37,7 @@ export default defineComponent({
 
   &[usage="ChooseSeats"] {
     font-family: $font-mono;
-    color: $color-brand
+    color: $color-brand;
   }
 }
 </style>

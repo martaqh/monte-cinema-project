@@ -51,7 +51,7 @@ export default defineComponent({
       font-size: 48px;
     }
     @include mobile {
-      font-size: 48px;
+      font-size: 40px;
     }
 }
 

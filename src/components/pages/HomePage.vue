@@ -5,6 +5,8 @@ import MoviesSummary from '@/components/views/MoviesSummary.vue';
 import ScreeningsSection from '@/components/views/ScreeningsSection.vue';
 import { useMoviesStore } from '@/stores/moviesStore';
 import TheContainer from '@/components/common/TheContainer.vue';
+import ContactSection from '@/components/views/ContactSection.vue';
+import SectionTitle from '@/components/common/Section/SectionTitle.vue';
 
 export default defineComponent({
   components: {
@@ -12,6 +14,8 @@ export default defineComponent({
     MoviesSummary,
     ScreeningsSection,
     TheContainer,
+    ContactSection,
+    SectionTitle
   },
   setup() {
     const moviesStore = useMoviesStore();
@@ -31,6 +35,10 @@ export default defineComponent({
     <TheContainer>
       <MoviesSummary />
       <ScreeningsSection />
+      <div class="home-page__contact">
+        <SectionTitle>Contact us</SectionTitle>
+        <ContactSection />
+      </div>
     </TheContainer>
   </div>
 </template>
@@ -42,14 +50,12 @@ export default defineComponent({
   flex-direction: column;
   color: $color-text-main;
   padding: 0;
-}
-.contact {
-  margin-top: 188px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 
+  &__contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 188px;
+  }
 }
-
 </style>

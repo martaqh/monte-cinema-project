@@ -36,7 +36,8 @@ export default defineComponent({
           'common',
           'form',
           'screenings-card',
-          'contact'
+          'contact',
+          'bread-crumbs'
         ].includes(value);
       },
     },
@@ -96,7 +97,7 @@ export default defineComponent({
       alt="arrow left"
       class="button-base__arrow--left"
     />
-    <slot></slot>
+    <slot class="button-base__slot"></slot>
   </component>
 </template>
 
@@ -191,5 +192,12 @@ export default defineComponent({
   text-align: center;
   text-decoration: none;
   border-radius: 50%;
+}
+
+.button-base[usage="bread-crumbs"] {
+  @include mobile {
+    border: none;
+    width: 32px;
+  }
 }
 </style>

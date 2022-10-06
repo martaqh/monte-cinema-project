@@ -79,6 +79,12 @@ export default defineComponent({
   padding: 40px;
   margin-top: 64px;
   align-items: center;
+  width: fit-content;
+
+  @include mobile {
+    align-items: flex-start;
+    padding: 24px;
+  }
 
   &__row {
     display: flex;
@@ -91,6 +97,10 @@ export default defineComponent({
       padding: 8px;
       text-align: center;
       font-family: $font-mono;
+
+      @include mobile {
+        margin: 0 16px 0 0;
+      }
     }
   }
 
