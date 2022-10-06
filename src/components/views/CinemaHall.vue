@@ -60,52 +60,62 @@ const handleClick = (seatValue: string) => {
 </template>
 
 <style lang="scss" scoped>
-.cinema-hall {
-  display: flex;
-  flex-direction: column;
-  box-shadow: $shadow-card;
-  border-radius: $radius-card;
-  padding: 40px;
-  margin-top: 64px;
-  align-items: center;
-
-  &__row {
+  .cinema-hall {
     display: flex;
-    align-items: baseline;
-    margin: 5px;
-
-    &--letter {
-      font-size: 16px;
-      margin: 0 50px;
-      padding: 8px;
-      text-align: center;
-      font-family: $font-mono;
-    }
-  }
-
-  &__seat {
-    font-size: 16px;
-    font-family: $font-main;
-    width: 32px;
-    height: 32px;
-    background-color: $color-seat;
-    margin-right: 10px;
-    display: flex;
+    flex-direction: column;
+    box-shadow: $shadow-card;
+    border-radius: $radius-card;
+    padding: 40px;
+    margin-top: 64px;
     align-items: center;
-    justify-content: center;
-    border: none;
-    cursor: pointer;
 
-    &[selected='true'] {
-      background-color: $color-brand;
-      color: $color-text-reverse;
+    @include mobile {
+      align-items: flex-start;
+      padding: 24px;
+      width: fit-content;
     }
 
-    &[taken='true'] {
-      background-color: $color-text-light;
-      color: $color-text-reverse;
-      cursor: not-allowed;
+    &__row {
+      display: flex;
+      align-items: baseline;
+      margin: 5px;
+
+      &--letter {
+        font-size: 16px;
+        margin: 0 50px;
+        padding: 8px;
+        text-align: center;
+        font-family: $font-mono;
+
+        @include mobile {
+          margin: 0 16px 0 0;
+        }
+      }
+    }
+
+    &__seat {
+      font-size: 16px;
+      font-family: $font-main;
+      width: 32px;
+      height: 32px;
+      background-color: $color-seat;
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      cursor: pointer;
+
+      &[selected='true'] {
+        background-color: $color-brand;
+        color: $color-text-reverse;
+      }
+
+      &[taken='true'] {
+        background-color: $color-text-light;
+        color: $color-text-reverse;
+        cursor: not-allowed;
+      }
     }
   }
-}
-</style>
+  </style>

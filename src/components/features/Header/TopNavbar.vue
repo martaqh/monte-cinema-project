@@ -6,7 +6,7 @@ export default defineComponent({
       navbarTabs: [
         {to: {name: 'Movies'}, label: 'Movies'},
         {to: {name: 'Screenings'}, label: 'Screenings'},
-        {to: {name: 'Home'}, label: 'Contact us'},
+        {to: {name: 'Contact'}, label: 'Contact us'},
       ],
       activeTab: '',
       isActive: false,

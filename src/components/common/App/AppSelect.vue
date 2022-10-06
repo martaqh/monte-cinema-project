@@ -53,5 +53,9 @@ export default defineComponent({
   font-size: 18px;
   width: 100%;
   height: 56px;
+
+  &:hover {
+    outline: 5px solid $color-hover-border;
+  }
 }
 </style>

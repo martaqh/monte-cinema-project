@@ -14,7 +14,7 @@ export default defineComponent({
             Welcome to the best cinema in Monterail
         </SectionTitle>
         <p class="welcome__main-text">
-            Best movies, best experiences, best people.
+            Best movies, best experiences, best people. <br />
             And all that doesn’t exist. Yikes.
         </p>
         <AppButton

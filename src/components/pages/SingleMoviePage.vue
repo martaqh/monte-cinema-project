@@ -88,6 +88,10 @@ onBeforeMount(() => {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
 
+    @include mobile {
+      display: none;
+    }
+
     &--description {
       font-size: 22px;
       line-height: 170%;

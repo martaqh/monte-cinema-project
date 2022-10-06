@@ -5,7 +5,17 @@ export default defineComponent({
     src: {
       type: String,
       required: true,
-    }
+    },
+    usage: {
+      type: String,
+      default: 'movie-card',
+      validator(value) {
+        return [
+          'movie-card',
+          'screenings-card'
+        ].includes(value);
+      },
+    },
   }
 })
 </script>
@@ -25,7 +35,17 @@ export default defineComponent({
     object-fit: cover;
 
     @include mobile {
-      min-width: 68px;
+
+    }
+  }
+}
+
+.movie-poster[usage="screenings-card"] {
+  img {
+    height: 100%;
+
+    @include mobile {
+      height: 100%;
     }
   }
 }

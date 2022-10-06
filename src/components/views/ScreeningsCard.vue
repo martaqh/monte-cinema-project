@@ -74,8 +74,9 @@ export default defineComponent({
 </script>
 
   <template>
-    <div class="screenings-card" v-if="isRequestFinished">
-      <MoviePoster :src="movieData.poster_url" />
+    <div class="screenings-card">
+      <div class="screenings-card__data-wrapper" >
+        <MoviePoster :src="movieData.poster_url" usage="screenings-card" />
         <div class="screenings-card__movie-info">
           <router-link :to="{name: 'SingleMovie', params: {movieId: movieData.id}}">
             <MovieTitle>{{ movieData.title }}</MovieTitle>
@@ -91,8 +92,9 @@ export default defineComponent({
             <AppButton
               v-for="screening of movieScreenings"
               color-scheme="main-reverse"
+              usage="screenings-card"
               :key="screening.id"
-              :to="{ name: 'ChooseSeatsPage', params: { screeningId: screening.id}}"
+              :to="{ name: 'ChooseSeatsPage', params: { screeningId: screening.id }}"
               @clicked="$emit('screening-selected', { screeningId: screening.id})"
             >
             {{ getScreeningTime(screening) }}
@@ -101,21 +103,36 @@ export default defineComponent({
           <AppTag
             v-if="usage === 'ChooseSeats'"
             usage='ChooseSeats'
+            class="screenings-card__screenings-times-summary--desktop"
           >
             {{ screeningDateAndTime }}
           </AppTag>
         </div>
+      </div>
+      <AppTag
+          v-if="usage === 'ChooseSeats'"
+          usage='ChooseSeats'
+          class="screenings-card__screenings-times-summary--mobile"
+        >
+          {{ screeningDateAndTime }}
+      </AppTag>
     </div>
   </template>
 
 <style lang="scss" scoped>
 .screenings-card {
   display: flex;
+  flex-direction: column;
   box-shadow: $shadow-card;
   border-radius: $radius-card;
   padding: 40px;
   margin-bottom: 40px;
 }
+
+.screenings-card__data-wrapper {
+  display: flex;
+}
+
 .screenings-card__movie-info {
   display: flex;
   flex-direction: column;
@@ -124,7 +141,7 @@ export default defineComponent({
 }
 .screenings-card__category-and-length {
   display: flex;
-  margin-bottom: 32px;
+  margin-bottom: 20px;
   align-items: baseline;
 
   &[usage="ChooseSeats"] {
@@ -135,6 +152,28 @@ export default defineComponent({
   display: flex;
   flex-wrap: wrap;
   margin-top: 0;
+
+  &-summary {
+    margin-top: 20px;
+    @include mobile {
+      with: 100%;
+      flex-direction: column;
+    }
+
+    &--desktop {
+      @include mobile {
+        display: none;
+      }
+    }
+
+    &--mobile {
+      display: none;
+      @include mobile {
+        display: flex;
+      }
+    }
+
+  }
 
   a {
     margin-right: 10px;

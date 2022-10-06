@@ -97,6 +97,10 @@ export default defineComponent({
   width: 100%;
   text-indent: 24px;
 
+  &:hover {
+    outline: 5px solid $color-hover-border;
+  }
+
   &::placeholder {
     font-size: 16px;
     color: $color-text-light;
