@@ -40,6 +40,7 @@
   justify-content: center;
   align-items: flex-start;
   height: fit-content;
+  width: 100%;
   background-color: $color-field-background;
   font-family: $font-mono;
   font-size: 18px;
@@ -69,7 +70,7 @@
 
   @include mobile {
     padding: 33px;
-    width: 100%;
+    width: fit-content;
   }
 
   @include tablet {
