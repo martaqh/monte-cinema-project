@@ -5,14 +5,10 @@ import AppButton from '@/components/common/App/AppButton.vue';
 import MovieTitle from '@/components/common/Movie/MovieTitle.vue';
 import AppTag from '@/components/common/App/AppTag.vue';
 import MovieLengthOrYear from '@/components/common/Movie/MovieLengthOrYear.vue';
-import { useAuthStore } from '@/stores/authStore';
+import { useMoviesStore } from '@/stores/moviesStore';
 
 export default defineComponent({
   components: { MoviePoster, AppButton, MovieTitle, AppTag, MovieLengthOrYear },
-  setup() {
-    const auth = useAuthStore();
-    return { auth };
-  },
   props : {
     movieData: {
       type: Object,
@@ -39,6 +35,15 @@ export default defineComponent({
       type: String,
     }
   },
+  data() {
+    return {
+      isRequestFinished: false
+    }
+  },
+  setup() {
+    const moviesStore = useMoviesStore();
+    return { moviesStore }
+  },
   computed: {
     hasScreeningsTimes() {
       return this.usage === 'ScreeningsSection' && this.movieScreenings.length > 0
@@ -51,6 +56,19 @@ export default defineComponent({
     getScreeningTime(screening) {
       return new Date(screening.datetime).toLocaleString('en-GB', {timeStyle: 'short'})
     },
+    async fetchMovieData() {
+      try {
+        const response = await this.moviesStore.fetchMoviesToState()
+        console.log(response)
+      } catch(error) {
+        console.error(error)
+      } finally {
+        this.isRequestFinished = true
+      }
+    },
+  },
+  beforeMount() {
+    this.fetchMovieData()
   }
 })
 </script>

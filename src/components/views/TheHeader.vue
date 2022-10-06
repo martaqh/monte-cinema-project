@@ -12,7 +12,7 @@ export default defineComponent({
   },
   computed: {
     hasMainHeader() {
-      return ['Home', 'Movies', 'Screenings', 'Contact', 'SingleMovie', 'ChooseSeatsPage'].includes(this.$route.name);
+      return ['Home', 'Movies', 'Screenings', 'SingleMovie', 'ChooseSeatsPage'].includes(this.$route.name);
     },
     hasAuthHeader() {
       return ['Register', 'Login'].includes(this.$route.name);

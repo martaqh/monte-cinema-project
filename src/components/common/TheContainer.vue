@@ -26,6 +26,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .container {
+  max-width: 1440px;
   padding: 0 24px;
 }
 
@@ -33,12 +34,11 @@ export default defineComponent({
   @include mobile {
     padding: 0;
     margin: 0;
-    width: 100%;
   }
 }
 .container[variant="form"] {
     max-width: 603px;
     min-width: 220px;
-    margin: 64px auto;
+    margin: 64px auto 0;
 }
 </style>
