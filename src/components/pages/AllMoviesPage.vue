@@ -64,7 +64,7 @@ export default defineComponent({
         </div>
         <div class="all-movies__filters--select">
           <AppSelect
-            :options="moviesCategories"
+            :options="moviesStore.moviesCategories"
             v-model="optionSelected"
             label="category"
             optionStart="All categories"

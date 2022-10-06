@@ -84,11 +84,11 @@ export default defineComponent({
     padding: 40px;
     margin-top: 64px;
     align-items: center;
-    width: fit-content;
 
     @include mobile {
       align-items: flex-start;
       padding: 24px;
+      width: fit-content;
     }
 
     &__row {
